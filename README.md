@@ -247,16 +247,4 @@ When the answer to one of these is “no,” FIT predicts increased likelihood o
 
 The world does not necessarily move forward by choice; it often moves forward when existing structures fail to satisfy constraints over relevant horizons. FIT does not predict the next destination. It provides a disciplined way to recognize when constraint pressures are accumulating—and what types of structural adaptations are most plausible.
 
-
---
-
-### 💛 Sponsor My Deep Thinking Journey 🧠
-
-[paypal.me/QIENH](https://paypal.me/QIENH)
-
-![](https://github.com/qienhuang/F-I-T/blob/main/imgs/paypal_qr.png)
-
-![](https://github.com/qienhuang/F-I-T/blob/main/imgs/buymeacoffee.png)  [Buy me a coffee](https://buymeacoffee.com/qienhuang)
-
-
 ---
