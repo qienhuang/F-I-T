@@ -1,5 +1,7 @@
 
----
+
+
+![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/logo.png)
 
 # The F‑I‑t (Force–Information–Time) Dynamics Framework
 
