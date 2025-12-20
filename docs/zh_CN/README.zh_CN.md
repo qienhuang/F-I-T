@@ -1,6 +1,8 @@
 
 ---
 
+![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/logo.png)
+
 # F-I-T (力-信息-时间) 动力学框架
 
 ## 跨越物理、生物、认知、社会及AI系统的约束驱动演化视角
