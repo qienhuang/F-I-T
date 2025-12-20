@@ -1,7 +1,7 @@
 
 
 
-![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/logo.png)
+![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/fit_banner.png)
 
 # The F‑I‑t (Force–Information–Time) Dynamics Framework
 
@@ -87,5 +87,3 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 
 ![](https://github.com/qienhuang/F-I-T/blob/main/imgs/buymeacoffee.png)  [Buy me a coffee](https://buymeacoffee.com/qienhuang)
 
-
----

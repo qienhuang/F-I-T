@@ -1,7 +1,6 @@
 
----
 
-![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/logo.png)
+![Logo](https://github.com/qienhuang/F-I-T/blob/main/imgs/fit_banner.png)
 
 # F-I-T (力-信息-时间) 动力学框架
 
