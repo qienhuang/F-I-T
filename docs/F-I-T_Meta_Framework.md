@@ -1,32 +1,6 @@
 
 ---
 
-# The F‑I‑t (Force–Information–Time) Dynamics Framework
-
-## A Constraint‑Driven Lens on Evolution Across Physical, Biological, Cognitive, Social, and AI Systems
-
-**Version:** v1.0 (academicized draft)
-
-**Framework established:** Dec 10, 2025 (original)
-
-[[中文]](docs/zh_CN/README.zh_CN.md)
-
-### Why F-I-T
-
-I attempt to answer the same question in a unified way:
-From quantum and molecules to cells, individuals, organizations, nations, and civilizations—why do clearly defined hierarchical structures emerge? Why does evolution often manifest as a repeating rhythm of "oscillation—stability—aggregation—re-stability"?
-
-I ultimately compressed "evolution" into three minimal variables:
-
-*   **Force (F)**: The action that drives or constrains system change (interactions, selection pressures, institutional constraints, objective function gradients).
-*   **Information (I)**: Structures that can persist in time and produce causal effects (codes, forms, patterns, models).
-*   **Time (T)**: Not a background scale, but a spectrum of characteristic time scales (rhythms) emergent from the interaction of F and I.
-
-**F-I-T is a meta-framework, not a theory of a specific domain.**
-Its purpose is: to first reduce any problem of "evolution, development, origin, collapse, innovation" to `(F, I, τ)`, and then discuss levels, critical points, and transition paths.
-
----
-
 ### **F-I-T (Force-Information-Time) System Evolution Meta-Framework v1.0**
 
 #### **I. Core Definitions and Basic Propositions**
@@ -73,17 +47,5 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 #### **VI. Significance, Limitations, and Your Deeper Questions**
 *   **Significance**: F-I-T provides a **unified conceptual grammar** that connects evolutionary narratives across physics, biology, society, and technology, enabling us to use the same logic to understand everything from cell division to the rise of AI.
 *   **Limitations**: It is currently primarily a **qualitative meta-framework and mental model**. To generate quantitative predictions, it must be combined with theories and data from specific domains.
-
----
-
-
-### 💛 Sponsor My Deep Thinking Journey 🧠
-
-[paypal.me/QIENH](https://paypal.me/QIENH)
-
-![](https://github.com/qienhuang/F-I-T/blob/main/imgs/paypal_qr.png)
-
-![](https://github.com/qienhuang/F-I-T/blob/main/imgs/buymeacoffee.png)  [Buy me a coffee](https://buymeacoffee.com/qienhuang)
-
 
 ---
