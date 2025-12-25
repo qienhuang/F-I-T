@@ -14,7 +14,7 @@
 **Version:** v1.0 (academicized draft)  
 **Framework established:** Dec 10, 2025 (original)
 
-**Author**: Qien Huang (qienhuang at hotmail dot com)  
+**Author**: Qien Huang (qienhuang@hotmail.com)  
 **License**: CC-BY-4.0  
 **Repository**: [https://github.com/qienhuang/F-I-T](https://github.com/qienhuang/F-I-T)  
 **ORCID**: https://orcid.org/0009-0003-7731-4294
