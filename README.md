@@ -7,9 +7,9 @@
 
 ## A Constraint‑Driven Lens on Evolution Across Physical, Biological, Cognitive, Social, and AI Systems
 
-[[中文]](docs\zh_cn\README.zh_cn.md)
+[[中文]](docs/zh_cn/README.zh_cn.md)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012402.svg)](https://doi.org/10.5281/zenodo.18012402)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18039307.svg)](https://doi.org/10.5281/zenodo.18039307) 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)  
 **Version:** v1.0 (academicized draft)  
 **Framework established:** Dec 10, 2025 (original)
@@ -90,11 +90,18 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 * All propositions listed
 * High information density
 
-[ v2.0（ARCHIVED / DO NOT CITE）](docs\zh_cn\archive\v2.0\v2.0.archived.md)
+[ v2.0（ARCHIVED / DO NOT CITE）](docs/archive/v2.0/v2.0.archived.md)
 
 ---
 
->### v2.1 — Discussion & Validation Edition (**Recommended**)
+># FIT v2.1 — Discussion & Validation Edition (Recommended)
+
+ **Status:** research preprint draft (not peer reviewed).  
+ **Primary intent:** community critique, falsification, and iteration.
+
+---
+
+### v2.1 — Discussion & Validation Edition (**Recommended**)
 
 * Refined scope and claims
 * Reduced over-generalization
@@ -114,8 +121,8 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 # The Force–Information–Time (FIT) Framework (v2.1, revised)
 *A minimal, falsifiable vocabulary for evolutionary dynamics across adaptive systems*
 
-> **Status**: research preprint draft (not peer reviewed)  
-> **Changelog vs. v2.0**: toned down universality claims; clarified scope/assumptions; corrected information-theory statements; added a solvable toy model with analytic results; refactored propositions (18) and expanded 3 exemplar tests; tightened “not-a-proposal” framing by including a minimal worked result and operational metrics.
+**Status**: research preprint draft (not peer reviewed)  
+**Changelog vs. v2.0**: toned down universality claims; clarified scope/assumptions; corrected information-theory statements; added a solvable toy model with analytic results; refactored propositions (18) and expanded 3 exemplar tests; tightened “not-a-proposal” framing by including a minimal worked result and operational metrics.
 
 ---
 
@@ -212,7 +219,7 @@ FIT does **not** force one information definition; instead it requires authors t
 
 ## 3. The five primitives with minimal working examples (MWE)
 
-> Each primitive below includes (i) a definition at FIT level, and (ii) an MWE showing how one could measure it.
+Each primitive below includes (i) a definition at FIT level, and (ii) an MWE showing how one could measure it.
 
 ### 3.1 Primitive P0: State $S$
 **Definition**: The complete configuration of the system at time $t$ at the chosen level of description.
@@ -249,9 +256,11 @@ $t$ is the generation index; the update map is deterministic: $S_{t+1} = f(S_t)$
 
 **MWE (finite-state machine)**:  
 If the number of reachable states drops from $N$ to $N_{\text{reachable}}(t)$ due to forbidden transitions, define
+
 $$
 C_t := \log N - \log N_{\text{reachable}}(t).
 $$
+
 (Units: bits, if log base 2.)
 
 ### 3.5 Primitive P4: Information $I$
@@ -273,9 +282,11 @@ We separate **definitional principles** (true by construction once estimators ar
 
 ### 4.1 Principle 1: Directed evolution
 **Statement**: In the chosen state representation, expected change has a directional component aligned with net force:
+
 $$
 \mathbb{E}[\Delta S_t \mid S_t] = \alpha F(S_t,t) + \epsilon_t,
 $$
+
 where $\epsilon_t$ captures noise/unmodeled effects.
 
 **Interpretation**: “Force” is the generalized drift.
@@ -659,6 +670,52 @@ FIT **does claim**:
 
 ---
 
+## Citation & attribution
+
+If you use or discuss FIT, please cite the appropriate version:
+
+* v2.1 (recommended for discussion and citation)
+* v2 for full specification reference
+
+A Zenodo DOI is available (see repository badge). An arXiv preprint will be added when applicable.
+
+---
+
+## AI-assisted drafting disclosure
+
+Portions of drafting and editing were assisted by large language models.
+The author takes full responsibility for all content, claims, and errors.
+
+---
+
+## License
+
+This work is licensed under **CC BY 4.0**.
+You are free to share, adapt, and build upon it with attribution.
+
+---
+
+
+## Roadmap (high level)
+
+* Short term:
+
+  * Community critique of v2.1
+  * Counterexample collection
+  * Estimator refinement
+
+* Medium term:
+
+  * Formal mathematical appendix
+
+* Long term:
+
+  * Domain-specific extensions
+  * Cross-disciplinary synthesis
+  * Governance and AI safety applications
+
+---
+
 ## Why tempo matters
 
 Many complex systems fail not because they lack power or information, but because **high‑impact changes become irreversible faster than the system can correct them**.
@@ -712,24 +769,6 @@ The author takes full responsibility for all content, claims, and errors.
 This work is licensed under **CC BY 4.0**.
 You are free to share, adapt, and build upon it with attribution.
 
----
-
-
-## Roadmap (high level)
-
-* Short term:
-
-  * Community critique of v2.1
-  * Counterexample collection
-  * Estimator refinement
-
-* Long term:
-
-  * Domain-specific extensions
-  * Cross-disciplinary synthesis
-  * Governance and AI safety applications
-
----
 
 
 
