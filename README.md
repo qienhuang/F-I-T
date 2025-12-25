@@ -269,7 +269,7 @@ $$
 **Operational estimators (choose one):**
 - **State entropy**: $I_t := H(S_t)$ (requires a distribution estimate).
 - **Predictive information**: $I_t := I(S_{t-k:t}; S_{t:t+k})$ .
-- **Compression-based**: $I_t := -\text{compressed\_size}(S_{t-k:t})$ up to constants.
+- **Compression-based**: $I_t := -\texttt{compressed\_size}(S_{t-k:t})$ up to constants.
 
 **MWE (DNA base identity)**:  
 $S\in\{A,T,G,C\}$, uniform prior ⇒ $H(S)=2$ bits.
