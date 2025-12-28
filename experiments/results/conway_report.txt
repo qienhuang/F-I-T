@@ -1,0 +1,236 @@
+python conway_fit_experiment.py
+
+======================================================================
+FIT FRAMEWORK v2.3 - CONWAY'S GAME OF LIFE VALIDATION
+======================================================================
+
+Experiment started: 2025-12-25 19:22:06
+Grid size: 50x50
+Number of runs: 20
+Max steps per run: 2000
+
+======================================================================
+Testing P1: Nirvana Irreversibility
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+  Results:
+    Nirvana reached: 0/20 runs
+    Excursions: 0/0 (0.0%)
+    Average C at nirvana: 0.000
+    Status: ✓ SUPPORTED
+
+======================================================================
+Testing P2: Constraint Monotonicity
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+  Results:
+    Average violation rate: 19.0%
+    Threshold: 5.0%
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P4: Plateau Detection
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+  Results:
+    Total plateaus detected: 0
+    Average per run: 0.0
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+  Results:
+    Average violation rate: 0.00%
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+    Average per run: 0.0
+    Average per run: 0.0
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 11/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+======================================================================
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+
+    Average per run: 0.0
+    Status: ✗ CHALLENGED
+    Status: ✗ CHALLENGED
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+======================================================================
+Testing P7: Entropy Capacity Bound
+======================================================================
+  Run 1/20...
+  Run 6/20...
+  Run 6/20...
+  Run 11/20...
+  Run 16/20...
+
+  Results:
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+    Status: ✓ SUPPORTED
+
+  Results:
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+
+  Results:
+
+  Results:
+
+  Results:
+    Average violation rate: 0.00%
+  Results:
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+    Status: ✓ SUPPORTED
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+    Average violation rate: 0.00%
+    Average violation rate: 0.00%
+    Average violation rate: 0.00%
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+    Status: ✓ SUPPORTED
+
+    Average violation rate: 0.00%
+    Tolerance factor: 1.05
+    Status: ✓ SUPPORTED
+
+======================================================================
+Testing P10: Constraint Estimator Equivalence
+======================================================================
+  Run 1/10...
+  Run 3/10...
+  Run 5/10...
+  Run 7/10...
+  Run 9/10...
+
+  Results:
+    Average correlation (frozen vs compression): 0.775
+    Status: ✓ SUPPORTED
+
+======================================================================
+SUMMARY
+======================================================================
+Total propositions tested: 5
+Supported: 3
+Challenged: 2
+Success rate: 60.0%
+Total time: 15468.2 seconds
+

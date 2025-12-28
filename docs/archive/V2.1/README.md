@@ -705,9 +705,6 @@ You are free to share, adapt, and build upon it with attribution.
   v2.1 “Discussion & Validation Edition” — toned‑down claims, full proposition list, and exemplar tests for GoL / Langton’s Ant.:contentReference[oaicite:1]{index=1}
 - **Design ethos**: minimal primitives, explicit level‑of‑description, operational estimators, falsifiable propositions, and a clear validation program.
 
-- For readers coming from complex systems / dynamical systems, see  
-[Notes for Complex Systems Researchers](docs/For_Complex_Systems_Readers.md).
-
 ---
 
 ### Milestone 0 — Stabilize the 2.x line (0–3 months)
