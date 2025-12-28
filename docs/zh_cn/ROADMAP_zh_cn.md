@@ -6,7 +6,7 @@
   `fit_full_v2.3.md` —— 给出 5 个原语、6 条框架原则 / 工作假说、18 条可证伪命题，并引入 T‑theory（尾段动力学子框架）以及一个可解的一维玩具模型。
 
 - **新读者推荐入口**  
-  v2.1 “讨论与验证版（Discussion & Validation Edition）” —— 收敛了说法、列出完整命题，并给出 GoL / Langton’s Ant 的示例验证与可操作 estimator。:contentReference[oaicite:1]{index=1}
+  v2.1 “讨论与验证版（Discussion & Validation Edition）” —— 收敛了说法、列出完整命题，并给出 GoL / Langton’s Ant 的示例验证与可操作 estimator。
 
 - **设计理念（Design ethos）**  
   极简原语；明确描述层级；每个原语配至少一种可操作估计器；所有重要命题都可证伪；提供清晰的验证计划与命题注册表。
@@ -18,7 +18,7 @@
 **目标**：把当前 “离散 / 经典 FIT” 堆栈稳定下来，让外部读者易于理解和批评。
 
 - [ ] 将 `fit_full_v2.3.md` 冻结为 2.x 线的权威规范（离散 + 经典系统）。  
-- [ ] 保留 v2.1 作为“讨论 / 引用友好”的推荐入口，在 README 顶部显式指向 v2.1 与 v2.3。:contentReference[oaicite:2]{index=2}  
+- [ ] 保留 v2.1 作为“讨论 / 引用友好”的推荐入口，在 README 顶部显式指向 v2.1 与 v2.3。  
 - [ ] 固定 **命题注册表（proposition registry）** 的机器可读 Schema（YAML / JSON）：
   - 为每个 P1–P18 提供：ID、短名、适用范围、估计器定义、边界声明、验证 protocol、当前状态。
 - [ ] 发布最小可用的 **Tier‑1 验证脚本**：
