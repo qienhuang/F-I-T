@@ -1,0 +1,85 @@
+======================================================================
+FIT FRAMEWORK v2.3 - LANGTON'S ANT VALIDATION REPORT
+======================================================================
+
+Generated: 2025-12-26 01:03:46
+
+CONFIGURATION
+----------------------------------------------------------------------
+Grid size: 200x200
+Number of runs: 5
+Max steps per run: 25000
+Highway emergence window: 9000-13000
+Measurement window W: 500
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Total propositions tested: 4
+Supported: 0
+Challenged: 4
+Success rate: 0.0%
+Total computation time: 436.5 seconds
+
+======================================================================
+PROPOSITION P1
+======================================================================
+
+Attractor Persistence (Highway Regime)
+----------------------------------------------------------------------
+Status: ✗ CHALLENGED
+Highways detected: 0/5
+Exits from highway: 0
+
+======================================================================
+PROPOSITION P3
+======================================================================
+
+Force Variance Decay Family
+----------------------------------------------------------------------
+Status: ✗ CHALLENGED
+Successful exponential fits: 0/5
+Average decay rate λ: 0.000000
+Average fit R²: 0.000
+
+======================================================================
+PROPOSITION P11
+======================================================================
+
+Phase Transition Signature
+----------------------------------------------------------------------
+Status: ✗ CHALLENGED
+Transitions detected in expected range: 0/5
+Average transition step: 15200
+Expected range: 9000-13000
+
+======================================================================
+PROPOSITION P18
+======================================================================
+
+Timescale Separation Near Attractors
+----------------------------------------------------------------------
+Status: ✗ CHALLENGED
+Clear timescale separation: 0/5
+Average τ_C / τ_F ratio: 1.50
+
+======================================================================
+INTERPRETATION
+======================================================================
+
+CHALLENGES to FIT Framework predictions in this system.
+The dynamics may require different estimators or parameter choices.
+
+Langton's Ant provides a complementary test to Conway's Game of Life:
+it features a single agent with simple rules producing complex emergent
+behavior including a well-known phase transition (chaotic → highway).
+
+RECOMMENDATIONS
+----------------------------------------------------------------------
+1. Cross-validate estimators between Conway and Langton systems.
+2. Explore parameter sensitivity (grid size, measurement windows).
+3. Extend to other cellular automata with known phase transitions.
+4. Develop unified metrics that work across both systems.
+
+======================================================================
+END OF REPORT
+======================================================================
