@@ -1,0 +1,293 @@
+# FIT Estimator Selection Theory (EST)
+# Pre-registration template (machine-readable)
+#
+# Purpose
+# - Lock estimator choices, scope, and analysis plan *before* running tests.
+# - Prevent estimator-hacking critiques by making "admissible estimators" explicit.
+# - Enable transparent negative results and cross-study comparability.
+#
+# How to use
+# 1) Copy this file to `preregistrations/<study_id>.yaml` (recommended) or fill it in-place.
+# 2) Fill all TODO fields.
+# 3) Tag the repo / record the commit hash and registry URL at preregistration time.
+# 4) Do not change fields listed in `study.preregistration.immutable_after_prereg` after preregistration.
+
+schema:
+  name: "FIT-EST-Preregistration"
+  version: "0.1.0"
+  fit_versions:
+    primary_spec: "v2.4-draft"
+    compatible_with:
+      - "v2.3"
+
+study:
+  id: "EST-YYYYMMDD-001" # TODO: unique ID
+  title: "TODO"
+  status: "draft" # draft | preregistered | completed | abandoned
+  language: "en"
+  preregistration:
+    registered_at_utc: null # TODO: e.g., "2025-12-28T12:34:56Z"
+    registry: null # TODO: osf | zenodo | github_release | github_tag | other
+    registry_url: null # TODO
+    immutable_after_prereg:
+      - "propositions"
+      - "tasks"
+      - "estimators"
+      - "equivalence_and_coherence"
+      - "protocol"
+      - "analysis_plan"
+      - "success_criteria"
+
+people:
+  corresponding_author:
+    name: "TODO"
+    email: "TODO"
+    orcid: null
+  contributors:
+    - name: "TODO"
+      role: "author" # author | analyst | implementer | reviewer
+      orcid: null
+
+repository:
+  url: "https://github.com/qienhuang/F-I-T"
+  commit: "TODO" # TODO: git SHA used for preregistration
+  paths:
+    code_root: "TODO" # TODO: e.g., "experiments/gol/"
+    outputs_root: "TODO" # TODO: e.g., "results/EST-YYYYMMDD-001/"
+    preregistration_file: "est_preregistration_template.yaml"
+
+target:
+  system:
+    name: "TODO" # e.g., "Conway's Game of Life"
+    domain: "TODO" # physical | biological | cognitive | social | artificial
+    substrate: "TODO" # e.g., cellular_automaton | agent_based | sgd | rl | sde | dataset
+    description: "TODO"
+  scope_conditions:
+    closure_assumptions: "TODO" # what is treated as effectively closed?
+    boundary:
+      type: "TODO" # open | periodic | reflective | absorbing | custom
+      details: "TODO"
+    coarse_graining:
+      description: "TODO" # how states are coarse-grained (if any)
+    time:
+      type: "TODO" # discrete | continuous
+      dt: null # optional
+      units: null # optional
+    state_representation_S_t:
+      description: "TODO"
+      state_space: "TODO"
+      units: null
+
+tasks:
+  # "Task type" determines which estimator equivalence notion is required:
+  # - ordinal: trends / monotonicity / ranking
+  # - metric: thresholds / critical points / scale stability
+  # - topological: regime structure / morphology / phase transition signatures
+  - id: "T1"
+    task_type: "ordinal" # ordinal | metric | topological
+    claim: "TODO"
+    primary_outcomes:
+      - name: "TODO"
+        description: "TODO"
+    secondary_outcomes: []
+
+propositions:
+  # Note: include P10 if you intend to treat estimator coherence as a gate.
+  - id: "P10"
+    role: "gate" # gate | primary | secondary
+    statement_ref: "FIT v2.3 Section 5.2.10"
+  - id: "TODO" # e.g., "P7"
+    role: "primary"
+    statement_ref: "TODO" # e.g., "FIT v2.3 Section 5.2.7"
+
+estimators:
+  # Estimator tuple (Estimator Specification Layer)
+  # E = (S_t, B, {F_hat, C_hat, I_hat}, W)
+  estimator_tuple_E:
+    S_t: "TODO" # short label for the chosen state representation
+    B: "TODO" # short label for boundary/closure declaration
+    F_hat: "TODO"
+    C_hat: "TODO"
+    I_hat: "TODO"
+    W:
+      window: null # TODO: e.g., 100
+      stride: null # TODO: e.g., 1
+      burn_in: null # TODO: e.g., 0
+      notes: "TODO"
+
+  # Operational definitions + implementation references.
+  # Keep these stable after preregistration.
+  definitions:
+    F_hat:
+      id: "TODO"
+      primitive: "F"
+      task_types_supported: [] # TODO: e.g., ["ordinal", "metric"]
+      definition: "TODO"
+      invariances_claimed: [] # TODO: e.g., ["translation", "rotation"]
+      parameters: {} # TODO
+      implementation:
+        language: "python"
+        file: "TODO" # TODO: path
+        function: "TODO"
+        version: "TODO" # optional: package / tag / commit
+
+    C_hat:
+      id: "TODO"
+      primitive: "C"
+      task_types_supported: [] # TODO
+      definition: "TODO"
+      invariances_claimed: [] # TODO
+      parameters: {} # TODO
+      implementation:
+        language: "python"
+        file: "TODO"
+        function: "TODO"
+        version: "TODO"
+
+    I_hat:
+      id: "TODO"
+      primitive: "I"
+      task_types_supported: [] # TODO
+      definition: "TODO"
+      invariances_claimed: [] # TODO
+      parameters: {} # TODO
+      implementation:
+        language: "python"
+        file: "TODO"
+        function: "TODO"
+        version: "TODO"
+
+admissibility:
+  # v2.4 EST: admissibility should be explicit and testable.
+  criteria:
+    scope_declared: true
+    representation_boundary_consistent: true
+    robustness_plan_declared: true
+    complexity_penalty_declared: true
+    preregistered: true
+
+  representation_and_boundary_consistency:
+    checks:
+      - "TODO" # e.g., "Boundary type B matches system definition; no hidden periodic wrap."
+      - "TODO" # e.g., "S_t coarse-graining does not erase events required by task type."
+
+  complexity_penalty:
+    metric: "TODO" # e.g., parameter_count | aic_like | runtime_seconds | description_length
+    budget:
+      max_parameters: null
+      max_runtime_seconds: null
+    notes: "TODO"
+
+  # If you will test robustness across an admissible estimator family, declare it here.
+  estimator_family:
+    enabled: false
+    family_definition: "TODO" # what makes members admissible + comparable?
+    # Example:
+    # - primitive: "C"
+    #   estimator_id: "C_hat_alt_1"
+    #   definition: "TODO"
+    #   implementation: { language: "python", file: "TODO", function: "TODO" }
+    members: []
+
+  robustness:
+    perturbations:
+      - id: "W_sweep"
+        type: "window"
+        values: [] # TODO: e.g., [50, 100, 200]
+      - id: "seed_sweep"
+        type: "random_seed"
+        values: [] # TODO: e.g., [1, 2, 3, 4, 5]
+    aggregation:
+      method: "report_all" # report_all | median | worst_case | predeclared_stat
+      statistic: null
+      notes: "TODO"
+
+equivalence_and_coherence:
+  # Task-typed equivalence requirement (ordinal / metric / topological).
+  equivalence_requirement:
+    level: "ordinal" # ordinal | metric | topological
+    invariances_required: [] # TODO: e.g., ["strictly_monotone_transform"]
+    tolerance: null # TODO: numeric tolerance if applicable
+    notes: "TODO"
+
+  # Task-typed coherence gate (extends P10).
+  coherence_gate:
+    proposition_id: "P10"
+    applies_to:
+      primitives: ["C_hat"] # e.g., ["C_hat"] or ["F_hat", "C_hat", "I_hat"]
+      estimator_pairs: "all" # all | specific
+
+    # Pre-register the gate(s) you will use for your task type(s).
+    for_task_type:
+      ordinal:
+        metrics:
+          - type: "spearman_rank"
+            threshold: 0.7
+          - type: "kendall_tau"
+            threshold: 0.6
+      metric:
+        metrics:
+          - type: "threshold_alignment"
+            threshold:
+              max_dt: null
+              max_slope_error: null
+          - type: "calibrated_residual"
+            threshold:
+              max_rmse: null
+      topological:
+        metrics:
+          - type: "event_structure"
+            threshold:
+              max_changepoint_dt: null
+              same_regime_count: true
+          - type: "tda_barcode"
+            threshold: null
+
+    fail_policy:
+      action: "report_and_stop_interpretation" # report_and_stop_interpretation | continue_with_caveats
+      notes: "TODO"
+
+protocol:
+  design:
+    type: "TODO" # simulation | observational | intervention
+    description: "TODO"
+  sampling:
+    n_runs: null
+    run_length: null
+    random_seed_policy: "fixed_list" # fixed_list | random | exhaustive
+    seeds: [] # TODO
+  preprocessing:
+    steps: [] # TODO
+  stopping_rule: "TODO"
+  exclusions: [] # TODO
+
+analysis_plan:
+  primary_tests:
+    - id: "A1"
+      proposition_id: "TODO"
+      test_statistic: "TODO"
+      null_hypothesis: "TODO"
+      alpha: 0.05
+      decision_rule: "TODO"
+  multiple_comparisons: "none" # none | bonferroni | fdr | other
+  plots: [] # TODO: list plot types/figures to generate
+
+success_criteria:
+  - id: "S1"
+    description: "TODO"
+    pass_condition: "TODO"
+
+reporting:
+  outputs:
+    results_dir: "TODO"
+    raw_data_dir: "TODO"
+    figures_dir: "TODO"
+    logs_dir: "TODO"
+  record_negative_results: true
+  publish_prereg_and_code: true
+  notes: "TODO"
+
+change_log:
+  - date_utc: "YYYY-MM-DDTHH:MM:SSZ"
+    change: "Created draft preregistration."
+    rationale: "Initial template fill."

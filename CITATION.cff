@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 
 message: >
-  If you use the FIT Framework or the FIT Guardrail Protocol in academic,
-  technical, or policy-related work, please cite it as below.
+  If you use the FIT Framework (v2.4) in academic, technical, or policy-related
+  work, please cite it as below.
 
-title: "FIT Framework: Force–Information–Time and Tempo-Governed System Continuity"
+title: "FIT Framework v2.4 (Estimator Selection Theory Edition)"
 
 authors:
   - family-names: Huang
@@ -14,18 +14,17 @@ authors:
     orcid: "https://orcid.org/0009-0003-7731-4294"
 
 abstract: >
-  The FIT (Force–Information–Time) Framework is a systems-level meta-framework
-  for analyzing the continuity, stability, and failure modes of complex systems
-  under accelerating complexity and compressed feedback cycles. It introduces
-  tempo as a first-class variable and provides a structural basis for
-  understanding irreversible collapse in civilizations, institutions,
-  organizations, and AI–human systems. The framework is accompanied by a
-  minimal Guardrail Protocol designed to preserve reversibility and long-term
-  viability without suppressing innovation.
+  FIT (Force-Information-Time) is a minimal, level-aware axiomatic framework for
+  describing evolutionary dynamics across substrates. v2.4 introduces Estimator
+  Selection Theory (EST) to define admissible estimators and reduce estimator
+  manipulation critiques, and reports Tier-1 computational validation results on
+  Conway's Game of Life and Langton's Ant.
 
 keywords:
   - systems theory
   - complex systems
+  - estimator selection theory
+  - measurement theory
   - tempo governance
   - irreversibility
   - system continuity
@@ -34,9 +33,11 @@ keywords:
   - entropy
   - dynamical systems
 
-version: "0.1.0"
+version: "2.4"
 
-date-released: "2025-12-10"
+date-released: "2025-12-28"
+
+doi: "10.5281/zenodo.18039307"
 
 license: "CC-BY-4.0"
 
@@ -45,13 +46,15 @@ repository-code: "https://github.com/qienhuang/F-I-T"
 url: "https://github.com/qienhuang/F-I-T"
 
 preferred-citation:
-  type: software
-  title: "FIT Framework: Force–Information–Time and Tempo-Governed System Continuity"
+  type: article
+  title: "FIT Framework v2.4 (Estimator Selection Theory Edition)"
   authors:
     - family-names: Huang
       given-names: Qien
       orcid: "https://orcid.org/0009-0003-7731-4294"
   year: 2025
-  version: "0.1.0"
+  month: 12
+  version: "2.4"
+  doi: "10.5281/zenodo.18039307"
   url: "https://github.com/qienhuang/F-I-T"
   license: "CC-BY-4.0"
