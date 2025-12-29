@@ -110,7 +110,7 @@
 ># FIT框架 v2.4（估计量选择理论版）
 *跨基底演化动力学的最小公理框架*
 <details>
-<summary><img alt="展开详情" title="展开详情" src="https://img.shields.io/badge/展开-详情-red"></summary>
+<summary><strong>展开详情</strong></summary>
 
 
 
@@ -336,7 +336,7 @@ P10被重新定位为**元命题**：在声称理论成功/失败之前，我们
 **离散时间**：
 
 $$
-S_t \in \mathcal{S}, \quad t \in \{0,1,2,\dots\}
+S_t \in \mathcal{S}, \quad t \in \lbrace 0,1,2,\dots \rbrace
 $$
 
 **连续时间**：
@@ -2669,10 +2669,10 @@ commitment:
 聚焦于随机微分方程的"母类"（梯度扩散）:
 
 - [ ] 定义连续时间FIT层:
-  - 状态: $ S(t) = X_t \in \mathbb{R}^d $ 。
-  - 动力学: $ dX_t = F(X_t)\,dt + \sigma(X_t)\,dW_t $ 。
-  - 信息: 熵/相对熵 $ D(\mu_t \Vert \mu_\infty) $ 。
-  - 约束: Lyapunov型泛函 $ C(t) = C_{\max} - \mathbb{E}_\mu[\Phi(X_t)] $ 。
+  - 状态: $S(t) = X_t \in \mathbb{R}^d$ 。
+  - 动力学: $dX_t = F(X_t)\,dt + \sigma(X_t)\,dW_t$ 。
+  - 信息: 熵/相对熵 $D(\mu_t \Vert \mu_\infty)$ 。
+  - 约束: Lyapunov型泛函 $C(t) = C_{\max} - \mathbb{E}_\mu[\Phi(X_t)]$ 。
 - [ ] 在此设置中证明至少一个"硬"定理:
   - **连续P2**: 适当条件下的单调约束积累。
   - **连续P3**: 梯度流中力方差的指数（或幂律）衰减。
@@ -2693,8 +2693,8 @@ commitment:
 **目标**: 定义五个原语的最小量子版本，在小型Lindbladian模型上验证FIT式声明。
 
 - [ ] 指定**量子原语**:
-  - 状态: 密度矩阵 $ \rho(t) $ 。
-  - 力: 生成元 $ \mathcal{L}[\rho] $ （Lindbladian / Liouvillian）。
+  - 状态: 密度矩阵 $\rho(t)$ 。
+  - 力: 生成元 $\mathcal{L}[\rho]$ （Lindbladian / Liouvillian）。
   - 信息: von Neumann熵、量子相对熵。
   - 约束: 秩/支撑限制、退相干泛函或相对于固定点的相对熵泛函。
 - [ ] 完成2-3个可解玩具模型:
@@ -2728,7 +2728,7 @@ commitment:
   - 连续时间SDE的T-理论。
   - 开放量子系统的T-理论（指针态/退相干）。
 - [ ] 添加**尺度变换**部分:
-  - $ F, I, C $ 在粗粒化/重整化下如何变换。
+  - $F, I, C$ 在粗粒化/重整化下如何变换。
   - FIT式定律何时在跨尺度时保持或修改。
 
 **成功标准**:
@@ -2741,12 +2741,12 @@ commitment:
 **目标**: 将FIT从"内部概念计划"转变为其他领域的工具箱。
 
 - [ ] AI安全:
-  - 形式化"对齐涅槃"和 $ C(t) $ 与 $ \sigma^2(F) $ 的T-理论式监控。
+  - 形式化"对齐涅槃"和 $C(t)$ 与 $\sigma^2(F)$ 的T-理论式监控。
   - 发布"终止友好型"RL实验的示例代码。
 - [ ] 复杂性/临界现象:
   - 与合作者在生态系统、气候模型和ML训练动力学中研究P13 / P14 / P16-P18。
 - [ ] 制度/治理设计:
-  - 使用 $ I/C $ 和约束层级思想分析简单制度模型中的稳定性vs适应性。
+  - 使用 $I/C$ 和约束层级思想分析简单制度模型中的稳定性vs适应性。
 - [ ] 保持仓库作为**规范注册表**:
   - 命题定义和状态。
   - 验证脚本和负面结果。
