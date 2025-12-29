@@ -112,10 +112,7 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 *A Minimal Axiomatic Framework for Evolutionary Dynamics Across Substrates*
 
 <details>
-<summary><strong>Show details</strong></summary>
-
-
-
+<summary><strong>👉 Show details</strong></summary>
 
 ---
 
