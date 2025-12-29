@@ -206,11 +206,11 @@ FIT (Force-Information-Time) is a minimal meta-language for describing how syste
 
 | Symbol | Name | Definition (for this paper) |
 |---|---|---|
-| $ F $ | Force | Drivers of state change (gradients, pressures, incentives) |
-| $ I $ | Information | Persistent structures / signals that shape future evolution |
-| $ T $ | Time | Update tempo and the irreversibility horizon |
-| $ C $ | Constraint | Accumulated restrictions on reachable state space |
-| $ S $ | State | System configuration at a given time |
+| $F$ | Force | Drivers of state change (gradients, pressures, incentives) |
+| $I$ | Information | Persistent structures / signals that shape future evolution |
+| $T$ | Time | Update tempo and the irreversibility horizon |
+| $C$ | Constraint | Accumulated restrictions on reachable state space |
+| $S$ | State | System configuration at a given time |
 
 ### 3.2 Core Insight for This Paper
 
@@ -228,15 +228,15 @@ FIT's contribution to AI safety here is not a new objective function, but a **me
 
 We define **Irreversible Operations (IOs)** as system-level actions that **permanently constrain the future reachable state space** of an AI system, such that rollback, recovery, or alternative trajectories become infeasible within acceptable cost, time, or governance bounds.
 
-Formally, an operation $ o $ is considered **irreversible** if, after execution at time $ t $, at least one of the following holds:
+Formally, an operation $o$ is considered **irreversible** if, after execution at time $t$, at least one of the following holds:
 
-1. **State-space collapse**: the set of reachable future states $ \mathcal{S}_{t+1} $ is a strict subset of the pre-operation reachable set $ \mathcal{S}_{t} $, with no feasible path to restore excluded regions.
+1. **State-space collapse**: the set of reachable future states $\mathcal{S}_{t+1}$ is a strict subset of the pre-operation reachable set $\mathcal{S}_{t}$, with no feasible path to restore excluded regions.
 2. **Rollback elimination**: no practical rollback procedure exists that restores prior system behavior within bounded loss (e.g., data, trust, legal exposure).
 3. **Trajectory lock-in**: alternative technical or governance pathways are eliminated or rendered prohibitively costly.
 4. **Control asymmetry**: decision authority or update tempo is shifted to components or actors that cannot be effectively audited or constrained.
 
 **Definition (Irreversible Operation).**  
-An operation $ o $ executed at time $ t $ is irreversible if:
+An operation $o$ executed at time $t$ is irreversible if:
 
 $$
 \exists\, s^{*} \in \mathcal{S}_t \setminus \mathcal{S}_{t+1}
@@ -244,7 +244,7 @@ $$
 \inf_{\pi} \mathrm{Cost}(\pi: S_{t+1} \to s^{*}) > \theta_{\text{feasible}}
 $$
 
-where $ \mathcal{S}_t $ is the reachable state space before $ o $, $ \mathcal{S}_{t+1} $ is the reachable state space after $ o $, $ \pi $ ranges over recovery plans, and $ \theta_{\text{feasible}} $ is a domain-specific feasibility bound (time, money, legal exposure, trust, governance capacity).
+where $\mathcal{S}_t$ is the reachable state space before $o$, $\mathcal{S}_{t+1}$ is the reachable state space after $o$, $\pi$ ranges over recovery plans, and $\theta_{\text{feasible}}$ is a domain-specific feasibility bound (time, money, legal exposure, trust, governance capacity).
 
 This definition intentionally abstracts away from model internals and focuses on **systemic consequences**, allowing IOs to be identified across technical, organizational, and policy domains.
 
