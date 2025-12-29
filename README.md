@@ -112,7 +112,7 @@ Its purpose is: to first reduce any problem of "evolution, development, origin, 
 *A Minimal Axiomatic Framework for Evolutionary Dynamics Across Substrates*
 
 <details>
-<summary><img alt="Show details" title="Show details" src="https://img.shields.io/badge/Show-details-red"></summary>
+<summary><strong>Show details</strong></summary>
 
 
 
@@ -339,7 +339,7 @@ In FIT, any concrete statement presupposes a chosen state representation $S_t$ :
 **Discrete time**:
 
 $$
-S_t \in \mathcal{S}, \quad t \in \{0,1,2,\dots\}
+S_t \in \mathcal{S}, \quad t \in \lbrace 0,1,2,\dots \rbrace
 $$
 
 **Continuous time**:
@@ -356,7 +356,7 @@ A "system" is the modeler's chosen partition of the world. A statement about $S_
 
 Time appears as an ordered index set:
 
-- Discrete: $t \in \{0,1,2,\dots\}$
+- Discrete: $t \in \lbrace 0,1,2,\dots \rbrace$
 - Continuous: $t \in \mathbb{R}_{\geq 0}$
 
 We do not presuppose time reversibility. The arrow of time is ultimately derived from dynamics (especially constraint accumulation and information loss).
@@ -485,7 +485,7 @@ Special cases:
 |--------|-----------|---------|----------|
 | Gradient descent | Negative gradient | $\hat{F} = -\nabla L$ | ML optimization |
 | Physical | Newton's 2nd law | $\hat{F} = m\ddot{x}$ | Classical mechanics |
-| Cellular automata | Local rule deviation | $\hat{F}(c) = \text{stable\_neighbors} - \text{actual}$ | Conway, etc. |
+| Cellular automata | Local rule deviation | $\hat{F}(c) = \text{stableNeighbors} - \text{actual}$ | Conway, etc. |
 | Stochastic | Drift estimator | $\hat{F}(s) = \mathbb{E}[S_{t+1}-S_t \mid S_t=s]$ | General discrete |
 | Langton's Ant | Displacement alignment | $\hat{F} = \text{direction consistency}$ | Agent-based |
 | Reinforcement learning | Policy gradient | $\hat{F} = \nabla_\theta \mathbb{E}[R]$ | RL |
@@ -566,7 +566,7 @@ We assume:
 
 **MWE**: Game of Life
 
-- Time: $t \in \{0,1,2,\dots\}$
+- Time: $t \in \lbrace 0,1,2,\dots \rbrace$
 - Transition: $S(t+1) = f(S(t))$ (deterministic)
 - Forward evolution unambiguous; backward reconstruction ill-posed
 
