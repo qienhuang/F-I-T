@@ -1,0 +1,62 @@
+# International submission metadata (copy/paste friendly)
+# Encoding: UTF-8
+
+submission:
+  target_platform: "International preprint (OSF / SSRN / Zenodo / etc.)"
+  manuscript_id: "tempo-as-safety-variable"
+  version: "v1.0"
+  date: "2025-12-29"
+
+authors:
+  - name: "Qien Huang"
+    role: "Independent Researcher"
+    email: "qienhuang@hotmail.com"
+    email_alt: "kevin0769@126.com"
+    orcid: "0009-0003-7731-4294"
+
+license:
+  name: "CC BY 4.0"
+  url: "https://creativecommons.org/licenses/by/4.0/"
+
+links:
+  github_repo: "https://github.com/qienhuang/F-I-T"
+  gitee_mirror: "https://gitee.com/qienhuang/f-i-t"
+  zenodo_v2_4: "https://doi.org/10.5281/zenodo.18082325"
+  fit_v2_4_spec: "https://github.com/qienhuang/F-I-T/blob/main/docs/v2.4.md"
+  est_quickstart_notebook: "https://github.com/qienhuang/F-I-T/blob/main/experiments/est_quickstart/fit-quickstart.ipynb"
+
+title:
+  en: "Tempo as a First-Class Safety Variable: Identifying Irreversible Operations (IOs) in AI Deployment via Minimum Viable Tempo Governance (MVTG)"
+
+abstract:
+  en: >
+    Deployment risks of generative AI increasingly manifest as system-level irreversibility: when update tempo outpaces evaluation, audit,
+    and rollback capacity, systems may remain performant while becoming structurally hard to correct. This work treats tempo as a first-class
+    safety variable and introduces Irreversible Operations (IOs)—actions that permanently shrink the feasible option space for future correction
+    (e.g., tempo escalation, rollback erosion, control transfer, and dependency collapse). We propose auditable, low-cost indicators with provisional
+    thresholds (update-to-evaluation ratio, rollback rehearsal success rate, decision auditability) and a deployable control layer, Minimum Viable
+    Tempo Governance (MVTG), which governs only actions crossing irreversibility thresholds to preserve intervention viability. The approach is
+    architecture-agnostic and targets operational interfaces rather than model internals.
+
+keywords:
+  en:
+    - "AI safety"
+    - "deployment risk"
+    - "irreversibility"
+    - "rollback"
+    - "auditability"
+    - "tempo mismatch"
+    - "governance"
+    - "complex systems"
+
+category_suggestions:
+  - "Computer Science / Artificial Intelligence"
+  - "Computer Science / Systems and Networking"
+  - "Information Science / Risk and Governance"
+
+statements:
+  competing_interests: "None declared."
+  ethics: "No human subjects; no personal data collected."
+  ai_assistance: "Drafting/editing assisted by language models; the author takes responsibility for all content and claims."
+  data_and_code: "Code and supplementary materials are available via the repository links above."
+
