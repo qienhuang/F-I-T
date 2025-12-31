@@ -88,7 +88,8 @@ This pilot operationalizes two FIT concepts:
 
 For the full theoretical background, see:
 - [FIT v2.4 specification](https://github.com/qienhuang/F-I-T/blob/main/docs/v2.4.md)
-- [Tier-2 predictions register](https://github.com/qienhuang/F-I-T/blob/main/papers/chinaxiv/chinaxiv_tier2_predictions_register.zh_cn.md)
+- [Tier-2 predictions register (English)](https://github.com/qienhuang/F-I-T/blob/main/papers/preprint_intl/tier2_predictions_register.en.md)
+- [Tier-2 predictions register (中文)](https://github.com/qienhuang/F-I-T/blob/main/papers/chinaxiv/chinaxiv_tier2_predictions_register.zh_cn.md)
 
 ---
 
