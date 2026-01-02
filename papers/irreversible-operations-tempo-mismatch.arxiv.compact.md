@@ -111,7 +111,7 @@ We use three process-risk indicators (conservative proxies for “corrective cap
 For each change $ u $:
 
 $$
-\mathrm{VL}(u) := t_{\text{validation\_closed}}(u) - t_{\text{effective}}(u).
+\mathrm{VL}(u) := t_{\mathrm{closure}}(u) - t_{\mathrm{effective}}(u).
 $$
 
 Aggregate as a distribution (median, tail, fraction over SLO threshold).
