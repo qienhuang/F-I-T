@@ -121,7 +121,7 @@ Aggregate as a distribution (median, tail, fraction over SLO threshold).
 Define rollback drills as time-bounded trials:
 
 $$
-\mathrm{RDPR} := \frac{\#\text{successful drills within RTO/RPO}}{\#\text{drills}}.
+\mathrm{RDPR} := \frac{N_{\text{successful drills}}}{N_{\text{drills}}}.
 $$
 
 ### 4.3 Gate Bypass Rate (GBR)
@@ -129,7 +129,7 @@ $$
 Over a period:
 
 $$
-\mathrm{GBR} := \frac{\#\text{bypass events}}{\#\text{IO-relevant changes}}.
+\mathrm{GBR} := \frac{N_{\text{bypass events}}}{N_{\text{IO-relevant changes}}}.
 $$
 
 These metrics do not “predict accidents”; they measure whether the system retains the ability to correct itself before crossing thresholds.
