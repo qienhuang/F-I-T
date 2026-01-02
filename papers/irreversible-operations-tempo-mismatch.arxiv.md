@@ -247,7 +247,7 @@ Report:
 Define a rollback (or purge) drill as a trial with success if recovery is achieved within declared RTO/RPO.
 
 $$
-\mathrm{RDPR} := \frac{\#\text{successful drills}}{\#\text{drills}}
+\mathrm{RDPR} := \frac{N_{\text{successful drills}}}{N_{\text{drills}}}
 $$
 
 Report:
@@ -260,7 +260,7 @@ Report:
 Count bypass events for IO-relevant changes:
 
 $$
-\mathrm{GBR} := \frac{\#\text{bypass events}}{\#\text{IO-relevant changes}}
+\mathrm{GBR} := \frac{N_{\text{bypass events}}}{N_{\text{IO-relevant changes}}}
 $$
 
 Report:
