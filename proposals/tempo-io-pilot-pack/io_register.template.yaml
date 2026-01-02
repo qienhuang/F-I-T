@@ -1,0 +1,50 @@
+# IO Register (Template)
+# Purpose: make irreversibility visible and auditable (not blame).
+
+io_register:
+  - change_id: ""
+    date_utc: ""
+    owner: ""
+    system: ""
+
+    # Use categories your team can apply consistently.
+    io_category:
+      - "self_eval_gating"
+      - "tool_loop_autonomy"
+      - "memory_write_back"
+      - "policy_or_authority_transfer"
+      - "optionality_or_single_point_dependency"
+
+    description: ""
+
+    why_io:
+      - "reduces rollback feasibility"
+      - "creates downstream entanglement"
+      - "shifts authority outside audit/override"
+      - "escalates update tempo without matching governance"
+
+    required_evidence:
+      - "closure_definition"
+      - "evaluation_plan"
+      - "rollback_or_purge_procedure"
+      - "rollback_drill_schedule_or_recent_drill"
+
+    approvals:
+      release_owner: ""
+      safety_or_assurance_owner: ""
+
+    cooldown_required: true
+
+    circuit_breakers:
+      - name: "validation_lag_exceeds_threshold"
+        threshold: ""
+        action: "pause_or_stage_rollout"
+      - name: "rollback_drill_failed"
+        threshold: "any_fail"
+        action: "block_next_io_change_until_fixed"
+      - name: "gate_bypass_detected"
+        threshold: ""
+        action: "require_human_review"
+
+    notes: ""
+

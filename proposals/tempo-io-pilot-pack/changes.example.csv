@@ -1,0 +1,7 @@
+change_id,effective_ts_utc,closure_ts_utc,is_io,io_category,bypass,notes
+EX-001,2026-01-01T00:00:00Z,2026-01-01T06:00:00Z,0,,0,non-IO change closes quickly
+EX-002,2026-01-02T00:00:00Z,2026-01-03T12:00:00Z,1,self_eval_gating,0,IO change with long closure
+EX-003,2026-01-03T00:00:00Z,,1,tool_loop_autonomy,1,IO change landed; closure missing; bypass happened
+EX-004,2026-01-04T00:00:00Z,2026-01-04T18:00:00Z,0,,0,non-IO
+EX-005,2026-01-05T00:00:00Z,2026-01-07T00:00:00Z,1,memory_write_back,0,IO change; slow closure
+
