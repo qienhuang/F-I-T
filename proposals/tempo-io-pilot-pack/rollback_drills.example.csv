@@ -1,0 +1,4 @@
+drill_id,change_id,date_utc,rto_minutes,rpo_minutes,success,notes
+DRILL-001,EX-002,2026-01-03,60,15,1,rollback succeeded within RTO/RPO
+DRILL-002,EX-005,2026-01-07,60,15,0,purge failed; missing snapshot
+

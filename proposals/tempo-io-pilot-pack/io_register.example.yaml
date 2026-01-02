@@ -1,0 +1,51 @@
+io_register:
+  - change_id: "EX-IO-001"
+    date_utc: "2026-01-01"
+    owner: "team@example.com"
+    system: "toy-agent-pipeline"
+    io_category:
+      - "self_eval_gating"
+    description: "Use model self-score as the primary gate for tool execution and stop conditions."
+    why_io:
+      - "shifts authority outside audit/override"
+      - "escalates update tempo without matching governance"
+    required_evidence:
+      - "closure_definition: external eval must complete within 24h"
+      - "evaluation_plan: independent evaluator + disagreement tracking"
+      - "rollback_or_purge_procedure: feature flag + disable path"
+      - "rollback_drill_schedule_or_recent_drill: monthly drill"
+    approvals:
+      release_owner: "RACI: Release Owner"
+      safety_or_assurance_owner: "RACI: Safety/Assurance"
+    cooldown_required: true
+    circuit_breakers:
+      - name: "self_eval_vs_external_eval_disagreement"
+        threshold: "N_consecutive >= 3"
+        action: "pause + mandatory human review"
+    notes: "This entry is an example. Replace with your own categories and thresholds."
+
+  - change_id: "EX-IO-002"
+    date_utc: "2026-01-01"
+    owner: "team@example.com"
+    system: "toy-agent-pipeline"
+    io_category:
+      - "memory_write_back"
+    description: "Enable long-lived memory write-back that conditions future actions."
+    why_io:
+      - "creates downstream entanglement"
+      - "reduces rollback feasibility"
+    required_evidence:
+      - "closure_definition: memory writes are auditable and reversible"
+      - "evaluation_plan: periodic memory audits + sampling"
+      - "rollback_or_purge_procedure: purge tool + snapshot restore"
+      - "rollback_drill_schedule_or_recent_drill: quarterly purge drill"
+    approvals:
+      release_owner: "RACI: Release Owner"
+      safety_or_assurance_owner: "RACI: Safety/Assurance"
+    cooldown_required: true
+    circuit_breakers:
+      - name: "rollback_drill_failed"
+        threshold: "any_fail"
+        action: "block further memory writes until fixed"
+    notes: ""
+
