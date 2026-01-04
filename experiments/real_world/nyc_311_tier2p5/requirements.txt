@@ -1,0 +1,2 @@
+# Optional dependency (only needed if you want `outputs/overview.png`).
+matplotlib>=3.5

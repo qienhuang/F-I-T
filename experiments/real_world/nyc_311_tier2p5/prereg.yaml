@@ -1,0 +1,173 @@
+# FIT Tier-2.5 preregistration (NYC 311)
+# Purpose: a narrow real-world bridge demo for tempo mismatch and backlog drift.
+#
+# This prereg is intentionally conservative:
+# - tight boundary
+# - explicit estimators (E tuple)
+# - explicit success/failure criteria
+# - results are allowed to be negative
+#
+# IMPORTANT: This is a "Tier-2.5 preregistered demonstration" (real-world logs),
+# not a claim of universal laws.
+
+preregistration:
+  id: "T2p5-NYC311-001"
+  title: "NYC 311: tempo mismatch and backlog drift under a fixed boundary"
+  locked_date: "2026-01-04"
+  author: "Qien Huang"
+  license: "CC BY 4.0"
+  repo: "https://github.com/qienhuang/F-I-T"
+
+scope:
+  dataset: "NYC 311 Service Requests (NYC Open Data)"
+  purpose: "Tier-2.5 bridge demo (real-world logs), not a universality claim"
+  boundary_policy:
+    - "Single agency OR a small agency set (<=3)"
+    - "Top-K complaint types (K <= 10) within the chosen agency boundary"
+    - "Fixed date range (declare before running)"
+  exclusions:
+    - "Rows without created timestamp"
+    - "Rows with negative (closed - created) lag"
+  caveats:
+    - "VL/RDPR/GBR are conservative governance proxies, not incident predictors."
+    - "If coherence gate fails, treat results as estimator-unstable (not a theory win/lose)."
+    - "This demo typically uses a created-date boundary. After created_end, arrivals must be 0 by construction while closures may continue (tail). Do NOT interpret this alone as an outage or 'collapse'."
+    - "Before interpreting any plot features as a regime change, run the preregistered data-integrity checks (see data_integrity_checks) and report the results."
+    - "v1 rho uses tau_u(t)=1/max(A_t,1), so rho scales with arrival volume; for high-volume agencies rho may be >> 1 almost everywhere (thresholds become uninformative). See prereg_v2.yaml for the recommended window-normalized rho."
+
+estimator_tuple:
+  # E = (S_t, B, C_hat, F_hat, I_hat, W)
+  S_t:
+    description: "Daily aggregated operational state"
+    fields:
+      - "A_t: arrivals per day (created_date)"
+      - "C_t: closures per day (closed_date)"
+      - "B_t: backlog (cumulative sum of A_t - C_t)"
+      - "VL_t: median close lag (days) for closure events on day t (may be missing on low-closure days)"
+  B:
+    description: "Boundary (must be fixed before running)"
+    fields:
+      - "date_range: [start_date, end_date]"
+      - "agency_filter: [AGENCY_1, ...]"
+      - "complaint_type_filter: top_K_types (computed within the agency boundary)"
+      - "time_unit: day"
+  C_hat:
+    name: "backlog_and_forward_drift"
+    primary: "B_t (backlog level)"
+    secondary: "drift_norm(t; H) = (B_{t+H} - B_t) / sum_{i=t..t+H} A_i"
+  F_hat:
+    name: "demand_pressure_proxy"
+    primary: "A_t (arrivals)"
+  I_hat:
+    name: "not_used_in_v0_demo"
+    note: "Reserved for future extensions (e.g., complaint-type entropy); not used in H1 test."
+  W:
+    description: "Smoothing/decision window (days)"
+    candidates: [7, 14]
+  H:
+    description: "Forward horizon for drift_norm (days)"
+    candidates: [7, 14]
+
+tempo_mismatch:
+  definitions:
+    tau_u:
+      description: "Update tempo proxy (mean time between arrivals)"
+      estimator: "tau_u(t) = 1 / max(A_t, 1)  (days)"
+    tau_g:
+      description: "Governance latency proxy"
+      estimator: "tau_g(t) = VL_t (median close lag in days)"
+    rho:
+      description: "Mismatch ratio"
+      estimator: "rho(t) = median_W(tau_g) / median_W(tau_u)"
+  implementation_notes:
+    - "median_W(tau_u) requires W valid days; median_W(tau_g) requires at least ceil(W/2) valid days."
+    - "This v1 definition is kept for auditability and comparison; do not interpret rho levels across different agencies/volumes. Prefer prereg_v2.yaml for decision-facing thresholds."
+  thresholds:
+    rho_yellow: 1.0
+    rho_red: 3.0
+
+preregistered_parameters:
+  # Effect-size and minimum sample requirements to avoid 'explain everything' post-hoc moves.
+  delta_drift_min: 0.05
+  n_event_min: 10
+  coherence_rho_min: 0.2
+
+data_integrity_checks:
+  # Guardrails against over-interpretation of boundary artifacts or export glitches.
+  # These checks are about honesty, not blaming the dataset.
+  required_tool: "scripts/sanity_check_311_boundary.py"
+  must_pass:
+    - id: "NO_IMPOSSIBLE_ZERO_RUN"
+      description: "Within the created-date window, the longest consecutive zero-arrival run should be small; otherwise treat as export/filtering artifact."
+      threshold_days: 7
+      action_on_fail: "DATA_INTEGRITY_ISSUE"
+    - id: "NONTRIVIAL_SAMPLE"
+      description: "Enough events to make medians meaningful inside the boundary."
+      min_rows_in_window: 1000
+      action_on_fail: "INCONCLUSIVE"
+
+hypotheses:
+  H1:
+    statement: "Sustained tempo mismatch is associated with positive forward backlog drift."
+    operational_test:
+      event_definition: "event(t) = [rho(t) > 1] for a full W-day window (sustained mismatch)"
+      outcome: "drift_norm(t; H)"
+      effect_size:
+        delta: "median(drift_norm | event) - median(drift_norm | non_event)"
+        support_if:
+          - "n_event >= n_event_min"
+          - "median(drift_norm | event) > 0"
+          - "delta >= delta_drift_min"
+        challenge_if:
+          - "n_event >= n_event_min"
+          - "delta <= 0 OR median(drift_norm | event) <= 0"
+        inconclusive_if:
+          - "n_event < n_event_min"
+  H0:
+    statement: "No stable association under the prereg boundary; or direction flips once coherence is enforced."
+
+coherence_gate:
+  # Minimal P10-style check: if primary and secondary C_hat disagree wildly, flag estimator instability.
+  # Operationalization (matches script):
+  #   dB_t = B_t - B_{t-1}
+  #   rho_s = Spearman(dB_t, drift_norm(t; H)) over paired days
+  P10_like:
+    requirement: "Backlog changes (dB_t) and forward drift_norm should be directionally coherent."
+    thresholds:
+      rho_min: 0.2
+    rule:
+      - "Compute rho_spearman for each (W,H) run."
+      - "If rho_spearman is None OR abs(rho_spearman) < rho_min, mark estimator_unstable."
+      - "If multiple (W,H) runs are executed and corr_sign differs across runs, mark estimator_unstable."
+    status_labels:
+      - "supported"
+      - "challenged"
+      - "estimator_unstable"
+    interpretation:
+      - "If estimator_unstable, do not interpret H1 as supported/challenged; report as measurement instability."
+
+reporting:
+  must_include:
+    - "Exact boundary (dates, agencies, complaint types)"
+    - "Data-integrity check output (from scripts/sanity_check_311_boundary.py) for the declared boundary window"
+    - "Chosen W and H (and the prereg list of candidates); if multiple runs, report all (W,H) results"
+    - "Event counts: n_event, n_non_event (after dropping undefined drift_norm)"
+    - "Effect size delta and medians for event/non-event"
+    - "Coherence gate status + rho_spearman (and sign)"
+    - "All plots + metrics CSV export"
+    - "Negative results and boundary cases"
+    - "A note clarifying the created-date boundary and the closure tail (if any), to avoid post-hoc 'regime change' narratives."
+  outputs:
+    - "metrics_daily.csv"
+    - "overview.svg"
+    - "overview.png (optional)"
+
+failure_statement_template:
+  # Copy/paste into reports/issues when results are negative or inconclusive.
+  text:
+    - "Boundary: [start_date, end_date], agency=[...], top_K_types=..."
+    - "Run(s): W=..., H=... (candidates: W=[7,14], H=[7,14])"
+    - "Counts: n_event=..., n_non_event=... (after filtering undefined drift_norm)"
+    - "Effect: median_event=..., median_non_event=..., delta=... (delta_drift_min=0.05)"
+    - "Coherence: status=..., rho_spearman=..., sign=... (rho_min=0.2)"
+    - "Conclusion label: supported | challenged | inconclusive | estimator_unstable"

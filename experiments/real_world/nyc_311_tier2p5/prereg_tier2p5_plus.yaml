@@ -1,0 +1,102 @@
+# FIT Tier-2.5+ preregistration (NYC 311) - cross-period robustness
+#
+# Purpose: extend the Tier-2.5 NYC 311 demo into a *robustness check* across
+# multiple time periods while keeping the same boundary discipline and estimators.
+#
+# This is still NOT a claim of "real-world validation" of FIT. It is a bridge:
+# preregistered metrics + explicit boundaries + explicit failure modes.
+
+preregistration:
+  id: "T2p5-NYC311-003"
+  title: "NYC 311 Tier-2.5+ (robustness): cross-period tempo mismatch signatures"
+  locked_date: "2026-01-04"
+  author: "Qien Huang"
+  license: "CC BY 4.0"
+  repo: "https://github.com/qienhuang/F-I-T"
+  builds_on:
+    - "prereg_v2.yaml"
+
+scope:
+  dataset: "NYC 311 Service Requests (NYC Open Data)"
+  purpose: "Tier-2.5+ robustness check (cross-period), not a universality claim"
+  boundary_policy:
+    - "Single agency OR a small agency set (<=3)"
+    - "Top-K complaint types (K <= 10) within the chosen agency boundary"
+    - "Fixed created-date windows (declared below)"
+    - "Tail handling must be pre-declared (see boundary_windows.tail_days_cap)"
+  exclusions:
+    - "Rows without created timestamp"
+    - "Rows with negative (closed - created) lag"
+  caveats:
+    - "We do not infer causality from peaks/valleys; this is a monitoring lens."
+    - "A closure tail after created_end is expected under a created-date boundary."
+    - "If data integrity checks fail, report DATA_INTEGRITY_ISSUE (do not narrativize)."
+
+estimator_tuple:
+  # E = (S_t, B, C_hat, F_hat, I_hat, W)
+  reference: "prereg_v2.yaml (window-normalized rho)"
+  rho_mode: "window_normalized"
+  W_candidates_days: [7, 14]
+  H_candidates_days: [7, 14]
+
+boundary_windows:
+  # Each window is a full-year created-date boundary to avoid the "arrivals=0" confusion
+  # in the middle of the timeline. Closures may extend beyond created_end.
+  windows:
+    - id: "Y2019"
+      created_start: "2019-01-01"
+      created_end: "2019-12-31"
+    - id: "Y2020"
+      created_start: "2020-01-01"
+      created_end: "2020-12-31"
+    - id: "Y2024"
+      created_start: "2024-01-01"
+      created_end: "2024-12-31"
+  tail_days_cap:
+    enabled: true
+    days: 60
+    rationale: "Limit extreme closure tails dominating plots; we report both capped and uncapped closed_max in the report."
+
+data_integrity_checks:
+  # These checks are meant to prevent over-interpretation of artifacts.
+  # They are *not* about blaming the dataset; they are about honesty.
+  must_pass:
+    - id: "NO_IMPOSSIBLE_ZERO_RUN"
+      description: "Within each created window, longest consecutive zero-arrival run should be small; otherwise treat as export/filtering artifact."
+      threshold_days: 7
+      action_on_fail: "DATA_INTEGRITY_ISSUE"
+      tool: "scripts/sanity_check_311_boundary.py"
+    - id: "NONTRIVIAL_SAMPLE"
+      description: "Each window must have enough events to compute medians reliably."
+      min_rows_in_window: 1000
+      action_on_fail: "INCONCLUSIVE"
+
+hypotheses:
+  # Tier-2.5+ is about robustness, not a single win/lose story.
+  Hrobust:
+    statement: "The preregistered metrics (rho, backlog drift) produce stable qualitative signatures across multiple time windows under the same boundary discipline."
+    operational_tests:
+      - test_id: "SIGNATURE_PRESENT"
+        description: "Within each window, there exists at least one sustained mismatch segment (rho > 1 for >= W days) with positive forward backlog drift."
+        support_if:
+          - "At least 2 of 3 windows meet SIGNATURE_PRESENT with n_event >= n_event_min (from prereg_v2.yaml)."
+        challenge_if:
+          - "0 of 3 windows meet SIGNATURE_PRESENT (after passing integrity checks)."
+        inconclusive_if:
+          - "Any window fails DATA_INTEGRITY_ISSUE or NONTRIVIAL_SAMPLE."
+      - test_id: "RELATIVE_STABILITY"
+        description: "The sign of the coherence gate (Spearman(dB_t, drift_norm)) is consistent across windows for the same (W,H)."
+        support_if:
+          - "For a fixed (W,H), rho_spearman sign is consistent in >=2 windows and abs(rho_spearman) >= rho_min."
+        challenge_if:
+          - "Signs flip across windows OR abs(rho_spearman) < rho_min in all windows."
+
+reporting:
+  must_include:
+    - "Exact boundary: agencies + top_K_types"
+    - "Windows: Y2019, Y2020, Y2024 (created_start/end)"
+    - "Tail cap: enabled/disabled + days"
+    - "Integrity checks results (per window)"
+    - "For each (window, W, H): n_event, medians, delta, coherence gate status"
+    - "Plots must mark created_end; avoid narratives like 'collapse' unless boundary-unlocked follow-up is preregistered separately."
+

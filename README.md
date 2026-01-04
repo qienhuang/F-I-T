@@ -1,4 +1,3 @@
-
 ![Logo](imgs/banner_v2.png)
 
 # The F‑I‑T (Force–Information–Time) Dynamics Framework
@@ -11,6 +10,9 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020  
+**Papers (Zenodo):**
+- FIT (Force-Information-Time) Dynamics: Origin and Design Goals: https://doi.org/10.5281/zenodo.18142211
+- Irreversible Operations and Tempo Mismatch in AI Learning Systems: https://doi.org/10.5281/zenodo.18142151
 **Current spec (v2.4.1):** [docs/v2.4.md](docs/v2.4.md)  
 **Framework established:** Dec 10, 2025 (original)
 
@@ -27,15 +29,46 @@
 - **Legacy discussion edition (v2.1)**: [docs/v2.1.md](docs/v2.1.md)
 - **Changelog**: [CHANGELOG.md](CHANGELOG.md)
 
-## Quick Overview
+## Why F‑I‑T?
+
+From quantum and molecules to cells, individuals, organizations, nations, and civilizations—why do clearly defined hierarchical structures emerge? Why does evolution often manifest as a repeating rhythm of "oscillation—stability—aggregation—re-stability"? Why do many systems fail not because of insufficient power or lack of information, but because the "pace of doing things" is wrong?
+
+I attempt to answer these questions by compressing "evolution" into three minimal variables:
+
+- **Force (F)**: The action that drives or constrains system change (interactions, selection pressures, institutional constraints, objective function gradients).
+- **Information (I)**: Structures that can persist in time and produce causal effects (codes, forms, patterns, models).
+- **Time (T)**: Not a background scale, but a spectrum of characteristic time scales (rhythms) emergent from the interaction of F and I.
+
+**F‑I‑T is a meta-framework, not a theory of a specific domain.**
+Its purpose: first reduce any problem of "evolution, development, origin, collapse, innovation" to `(F, I, T)`, then discuss levels, critical points, and transition paths.
+
+---
+
+## What FIT Claims (and Does Not Claim)
+
+**What FIT does NOT claim**:
+- ❌ A "theory of everything" for complex systems
+- ❌ Replacement for existing frameworks (Free Energy Principle, Constructor Theory, etc.)
+- ❌ Ability to predict exact trajectories of complex systems
+- ❌ That all propositions have been validated across all domains
+
+**What FIT DOES claim**:
+- ✅ A minimal meta-language for discussing evolution across domains
+- ✅ Falsifiable through computational and empirical experiments
+- ✅ Initial Tier-1 validation shows promising results in controlled systems
+- ✅ Applications to AI safety and complexity science are tractable
+
+---
+
+## FIT v2.4 at a Glance
 
 **The problem**: Modern science approaches evolution through fragmented lenses (thermodynamics, information theory, complexity science, ML). They succeed in isolation but lack shared axioms for cross-domain synthesis.
 
-**FIT's response**: Compress "evolution" into five primitives (**Force**, **Information**, **Time**, **Constraint**, **State**) and six principles. Generate 18 falsifiable propositions bound to explicit estimator tuples.
+**FIT's response**: Compress "evolution" into five primitives and six principles. Generate 18 falsifiable propositions bound to explicit estimator tuples.
 
-**Core insight**: Many systems fail not from lack of power or information, but because high-impact changes become irreversible faster than correction can occur.
+**Core insight**: Many systems fail not from lack of power or information, but because high-impact changes become irreversible faster than correction can occur. FIT treats tempo (correction timescales) as a first-class variable.
 
-**The five primitives (formal definitions)**:
+**The five primitives**:
 
 | Primitive | Definition | Interpretation |
 |-----------|------------|----------------|
@@ -55,12 +88,22 @@
 
 ## Entry points (practical)
 
+- **FIT for AI Safety (start here)**: [docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5-min overview + 2-hour self-assessment checklist
 - **Two-week pilot (teams)**: [proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
 - **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
 - **Runnable demo**: [examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
+- **Tier-2.5 demonstration (preregistered)**: [experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 service requests; applying FIT metrics to real-world data (not a validation claim)
 - **arXiv anchor draft (IO × tempo mismatch)**: [papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)
 
-## Tier‑1 evidence (toy systems)
+### Tier‑2.5 (NYC 311) — decision view
+
+![NYC 311 Tier-2.5 (preregistered demo): window-normalized rho and backlog (HPD; created-date boundary = 2024).](experiments/real_world/nyc_311_tier2p5/figures/run001_W14_H14/decision_view.png)
+
+This is a **preregistered demonstration** (not a "real-world validation" claim). The vertical marker indicates the **created-date boundary**: arrivals are filtered to 2024 by construction, while closures may continue into 2025 (tail effect).
+
+Reproducibility + guardrails: [prereg.yaml](experiments/real_world/nyc_311_tier2p5/prereg.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
+
+## Tier-1 evidence (toy systems)
 
 - **Langton's Ant (open boundary)**: 97.5% theory–observation match for net displacement; supports key phase-transition / nirvana predictions.
 - **Conway's Game of Life**: P7 information bounds (0% violations), P10 estimator coherence (rho = 0.775); P2 constraint monotonicity challenged under current estimator.
@@ -69,53 +112,18 @@
 
 *Figure: Conway's Game of Life Tier‑1 validation snapshot (details in [docs/v2.4.md](docs/v2.4.md)).*
 
-## Why F‑I‑T?
-
-I attempt to answer the same question in a unified way:
-From quantum and molecules to cells, individuals, organizations, nations, and civilizations—why do clearly defined hierarchical structures emerge? Why does evolution often manifest as a repeating rhythm of "oscillation—stability—aggregation—re-stability"? Why do many systems fail not because of insufficient power or lack of information, but because the "pace of doing things" is wrong?
-
-I ultimately compressed "evolution" into three minimal variables:
-
-- **Force (F)**: The action that drives or constrains system change (interactions, selection pressures, institutional constraints, objective function gradients).
-- **Information (I)**: Structures that can persist in time and produce causal effects (codes, forms, patterns, models).
-- **Time (T)**: Not a background scale, but a spectrum of characteristic time scales (rhythms) emergent from the interaction of F and I.
-
-**F‑I‑T is a meta-framework, not a theory of a specific domain.**  
-Its purpose is: to first reduce any problem of "evolution, development, origin, collapse, innovation" to `(F, I, T)`, and then discuss levels, critical points, and transition paths.
-
-<details>
-<summary>Show the original v1.0 intuition (historical)</summary>
-
-### I. Core Definitions and Basic Propositions
-
-1. **What is F‑I‑T**: It is a meta-framework for observing, analyzing, and explaining the evolution of any complex system. It posits that system evolution can be deconstructed into the interaction of three fundamental elements: **Force**, **Information**, and **Time**.
-2. **Basic proposition**: Specific forces act upon a system, shaping or selecting specific information structures; once formed, this structure possesses relative stability and persists within its characteristic time scale, while simultaneously reacting back upon the force field. Evolution is the process of continuous interaction and iteration among these three.
-
-### II. Connotations of the Three Core Elements
-
-1. **Force (F)**: Any energy, pressure, or rule that drives system change or constrains the direction of its change (physical, biological, cognitive, social, algorithmic). Key attributes: directionality and intensity.
-2. **Information (I)**: Any structure, pattern, or code within a system that can reduce uncertainty and possesses a certain degree of persistence (DNA, organs, legal systems, linguistic symbols, models, conventions). Key attributes: stability, transmissibility, functionality.
-3. **Time (T)**: An intrinsic property endogenous to the system’s evolutionary process. Systems at different levels have characteristic time scales matched to their refresh rates and rhythms. Key attributes: scalability and relativity.
-
-### III. Five Basic Principles of the Framework
-
-1. **Hierarchical nesting**: The world is composed of nested levels; each level emerges from information structures below and serves as platform for force and information above.
-2. **Cross-level transition**: Bottom-up interactions can reach critical points where information structures undergo phase transitions, birthing new levels with new F‑I‑T coordinates.
-3. **Multi-level time coupling**: Evolution couples processes across fast and slow time scales; macro-evolution is a symphony of temporal rhythms.
-4. **Cyclical reinforcement**: Force shapes information; stabilized information becomes a new force (constraint/driver), forming cycles.
-5. **Path dependence**: Evolutionary trajectories depend strongly on initial conditions and historical perturbations; history is irreversible.
-
-</details>
-
-## ❗Why tempo matters
-
-Many complex systems fail not because they lack power or information, but because high-impact changes become irreversible faster than the system can correct them.
-
-FIT treats tempo (correction timescales) as a first-class variable.
-
 ## Roadmap
 
-- [docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
+| Milestone | Goal | Horizon |
+|-----------|------|---------|
+| **M0** | Stabilize 2.x spec; publish Tier-1 validation scripts (GoL, Langton's Ant) | 0–3 mo |
+| **M1** | Reference Python implementations; 5–8 propositions with reproducible status | 3–9 mo |
+| **M2** | Continuous-time FIT (SDE layer); prove constraint-accumulation theorem | 6–18 mo |
+| **M3** | Quantum FIT (Lindbladian layer); demonstrate quantum analogues of P2/P3 | 9–24 mo |
+| **M4** | Merge discrete / continuous / quantum into unified v3.0 | 18–36 mo |
+| **M5** | Applications: AI safety, complexity science, institutional design | ongoing |
+
+**Full roadmap**: [docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
 
 ## Repository map
 

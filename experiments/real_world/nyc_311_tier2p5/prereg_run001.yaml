@@ -1,0 +1,62 @@
+# FIT Tier-2.5 preregistration - RUN 001 (locked boundary)
+# This file locks the specific boundary for the first real-data run.
+# Base prereg: prereg.yaml
+#
+# LOCKED: 2026-01-04 (before running compute_311_metrics.py)
+
+run_id: "T2p5-NYC311-RUN001"
+base_prereg: "prereg.yaml"
+locked_date: "2026-01-04"
+locked_by: "internal"
+
+# === LOCKED BOUNDARY ===
+boundary:
+  date_range:
+    start: "2024-01-01"
+    end: "2024-12-31"
+  agency: "HPD"
+  top_k_types: 10
+  # Top 10 complaint types (computed from data before locking):
+  # 1. HEAT/HOT WATER (264,750)
+  # 2. UNSANITARY CONDITION (120,854)
+  # 3. PLUMBING (65,904)
+  # 4. PAINT/PLASTER (64,381)
+  # 5. DOOR/WINDOW (46,362)
+  # 6. WATER LEAK (45,169)
+  # 7. GENERAL (31,800)
+  # 8. ELECTRIC (28,123)
+  # 9. FLOORING/STAIRS (27,803)
+  # 10. APPLIANCE (22,579)
+  total_rows: 733927
+  rows_with_closed_date: 730300
+  data_source: "NYC Open Data API (erm2-nwe9), downloaded 2026-01-04"
+
+# === LOCKED PARAMETERS ===
+parameters:
+  W_candidates: [7, 14]
+  H_candidates: [7, 14]
+  # Will run all 4 combinations: (W=7,H=7), (W=7,H=14), (W=14,H=7), (W=14,H=14)
+
+# === PRE-REGISTERED THRESHOLDS (from base prereg) ===
+thresholds:
+  delta_drift_min: 0.05
+  n_event_min: 10
+  coherence_rho_min: 0.2
+  rho_yellow: 1.0
+  rho_red: 3.0
+
+# === EXPECTED OUTPUTS ===
+outputs:
+  - "outputs/run001_W7_H7/metrics_daily.csv"
+  - "outputs/run001_W7_H7/overview.svg"
+  - "outputs/run001_W7_H14/metrics_daily.csv"
+  - "outputs/run001_W7_H14/overview.svg"
+  - "outputs/run001_W14_H7/metrics_daily.csv"
+  - "outputs/run001_W14_H7/overview.svg"
+  - "outputs/run001_W14_H14/metrics_daily.csv"
+  - "outputs/run001_W14_H14/overview.svg"
+  - "outputs/run001_report.md"
+
+# === COMMITMENT ===
+# Results will be reported regardless of outcome (supported/challenged/inconclusive/estimator_unstable).
+# No post-hoc boundary changes allowed after this file is committed.

@@ -1,0 +1,14 @@
+unique_key,created_date,closed_date,agency,complaint_type,status
+1,2025-01-01T08:10:00,2025-01-02T10:00:00,NYPD,Noise - Street/Sidewalk,Closed
+2,2025-01-01T09:20:00,2025-01-01T12:30:00,NYPD,Illegal Parking,Closed
+3,2025-01-01T15:00:00,2025-01-03T09:00:00,NYPD,Noise - Street/Sidewalk,Closed
+4,2025-01-02T07:40:00,2025-01-04T11:00:00,NYPD,Illegal Parking,Closed
+5,2025-01-02T11:10:00,,NYPD,Noise - Street/Sidewalk,Open
+6,2025-01-02T18:25:00,2025-01-03T08:10:00,NYPD,Illegal Parking,Closed
+7,2025-01-03T06:00:00,2025-01-05T06:15:00,NYPD,Noise - Street/Sidewalk,Closed
+8,2025-01-03T14:30:00,,NYPD,Illegal Parking,Open
+9,2025-01-03T22:05:00,2025-01-04T09:45:00,NYPD,Illegal Parking,Closed
+10,2025-01-04T08:00:00,2025-01-04T16:00:00,NYPD,Noise - Street/Sidewalk,Closed
+11,2025-01-04T10:15:00,,NYPD,Noise - Street/Sidewalk,Open
+12,2025-01-05T09:00:00,,NYPD,Illegal Parking,Open
+
