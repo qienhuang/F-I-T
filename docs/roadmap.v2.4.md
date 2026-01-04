@@ -6,6 +6,8 @@
 - **Draft spec (2.x, EST edition)**: `docs/v2.4.md`
 - **Recommended entry point**: `docs/v2.1.md`
 - **EST artifacts (templates)**: `est_preregistration_template.yaml`, `est_equivalence_and_coherence_report.md`
+- **Reproducibility (Tier-1 onboarding)**: `docs/reproducibility/newcomer_reproduction_challenge.md`, `docs/reproducibility/open_call_for_independent_reproduction.md`
+- **Governance (keep v2.4 tight)**: `docs/governance/v2.4_defensive_modification_checklist.md`
 - **AI safety writing drafts**: `papers/tempo-as-safety-variable.neurips-workshop.md`, `papers/tempo-as-safety-variable.lesswrong.md`
 - **Design ethos**: minimal primitives, explicit level-of-description, operational estimators, falsifiable propositions, and auditable estimator choices (EST)
 
