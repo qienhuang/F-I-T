@@ -27,13 +27,31 @@
 - **Legacy discussion edition (v2.1)**: [docs/v2.1.md](docs/v2.1.md)
 - **Changelog**: [CHANGELOG.md](CHANGELOG.md)
 
-## TL;DR (for readers + LLMs)
+## Quick Overview
 
-FIT is a minimal, level-aware framework for reasoning about cross-scale evolution using five primitives: **Force (F)**, **Information (I)**, **Time/Tempo (T)**, **Constraint (C)**, and **State (S)**.
+**The problem**: Modern science approaches evolution through fragmented lenses (thermodynamics, information theory, complexity science, ML). They succeed in isolation but lack shared axioms for cross-domain synthesis.
 
-v2.4 adds **Estimator Selection Theory (EST)** to make cross-domain claims auditable: admissibility (A1–A8), task-typed equivalence (E1–E3), and task-typed coherence gates (P10).
+**FIT's response**: Compress "evolution" into five primitives (**Force**, **Information**, **Time**, **Constraint**, **State**) and six principles. Generate 18 falsifiable propositions bound to explicit estimator tuples.
 
-The current AI safety track treats **tempo mismatch** and **Irreversible Operations (IOs)** as a distinct failure mode: systems can look stable while becoming structurally hard to correct.
+**Core insight**: Many systems fail not from lack of power or information, but because high-impact changes become irreversible faster than correction can occur.
+
+**The five primitives (formal definitions)**:
+
+| Primitive | Definition | Interpretation |
+|-----------|------------|----------------|
+| **State (S)** | $S_t \in \mathcal{S}$ | System configuration at time $t$ (or $t$ index) |
+| **Force (F)** | $\mathbb{E}[S_{t+1} - S_t \mid S_t] = \alpha F(S_t, t)$ | Generalized drift / directed influence |
+| **Information (I)** | $I_{\text{gain}} := H(P_0) - H(P_1)$ | Entropy reduction / knowledge gain |
+| **Constraint (C)** | $C(t) := \log \lvert \mathcal{S} \rvert - \log \lvert \mathcal{S}_{\text{accessible}}(t) \rvert$ | Reachable state space reduction |
+| **Time (T)** | Ordered index $t$ with characteristic scales | Emergent from F–I interaction |
+
+**v2.4 key features**:
+- **Estimator Selection Theory (EST)**: 8 admissibility axioms (A1–A8) preventing "estimator-hacking" critiques
+- **18 falsifiable propositions** with explicit success/failure criteria
+- **Tier-1 validation**: 97.5% theory–observation match (Langton's Ant), P7 bounds 0% violations (Conway's GoL)
+- **AI safety track**: tempo mismatch + Irreversible Operations as distinct failure mode
+
+**Read the full spec**: [docs/v2.4.md](docs/v2.4.md)
 
 ## Entry points (practical)
 
@@ -45,7 +63,7 @@ The current AI safety track treats **tempo mismatch** and **Irreversible Operati
 ## Tier‑1 evidence (toy systems)
 
 - **Langton's Ant (open boundary)**: 97.5% theory–observation match for net displacement; supports key phase-transition / nirvana predictions.
-- **Conway's Game of Life**: P7 information bounds (0% violations), P10 estimator coherence (ρ = 0.775); P2 constraint monotonicity challenged under current estimator.
+- **Conway's Game of Life**: P7 information bounds (0% violations), P10 estimator coherence (rho = 0.775); P2 constraint monotonicity challenged under current estimator.
 
 ![Conway's Game of Life: Tier-1 validation snapshot (FIT v2.4).](experiments/figures/conway_status_overview.png)
 

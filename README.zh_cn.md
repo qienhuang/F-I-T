@@ -1,126 +1,130 @@
-
 ![Logo](imgs/banner_v2.png)
 
-# F‑I‑T（力–信息–时间）动力学框架
+# F‑I‑T（Force–Information–Time）动力学框架
 
-## 跨物理、生物、认知、社会和AI系统的约束驱动演化视角
+## 一个以约束为核心的跨尺度演化视角（物理/生物/认知/社会/AI）
 
-[[English/英文]](README.md)
+[[English]](README.md)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
-**Zenodo（所有版本）:** https://doi.org/10.5281/zenodo.18012401 | **最新发布（v2.4.1）:** https://doi.org/10.5281/zenodo.18112020  
-**当前规格（v2.4.1）:** [docs/v2.4.md](docs/v2.4.md)  
-**框架建立时间:** 2025年12月10日（原始版本）  
+**Zenodo（全集 DOI，自动指向最新）**：https://doi.org/10.5281/zenodo.18012401  
+**最新发布（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020  
+**当前规范（v2.4.1）**：[docs/v2.4.md](docs/v2.4.md)  
+**框架提出**：2025‑12‑10（最初版本）
 
-**作者**: Qien Huang（独立研究者）  
-**邮箱**: qienhuang@hotmail.com  
-**许可证**: CC BY 4.0  
-**代码库**: https://github.com/qienhuang/F-I-T  
-**ORCID**: https://orcid.org/0009-0003-7731-4294  
+**作者**：Qien Huang（独立研究者）  
+**邮箱**：qienhuang@hotmail.com  
+**许可证**：CC BY 4.0  
+**仓库**：https://github.com/qienhuang/F-I-T  
+**ORCID**：https://orcid.org/0009-0003-7731-4294
 
-## 规格文档（从这里开始）
+## 规范（从这里开始）
 
-- **当前规格（v2.4.1，EST + Tier-1验证）**: [docs/v2.4.md](docs/v2.4.md)（EN），[docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md)（中文）  
-- **上一版本（v2.3，Tier-1验证）**: [docs/v2.3.md](docs/v2.3.md)  
-- **遗留讨论版（v2.1）**: [docs/v2.1.md](docs/v2.1.md)  
-- **更新日志**: [CHANGELOG.md](CHANGELOG.md)  
+- **当前规范（v2.4.1，EST + Tier‑1 验证）**：[docs/v2.4.md](docs/v2.4.md)（EN），[docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md)（中文）
+- **上一版（v2.3，Tier‑1 验证）**：[docs/v2.3.md](docs/v2.3.md)
+- **早期讨论版（v2.1）**：[docs/v2.1.md](docs/v2.1.md)
+- **变更记录**：[CHANGELOG.md](CHANGELOG.md)
 
-## 摘要（供读者和LLM参考）
+## 快速概览
 
-FIT是一个最小化、层级感知的框架，使用五个基元推理跨尺度演化：**力（F）**、**信息（I）**、**时间/节拍（T）**、**约束（C）** 和 **状态（S）**。
+**问题背景**：不同学科往往用彼此割裂的语言描述“演化/发展/学习/崩溃”（热力学、信息论、复杂性科学、机器学习等）。各自有效，但缺少跨域可对齐的最小语法与可证伪结构。
 
-v2.4新增**估计量选择理论（EST）**，使跨领域断言可审计：可容许性（A1–A8）、任务类型等价性（E1–E3）和任务类型一致性门控（P10）。
+**FIT 的回应**：把“演化”压缩成五个原语（**力/信息/时间/约束/状态**）与六条原则，并给出 18 个可证伪命题；所有命题必须绑定到显式的估计器元组（状态表征 + 边界 + 估计器 + 窗口）。
 
-当前AI安全方向将**节拍失配（tempo mismatch）**和**不可逆操作（IO）**视为独特的失效模式：系统可能表面稳定，但结构上已难以纠正。
+**核心洞见**：许多系统失败不是因为“缺少力量/信息”，而是因为高影响变更变得不可逆的速度超过了纠错速度。
 
-## 实践入口
+**五原语（形式化摘要）**：
 
-- **两周试点（团队）**: [proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
-- **自引用IO标准**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
-- **可运行演示**: [examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
-- **arXiv锚定草稿（IO × tempo mismatch）**: [papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)
+| 原语 | 定义 | 直观解释 |
+|------|------|----------|
+| **状态 (S)** | $S_t \in \mathcal{S}$ | 时间 $t$ 的系统构型 |
+| **力 (F)** | $\mathbb{E}[S_{t+1} - S_t \mid S_t] = \alpha F(S_t, t)$ | 广义漂移 / 定向影响 |
+| **信息 (I)** | $I_{\text{gain}} := H(P_0) - H(P_1)$ | 熵减少 / 知识增益 |
+| **约束 (C)** | $C(t) := \log \lvert \mathcal{S} \rvert - \log \lvert \mathcal{S}_{\text{accessible}}(t) \rvert$ | 可达状态空间收缩 |
+| **时间 (T)** | 有序索引 $t$ 与特征时间尺度 | 由 F–I 相互作用涌现的节奏谱 |
 
-## Tier-1证据（玩具系统）
+**v2.4 的关键特性**：
+- **EST（Estimator Selection Theory）**：8 条可审计的可接受性公理（A1–A8），用于约束估计器选择，降低“估计器黑客”批评
+- **18 个可证伪命题**：有明确的成功/失败标准
+- **Tier‑1 验证**：兰顿蚂蚁（开放边界）97.5% 理论‑观测匹配；生命游戏 P7 约束‑信息界 0% 违例
+- **AI safety 主线**：tempo mismatch + Irreversible Operations（IO）作为独立于 alignment/robustness 的失败模式
 
-- **兰顿蚂蚁（开放边界）**: 净位移97.5%理论–观测匹配；支持关键相变/涅槃预测。
-- **康威生命游戏**: P7信息边界（0%违规），P10估计量一致性（ρ = 0.775）；P2约束单调性在当前估计量下受到挑战。
+**阅读完整规范**：[docs/v2.4.md](docs/v2.4.md)
 
-![康威生命游戏：Tier-1验证快照（FIT v2.4）。](experiments/figures/conway_status_overview.png)
+## 实用入口（给业者/研究者）
 
-*图：康威生命游戏 Tier-1 验证快照（详见 [docs/v2.4.md](docs/v2.4.md)）。*
+- **两周试跑（团队用）**：[proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
+- **自指涉 IO 控制标准（S‑RIOCS）**：[docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
+- **可运行 demo**：[examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
+- **arXiv 锚定稿（IO × tempo mismatch）**：[papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)
+
+## Tier‑1 证据（玩具系统）
+
+- **兰顿蚂蚁（开放边界）**：净位移 97.5% 理论‑观测匹配；支持相变/吸引子/“涅槃态”相关预测
+- **康威生命游戏**：P7 信息界 0% 违例；P10 估计器一致性 rho = 0.775；P2 约束单调性在当前估计器下被挑战
+
+![康威生命游戏：Tier‑1 验证快照（FIT v2.4）](experiments/figures/conway_status_overview.png)
+
+*图：康威生命游戏 Tier‑1 验证快照（细节见 [docs/v2.4.md](docs/v2.4.md)）。*
 
 ## 为什么是 F‑I‑T？
 
-我试图用统一的方式回答同一个问题：
-从量子和分子到细胞、个体、组织、国家和文明——为什么会出现层次分明的结构？为什么演化常常呈现"振荡—稳定—聚合—再稳定"的重复节律？为什么许多系统失败不是因为力量不足或信息匮乏，而是因为"做事的节奏"不对？
+我尝试用一个统一语言回答同一个问题：从量子与分子到细胞、个体、组织、国家与文明——为什么层级结构会涌现？为什么很多演化过程呈现“振荡 → 稳定 → 聚合 → 再稳定”的节律？为什么许多系统并非缺少资源或信息，而是“做事节奏”错了？
 
-我最终把"演化"压缩为三个最小变量：
+最早的压缩是把演化视为三变量相互作用：
 
-- **力（F）**: 驱动或约束系统变化的作用（相互作用、选择压力、制度约束、目标函数梯度）。
-- **信息（I）**: 能够在时间中持续存在并产生因果效应的结构（代码、形式、模式、模型）。
-- **时间（T）**: 不是背景尺度，而是从F和I相互作用中涌现的特征时间尺度（节律）谱。
+- **Force (F)**：驱动或约束状态变化的作用（相互作用、选择压、制度约束、目标函数梯度等）
+- **Information (I)**：能跨时间保持并产生因果影响的结构（代码、形式、模式、模型等）
+- **Time (T)**：不是背景标尺，而是由 F–I 互动产生的特征时间尺度谱（节奏）
 
-**F‑I‑T是一个元框架，不是特定领域的理论。**
-其目的是：首先将任何"演化、发展、起源、崩溃、创新"问题还原到 `(F, I, T)`，然后讨论层级、临界点和转换路径。
+**FIT 是一个元框架，而不是某一具体领域的专门理论。**  
+它的用途是：先把“演化/发展/起源/崩溃/创新”等问题压缩到 (F, I, T)，再讨论层级、临界点与转变路径。
 
 <details>
-<summary>展开 v1.0 原始直觉（历史记录）</summary>
+<summary>展开：v1.0 直觉版（历史快照）</summary>
 
-### 一、核心定义与基本命题
+### 核心定义与基本命题（摘要）
 
-1. **F‑I‑T是什么**: 它是一个用于观察、分析和解释任何复杂系统演化的元框架。它假设系统演化可以分解为三个基本要素的相互作用：**力**、**信息** 和 **时间**。
-2. **基本命题**: 特定的力作用于系统，塑造或选择特定的信息结构；一旦形成，这种结构具有相对稳定性，在其特征时间尺度内持续存在，同时反作用于力场。演化是这三者持续交互和迭代的过程。
-
-### 二、三个核心要素的内涵
-
-1. **力（F）**: 任何驱动系统变化或约束其变化方向的能量、压力或规则（物理的、生物的、认知的、社会的、算法的）。关键属性：方向性和强度。
-2. **信息（I）**: 系统内任何能够减少不确定性并具有持久性的结构、模式或代码（DNA、器官、法律制度、语言符号、模型、惯例）。关键属性：稳定性、可传递性、功能性。
-3. **时间（T）**: 系统演化过程内生的固有属性。不同层级的系统有与其刷新率和节律相匹配的特征时间尺度。关键属性：可伸缩性和相对性。
-
-### 三、框架的五个基本原则
-
-1. **层级嵌套**: 世界由嵌套的层级组成；每个层级从下层信息结构涌现，作为上层力和信息的平台。
-2. **跨层转换**: 自下而上的相互作用达到临界点时，信息结构发生相变，诞生具有新F‑I‑T坐标的新层级。
-3. **多层时间耦合**: 演化耦合快慢时间尺度的过程；宏观演化是时间节律的交响。
-4. **循环强化**: 力塑造信息；固化的信息成为新的力（约束/驱动），形成循环。
-5. **路径依赖**: 演化轨迹强烈依赖于初始条件和历史扰动；历史不可逆。
+1. **F‑I‑T 是什么**：观察、分析、解释复杂系统演化的元框架，将系统演化分解为 **力**、**信息**、**时间** 的交互。
+2. **基本命题**：力塑形信息；信息一旦固化在其时间尺度内稳定，并反过来作为约束/驱动影响后续演化。演化是这一循环的持续迭代。
 
 </details>
 
-## ❗为什么节拍很重要
+## 为什么“节奏”重要
 
-许多复杂系统失败，不是因为缺乏力量或信息，而是因为高影响变更在系统能够纠正之前就已变得不可逆。
+许多复杂系统失败，不是因为缺少力量或信息，而是因为高影响变更变得不可逆的速度超过了系统纠错速度。
 
-FIT将节拍（纠正时间尺度）视为一级变量。
+FIT 把 tempo（纠错/评估/回滚的时间尺度）当作一等变量。
 
 ## 路线图
 
 - [docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
 
-## 代码库结构
+## 仓库地图
 
-- `docs/` - 规格文档和笔记
-- `proposals/` - 实践者试点和模板
-- `docs/ai_safety/` - 自引用IO和治理文档
-- `examples/` 和 `experiments/` - 可运行演示和验证工件
-- `papers/` - 草稿和特定发布平台的写作
-- `CITATION.cff` - 本代码库的引用元数据
+- `docs/`：框架规范与路线图
+- `proposals/`：两周试跑与落地材料
+- `docs/ai_safety/`：AI safety 的 IO/tempo 治理标准
+- `examples/`、`experiments/`：可运行 demo 与验证脚本
+- `papers/`：论文草稿与对外文章
+- `CITATION.cff`：引用信息
 
 ## 引用
 
-使用 `CITATION.cff` 获取复制粘贴格式，或通过Zenodo引用：
+请优先引用 Zenodo DOI：
 
-- Zenodo（所有版本）: https://doi.org/10.5281/zenodo.18012401
-- 最新发布（v2.4.1）: https://doi.org/10.5281/zenodo.18112020
+- Zenodo（全集 DOI）：https://doi.org/10.5281/zenodo.18012401
+- 最新发布（v2.4.1）：https://doi.org/10.5281/zenodo.18112020
 
 ## 许可证
 
-本代码库中的文本和文档采用 **CC BY 4.0** 许可。
+本仓库文本与文档使用 **CC BY 4.0** 许可证发布。
 
-## AI辅助起草披露
+## AI 辅助声明
 
-部分起草和编辑由大型语言模型辅助完成。作者对所有内容、断言和错误承担全部责任。
+部分起草/编辑工作使用了大语言模型工具；作者对所有内容、主张与错误负全责。
 
 ![footer_banner](imgs/footer_banner.png)
