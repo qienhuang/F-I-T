@@ -97,11 +97,13 @@ Its purpose: first reduce any problem of "evolution, development, origin, collap
 
 ### Tier‑2.5 (NYC 311) — decision view
 
-![NYC 311 Tier-2.5 (preregistered demo): window-normalized rho and backlog (HPD; created-date boundary = 2024).](experiments/real_world/nyc_311_tier2p5/figures/run001_W14_H14/decision_view.png)
+![NYC 311 Tier-2.5 (preregistered demo): window-normalized rho and backlog (HPD; created-date boundary=2024; in-scope vs closure tail).](experiments/real_world/nyc_311_tier2p5/figures/run003_v3_W14_H14/decision_view.png)
 
-This is a **preregistered demonstration** (not a "real-world validation" claim). The vertical marker indicates the **created-date boundary**: arrivals are filtered to 2024 by construction, while closures may continue into 2025 (tail effect).
+This is a **preregistered demonstration** (not a "real-world validation" claim). The vertical marker indicates the **created-date boundary**: arrivals are filtered to 2024 by construction, while closures may continue into 2025 (a closure tail that is **out of scope** for H1 under this boundary).
 
-Reproducibility + guardrails: [prereg.yaml](experiments/real_world/nyc_311_tier2p5/prereg.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
+**Current reading (HPD 2024; W=14, H=14)**: coherence gate PASS, but H1 is **INCONCLUSIVE** because there are **0 in-scope tempo-mismatch events** (rho stays < 1 within the created-date boundary).
+
+Reproducibility + guardrails: [prereg_v3.yaml](experiments/real_world/nyc_311_tier2p5/prereg_v3.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
 
 ## Tier-1 evidence (toy systems)
 
