@@ -11,9 +11,10 @@
 
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020  
 **Papers (Zenodo):**
-- FIT (Force-Information-Time) Dynamics: Origin and Design Goals: https://doi.org/10.5281/zenodo.18142211
-- Irreversible Operations and Tempo Mismatch in AI Learning Systems: https://doi.org/10.5281/zenodo.18142151
-- Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems: https://doi.org/10.5281/zenodo.18155425
+- **FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
+- **Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+- **Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425 
+ 
 **Current spec (v2.4.1):** [docs/v2.4.md](docs/v2.4.md)  
 **Framework established:** Dec 10, 2025 (original)
 
