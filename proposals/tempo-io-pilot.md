@@ -4,6 +4,19 @@
 
 ---
 
+## Scope & Claims Notice
+
+This artifact illustrates how the FIT framework can be *applied* under a specific estimator choice and operational setup.
+
+It does **not** constitute:
+- proof of FIT,
+- validation of universal claims,
+- or generalization beyond the stated scope.
+
+Any observed behavior is conditional on the chosen estimators, the system configuration, and the phase context. This artifact should be interpreted as an *example of use*, not as theoretical evidence.
+
+---
+
 ## Why this matters
 
 Most AI safety discussions focus on capabilities or alignment techniques. This proposal focuses on something more mundane but equally critical: **operational tempo** — how fast your system changes relative to how fast you can evaluate and correct those changes.
@@ -58,6 +71,10 @@ Define IOs as changes that permanently shrink feasible future correction pathway
 2. Label the last 30–90 days of high-impact changes using the IO categories above.
 3. Map IOs to any known incidents, rollbacks, or near-misses.
 
+Optional (recommended): use the copy/paste starter pack (templates + example CSVs + a tiny metrics script):
+
+- `proposals/tempo-io-pilot-pack/`
+
 ### Week 2: Analysis
 
 1. Compute tempo ratios: `tau_update / tau_evaluation` for different change types.
@@ -89,7 +106,7 @@ This pilot operationalizes two FIT concepts:
 For the full theoretical background, see:
 - [FIT v2.4 specification](https://github.com/qienhuang/F-I-T/blob/main/docs/v2.4.md)
 - [Tier-2 predictions register (English)](https://github.com/qienhuang/F-I-T/blob/main/papers/preprint_intl/tier2_predictions_register.en.md)
-- [Tier-2 predictions register (中文)](https://github.com/qienhuang/F-I-T/blob/main/papers/chinaxiv/chinaxiv_tier2_predictions_register.zh_cn.md)
+- [Tier-2 predictions register (Chinese)](https://github.com/qienhuang/F-I-T/blob/main/papers/chinaxiv/chinaxiv_tier2_predictions_register.zh_cn.md)
 
 ---
 

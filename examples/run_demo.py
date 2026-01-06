@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Run the self-referential IO demo."""
+"""Run the self-referential IO demo.
+
+Scope & Claims Notice:
+This artifact illustrates how the FIT framework can be *applied* under a
+specific estimator choice and experimental setup. It does NOT constitute
+proof of FIT, validation of universal claims, or generalization beyond the
+stated scope. Any observed behavior is conditional on the chosen estimators,
+the system configuration, and the phase context. This artifact should be
+interpreted as an example of use, not as theoretical evidence.
+"""
 
 import numpy as np
 import matplotlib

@@ -1,5 +1,18 @@
 # FIT Framework v2.3 Experiment Programs Guide
 
+## Scope & Claims Notice
+
+These experiments illustrate how the FIT framework can be *applied* under specific estimator choices and system configurations.
+
+They do **not** constitute:
+- proof of FIT,
+- validation of universal claims,
+- or generalization beyond the stated scope.
+
+Any observed behavior is conditional on the chosen estimators and phase context. These artifacts should be interpreted as *reproducibility infrastructure*, not as theoretical evidence.
+
+---
+
 ## Overview
 
 These two Python programs fully automate the validation experiments defined in FIT Framework v2.3:

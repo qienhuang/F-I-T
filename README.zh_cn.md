@@ -4,16 +4,16 @@
 
 ## 一个以约束为核心、面向物理/生物/认知/社会/AI 演化的元语言
 
-[[English]](README.md)
+[[English]](README.en.md)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
-
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)  
 **Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401 | **最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020  
+
 **已发布论文（Zenodo）**：
-- FIT (Force-Information-Time) Dynamics: Origin and Design Goals：https://doi.org/10.5281/zenodo.18142211
-- Irreversible Operations and Tempo Mismatch in AI Learning Systems：https://doi.org/10.5281/zenodo.18142151
-- Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems：https://doi.org/10.5281/zenodo.18155425
+- **FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211  
+- **Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+- **Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems：**   https://doi.org/10.5281/zenodo.18155425  
 
 **当前规范（v2.4.1）**：[docs/v2.4.md](docs/v2.4.md)  
 **框架建立**：2025 年 12 月 10 日（原始版本）
@@ -26,10 +26,16 @@
 
 ## 规范文档（从这里开始）
 
+> **首次阅读推荐顺序**：核心卡 → 当前规范（v2.4）→ 入口文档
+
+- **最快入口（核心卡，v2.4.1+）**：[docs/core/fit_core_card.md](docs/core/fit_core_card.md)
 - **当前规范（v2.4.1，EST + Tier-1 验证）**：[docs/v2.4.md](docs/v2.4.md)（EN），[docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md)（中文）
 - **上一版（v2.3，Tier-1 验证）**：[docs/v2.3.md](docs/v2.3.md)
 - **讨论版（v2.1）**：[docs/v2.1.md](docs/v2.1.md)
 - **更新日志**：[CHANGELOG.md](CHANGELOG.md)
+- **版本策略**：[docs/core/Versioning_Policy.md](docs/core/Versioning_Policy.md)
+
+> **稳定性说明**：2.x 核心已稳定；修订由反例驱动。详见 [版本策略](docs/core/Versioning_Policy.md)。
 
 ## 为什么 F-I-T？
 

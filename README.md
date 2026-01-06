@@ -9,7 +9,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
-**Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020  
+**Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
+
 **Papers (Zenodo):**
 - **FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
 - **Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
@@ -26,11 +27,16 @@
 
 ## Specs (start here)
 
+> **Recommended order for first-time readers**: Core Card → Current Spec (v2.4) → Entry points
+
 - **Fastest entry (Core Card, v2.4.1+)**: [docs/core/fit_core_card.md](docs/core/fit_core_card.md)
 - **Current spec (v2.4.1, EST + Tier‑1 validation)**: [docs/v2.4.md](docs/v2.4.md) (EN), [docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md) (中文/Chinese)
 - **Previous edition (v2.3, Tier‑1 validation)**: [docs/v2.3.md](docs/v2.3.md)
 - **Legacy discussion edition (v2.1)**: [docs/v2.1.md](docs/v2.1.md)
 - **Changelog**: [CHANGELOG.md](CHANGELOG.md)
+- **Versioning policy**: [docs/core/Versioning_Policy.md](docs/core/Versioning_Policy.md)
+
+> **Stability note**: 2.x core is stabilized; revisions are counterexample-driven. See [Versioning Policy](docs/core/Versioning_Policy.md).
 
 ## Why F‑I‑T?
 
