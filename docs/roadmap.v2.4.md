@@ -4,6 +4,8 @@
 
 - **Stable spec (2.x, discrete/classical)**: `docs/v2.3.md`
 - **Draft spec (2.x, EST edition)**: `docs/v2.4.md`
+- **v2.4.1 theory update (non-breaking)**: `docs/v2.4.1.md`
+- **Core artifacts (v2.4.1+)**: `docs/core/README.md`
 - **Recommended entry point**: `docs/v2.1.md`
 - **EST artifacts (templates)**: `est_preregistration_template.yaml`, `est_equivalence_and_coherence_report.md`
 - **Reproducibility (Tier-1 onboarding)**: `docs/reproducibility/newcomer_reproduction_challenge.md`, `docs/reproducibility/open_call_for_independent_reproduction.md`
@@ -19,6 +21,7 @@
 
 - [ ] Freeze `docs/v2.3.md` as the authoritative 2.x reference (discrete, classical)
 - [ ] Keep `docs/v2.1.md` as the reader-friendly / citation entry point, with a pointer from the README to both
+- [ ] Publish core artifacts (v2.4.1+): `docs/core/fit_core_card.md`, `docs/core/MCC.md`, `docs/core/phase_algebra.md`
 - [ ] Finalize the proposition registry schema (YAML/JSON) for P1-P18:
   - IDs, short names, scope conditions, estimator tuples, boundary declarations, protocol, status
   - EST fields (v2.4): `equivalence_requirement`, coherence gates, admissibility checklist, robustness reporting

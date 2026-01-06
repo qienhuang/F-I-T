@@ -26,6 +26,7 @@
 
 ## Specs (start here)
 
+- **Fastest entry (Core Card, v2.4.1+)**: [docs/core/fit_core_card.md](docs/core/fit_core_card.md)
 - **Current spec (v2.4.1, EST + Tier‑1 validation)**: [docs/v2.4.md](docs/v2.4.md) (EN), [docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md) (中文/Chinese)
 - **Previous edition (v2.3, Tier‑1 validation)**: [docs/v2.3.md](docs/v2.3.md)
 - **Legacy discussion edition (v2.1)**: [docs/v2.1.md](docs/v2.1.md)
