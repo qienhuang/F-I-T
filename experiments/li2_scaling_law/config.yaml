@@ -1,0 +1,49 @@
+# Li² Scaling Law Experiment Configuration
+
+# Experiment metadata
+experiment:
+  name: "Li² Scaling Law Verification"
+  description: "Verify Thm 4: n ≳ M·log(M) scaling law"
+  paper: "https://arxiv.org/abs/2509.21519v5"
+  created: "2026-01-06"
+
+# Model configuration (matches Li² paper)
+model:
+  hidden_dim: 2048          # K in paper
+  n_layers: 2               # 2-layer network
+  activation: "quadratic"   # σ(x) = x²
+  zero_init_output: false   # Set true to test Sec 3.2
+
+# Training configuration
+training:
+  optimizer: "adamw"
+  lr: 0.001                 # Learning rate
+  weight_decay: 0.0002      # η in paper (regularization)
+  batch_size: 512
+  epochs: 50000
+  grok_threshold: 0.95      # Test accuracy to detect grokking
+
+# Sweep configuration
+sweep:
+  # Prime numbers for group size (cyclic group structure)
+  M_values: [23, 41, 59, 71, 89, 101, 127]
+  
+  # Training ratios (fraction of M² samples)
+  # Theory: critical ratio ~ log(M)/M
+  # For M=71: log(71)/71 ≈ 0.06
+  # Include low ratios so we don't only sample the "safe zone".
+  ratios: [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.30, 0.40, 0.50]
+  
+  # Seeds for statistical significance
+  seeds: [0, 1, 2, 3, 4]
+
+# Logging
+logging:
+  log_interval: 100         # Log metrics every N epochs
+  grad_log_interval: 1000   # Log gradient stats every N epochs
+
+# Output
+output:
+  results_dir: "results"
+  sweep_dir: "results/sweep"
+  analysis_dir: "results/analysis"

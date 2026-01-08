@@ -1,0 +1,11 @@
+# Keep code + reports in git; avoid committing large raw run artifacts.
+
+__pycache__/
+results/**/*
+ANALYSIS_LIMITATIONS_AND_ROADMAP.md
+
+# Keep analysis artifacts (small + citable)
+!results/**/analysis/
+!results/**/analysis/*.md
+!results/**/analysis/*.png
+!results/**/analysis/*.json
