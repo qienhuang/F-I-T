@@ -18,7 +18,7 @@ This is a companion to `docs/ai_safety/self_referential_io.md`. It maps each IO-
 
 ## Minimal dashboard metrics
 
-- **VL (Validation Lag)**: change-effective → evaluation closure
+- **VL (Validation Lag)**: change-effective -> evaluation closure
 - **RDPR (Rollback Drill Pass Rate)**
 - **GBR (Gate Bypass Rate)**: bypass of IO-relevant gates
 
@@ -44,4 +44,3 @@ This is a companion to `docs/ai_safety/self_referential_io.md`. It maps each IO-
 4. **If it’s IO-D-first**, track independence. Losing independent evaluators often looks like “efficiency” right before it looks like “surprise”.
 
 For the operational controls (evidence, IO-only gate, circuit breakers, and templates), see `docs/ai_safety/self_referential_io.md`.
-
