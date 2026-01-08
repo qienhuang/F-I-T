@@ -47,7 +47,6 @@ python analyze.py --results_dir results --output_dir results/analysis
 | `plot_results.py` | Plot figures from boundary points (hardcoded) |
 | `sweep.py` | Systematic sweep over (M, ratio, seed) |
 | `quick_sweep.py` | Reduced sweep for iteration |
-| `preliminary_results.md` | Human-readable running summary (keep conservative) |
 
 ## Expected Results
 
