@@ -1,6 +1,6 @@
 """
 Multi-seed band sweep for Li² scaling law verification
-GPT constraints:
+Design constraints (locked):
 1. Config locked: hidden_dim/activation/lr/weight_decay/epochs/grok_threshold fixed
 2. Only multi-seed boundary: M={23,41,59}, 4-6 ratios around critical, 3 seeds
 3. Report in n-space (n_crit ~ M log M)
