@@ -12,12 +12,22 @@
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
 **Papers (Zenodo):**
-- **FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-- **Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-- **Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425 
+- **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
+- **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+- **AI safety (grokking) — Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425   
+
+**Case studies:**
+- [**Li² Grokking scaling-law replication (Tian, 2025; independent)**](experiments/li2_scaling_law/README.md)
+- [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
+- [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
+- [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+
+*Note: names are cited as paper authors; no affiliation or endorsement is implied.*
+
+---
  
 **Current spec (v2.4.1):** [docs/v2.4.md](docs/v2.4.md)  
-**Framework established:** Dec 10, 2025 (original)
+**Framework established:** Dec 10th, 2025 (original)
 
 **Author**: Qien Huang (Independent Researcher)  
 **E-mail**: qienhuang@hotmail.com  
