@@ -11,7 +11,7 @@ This directory contains experiments to verify the scaling laws proposed in Yuand
 ## Experiment Goals
 
 1. **Verify Scaling Law**: Measure the phase transition boundary in (M, sample_ratio) space
-2. **Visualize Three Stages**: Confirm Lazy → Independent → Interactive dynamics
+2. **Visualize Three Stages**: Confirm Lazy -> Independent -> Interactive dynamics
 3. **Extend to Architectures**: Test if theory holds for deeper networks
 4. **Extend to Tasks**: Test beyond modular addition
 
@@ -23,6 +23,9 @@ pip install torch numpy matplotlib tqdm
 
 # Run basic experiment
 python train.py --M 71 --ratio 0.4 --seed 42
+
+# Run from a JSON/YAML config file (CLI args override config keys when provided)
+python train.py --config results/dense_m_sweep/config_M50_r0.450_s42.yaml
 
 # Run quick sweep (smaller grid)
 python quick_sweep.py
@@ -56,7 +59,7 @@ According to Li² theory:
 - Phase transition should sharpen with larger M
 
 Practical note: empirical runs may require a constant factor $c>1$:
-`ratio_crit ≈ c * log(M)/M`.
+`ratio_crit ~ c * log(M)/M`.
 
 ## Logged signals (for stage diagnostics)
 

@@ -17,7 +17,7 @@
 - **AI 安全（grokking）— Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425
 
 **案例研究：**
-- [**Li² Grokking scaling law 复现（基于 Li² 论文；独立验证））**](experiments/li2_scaling_law/README.md)
+- [**Li² Grokking scaling law 复现（基于 Li² 论文；独立验证）**](experiments/li2_scaling_law/README.md)
 - [**智能手机与注意力系统**](docs/zh_cn/cases/CASE_01_Phone_Attention_System.md)
 - [**内容平台与内卷**](docs/zh_cn/cases/CASE_02_Content_Platform_Involution.md)
 - [**学习：从记忆到理解**](docs/zh_cn/cases/CASE_04_Learning_From_Memory_to_Understanding.md)

@@ -11,6 +11,7 @@
 
 ### 从这里开始
 - [`fit_core_card.md`](./fit_core_card.md) - 一页入口（操作化速览）
+- [`fit_two_page_card.md`](./fit_two_page_card.md) - 两页入口（核心 + Phi3 之后分岔）
 - [`MCC.md`](./MCC.md) - 最小自洽核心（6 条 MCC 断言）
 
 ### 结构
@@ -19,6 +20,10 @@
 
 ### 稳定性
 - [`phi3_stability.md`](./phi3_stability.md) - Phi3 稳定性判据（SC-1/SC-2/SC-3；nirvana 的工程化定义）
+
+### 扩展与护栏
+- [`FIT_Core_Extension_Post_Phi3.md`](./FIT_Core_Extension_Post_Phi3.md) - Phi3 之后：协调后的两条结构路径（A/B）
+- [`FIT_Misuse_Guard_and_FAQ.md`](./FIT_Misuse_Guard_and_FAQ.md) - 误用防护与 FAQ（红线与边界条件）
 
 ### 给新读者
 - [`reconstruction_guide.md`](./reconstruction_guide.md) - 如何从 MCC 重建完整 FIT
