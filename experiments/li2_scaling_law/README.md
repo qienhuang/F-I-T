@@ -1,6 +1,6 @@
-# Li² Scaling Law Verification Experiments
+# Li2 Scaling Law Verification Experiments
 
-This directory contains experiments to verify the scaling laws proposed in Yuandong Tian's Li² paper:
+This directory contains experiments to verify the scaling laws proposed in Yuandong Tian's Li2 paper:
 "Provable Scaling Laws of Feature Emergence From Learning Dynamics of Grokking"
 
 ## Paper Reference
@@ -24,9 +24,6 @@ pip install torch numpy matplotlib tqdm
 # Run basic experiment
 python train.py --M 71 --ratio 0.4 --seed 42
 
-# Run from a JSON/YAML config file (CLI args override config keys when provided)
-python train.py --config results/dense_m_sweep/config_M50_r0.450_s42.yaml
-
 # Run quick sweep (smaller grid)
 python quick_sweep.py
 
@@ -36,6 +33,37 @@ python sweep.py --output_dir results/sweep
 
 # Analyze results (recursively scans `results/`)
 python analyze.py --results_dir results --output_dir results/analysis
+```
+
+## Dense M sweep (beta vs M, exploratory)
+
+This sweep targets the follow-up question: does the grok-speed sensitivity (beta) vary with M?
+
+Summary note: `BETA_TRANSITION_FINDINGS.md`
+
+```bash
+# Resumable: skips existing JSON files in output_dir.
+python dense_m_sweep.py --Ms 35,38,40,45,50 --output_dir results/dense_m_sweep
+
+# Faster "beta-only" sweep: focus on ratios above r_crit_est (avoid very slow below-critical points).
+# PowerShell tip: if the value starts with '-', use either --deltas=-0.02,... or quote it.
+python dense_m_sweep.py --Ms 50 --deltas=-0.02,0.02,0.04,0.06 --output_dir results/dense_m_sweep
+
+# Analyze beta transition curve
+python analyze_beta_transition.py --results_dir results/dense_m_sweep --output_dir results/dense_m_sweep/analysis
+```
+
+## Multi-seed spot check (recommended before claims)
+
+Single-seed beta fits can be misleading because r_crit is poorly estimated. Use a small multi-seed grid
+around the boundary, then fit using probability-based r_crit:
+
+```bash
+# Targeted multi-seed runs (resumable)
+python multiseed_fill.py --spec \"30:0.515,0.535,0.555,0.575;45:0.461,0.501,0.521,0.541\" --output_dir results/beta_multiseed
+
+# Analyze (for 3 seeds, using >=2/3 as the fit-point filter)
+python analyze_beta_transition.py --results_dir results/beta_multiseed --output_dir results/beta_multiseed/analysis_p0666 --min_prob 0.666 --min_points 3
 ```
 
 ## Key Files
@@ -53,8 +81,8 @@ python analyze.py --results_dir results --output_dir results/analysis
 
 ## Expected Results
 
-According to Li² theory:
-- For $M = 71$: critical ratio ≈ $\frac{\log 71}{71} \approx 0.06$
+According to Li2 theory:
+- For $M = 71$: critical ratio ~ $\frac{\log 71}{71} \approx 0.06$
 - Grokking should occur above this threshold
 - Phase transition should sharpen with larger M
 

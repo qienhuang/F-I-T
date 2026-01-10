@@ -6,7 +6,9 @@ Status: **core-adjacent safeguard**
 Purpose: prevent misuse, overreach, and narrative distortion  
 Audience: readers, practitioners, critics, secondary authors
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`Two-Page Card`](./fit_two_page_card.md) | [`Post-Phi3 bifurcation`](./FIT_Core_Extension_Post_Phi3.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`Two-Page Card`](./fit_two_page_card.md) | [`Post-Φ₃ bifurcation`](./FIT_Core_Extension_Post_Phi3.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ---
 
@@ -48,7 +50,7 @@ No.
 
 FIT makes no normative claims. It does not define progress, goodness, or desirability.
 
-Phi3 (coordination) is not "better" than Phi1 or Phi2.  
+Φ₃ (coordination) is not "better" than Φ₁ or Φ₂.  
 Path B (hierarchical transition) is not morally superior to Path A.
 
 FIT only describes what is structurally possible under declared scope/estimators.
@@ -95,13 +97,13 @@ In such systems, FIT does not apply. Forcing phase language onto inapplicable sy
 
 ---
 
-## FAQ 6 - "Is Phi3 always the goal?"
+## FAQ 6 - "Is Φ₃ always the goal?"
 
 No.
 
-Phi3 is a stability regime, not an objective. Many systems benefit from remaining in Phi1 or Phi2.
+Φ₃ is a stability regime, not an objective. Many systems benefit from remaining in Φ₁ or Φ₂.
 
-Treating Phi3 as a universal endpoint is a misunderstanding.
+Treating Φ₃ as a universal endpoint is a misunderstanding.
 
 ---
 
@@ -109,7 +111,7 @@ Treating Phi3 as a universal endpoint is a misunderstanding.
 
 No, but it does constrain the options.
 
-After Phi3, only two structural paths are viable:
+After Φ₃, only two structural paths are viable:
 - coordination collapse,
 - hierarchical transition.
 
@@ -159,4 +161,3 @@ This document provides guidance, not enforcement.
 This document may be updated to address new patterns of misuse, but the FIT core should not be altered to accommodate misinterpretation.
 
 Misuse should be corrected by clarification, not expansion.
-

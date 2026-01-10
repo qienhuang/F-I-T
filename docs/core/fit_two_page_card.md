@@ -7,7 +7,9 @@ Purpose: structure, not prediction
 Scope: complex adaptive systems  
 Primitives: `F / I / T / C / Phase (Phi)` only
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 stability`](./phi3_stability.md) | [`Misuse Guard & FAQ`](./FIT_Misuse_Guard_and_FAQ.md) | [`Post-Phi3 bifurcation`](./FIT_Core_Extension_Post_Phi3.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`Misuse Guard & FAQ`](./FIT_Misuse_Guard_and_FAQ.md) | [`Post-Φ₃ bifurcation`](./FIT_Core_Extension_Post_Phi3.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ---
 
@@ -37,9 +39,9 @@ Accumulated stable information that shrinks the reachable state space.
 
 Canonical phases (minimal basis):
 
-- **Phi1 - Accumulation**: Force exists; structure does not persist. Exploration dominates.
-- **Phi2 - Crystallization**: local structures stabilize; coordination is incomplete.
-- **Phi3 - Coordination**: Force is absorbed; Information is reusable; Constraints dominate; a stable operating regime emerges.
+- **Φ₁ - Accumulation**: Force exists; structure does not persist. Exploration dominates.
+- **Φ₂ - Crystallization**: local structures stabilize; coordination is incomplete.
+- **Φ₃ - Coordination**: Force is absorbed; Information is reusable; Constraints dominate; a stable operating regime emerges.
 
 Phases may be nested, parallel, or restarted across scales.
 
@@ -55,7 +57,7 @@ Single signals are never sufficient.
 
 ### 5) Irreversibility (precise meaning)
 
-> Irreversibility does not mean "no change", but that large-scale structural rollback becomes increasingly unlikely in Phi3 under declared estimators.
+> Irreversibility does not mean "no change", but that large-scale structural rollback becomes increasingly unlikely in Φ₃ under declared estimators.
 
 Stability is not optimality. Stability is not permanence.
 
@@ -80,25 +82,25 @@ FIT reduces possibility space; it does not choose outcomes.
 
 ---
 
-## PAGE 2 - POST-PHI3 FUTURES (THE BIFURCATION)
+## PAGE 2 - POST-Φ₃ FUTURES (THE BIFURCATION)
 
 ### 8) The core insight
 
-> Entering Phi3 is not "success". It is arrival at a structural bifurcation point.
+> Entering Φ₃ is not "success". It is arrival at a structural bifurcation point.
 
-After Phi3, only two structurally viable paths exist.
+After Φ₃, only two structurally viable paths exist.
 
-### 9) Why Phi3 necessarily bifurcates
+### 9) Why Φ₃ necessarily bifurcates
 
 - Stability strengthens constraints
 - Strong constraints suppress exploration
 - Suppressed exploration reduces adaptability
 
-Thus Phi3 creates an internal tension between stability and future viability.
+Thus Φ₃ creates an internal tension between stability and future viability.
 
 ### 10) Path A - Coordination collapse
 
-**Phi3 -> structural decline**
+**Φ₃ -> structural decline**
 
 Triggered when any two occur:
 
@@ -114,7 +116,7 @@ This is the most common historical outcome.
 
 ### 11) Path B - Hierarchical phase transition
 
-**Phi3 -> Phi4(Phi1)**  
+**Φ₃ -> Φ₄(Φ₁)**  
 A higher-level exploration begins while lower-level stability remains.
 
 All three must hold simultaneously:
@@ -127,7 +129,7 @@ Outcome:
 
 Surface stability persists; a new layer begins exploration; cross-generational adaptability emerges.
 
-Note: `Phi4(Phi1)` is notation for "a higher-level Phi1 starts", not a new primitive and not a core version bump.
+Note: `Φ₄(Φ₁)` is notation for "a higher-level Φ₁ starts", not a new primitive and not a core version bump.
 
 ### 12) The one-line diagnostic
 
@@ -142,11 +144,11 @@ Note: `Phi4(Phi1)` is notation for "a higher-level Phi1 starts", not a new primi
 - Efficiency is not evolution
 - Rule tightening is not governance success
 
-These are often Phi3 internal optimizations, not exits.
+These are often Φ₃ internal optimizations, not exits.
 
 ### 14) Final structural statement
 
-> After Phi3 there is no destiny. Only structural choice.
+> After Φ₃ there is no destiny. Only structural choice.
 
 ---
 

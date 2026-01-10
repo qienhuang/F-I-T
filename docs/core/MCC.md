@@ -4,7 +4,9 @@ Status: **core artifact** (compressed theory entry). This is not an evidence doc
 
 MCC goal: compress FIT into a minimal self-consistent skeleton such that an external reader can reconstruct the rest (propositions, EST layer, and domain case studies) without relying on the author.
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 stability`](./phi3_stability.md) | [`Reconstruction guide`](./reconstruction_guide.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`Reconstruction guide`](./reconstruction_guide.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ## Design constraints
 
@@ -34,7 +36,7 @@ A Phase Transition is registered only when **Force propagation**, **Information 
 
 ## MCC-6 - Late-phase irreversibility
 
-Once a system enters a coordinated late phase (Phi3-style), large-scale structural regressions become rapidly unlikely over time. Irreversibility is probabilistic ("regressions become rare"), not "no change".
+Once a system enters a coordinated late phase (Φ₃-style), large-scale structural regressions become rapidly unlikely over time. Irreversibility is probabilistic ("regressions become rare"), not "no change".
 
 ## Reconstruction notes (how MCC expands)
 

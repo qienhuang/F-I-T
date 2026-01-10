@@ -1,4 +1,4 @@
-# FIT Core Extension: Post-Phi3 Bifurcation
+# FIT Core Extension: Post-Φ₃ Bifurcation
 
 ## Structural futures after coordination
 
@@ -7,29 +7,31 @@ Applies to: complex adaptive systems
 Variables used: `F / I / T / C / Phase (Phi)`  
 No new primitives introduced
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`Phi3 stability`](./phi3_stability.md) | [`Two-Page Card`](./fit_two_page_card.md) | [`Misuse Guard & FAQ`](./FIT_Misuse_Guard_and_FAQ.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`Φ₃ stability`](./phi3_stability.md) | [`Two-Page Card`](./fit_two_page_card.md) | [`Misuse Guard & FAQ`](./FIT_Misuse_Guard_and_FAQ.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ---
 
 ## 1) Purpose
 
-This document extends the FIT core by describing the structural fate of systems after entering **Phi3 (Coordination)**.
+This document extends the FIT core by describing the structural fate of systems after entering **Φ₃ (Coordination)**.
 
 It does not modify the FIT core. It formalizes a structural consequence that follows from coordination itself.
 
-## 2) Restating Phi3 (for precision)
+## 2) Restating Φ₃ (for precision)
 
-A system is in **Phi3 (Coordination)** when:
+A system is in **Φ₃ (Coordination)** when:
 
 - Force can be absorbed by internal structure
 - Information is stable and reusable
 - Constraint compresses the system into a low-dimensional sustainable manifold (under declared estimators)
 
-Phi3 indicates operational stability, not optimality or permanence.
+Φ₃ indicates operational stability, not optimality or permanence.
 
-## 3) The structural paradox of Phi3
+## 3) The structural paradox of Φ₃
 
-Phi3 introduces a fundamental tension:
+Φ₃ introduces a fundamental tension:
 
 - Stability strengthens constraints
 - Strong constraints suppress exploration
@@ -37,17 +39,17 @@ Phi3 introduces a fundamental tension:
 
 Therefore:
 
-> Phi3 inevitably creates a bifurcation point in finite time.
+> Φ₃ inevitably creates a bifurcation point in finite time.
 
 This bifurcation is structural, not accidental.
 
-## 4) The two viable post-Phi3 paths
+## 4) The two viable post-Φ₃ paths
 
-After Phi3, only two structurally viable futures exist.
+After Φ₃, only two structurally viable futures exist.
 
 ## 5) Path A - Coordination collapse
 
-**Phi3 -> structural decline**
+**Φ₃ -> structural decline**
 
 Trigger conditions (any two are sufficient):
 
@@ -65,7 +67,7 @@ This is the most common historical outcome.
 
 ## 6) Path B - Hierarchical phase transition
 
-**Phi3 -> Phi4(Phi1)**  
+**Φ₃ -> Φ₄(Φ₁)**  
 A higher-level exploration begins while lower-level stability remains.
 
 All three conditions must hold simultaneously:
@@ -90,7 +92,7 @@ Outcome:
 
 This path is rare and defines genuine systemic transformation.
 
-Note: `Phi4(Phi1)` is notation for "a higher-level Phi1 starts"; it introduces no new primitives and does not imply a core version bump.
+Note: `Φ₄(Φ₁)` is notation for "a higher-level Φ₁ starts"; it introduces no new primitives and does not imply a core version bump.
 
 ## 7) Diagnostic question
 
@@ -107,7 +109,7 @@ One question distinguishes the two paths:
 - Efficiency is not evolution
 - Rule tightening is not governance success
 
-These are Phi3 internal optimizations, not exits.
+These are Φ₃ internal optimizations, not exits.
 
 ## 9) Scope and limits
 
@@ -125,10 +127,10 @@ This document:
 
 - is consistent with the FIT Core Card
 - introduces no new variables
-- states a structural consequence of coordination (Phi3)
+- states a structural consequence of coordination (Φ₃)
 
 It may be cited independently or together with the Core Card.
 
 ## Final statement
 
-> After Phi3 there is no destiny. Only structural choice.
+> After Φ₃ there is no destiny. Only structural choice.

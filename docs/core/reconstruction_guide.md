@@ -2,7 +2,9 @@
 
 Status: **core artifact**. A guide for new readers to regenerate the full framework from the minimal core.
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 stability`](./phi3_stability.md) | [`v2.4 spec`](../v2.4.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`v2.4 spec`](../v2.4.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ## Audience
 
@@ -41,7 +43,7 @@ From MCC-2 + MCC-3, ask: "Is structure formation smooth over time?"
 
 Empirically and theoretically, no. Systems exhibit qualitatively different dynamical types at different times. This motivates:
 - MCC-4: Phase-structured evolution
-- a minimal phase basis: Phi1/Phi2/Phi3 (see [`phase_algebra.md`](./phase_algebra.md))
+- a minimal phase basis: Φ₁/Φ₂/Φ₃ (see [`phase_algebra.md`](./phase_algebra.md))
 
 ## Step 3: Make phase transitions registrable
 
@@ -90,7 +92,7 @@ See [`docs/est/diagnostics.md`](../est/diagnostics.md).
 With MCC + EST, you can analyze any evolving system:
 1. identify what counts as Force in this domain,
 2. define estimators for Information and Constraint,
-3. classify the current phase (Phi1/Phi2/Phi3),
+3. classify the current phase (Φ₁/Φ₂/Φ₃),
 4. look for PT-MSS signals,
 5. evaluate stability with SC-1/SC-2/SC-3 (for late phases).
 

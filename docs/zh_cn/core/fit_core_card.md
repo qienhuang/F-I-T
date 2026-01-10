@@ -2,7 +2,9 @@
 
 状态：**核心文档**（一页操作化入口）。完整规格与 EST 细节见 [`docs/zh_cn/v2.4.zh_cn.md`](../v2.4.zh_cn.md)；v2.4.1 的增量更新说明目前以英文为准：[`docs/v2.4.1.md`](../../v2.4.1.md)。
 
-导航：[`core 索引`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 稳定性`](./phi3_stability.md) | [`重建导言`](./reconstruction_guide.md)
+导航：[`core 索引`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ 稳定性`](./phi3_stability.md) | [`重建导言`](./reconstruction_guide.md)
+
+记号：相位写作 `Φ₁/Φ₂/Φ₃`（在文件名/代码中用 `Phi1/Phi2/Phi3`）。
 
 ## 1）一句话定义
 
@@ -31,9 +33,9 @@
 > Phase 不是“时间片段”；它是在给定约束结构下的一类动力学类型（EST-scoped）。
 
 核心文档使用的最小相位基（canonical labels）：
-- **Phi1（Accumulation）**：Force 存在，但无法稳定写入结构。
-- **Phi2（Crystallization）**：局部结构稳定；子系统仍弱协调。
-- **Phi3（Coordination）**：全局约束调制子结构；稳定性可转移。
+- **Φ₁（Accumulation）**：Force 存在，但无法稳定写入结构。
+- **Φ₂（Crystallization）**：局部结构稳定；子系统仍弱协调。
+- **Φ₃（Coordination）**：全局约束调制子结构；稳定性可转移。
 
 操作化定义与组合规则见 [`phase_algebra.md`](./phase_algebra.md)。
 

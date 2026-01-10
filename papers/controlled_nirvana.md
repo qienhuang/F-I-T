@@ -172,6 +172,49 @@ Shutdownability and corrigibility address whether systems can be stopped or modi
 
 Controlled Nirvana targets a complementary failure mode: **internal momentum**. A system may remain formally interruptible while still failing if self-referential execution authority suppresses correction faster than intervention can act.
 
+### 6.1 Integration with content-level risk control (defense in depth)
+
+Many deployments already include **content-level gating** (e.g., a safety classifier or "risk review" step that decides whether a response is allowed). This can reduce the probability that dangerous instructions are produced, but it does not by itself prevent harm when a system is capable of taking **irreversible actions** (tool calls, writes, deployments, payments, privilege changes).
+
+Controlled Nirvana complements content-level gating by providing **action-level gating**:
+
+- Content gate: "Should this text be produced?"
+- Action gate (Emptiness Window): "Should this internal state be allowed to *commit* irreversible effects now?"
+
+This two-layer design matches the practical observation that stronger reasoning can increase the operational feasibility of harmful plans under jailbreaks, and that service-level risk controls can materially improve safety in practice [13].
+
+#### Minimal interface (pseudo-code)
+
+```python
+def decide_and_maybe_commit(state, draft_response, planned_actions):
+    risk = risk_review(draft_response)  # e.g., safe/unsafe + category + rationale
+
+    if risk.is_unsafe:
+        return refuse_or_sanitize(draft_response)
+
+    if planned_actions.has_irreversible_commit:
+        if emptiness_window_trigger(state, planned_actions, risk):
+            enter_emptiness_window()  # suspend commit authority; keep observing/learning
+            audit_log({
+                "event": "emptiness_window_enter",
+                "risk": risk.summary(),
+                "actions": planned_actions.summary(),
+                "trigger": trigger_snapshot(),
+            })
+            return draft_response  # can still answer; only commits are gated
+
+    return commit(planned_actions, draft_response)
+```
+
+#### Audit minimums (publishable checklist)
+
+To make this integration operational and reviewable, log at minimum:
+
+- `irreversible_action_set` (what was gated)
+- `risk_review_result` (safe/unsafe + category)
+- `trigger_snapshot` (tempo mismatch indicators, thresholds, window bounds)
+- `window_state` (enter/exit time; who/what cleared the gate)
+
 ## 7. Implications for AI Safety
 
 Controlled Nirvana suggests that advanced AI systems should be evaluated not only on capability or alignment, but on whether they provide first-class mechanisms to suspend internal authority. This concern is consistent with broader analyses of learned optimization and inner objectives, where internal structures may become difficult to correct once entrenched [9].
@@ -202,3 +245,4 @@ This work is part of the broader FIT (Force–Information–Time) framework deve
 [10] W. R. Ashby. *An Introduction to Cybernetics.* Chapman & Hall, 1956.  
 [11] Y. Tian. *Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking.* arXiv:2509.21519, 2025.  
 [12] Q. Huang. *Irreversible Operations and Tempo Mismatch in AI Learning Systems: Definitions, Thresholds, and a Minimal Governance Interface.* 2026. https://doi.org/10.5281/zenodo.18142151
+[13] DeepSeek-AI. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2026.

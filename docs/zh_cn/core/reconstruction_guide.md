@@ -2,7 +2,9 @@
 
 状态：**核心文档**。给新读者的一份“可重建”导言：如何从最小核心推导出完整框架。
 
-导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC 依赖图`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 稳定性`](./phi3_stability.md) | [`v2.4 规格（中文）`](../v2.4.zh_cn.md)
+导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC 依赖图`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ 稳定性`](./phi3_stability.md) | [`v2.4 规格（中文）`](../v2.4.zh_cn.md)
+
+记号：相位写作 `Φ₁/Φ₂/Φ₃`（在文件名/代码中用 `Phi1/Phi2/Phi3`）。
 
 ## 受众
 
@@ -41,7 +43,7 @@
 
 经验与理论上通常不是。系统会在不同阶段呈现不同动力学类型，因此需要：
 - MCC-4：阶段化演化
-- 最小相位基：Phi1/Phi2/Phi3（见 [`phase_algebra.md`](./phase_algebra.md)）
+- 最小相位基：Φ₁/Φ₂/Φ₃（见 [`phase_algebra.md`](./phase_algebra.md)）
 
 ## Step 3：把相变变成可登记对象
 
@@ -90,7 +92,7 @@ MCC 的骨架可以展开为 [`docs/zh_cn/v2.4.zh_cn.md`](../v2.4.zh_cn.md) 中�
 有了 MCC + EST，你可以分析任何演化系统：
 1. 定义该领域的 Force
 2. 定义 Information 与 Constraint 的估计器
-3. 分类当前相位（Phi1/Phi2/Phi3）
+3. 分类当前相位（Φ₁/Φ₂/Φ₃）
 4. 寻找 PT-MSS 信号
 5. 用 SC-1/SC-2/SC-3 评估晚期稳定性
 

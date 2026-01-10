@@ -2,7 +2,9 @@
 
 状态：**核心文档**。本文件引入与 EST 兼容的“相位语言”，并用 PT-MSS 把“相变”操作化为可登记对象。
 
-导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Phi3 稳定性`](./phi3_stability.md) | [`v2.4.1 更新（英文）`](../../v2.4.1.md)
+导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Φ₃ 稳定性`](./phi3_stability.md) | [`v2.4.1 更新（英文）`](../../v2.4.1.md)
+
+记号：相位写作 `Φ₁/Φ₂/Φ₃`（在文件名/代码中用 `Phi1/Phi2/Phi3`）。
 
 ## 为什么需要 Phase Algebra
 
@@ -25,19 +27,19 @@ Phase 的改变意味着上述至少一条在声明的 estimator scope / windowi
 
 核心文档使用三类最小相位基：
 
-### Phi1 - Accumulation（累积）
+### Φ₁ - Accumulation（累积）
 
 - Force 存在，但无法稳定写入结构；
 - Information 以短期/表层相关为主；
 - Constraint 的增长更多依赖外部注入，而非系统内协调。
 
-### Phi2 - Crystallization（结晶）
+### Φ₂ - Crystallization（结晶）
 
 - 局部结构稳定；
 - 子系统相对独立演化；
 - Constraint 在局部快速增长，但全局仍不一致。
 
-### Phi3 - Coordination（协调）
+### Φ₃ - Coordination（协调）
 
 - 子结构被全局约束调制；
 - 冗余结构被抑制；
@@ -46,9 +48,9 @@ Phase 的改变意味着上述至少一条在声明的 estimator scope / windowi
 ## 组合规则（最小）
 
 允许的组合模式包括：
-- **嵌套**：`Phi3(Phi2(Phi1))`
-- **并行**：`Phi2 || Phi2`（多个子系统并行结晶）
-- **重启**：`Phi3 -> Phi1`（新的 Force 注入重新打开探索）
+- **嵌套**：`Φ₃(Φ₂(Φ₁))`
+- **并行**：`Φ₂ || Φ₂`（多个子系统并行结晶）
+- **重启**：`Φ₃ -> Φ₁`（新的 Force 注入重新打开探索）
 
 ## PT-MSS：Phase Transition Minimal Signal Set
 

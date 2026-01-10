@@ -2,7 +2,9 @@
 
 Status: **core artifact**. This document introduces a phase language that is compatible with EST and operationalizes "phase transition" as a registrable object via PT-MSS.
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Phi3 stability`](./phi3_stability.md) | [`v2.4.1 update`](../v2.4.1.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`Φ₃ stability`](./phi3_stability.md) | [`v2.4.1 update`](../v2.4.1.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ## Why a Phase Algebra
 
@@ -25,19 +27,19 @@ A Phase change implies at least one of these conditions is broken (under the dec
 
 We use three canonical phase generators as a minimal basis:
 
-### Phi1 - Accumulation
+### Φ₁ - Accumulation
 
 - Force exists but cannot stably write structure.
 - Information is mostly short-lived or superficial correlations.
 - Constraint growth relies on external injection rather than internal coordination.
 
-### Phi2 - Crystallization
+### Φ₂ - Crystallization
 
 - Local structures stabilize.
 - Subsystems evolve relatively independently.
 - Constraints grow rapidly locally but remain globally inconsistent.
 
-### Phi3 - Coordination
+### Φ₃ - Coordination
 
 - Substructures are modulated by global constraints.
 - Redundant structures are suppressed.
@@ -46,9 +48,9 @@ We use three canonical phase generators as a minimal basis:
 ## Composition rules (minimal)
 
 Legal composition patterns include:
-- **Nesting**: `Phi3(Phi2(Phi1))`
-- **Parallelism**: `Phi2 || Phi2` (multiple subsystems crystallize in parallel)
-- **Restart**: `Phi3 -> Phi1` (new Force injection re-opens exploration)
+- **Nesting**: `Φ₃(Φ₂(Φ₁))`
+- **Parallelism**: `Φ₂ || Φ₂` (multiple subsystems crystallize in parallel)
+- **Restart**: `Φ₃ -> Φ₁` (new Force injection re-opens exploration)
 
 ## PT-MSS: Phase Transition Minimal Signal Set
 

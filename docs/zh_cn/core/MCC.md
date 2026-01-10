@@ -4,7 +4,9 @@
 
 MCC 的目标：把 FIT 压缩成一个最小、自洽的骨架，使外部读者不依赖作者也能重建其余部分（命题集、EST 层、领域案例）。
 
-导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC 依赖图`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 稳定性`](./phi3_stability.md) | [`重建导言`](./reconstruction_guide.md)
+导航：[`core 索引`](./README.md) | [`核心卡片`](./fit_core_card.md) | [`MCC 依赖图`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ 稳定性`](./phi3_stability.md) | [`重建导言`](./reconstruction_guide.md)
+
+记号：相位写作 `Φ₁/Φ₂/Φ₃`（在文件名/代码中用 `Phi1/Phi2/Phi3`）。
 
 ## 设计约束
 
@@ -34,7 +36,7 @@ MCC 的目标：把 FIT 压缩成一个最小、自洽的骨架，使外部读�
 
 ## MCC-6：晚期不可逆性
 
-当系统进入协调的晚期（Phi3 风格）后，大尺度结构性回退会随时间迅速变得不太可能。不可逆性是概率性的（“回退变稀少”），不是绝对的“不能改变”。
+当系统进入协调的晚期（Φ₃ 风格）后，大尺度结构性回退会随时间迅速变得不太可能。不可逆性是概率性的（“回退变稀少”），不是绝对的“不能改变”。
 
 ## 重建提示（MCC 如何展开）
 

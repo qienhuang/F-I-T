@@ -24,6 +24,9 @@
 
 *注：人名仅作为论文作者引用；不暗示任何从属关系或背书。*
 
+**结构原型库（Patterns）：**
+- [**Patterns（可复用结构模板）**](docs/zh_cn/patterns/README.md)
+
 ---
 
 **当前规范（v2.4.1）**：[docs/v2.4.md](docs/v2.4.md)
@@ -110,6 +113,7 @@
 - **FIT 与 AI 安全（从这里开始）**：[docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5 分钟概览 + 2 小时自检清单
 - **两周试跑（面向团队）**：[proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
 - **自指涉能力的 IO 控制标准**：[docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
+- **案例笔记（R1 风格 RL + 风控）**：[docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — 纵深防御：内容 gating + 不可逆 action gating
 - **可运行 demo**：[examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
 - **Tier-2.5 演示（预注册）**：[experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 服务请求；将 FIT 指标应用于真实世界数据（非验证声明）
 - **arXiv 锚定草稿（IO × 节奏错配）**：[papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)

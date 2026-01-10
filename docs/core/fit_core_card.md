@@ -2,7 +2,9 @@
 
 Status: **core artifact** (one-page operational entry). For the full specification and EST details, see [`docs/v2.4.md`](../v2.4.md) and the update note [`docs/v2.4.1.md`](../v2.4.1.md).
 
-Navigation: [`core index`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Phi3 stability`](./phi3_stability.md) | [`Reconstruction guide`](./reconstruction_guide.md)
+Navigation: [`core index`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`Reconstruction guide`](./reconstruction_guide.md)
+
+Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
 ## 1) One-sentence definition
 
@@ -31,9 +33,9 @@ Reachable-state-space contraction induced by stabilized information. Constraints
 > A Phase is not a time segment; it is a dynamical type under a given constraint structure (EST-scoped).
 
 Canonical phase labels (the minimal basis used in the core docs):
-- **Phi1 (Accumulation)**: Force exists but cannot stably write structure.
-- **Phi2 (Crystallization)**: local structures stabilize; subsystems remain weakly coordinated.
-- **Phi3 (Coordination)**: global constraints modulate substructures; stability becomes transferable.
+- **Φ₁ (Accumulation)**: Force exists but cannot stably write structure.
+- **Φ₂ (Crystallization)**: local structures stabilize; subsystems remain weakly coordinated.
+- **Φ₃ (Coordination)**: global constraints modulate substructures; stability becomes transferable.
 
 See [`phase_algebra.md`](./phase_algebra.md) for the operational definition and composition rules.
 
