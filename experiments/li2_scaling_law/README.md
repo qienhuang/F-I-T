@@ -35,6 +35,18 @@ python sweep.py --output_dir results/sweep
 python analyze.py --results_dir results --output_dir results/analysis
 ```
 
+## Colab (one-click reproduction)
+
+Notebook: `colab_li2_scaling_law.ipynb`
+
+Open in Colab (replace `<OWNER>/<REPO>` if needed):
+`https://colab.research.google.com/github/<OWNER>/<REPO>/blob/main/experiments/li2_scaling_law/colab_li2_scaling_law.ipynb`
+
+## Baidu AI Studio (Paddle, Python 3.7)
+
+If your cloud runtime only supports PaddlePaddle (and older Python), use:
+`AISTUDIO_PADDLE_PY37.md`.
+
 ## Dense M sweep (beta vs M, exploratory)
 
 This sweep targets the follow-up question: does the grok-speed sensitivity (beta) vary with M?
@@ -66,6 +78,15 @@ python multiseed_fill.py --spec \"30:0.515,0.535,0.555,0.575;45:0.461,0.501,0.52
 python analyze_beta_transition.py --results_dir results/beta_multiseed --output_dir results/beta_multiseed/analysis_p0666 --min_prob 0.666 --min_points 3
 ```
 
+## FIT validation protocol (one-command)
+
+Protocol doc: `FIT_VALIDATION_README.md`
+
+Unified runner:
+```bash
+python run_fit_validation.py --M 71 --ratios 0.38,0.40,0.42,0.44,0.46,0.48,0.50,0.52 --seeds 42,123,456
+```
+
 ## Key Files
 
 | File | Description |
@@ -78,6 +99,8 @@ python analyze_beta_transition.py --results_dir results/beta_multiseed --output_
 | `plot_results.py` | Plot figures from boundary points (hardcoded) |
 | `sweep.py` | Systematic sweep over (M, ratio, seed) |
 | `quick_sweep.py` | Reduced sweep for iteration |
+| `run_fit_validation.py` | Unified FIT validation entry point |
+| `FIT_VALIDATION_README.md` | Protocol docs for FIT validation |
 
 ## Expected Results
 
@@ -94,6 +117,15 @@ Practical note: empirical runs may require a constant factor $c>1$:
 In each run JSON (`results/M{M}_ratio{...}_seed{...}.json`), `history.grad_norms` includes:
 - `gf_norm`: a feature-level proxy for $\|G_F\|$ computed as the norm of `dL/dh` where `h` is the hidden activation vector
 - per-parameter gradient norms (e.g., `embed.weight`, `output.weight`)
+
+## PT-MSS phase-aligned plots (FIT-style audit)
+
+To audit phase/milestone structure per-run, generate a phase-aligned plot that overlays:
+train/test accuracy, train loss, `gf_norm`, and `gf_align_target_w_mean`, annotated with `mem_epoch` and `grok_epoch`.
+
+```bash
+python pt_mss_phase_plot.py --inputs "results/beta_multiseed/M30_ratio0.515_seed42.json" --write_md
+```
 
 ## References
 

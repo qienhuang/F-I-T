@@ -15,6 +15,7 @@
 - **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
 - **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
 - **AI safety (grokking) — Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425   
+- **CPU-First Local Agent on 16GB RAM (DeepSeek Distill): Verifier-First, Audit-First Design** https://doi.org/10.5281/zenodo.18215680
 
 **Case studies:**
 - [**Li² Grokking scaling-law replication (Tian, 2025; independent)**](experiments/li2_scaling_law/README.md)
@@ -113,6 +114,8 @@ Its purpose: first reduce any problem of "evolution, development, origin, collap
 - **FIT for AI Safety (start here)**: [docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5-min overview + 2-hour self-assessment checklist
 - **Two-week pilot (teams)**: [proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
 - **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
+- **CPU-first local agent blueprint (16GB RAM, DeepSeek distill)**: [papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
+- **CPU-first local agent demo (action gate + audit log)**: [examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
 - **Case note (R1-style RL + risk control)**: [docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — defense-in-depth: content gating + action gating
 - **Runnable demo**: [examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
 - **Tier-2.5 demonstration (preregistered)**: [experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 service requests; applying FIT metrics to real-world data (not a validation claim)

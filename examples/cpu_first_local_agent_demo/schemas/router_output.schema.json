@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouterOutput",
+  "type": "object",
+  "required": ["task_type", "risk_level", "needs_retrieval", "needs_tools", "output_schema"],
+  "properties": {
+    "task_type": { "type": "string" },
+    "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+    "needs_retrieval": { "type": "boolean" },
+    "needs_tools": { "type": "boolean" },
+    "output_schema": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

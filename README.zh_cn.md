@@ -12,9 +12,10 @@
 **Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401 | **最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020
 
 **已发布论文（Zenodo）**：
-- **建议先读（入口）— FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-- **AI 安全— Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-- **AI 安全（grokking）— Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425
+- **建议先读（入口）— FIT（力–信息–时间）动力学：起源与设计目标:** https://doi.org/10.5281/zenodo.18142211
+- **AI 安全— AI学习系统中的不可逆操作与节拍失配：定义、阈值与最小治理接口:** https://doi.org/10.5281/zenodo.18142151
+- **AI 安全（grokking）— Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425  
+- **16GB 内存 CPU 优先本地智能体（DeepSeek 蒸馏）：验证优先、审计优先设计** https://doi.org/10.5281/zenodo.18215680
 
 **案例研究：**
 - [**Li² Grokking scaling law 复现（基于 Li² 论文；独立验证）**](experiments/li2_scaling_law/README.md)
@@ -113,6 +114,8 @@
 - **FIT 与 AI 安全（从这里开始）**：[docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5 分钟概览 + 2 小时自检清单
 - **两周试跑（面向团队）**：[proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
 - **自指涉能力的 IO 控制标准**：[docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
+- **CPU 优先本地智能体蓝图（16GB 内存，DeepSeek 蒸馏）**：[papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)（[中文版](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.zh_cn.md)）
+- **CPU 优先本地智能体 demo（动作门控 + 审计日志）**：[examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
 - **案例笔记（R1 风格 RL + 风控）**：[docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — 纵深防御：内容 gating + 不可逆 action gating
 - **可运行 demo**：[examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
 - **Tier-2.5 演示（预注册）**：[experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 服务请求；将 FIT 指标应用于真实世界数据（非验证声明）
