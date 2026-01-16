@@ -13,7 +13,7 @@
 
 **Papers (Zenodo):**
 - **Provable specialization in finite Markov chains**
- [`papers/markov-sandbox/README.v0.1.md`](papers/markov-sandbox/README.v0.1.md)
+ [`papers/markov-sandbox/README.md`](papers/markov-sandbox/README.md)
 
 - **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
 - **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
