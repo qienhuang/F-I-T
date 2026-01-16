@@ -12,6 +12,9 @@
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
 **Papers (Zenodo):**
+- **Provable specialization in finite Markov chains**
+ [`papers/markov-sandbox/README.v0.1.md`](papers/markov-sandbox/README.v0.1.md)
+
 - **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
 - **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
 - **AI safety (grokking) — Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425   
