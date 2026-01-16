@@ -1,4 +1,4 @@
-# FIT Markov Sandbox (Minimal Release v2)
+# FIT Markov Sandbox (Minimal Release v0.1)
 
 This is a **minimal, publication-ready bundle** for the Markov-chain "provable specialization" of FIT.
 
