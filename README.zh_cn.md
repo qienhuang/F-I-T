@@ -12,16 +12,22 @@
 **Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401 | **最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020
 
 **已发布论文（Zenodo）**：
+
 - **建议先读（入口）— FIT（力–信息–时间）动力学：起源与设计目标:** https://doi.org/10.5281/zenodo.18142211
 - **AI 安全— AI学习系统中的不可逆操作与节拍失配：定义、阈值与最小治理接口:** https://doi.org/10.5281/zenodo.18142151
 - **AI 安全（grokking）— Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425  
-- **16GB 内存 CPU 优先本地智能体（DeepSeek 蒸馏）：验证优先、审计优先设计** https://doi.org/10.5281/zenodo.18215680
+- **16GB 内存 CPU 优先本地智能体（DeepSeek 蒸馏）：验证优先、审计优先设计** https://doi.org/10.5281/zenodo.18215680   
+- **有限马尔可夫链中的可证明特化**
+ [`papers/markov-sandbox/README.md`](papers/markov-sandbox/README.md)  
+ - **治理 — 为何企业行动总是太迟：从初创阶段到规模扩张过程中的战略惰性** https://doi.org/10.5281/zenodo.18293921
 
 **案例研究：**
 - [**Li² Grokking scaling law 复现（基于 Li² 论文；独立验证）**](experiments/li2_scaling_law/README.md)
 - [**智能手机与注意力系统**](docs/zh_cn/cases/CASE_01_Phone_Attention_System.md)
 - [**内容平台与内卷**](docs/zh_cn/cases/CASE_02_Content_Platform_Involution.md)
 - [**学习：从记忆到理解**](docs/zh_cn/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+- [**企业为何转型过迟：从初创到规模化的战略惯性**](docs/zh_cn/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+
 
 *注：人名仅作为论文作者引用；不暗示任何从属关系或背书。*
 

@@ -12,19 +12,22 @@
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
 **Papers (Zenodo):**
-- **Provable specialization in finite Markov chains**
- [`papers/markov-sandbox/README.md`](papers/markov-sandbox/README.md)
 
 - **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
 - **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
 - **AI safety (grokking) — Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425   
-- **CPU-First Local Agent on 16GB RAM (DeepSeek Distill): Verifier-First, Audit-First Design** https://doi.org/10.5281/zenodo.18215680
+- **CPU-First Local Agent on 16GB RAM (DeepSeek Distill): Verifier-First, Audit-First Design** https://doi.org/10.5281/zenodo.18215680  
+- **Provable specialization in finite Markov chains**   https://doi.org/10.5281/zenodo.18287053   
+ Minimal Release Bundle v0.1 [`papers/markov-sandbox/README.md`](papers/markov-sandbox/README.md)
+- **Governance - Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up** https://doi.org/10.5281/zenodo.18287053
+
 
 **Case studies:**
 - [**Li² Grokking scaling-law replication (Tian, 2025; independent)**](experiments/li2_scaling_law/README.md)
 - [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
 - [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
 - [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+
 
 *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
 
