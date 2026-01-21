@@ -1,0 +1,80 @@
+version: grokking_fit_v0.2
+
+boundary:
+  task: modular_addition
+  modulus_p: 97
+  dataset:
+    train_size: 4000
+    test_size: 2000
+    corruption:
+      enabled: true
+      corruption_rate: 0.10
+      corruption_seed: 123
+  model:
+    family: transformer
+    layers: 2
+    width: 128
+    heads: 4
+    dropout: 0.0
+  training:
+    optimizer: adamw
+    lr: 1.0e-3
+    weight_decay: 1.0e-2
+    batch_size: 512
+    max_steps: 300000
+
+time:
+  checkpoint_every_steps: 500
+  window_W_checkpoints: 10
+  hold_K_checkpoints: 5
+  prediction_horizon_N_steps: 20000
+
+seeds:
+  explore: [0, 1, 2, 3, 4]
+  eval: [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+
+state:
+  spectral_matrices:
+    - "unembed.weight"
+
+estimators:
+  H_spec:
+    normalize: true
+  r_eff:
+    enabled: true
+  Correction_Rate:
+    samples: 2048
+    batch_size: 512
+
+decision_rule:
+  score:
+    # NOTE: Two orientations matter:
+    # - For "lead time at fixed FPR" alarms (trigger on high score), `score_sign=+1` yields non-zero coverage.
+    # - For ranking metrics (ROC-AUC / AP), `score_sign=-1` yields higher AUC/AP but has 0 coverage at low FPR.
+    # v0.2 keeps the original sign here; report both orientations explicitly in analysis.
+    score_sign: 1
+    eps_hspec: 0.002
+    theta_corr: 0.60
+    w_hspec: 1.0
+    w_corr: 1.0
+
+evaluation:
+  # v0.2: primary event uses a jump/regime-shift definition to ensure Phase B is evaluable.
+  # Plateau event remains available for secondary reporting.
+  event:
+    type: jump
+    jump:
+      metric: test_acc
+      w_jump: 2
+      delta_jump: 0.04
+      theta_floor: 0.85
+      delta_back: 0.03
+      hold_k: 5
+  grok_event:
+    metric: test_acc
+    theta_grok: 0.92
+    hold_K_checkpoints: 5
+  primary_metrics:
+    - "ROC_AUC"
+    - "AveragePrecision"
+    - "MeanLeadTimeAtFPR=0.05"

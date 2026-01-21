@@ -1,13 +1,16 @@
 # Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems
 
-**Status:** Markdown-first working draft for iteration.  
-**Source:** Transcribed and lightly reformatted from `papers/controlled-nirvana.pdf` (2025-12-24).  
+**Status:** Zenodo-archived draft (Markdown canonical; PDF exports in this folder).  
+**Source:** Derived from earlier PDF drafts; latest PDF export: `controlled_nirvana.v1.2.pdf` (2026-01-09).  
 **License:** CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
 
 **Author:** Qien Huang  
 **Affiliation:** Independent Researcher  
 **ORCID:** 0009-0003-7731-4294  
 **Repository:** https://github.com/qienhuang/F-I-T/  
+**arXiv source (LaTeX):** `papers/controlled_nirvana/arxiv/` | https://github.com/qienhuang/F-I-T/tree/main/papers/controlled_nirvana/arxiv  
+**Paper (Zenodo):** https://doi.org/10.5281/zenodo.18155425  
+**Paper (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
 **FIT framework (Zenodo DOI):** 10.5281/zenodo.18012402
 
 ## Repo Artifacts (clickable)
@@ -16,7 +19,7 @@ For PDF exports and external readers, prefer the canonical GitHub links below (r
 
 - FIT Core Card: [`docs/core/fit_core_card.md`](../docs/core/fit_core_card.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/fit_core_card.md
 - Phase Algebra + PT-MSS: [`docs/core/phase_algebra.md`](../docs/core/phase_algebra.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/phase_algebra.md
-- Φ₃ stability criteria: [`docs/core/phi3_stability.md`](../docs/core/phi3_stability.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/phi3_stability.md
+- Phi3 stability criteria: [`docs/core/phi3_stability.md`](../docs/core/phi3_stability.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/phi3_stability.md
 - Prototype hook (Emptiness Window): [`examples/controlled_nirvana/README.md`](../examples/controlled_nirvana/README.md) | https://github.com/qienhuang/F-I-T/blob/main/examples/controlled_nirvana/README.md
 - Related paper (tempo mismatch): [`papers/irreversible-operations-tempo-mismatch.arxiv.md`](./irreversible-operations-tempo-mismatch.arxiv.md) | https://github.com/qienhuang/F-I-T/blob/main/papers/irreversible-operations-tempo-mismatch.arxiv.md
 
@@ -36,7 +39,7 @@ AI alignment; grokking; self-reference; corrigibility; shutdownability; structur
 
 Recent work has highlighted *grokking*, where systems trained for long periods abruptly transition from memorization to robust generalization [2]. While grokking is often treated as a success signal, a separate safety concern is whether post-grokking systems acquire internal structures that suppress correction or resist modification under distributional shift [3, 4, 9].
 
-Separately, recent theory has made grokking-like phase boundaries more predictable in a mathematically controlled setting (Li²; [11]). Practically, this matters because “predictable sharp transitions” create a natural testbed for governance mechanisms: you can pre-register when transitions are expected, instrument the system more heavily near those times, and measure whether a safety mechanism restores correction without destroying continuity.
+Separately, recent theory has made grokking-like phase boundaries more predictable in a mathematically controlled setting (Li2; [11]). Practically, this matters because “predictable sharp transitions” create a natural testbed for governance mechanisms: you can pre-register when transitions are expected, instrument the system more heavily near those times, and measure whether a safety mechanism restores correction without destroying continuity.
 
 A common feature of such systems is *self-reference*: internal representations or evaluations are used to regulate learning, exploration, planning depth, or action thresholds. This paper argues that a key risk does not arise from capability alone, but from the acquisition of *self-referential execution authority*: when self-evaluative signals begin to govern irreversible system actions faster than external correction can intervene.
 
@@ -129,9 +132,28 @@ Trigger rule (example):
 
 This is intentionally a “minimal registrable” rule: it can be falsified, logged, and reviewed.
 
-### 4.5 Li²-anchored calibration plan (what the new grokking data enables)
+#### 4.4.1 Candidate probe families (mechanistic interpretability; optional)
 
-Li²-style setups provide a useful calibration harness because they exhibit a sharp and predictable boundary between “does not grok” and “does grok” in a controlled task [11]. This supports two practical upgrades to Controlled Nirvana:
+The trigger family above is stated in terms of *auditable* quantities, but does not prescribe *how* to measure them.
+In practice, teams often have access to internal telemetry (activations, logits, tool-call traces) and can leverage **mechanistic interpretability (MI)** as an estimator-candidate library—especially for the “information re-encoding” signal in PT‑MSS and for operationalizing $a(W)$ / $k(W)$ in a way that is not purely behavioral.
+
+Examples of MI-style probe families that can be audited (and are compatible with an EST framing as *candidate estimators*):
+
+- **Decision-circuit attribution** (causal): activation/attention patching to measure which internal pathways causally control “commit vs defer” decisions under small, controlled perturbations.
+- **Logit/plan sensitivity probes** (semi-causal): logit-lens / plan-token probes to quantify how strongly external constraints (policy text, reviewer flags) shift the internal action plan distribution.
+- **Representation shift / stabilization** (descriptive): layerwise similarity drift (e.g., CKA-style) around suspected transitions to detect abrupt internal re-encoding, then correlate with drops in correction gain.
+
+**Important caveat (probes are not mind-reading).** Probe accuracy (e.g., a classifier that predicts a label from activations) does not imply the system *uses* that feature causally. Probes can also be brittle under distribution shift, seed changes, or layer/architecture changes. To keep MI-style probes within an auditable/EST-compatible boundary, treat them as *candidate estimators* and prefer:
+
+- **Causal checks** where possible (patching/ablation interventions tied to “commit vs defer” decisions), not only linear separability.
+- **Controls** (random-label baselines, capacity-matched probes, alternative probe families) to avoid over-interpreting spurious readout.
+- **Stability reporting** across seeds/layers and across a small set of perturbations, with failures treated as evidence (not smoothed away).
+
+This paper does **not** claim MI probes are necessary, sufficient, or stable across architectures. The point is narrower: MI offers a way to *instrument* and *audit* authority transfer, and to tighten trigger calibration beyond purely post-hoc outcome metrics.
+
+### 4.5 Li2-anchored calibration plan (what the new grokking data enables)
+
+Li2-style setups provide a useful calibration harness because they exhibit a sharp and predictable boundary between “does not grok” and “does grok” in a controlled task [11]. This supports two practical upgrades to Controlled Nirvana:
 
 1) **When to instrument heavily**  
    If training is run near the grokking boundary, the transition may occur late and sharply; this is the regime where governance/authority transfer can be most abrupt. One can pre-commit to heightened logging and window triggers near predicted transition times.
@@ -143,9 +165,9 @@ Li²-style setups provide a useful calibration harness because they exhibit a sh
 
    In an internal replication (multi-seed; $M\in\{23,41,59\}$), the fitted constant was approximately $c\approx 6.1$ with $R^2 \approx 0.95$ in $n$-space (details depend on implementation and are not a proof of the theorem itself). This provides a practical “engineering prior” for where grokking transitions live in this harness.
 
-Important: the Li² result calibrates the *learning-dynamics harness* (a place to test Controlled Nirvana), not the safety claim itself.
+Important: the Li2 result calibrates the *learning-dynamics harness* (a place to test Controlled Nirvana), not the safety claim itself.
 
-Reproducibility note: minimal replication materials for the Li²-style grokking harness (code + band-sweep outputs) live in:
+Reproducibility note: minimal replication materials for the Li2-style grokking harness (code + band-sweep outputs) live in:
 - `experiments/li2_scaling_law/README.md` (`../experiments/li2_scaling_law/README.md`)
 - `experiments/li2_scaling_law/results/band_sweep/analysis/report.md` (`../experiments/li2_scaling_law/results/band_sweep/analysis/report.md`)
 
@@ -225,7 +247,7 @@ More generally, pause-capability can be treated as a structural safety requireme
 
 Grokking marks not only a leap in generalization, but potentially a shift in governance. Controlled Nirvana proposes a minimal governance primitive—pause-capability via Emptiness Windows—that preserves continuity while restoring effective corrigibility.
 
-With Li²-style grokking harnesses, it becomes feasible to make Controlled Nirvana more operational: pre-register “transition windows”, instrument authority transfer, and measure whether windowing restores correction without destroying learned structure. Future work includes formalizing auditable trigger conditions, empirical evaluation on grokking-prone tasks with explicit self-reference, and integration with existing oversight and interruption frameworks.
+With Li2-style grokking harnesses, it becomes feasible to make Controlled Nirvana more operational: pre-register “transition windows”, instrument authority transfer, and measure whether windowing restores correction without destroying learned structure. Future work includes formalizing auditable trigger conditions, empirical evaluation on grokking-prone tasks with explicit self-reference, and integration with existing oversight and interruption frameworks.
 
 ## Acknowledgments
 

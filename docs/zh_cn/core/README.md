@@ -22,6 +22,7 @@
 
 ### 稳定性
 - [`phi3_stability.md`](./phi3_stability.md) - Φ₃ 稳定性判据（SC-1/SC-2/SC-3；nirvana 的工程化定义）
+- [`flexibility_card.md`](./flexibility_card.md) - Flexibility Card（灵活性卡）：操作化定义与监测方案（区分重构/锁死/漂移/测量不稳定）
 
 ### 扩展与护栏
 - [`FIT_Core_Extension_Post_Phi3.md`](./FIT_Core_Extension_Post_Phi3.md) - Φ₃ 之后：协调后的两条结构路径（A/B）

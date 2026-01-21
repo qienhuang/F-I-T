@@ -1,6 +1,8 @@
 ![Logo](imgs/banner_v2.png)
 
-# The F‑I‑T (Force–Information–Time) Dynamics Framework
+> Legacy landing page (archival). Canonical entry: `README.md` + `MANIFEST.md`.
+
+# The F-I-T (Force–Information–Time) Dynamics Framework
 
 ## A Constraint‑Driven Lens on Evolution Across Physical, Biological, Cognitive, Social, and AI Systems
 
@@ -12,22 +14,16 @@
 **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
 **Papers (Zenodo):**
-
-- **Start here — FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-- **AI safety — Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-- **AI safety (grokking) — Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** https://doi.org/10.5281/zenodo.18155425   
-- **CPU-First Local Agent on 16GB RAM (DeepSeek Distill): Verifier-First, Audit-First Design** https://doi.org/10.5281/zenodo.18215680  
-- **Provable specialization in finite Markov chains**   https://doi.org/10.5281/zenodo.18287053   
- Minimal Release Bundle v0.1 [`papers/markov-sandbox/README.md`](papers/markov-sandbox/README.md)
-- **Governance - Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up** https://doi.org/10.5281/zenodo.18287053
+- **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
+- **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+- **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
 
 
 **Case studies:**
-- [**Li² Grokking scaling-law replication (Tian, 2025; independent)**](experiments/li2_scaling_law/README.md)
+- [**Li² grokking scaling-law replication (based on the Li² paper; independently verified)**](experiments/li2_scaling_law/README.md)
 - [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
 - [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
 - [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
-
 
 *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
 
@@ -117,12 +113,15 @@ Its purpose: first reduce any problem of "evolution, development, origin, collap
 
 ## Entry points (practical)
 
+- **AI safety index**: [docs/ai_safety/README.md](docs/ai_safety/README.md)
 - **FIT for AI Safety (start here)**: [docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5-min overview + 2-hour self-assessment checklist
 - **Two-week pilot (teams)**: [proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
 - **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
 - **CPU-first local agent blueprint (16GB RAM, DeepSeek distill)**: [papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
 - **CPU-first local agent demo (action gate + audit log)**: [examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
 - **Case note (R1-style RL + risk control)**: [docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — defense-in-depth: content gating + action gating
+- **Li² replication protocol (one-click)**: [experiments/li2_scaling_law/FIT_VALIDATION_README.md](experiments/li2_scaling_law/FIT_VALIDATION_README.md) + [experiments/li2_scaling_law/run_fit_validation.py](experiments/li2_scaling_law/run_fit_validation.py)
+- **Cloud runners (Li²)**: [experiments/li2_scaling_law/colab_li2_scaling_law.ipynb](experiments/li2_scaling_law/colab_li2_scaling_law.ipynb) (Colab) + [experiments/li2_scaling_law/aistudio_paddle_script_task/README.md](experiments/li2_scaling_law/aistudio_paddle_script_task/README.md) (Baidu AI Studio, Paddle)
 - **Runnable demo**: [examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
 - **Tier-2.5 demonstration (preregistered)**: [experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 service requests; applying FIT metrics to real-world data (not a validation claim)
 - **arXiv anchor draft (IO × tempo mismatch)**: [papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)

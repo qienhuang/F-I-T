@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: grokking-fit
+Version: 0.1.0
+Summary: FIT grokking hard-indicators skeleton
+Requires-Python: >=3.10

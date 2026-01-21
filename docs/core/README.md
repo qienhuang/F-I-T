@@ -22,6 +22,7 @@ Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in 
 
 ### Stability
 - [`phi3_stability.md`](./phi3_stability.md) - Φ₃ stability criteria (SC-1/SC-2/SC-3; nirvana operationalized)
+- [`flexibility_card.md`](./flexibility_card.md) - Flexibility Card (monitoring schema: reconfiguration vs lock-in vs drift vs estimator instability)
 
 ### Extensions and Guardrails
 - [`FIT_Core_Extension_Post_Phi3.md`](./FIT_Core_Extension_Post_Phi3.md) - post-Φ₃ bifurcation (two structurally viable paths)

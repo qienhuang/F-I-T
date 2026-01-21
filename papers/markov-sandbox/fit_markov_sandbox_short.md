@@ -3,9 +3,9 @@
 
 ## Constraint Accumulation via Laziness in Finite Markov Chains
 
-**Author**: Qien Huang
-**Framework**: F-I-T (Force–Information–Time)
-**License**: CC BY 4.0
+**Author**: Qien Huang  
+**Framework**: F-I-T (Force–Information–Time)  
+**License**: CC BY 4.0  
 
 ---
 

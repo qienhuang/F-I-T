@@ -1,0 +1,9 @@
+/.venv/
+/runs/
+/outputs/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyc.*
+.DS_Store
+
