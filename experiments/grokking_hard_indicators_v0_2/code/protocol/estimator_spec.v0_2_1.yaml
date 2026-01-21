@@ -1,7 +1,7 @@
 version: grokking_fit_v0.2.1
 
-# v0.2.1 = v0.2 + locked score orientation (score_sign=-1) + fresh eval seeds.
-# Purpose: preserve Phase discipline after discovering the score sign issue.
+# v0.2.1 = v0.2 + fresh eval seeds + a single locked alarm-style orientation (score_sign=+1).
+# Purpose: preserve Phase discipline after discovering score-orientation sensitivity.
 
 boundary:
   task: modular_addition

@@ -30,6 +30,9 @@ Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in 
 
 ### Applications
 - [`grokking_phase_mapping.md`](./grokking_phase_mapping.md) - Grokking as FIT phase transition (Φ₁→Φ₂→Φ₃ mapping for ML)
+- [`monitorability.md`](./monitorability.md) - Monitorability (why AUC is insufficient; FPR feasibility / coverage / lead time)
+- [`monitorability_control.md`](./monitorability_control.md) - Monitorability-preserving control (control creates monitorability)
+- [`monitorability_control_loop.md`](./monitorability_control_loop.md) - Algorithmic control loop template (validity gates + preemptive control)
 
 ### For New Readers
 - [`reconstruction_guide.md`](./reconstruction_guide.md) - How to reconstruct FIT from MCC

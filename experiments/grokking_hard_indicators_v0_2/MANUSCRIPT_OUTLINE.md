@@ -36,13 +36,19 @@ Working title: **Grokking hard indicators: a preregistered evaluation protocol a
 
 ## 6) Metrics
 
-- ROC-AUC, AP, lead time @ fixed FPR; how lead time is computed.
+- Ranking metrics: ROC-AUC, AP (per-run mean vs pooled).
+- Alarm metrics: lead time + coverage at fixed FPR; how thresholds are chosen.
+- **FPR feasibility / controllability check:** a “high AUC but infeasible low-FPR alarm” failure mode; show coverage–FPR tradeoff curves.
 
 ## 7) Results
 
 - Event-rate summary (E1 density in A/B).
 - Baseline predictive performance (reported neutrally).
-- Failure analysis: why baseline is weak (hypotheses).
+- Failure analysis (diagnosed, not guessed):
+  - seed-block dependence of score orientation (why `score_sign` flips);
+  - component-level attribution (which term drives the direction);
+  - alarm infeasibility under `score_sign=-1` (FPR cannot be controlled in some blocks, so coverage=0 at low FPR).
+  - coverage–FPR tradeoff (e.g. `FPR=0.05` vs `0.10`) to separate “ranking” from “operational early warning”.
 
 ## 8) Discussion / next steps
 
@@ -52,4 +58,3 @@ Working title: **Grokking hard indicators: a preregistered evaluation protocol a
 ## 9) Reproducibility appendix
 
 - Exact commands; pointers to released logs (avoid committing large logs to git).
-

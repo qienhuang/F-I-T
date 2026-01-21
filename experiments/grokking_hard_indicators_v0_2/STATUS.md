@@ -1,6 +1,6 @@
 # Status (v0.2)
 
-As of 2026-01-20, **v0.2 is complete as a reproducible, held-out evaluation pipeline**, but it is **not yet a validated “hard indicator”** in the strong sense.
+As of 2026-01-21, **v0.2/v0.2.1 are complete as a reproducible, held-out evaluation pipeline**, but they are **not yet a validated “hard indicator”** in the strong sense.
 
 ## What is “done” (strong claim we can make)
 
@@ -10,9 +10,9 @@ As of 2026-01-20, **v0.2 is complete as a reproducible, held-out evaluation pipe
 
 ## What is *not* done yet (claim we should not make)
 
-- **Hard-indicator validation (strong):** the baseline shows a **tradeoff**:
-  - `score_sign=-1` improves ranking (Phase B pooled ROC-AUC ~0.56), but yields **0/20** coverage for lead-time alarms at `FPR=0.05`.
-  - `score_sign=+1` yields non-zero alarm coverage, but ranking metrics are <0.5.
+- **Hard-indicator validation (strong):** the baseline remains **unstable across held-out seed blocks**:
+  - In v0.2 eval seeds (`100–119`), `score_sign=-1` tends to improve ranking-style metrics (ROC-AUC / AP).
+  - In v0.2.1 eval seeds (`120–139`), the alarm-style orientation (`score_sign=+1`) yields non-zero low-FPR coverage (but ranking metrics are weak on fresh seeds).
   This is not yet a clean “hard indicator verified” story.
 
 ## What can be published now (low-risk)
@@ -23,8 +23,14 @@ As of 2026-01-20, **v0.2 is complete as a reproducible, held-out evaluation pipe
   - why jump events improve evaluability;
   - baseline results reported honestly as modest/early signal.
 
+## Where the results are recorded
+
+- `RESULTS_v0.2_v0.2.1.md`
+- `results/v0.3_A1_component_diagnosis.md`
+- `results/v0.3_A2_fpr_tradeoff.md`
+
 ## What to do next (v0.3 direction)
 
-- Lock a single **alarm policy** on Phase A (including score orientation + trigger rule), then rerun Phase B on fresh seeds (v0.2.1).
-- Improve the estimator tuple (still preregistered): add 1–3 cheap-to-log indicators and re-evaluate on held-out seeds.
+- Keep the “ranking vs alarm” objective distinction explicit, and decide which one is primary.
+- Improve the estimator tuple (still preregistered): add 1–3 cheap-to-log indicators and re-evaluate on fresh held-out seeds.
 - Keep Phase discipline strict: no threshold or model changes on eval seeds.

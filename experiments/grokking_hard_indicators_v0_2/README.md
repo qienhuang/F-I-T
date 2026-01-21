@@ -23,6 +23,16 @@ Defined on checkpointed `test_acc`:
 
 Default parameters are in `code/protocol/estimator_spec.v0_2.yaml` and `code/protocol/prereg_v0_2.md`.
 
+## Results (current takeaway)
+
+This experiment family is **evaluable and reproducible** (dense jump events on held-out seeds), but the baseline score is **not yet a stable hard indicator** under strict low-FPR alarm constraints.
+
+See:
+
+- `RESULTS_v0.2_v0.2.1.md`
+- `results/v0.3_A1_component_diagnosis.md`
+- `results/v0.3_A2_fpr_tradeoff.md`
+
 ## Reproduce
 
 ```bash
