@@ -1,7 +1,7 @@
 # Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems
 
 **Status:** Zenodo-archived draft (Markdown canonical; PDF exports in this folder).  
-**Source:** Derived from earlier PDF drafts; latest PDF export: `controlled_nirvana.v1.2.pdf` (2026-01-09).  
+**Source:** Derived from earlier PDF drafts; latest PDF export: `controlled_nirvana.v1.3.pdf` (2026-01-19).  
 **License:** CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
 
 **Author:** Qien Huang  
@@ -9,6 +9,7 @@
 **ORCID:** 0009-0003-7731-4294  
 **Repository:** https://github.com/qienhuang/F-I-T/  
 **arXiv source (LaTeX):** `papers/controlled_nirvana/arxiv/` | https://github.com/qienhuang/F-I-T/tree/main/papers/controlled_nirvana/arxiv  
+**Narrative version (prose-forward):** `controlled_nirvana.v1.3.teece_style.md`  
 **Paper (Zenodo):** https://doi.org/10.5281/zenodo.18155425  
 **Paper (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
 **FIT framework (Zenodo DOI):** 10.5281/zenodo.18012402
