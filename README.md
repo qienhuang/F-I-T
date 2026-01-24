@@ -17,7 +17,7 @@
     - **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
     - **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
     - **Markov sandbox short (math.PR; entropy-rate in finite Markov chains):** https://doi.org/10.5281/zenodo.18264166 (repo: [papers/markov-sandbox/](papers/markov-sandbox/))
-    - **Beyond Moral Charters: Technical Options for AI Safety - Claude's Constitution, Self-Reference, and the FIT / Controlled-Nirvana Lens:** https://doi.org/10.5281/zenodo.18341340
+    - **Beyond Moral Charters: Technical Options for AI Safety - Constitutional governance, self-reference, and the FIT / Controlled-Nirvana lens:** https://doi.org/10.5281/zenodo.18341340
     - **Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up:** https://doi.org/10.5281/zenodo.18287053
 
 
@@ -32,6 +32,11 @@
     - [**BioArc: Constrained Architecture Search for Biological Foundation Models (NAS)**](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)
 
         *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
+
+- **Toolkits:**
+    - [**Toolkits index (monitorability + constrained exploration)**](tools/README.md)
+    - [**FIT Proxy Alarm Kit (non-LLM + budget + low-FPR)**](tools/fit_proxy_alarm_kit/README.md)
+    - [**FIT Constrained Explorer Kit (constrained path exploration)**](tools/fit_constrained_explorer_kit/README.md)
 
 - **Structural archetypes (patterns):**
     - [**Patterns (reusable templates)**](docs/patterns/README.md)
