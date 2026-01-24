@@ -42,10 +42,18 @@ If you are new to FIT, it helps to separate "what FIT contributes" into three la
 **(3) Engineering layer (run the closed loop):** Once the boundary is explicit, it becomes feasible to build reproducible pipelines that separate *deploy* signals from *oracle* channels. This pack demonstrates that discipline directly:
 - the parent case treats PAE/MSA as boundary-controlled measurement channels (`B0/B1/B2`);
 - the `pae_proxy_alarm_v0_2` subcase turns "PAE is expensive" into a budgeted acquisition loop (query -> label reveal -> retrain) under explicit low-FPR operating points.
+- the `dual_oracle_active_acquisition_v0_5` subcase extends the same idea to **two independent oracle channels** (PAE + MSA) with explicit budgets and a joint usability gate.
 
 This case is therefore less about proving biology, and more about making an AlphaFold-adjacent workflow **auditable** (boundary-locked, estimator-declared, artifact-complete).
 
 ---
+
+## Subcases (budgeted acquisition protocols)
+
+- `subcases/pae_proxy_alarm_v0_2/` — single oracle (PAE) as a label store; learn a B0-deployable proxy alarm under a label budget.
+- `subcases/dual_oracle_active_acquisition_v0_3/` — dual oracles (PAE + MSA) with separate budgets; learn two alarms under a joint low-FPR usability gate.
+- `subcases/dual_oracle_active_acquisition_v0_4/` — extends v0.3 by learning an additional proxy channel ($\\widehat{C3}$) for MSA depth.
+- `subcases/dual_oracle_active_acquisition_v0_5/` — extends v0.4 with composite (uncertainty+novelty) ranking and a joint minimax allocation policy.
 
 ## Boundary modes (the core learning device)
 

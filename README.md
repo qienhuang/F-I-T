@@ -16,6 +16,9 @@
     - **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
     - **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
     - **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
+    - **Markov sandbox short (math.PR; entropy-rate in finite Markov chains):** https://doi.org/10.5281/zenodo.18264166 (repo: [papers/markov-sandbox/](papers/markov-sandbox/))
+    - **Beyond Moral Charters: Technical Options for AI Safety - Claude's Constitution, Self-Reference, and the FIT / Controlled-Nirvana Lens:** https://doi.org/10.5281/zenodo.18341340
+    - **Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up:** https://doi.org/10.5281/zenodo.18287053
 
 
 - **Case studies:**

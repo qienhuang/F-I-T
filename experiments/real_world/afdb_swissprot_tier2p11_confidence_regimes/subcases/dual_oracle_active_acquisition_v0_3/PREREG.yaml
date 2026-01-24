@@ -1,0 +1,113 @@
+preregistration:
+  case_id: dual_oracle_active_acquisition_v0_3
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v0.3_repo_ready
+  date_locked: '2026-01-24'
+  intent:
+    primary_training_target: dual_oracle_budgeted_learning_curves_under_low_fpr_monitorability
+    secondary_training_targets:
+    - EST_boundary_discipline
+    - decision_trace_logging
+    - coverage_jump_events
+    non_claims:
+    - No biological claims; measurement/protocol only
+    - Holdout labels are treated as free for measurement in offline simulation
+boundary:
+  universe_mode: intersection
+  feature_whitelist:
+  - length
+  - I1_hi_conf_frac
+  - I2_mean_plddt
+  - I3_plddt_entropy
+  - C1_low_conf_frac
+  oracle_fields:
+    pae_value: C2_pae_offdiag
+    msa_depth: msa_depth
+  thresholds:
+    tau_pae: 10.0
+    tau_msa_depth: 32
+  train_boundary:
+    features: B0_only
+    labels: PAE_and_MSA_oracles_revealed_on_query
+    out_of_scope:
+    - PAE_as_feature
+    - MSA_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+    - PAE
+    - MSA
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_oracles: true
+data:
+  input_metrics_path: ../../out/<B2_RUN_ID>/metrics_per_protein.parquet
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: FIT_DUAL_ORACLE_ACTIVE_V0.3
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: free_label_for_offline_measurement
+  metrics:
+  - monitorability_operating_points
+monitorability:
+  fpr_targets:
+  - 0.01
+  - 0.05
+  primary_fpr_target: 0.01
+  threshold_selection_split: labeled_val
+  rule: maximize_tpr_under_fpr_cap
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+    solver: lbfgs
+  min_labeled_to_train: 200
+split_labeled:
+  train_frac: 0.8
+  val_frac: 0.2
+acquisition:
+  rounds: 20
+  oracle_budgets:
+    pae_total: 5000
+    msa_total: 5000
+  init_labeled:
+    pae_n: 500
+    msa_n: 500
+  batch:
+    mode: total
+    total_per_round: 400
+    fixed_split:
+      pae_per_round: 200
+      msa_per_round: 200
+  policies:
+  - fixed_split
+  - adaptive_uncertainty
+  - adaptive_need_based
+  - random_hash
+  selection:
+    default_within_oracle: uncertainty
+    fallback_if_no_model: random_hash
+  tie_breaker: stable_hash
+event:
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+outputs:
+  out_root: out
+  run_id_style: timestamp
+  artifacts:
+  - PREREG.locked.yaml
+  - dataset_snapshot.json
+  - boundary_snapshot.json
+  - decision_trace.csv
+  - round_metrics.json
+  - eval_report.md
+  - tradeoff_onepage.pdf
+  - run_manifest.json
