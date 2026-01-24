@@ -1,0 +1,72 @@
+preregistration:
+  case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: fixture_smoke_v0
+  date_locked: "2026-01-24"
+  task:
+    tier: tier2p11
+    proposition: P11
+    description: "Smoke-test fixture: exercise full pipeline on tiny synthetic coords (B0)."
+
+boundary:
+  afdb_release_version: fixture
+  dataset_scope: fixture
+  boundary_mode: B0_COORD_ONLY
+  paths:
+    coords_dir: fixtures/coords
+    pae_dir: fixtures/pae
+    msa_dir: fixtures/msa
+  selection:
+    sampler:
+      seed_string: FIT_AFDB_FIXTURE_V0
+      target_n_valid: 3
+      max_draw_multiplier: 10
+    filters:
+      exclude_fragments_by_name: false
+      min_length: 30
+      max_length: 40
+
+axis:
+  type: length_bins
+  bin_width_aa: 1
+  min_items_per_bin: 1
+  binning_rule: inclusive_lower_exclusive_upper
+
+windows:
+  smoothing_bins: 1
+  event_jump_bins: 1
+  event_persist_bins: 1
+
+estimators:
+  composites:
+    epsilon: 1.0e-06
+
+p11_event:
+  event_id: E_regime
+  delta_R: 0.5
+  cooccurrence_required: 1
+  signals:
+    - id: drop_I1
+      metric: I1_hi_conf_frac
+      direction: down
+      delta: 0.2
+    - id: rise_C1
+      metric: C1_low_conf_frac
+      direction: up
+      delta: 0.2
+
+coherence_gate:
+  tolerance_bins: 0
+  fail_label: ESTIMATOR_UNSTABLE
+
+outputs:
+  out_root: out
+  run_id_style: manual
+  artifacts:
+    - accessions_selected.txt
+    - metrics_per_protein.parquet
+    - metrics_per_bin.parquet
+    - regime_report.md
+    - tradeoff_onepage.pdf
+    - boundary_snapshot.json
+    - run_manifest.json
+    - EST_PREREG.locked.yaml

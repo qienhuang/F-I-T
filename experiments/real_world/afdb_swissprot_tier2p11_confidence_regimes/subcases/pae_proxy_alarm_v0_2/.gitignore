@@ -1,0 +1,7 @@
+out/
+
+# python
+__pycache__/
+*.py[cod]
+*.pyc.*
+.pytest_cache/

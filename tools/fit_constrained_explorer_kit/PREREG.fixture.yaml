@@ -1,0 +1,40 @@
+preregistration:
+  kit_id: fit_constrained_explorer_kit
+  case_id: fixture_bitstring_explorer_v0
+  pack_version: fixture_smoke_v0
+  date_locked: "2026-01-24"
+  intent:
+    primary_goal: constrained_exploration_under_budget
+    non_claims:
+      - This fixture exists to verify the explorer loop on a tiny toy domain.
+
+domain:
+  name: toy_bitstring
+  n_bits: 64
+  constraint:
+    type: max_ones
+    max_ones: 10
+  oracle:
+    type: hidden_linear_reward
+    noise_std: 0.0
+
+budget:
+  oracle_evals_max: 300
+
+search:
+  seed_string: FIT_CONSTRAINED_EXPLORER_FIXTURE_V0
+  init_random: 40
+  batch_size: 20
+  rounds: 10
+  policies: [random, evo_mutate_best, surrogate_ucb]
+  evo:
+    mutate_bits_per_child: 2
+    parents_top_k: 10
+    children_per_round: 40
+  surrogate:
+    ridge_lambda: 1.0
+    ucb_beta: 1.0
+
+outputs:
+  out_root: out
+

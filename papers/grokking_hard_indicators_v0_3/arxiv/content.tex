@@ -1,0 +1,394 @@
+\section{Introduction}
+
+Grokking refers to the phenomenon where a model initially overfits (memorization) and only later ``suddenly'' generalizes, often after prolonged training. Because grokking resembles a regime shift, it is a natural benchmark for early warning: can we raise alarms before the generalization jump?
+
+However, early-warning evaluation is frequently undermined by two methodological problems. First, if the event definition yields zero events in held-out runs, Phase B becomes non-evaluable. Second, if evaluation focuses on ranking metrics (e.g., AUC) without explicit risk constraints, one may report ``good indicators'' that are unusable as alarms.
+
+This work addresses both problems via a preregistered protocol and explicit alarm validity criteria.
+
+\subsection*{Contributions}
+
+\begin{enumerate}
+\item \textbf{Evaluability-first protocol:} A preregistered Explore -> Lock -> Evaluate pipeline that prevents retrospective tuning.
+\item \textbf{Dense event definition:} A jump / regime-shift event definition (E1) that makes Phase B reliably evaluable.
+\item \textbf{Risk-constrained evaluation:} Explicit FPR control and a validity gate (FPR controllability) that distinguishes informative scores from operationally usable alarms.
+\item \textbf{A negative/weak baseline:} A baseline composite indicator whose high-AUC orientation fails operational validity (FPR floor), while the usable orientation exhibits limited low-FPR coverage and a clear tradeoff curve.
+\end{enumerate}
+
+\section{Related Work (brief)}
+
+Grokking was introduced as a stylized phenomenon in algorithmic/synthetic tasks and has since been used to study optimization dynamics, phase transitions, and generalization delays \cite{power2022grokking}. Early-warning signals for critical transitions have a long history in complex systems \cite{scheffer2009earlywarning}. In ML monitoring and decision systems, ROC/AUC and calibration are standard tools \cite{fawcett2006roc,guo2017calibration}. This work focuses on protocol and validity, not on proposing a new best indicator.
+
+\begin{quote}
+\textbf{Positioning:} We treat ``hard indicators'' as a monitoring problem under risk constraints, not merely a ranking problem.
+\end{quote}
+
+\section{Problem Setup and Boundary}
+
+\subsection{Boundary (held fixed)}
+
+\begin{itemize}
+\item \textbf{Task:} modular addition, e.g.\ \((a+b)\bmod p\).
+\item \textbf{Model family:} small transformer (fixed architecture family for the protocol).
+\item \textbf{Data:} synthetic generation (fixed generator).
+\item \textbf{Logging:} checkpoint-level metrics (e.g., test loss/accuracy) and estimator tuple values.
+\end{itemize}
+
+The protocol is designed to compare indicators under a fixed boundary; new boundaries (other tasks/models) are out of scope for this manuscript.
+
+\subsection{Early warning as a risk-constrained decision problem}
+
+Early warning is not just ``can you rank pre- vs post-event checkpoints,'' but:
+
+\begin{itemize}
+\item Can you trigger alarms at bounded false positive rate (FPR)?
+\item How much coverage (fraction of runs warned) can you obtain under that risk budget?
+\item How early are the warnings (lead time)?
+\end{itemize}
+
+We therefore evaluate alarms under explicit FPR calibration and report coverage and lead time.
+
+\section{Protocol: Explore -> Lock -> Evaluate}
+
+\subsection{Explore (Phase A)}
+
+\begin{itemize}
+\item Develop candidate event definitions and indicators.
+\item Perform diagnostic analyses and ablations.
+\item No claims are made from Phase A results.
+\end{itemize}
+
+\subsection{Lock}
+
+Freeze:
+\begin{itemize}
+\item Event definition (E1) and all parameters.
+\item Indicator definitions and all hyperparameters.
+\item Thresholding/calibration method and target operating points (e.g., FPR grid).
+\item Validity checks (notably, FPR controllability criteria).
+\end{itemize}
+
+In this repository, the ``lock'' is represented by a versioned spec plus a preregistration note:
+\begin{itemize}
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/estimator_spec.v0_2.yaml} (Phase B1 seeds 100--119)
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/estimator_spec.v0_2_1.yaml} (Phase B2 seeds 120--139; fresh held-out)
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/prereg_v0_2.md} (protocol narrative; what is frozen vs exploratory)
+\end{itemize}
+
+\subsection{Evaluate (Phase B)}
+
+Run held-out seeds/runs with locked definitions. Report:
+\begin{itemize}
+\item Achieved FPR vs target FPR (calibration sanity).
+\item Coverage vs FPR, lead time vs FPR (alarm utility).
+\item Ranking metrics (AUC/AP) as secondary.
+\end{itemize}
+
+\section{Event Definition (E1): Jump / Regime Shift}
+
+\subsection{Motivation}
+
+Fixed accuracy thresholds (e.g., \texttt{test\_acc >= 0.95}) often lead to zero events in held-out runs, making Phase B non-evaluable. We therefore define an event based on a sustained jump in smoothed performance.
+
+\subsection{Definition (high level)}
+
+Let \(\bar{a}(t)\) denote smoothed test accuracy at checkpoint \(t\). E1 triggers when:
+\begin{enumerate}
+\item \(\bar{a}(t)\) increases by at least a fixed \(\Delta\) over a short window,
+\item the post-jump level exceeds a floor (to avoid micro-jumps),
+\item the trajectory does not immediately revert (a hold condition).
+\end{enumerate}
+
+Exact parameters are locked in the v0.2 / v0.2.1 protocol specs.
+
+\subsection{Evaluability}
+
+Across all runs reported here (Phase A seeds 0--4 and Phase B seeds 100--139; 45 runs total), E1 yields 100\% event density: every run exhibits a detectable jump. On held-out evaluation runs alone (seeds 100--139; 40 runs), event density is also 100\%, making Phase B evaluable.
+
+\section{Indicators and Alarm Construction}
+
+\subsection{Baseline indicator tuple}
+
+We evaluate a baseline composite indicator that can be decomposed into two conceptual components:
+\begin{itemize}
+\item \textbf{H\_spec:} a spectral-entropy-like component (captures distributional/structural changes in representations or dynamics).
+\item \textbf{CorrRate:} a correction-rate-like component (captures changes in ``self-correction'' or error dynamics).
+\end{itemize}
+
+(We treat these as a baseline tuple; the protocol is agnostic to their exact engineering.)
+
+\subsection{Score orientation}
+
+Because many indicators are ambiguous up to sign, we evaluate two orientations:
+\begin{itemize}
+\item \texttt{score\_sign = +1}
+\item \texttt{score\_sign = -1}
+\end{itemize}
+
+\subsection{Alarm thresholding via target-FPR calibration}
+
+Given a target FPR \(f\), we calibrate a threshold \(\theta_f\) so that, on negative checkpoints (no-event windows),
+\[
+\Pr(s(t) > \theta_f \mid \text{negative}) \approx f.
+\]
+We then apply this threshold to full trajectories to compute alarm triggers and lead times.
+
+\section{Metrics}
+
+\subsection{Ranking metrics (secondary)}
+
+\begin{itemize}
+\item ROC-AUC
+\item Average Precision (AP)
+\end{itemize}
+
+\subsection{Alarm utility metrics (primary)}
+
+\begin{itemize}
+\item \textbf{Achieved FPR:} measured on negative checkpoints.
+\item \textbf{Coverage:} fraction of runs with at least one alarm before the event.
+\item \textbf{Lead time:} event time minus first alarm time (in steps), conditional on coverage.
+\end{itemize}
+
+\subsection{Validity gate: FPR controllability (mandatory)}
+
+We treat a detector as \textbf{invalid} if it fails either:
+\begin{enumerate}
+\item \textbf{FPR tracking failure:} achieved FPR does not track target within tolerance on multiple target points.
+\item \textbf{FPR floor:} achieved FPR cannot be driven below a ceiling (indicative of ``always-on'' behavior).
+\end{enumerate}
+
+This gate is motivated by Phase A2 findings and is enforced before interpreting coverage.
+
+\section{Experimental Design}
+
+\subsection{Seed splits and phases}
+
+We report Phase B results on two held-out evaluation seed ranges:
+\begin{itemize}
+\item \textbf{Phase B1:} seeds 100--119 (20 runs)
+\item \textbf{Phase B2:} seeds 120--139 (20 runs)
+\end{itemize}
+
+(Phase A seeds 0--4 are used only for protocol development / event-density checks; total held-out Phase B evaluations reported here are 40 runs.)
+
+\subsection{FPR sweep}
+
+We sweep target FPR thresholds:
+\[
+\{0.01, 0.02, 0.05, 0.10, 0.15, 0.20\}.
+\]
+
+\section{Results}
+
+\subsection{E1 event density and early-warning window}
+
+Using the locked jump/regime-shift definition (E1):
+\begin{itemize}
+\item \textbf{Event density:} 100\% of evaluated runs exhibit an event.
+\item \textbf{Early-warning window:} alarms that trigger successfully do so \(\sim 12\text{--}15k\) steps before the jump (stable across runs), corresponding to roughly 24--30 checkpoints under the current cadence.
+\end{itemize}
+
+This confirms Phase B is evaluable and the early-warning objective is non-trivial.
+
+\subsection{Phase A2: FPR-Coverage tradeoff reveals detector degeneracy}
+
+We evaluate the baseline score in both orientations under explicit FPR control.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llclrr}
+\toprule
+Seed Range & Score Sign & Target FPR Range & Achieved FPR & Coverage (raw) & Mean Lead Time \\
+\midrule
+100--119 (B1) & \(-1\) & 0.01--0.20 & 0.4407 (constant) & 100\% & 18775 \\
+100--119 (B1) & \(+1\) & 0.01--0.20 & tracks target & 0\% -> 85\% & 12071--14167 \\
+120--139 (B2) & \(-1\) & 0.01--0.20 & 0.4442 (constant) & 95\% & 18895 \\
+120--139 (B2) & \(+1\) & 0.01--0.20 & tracks target & 0\% -> 75\% & 7250--15000 \\
+\bottomrule
+\end{tabular}
+\caption{FPR sweep summary. The \texttt{score\_sign=-1} orientation exhibits an FPR floor near 0.44, independent of target.}
+\end{table}
+
+\subsection*{B1 (seeds 100--119): \texttt{score\_sign = -1} is invalid (FPR floor)}
+
+\begin{verbatim}
+Target FPR   Achieved FPR   Coverage   N Covered   Mean Lead Time
+0.010        0.4407         100%       20/20       18775
+0.020        0.4407         100%       20/20       18775
+0.050        0.4407         100%       20/20       18775
+0.100        0.4407         100%       20/20       18775
+0.150        0.4407         100%       20/20       18775
+0.200        0.4407         100%       20/20       18775
+\end{verbatim}
+
+\noindent\textbf{Interpretation:} Achieved FPR cannot be reduced below \(\sim 0.44\) regardless of threshold. Raw coverage is therefore meaningless under risk constraints. Under the protocol's validity gate, this configuration is invalid as an alarm.
+
+\subsection*{B1 (seeds 100--119): \texttt{score\_sign = +1} is valid and exhibits a tradeoff}
+
+\begin{verbatim}
+Target FPR   Achieved FPR   Coverage   N Covered   Mean Lead Time
+0.010        0.0100         0%         0/20        N/A
+0.020        0.0200         0%         0/20        N/A
+0.050        0.0500         35%        7/20        12071
+0.100        0.1000         70%        14/20       13071
+0.150        0.1500         75%        15/20       14167
+0.200        0.2000         85%        17/20       13588
+\end{verbatim}
+
+Coverage roughly doubles when moving from FPR=0.05 to FPR=0.10, while lead time remains stable (\(\sim 12\text{--}14k\) steps).
+
+\subsection*{B2 (seeds 120--139): \texttt{score\_sign = -1} is invalid (same FPR floor)}
+
+\begin{verbatim}
+Target FPR   Achieved FPR   Coverage   N Covered   Mean Lead Time
+0.010        0.4442         95%        19/20       18895
+0.020        0.4442         95%        19/20       18895
+0.050        0.4442         95%        19/20       18895
+0.100        0.4442         95%        19/20       18895
+0.150        0.4442         95%        19/20       18895
+0.200        0.4442         95%        19/20       18895
+\end{verbatim}
+
+Again, achieved FPR is insensitive to target threshold, indicating calibration degeneracy.
+
+\subsection*{B2 (seeds 120--139): \texttt{score\_sign = +1} remains valid with similar tradeoff}
+
+\begin{verbatim}
+Target FPR   Achieved FPR   Coverage   N Covered   Mean Lead Time
+0.010        0.0100         0%         0/20        N/A
+0.020        0.0200         10%        2/20        7250
+0.050        0.0500         35%        7/20        15357
+0.100        0.1000         65%        13/20       11769
+0.150        0.1500         70%        14/20       14857
+0.200        0.2000         75%        15/20       15000
+\end{verbatim}
+
+\subsection{Practical operating points}
+
+For the only valid orientation (\texttt{score\_sign = +1}):
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrl}
+\toprule
+Target FPR & Coverage (B1) & Coverage (B2) & Avg.\ Coverage & Typical Lead Time \\
+\midrule
+0.05 & 35\% & 35\% & 35\% & \(\sim 12\text{--}15k\) steps \\
+0.10 & 70\% & 65\% & 67.5\% & \(\sim 12\text{--}14k\) steps \\
+0.20 & 85\% & 75\% & 80\% & \(\sim 13\text{--}15k\) steps \\
+\bottomrule
+\end{tabular}
+\caption{Operating points for the valid orientation (\texttt{score\_sign=+1}).}
+\end{table}
+
+\subsection{Why AUC is insufficient: ranking-alarm decoupling}
+
+The invalid configuration (\texttt{score\_sign = -1}) can exhibit higher ranking metrics while being unusable as an alarm due to an FPR floor. This provides a concrete counterexample to the common assumption that higher AUC implies better early-warning performance. In early-warning settings, ranking ability (AUC) is insufficient; controllable false-positive behavior is a necessary condition.
+
+\subsection{Phase A1 component diagnosis (summary)}
+
+Component-level diagnosis indicates that seed dependence is partly explained by which component dominates:
+\begin{itemize}
+\item In seeds 100--119, the spectral-entropy-like component (H\_spec) shows stronger directional association, which can inflate AUC for one orientation.
+\item In seeds 120--139, both components weaken substantially, producing near-random discrimination.
+\end{itemize}
+
+However, even when a component provides ranking signal, it can induce calibration failure (FPR floor), making the resulting alarm invalid.
+
+\section{Discussion}
+
+\subsection{What would count as a validated hard indicator?}
+
+Under this protocol, a ``hard indicator'' should satisfy, on held-out evaluation:
+\begin{enumerate}
+\item \textbf{Evaluability:} events occur with sufficient density (non-zero).
+\item \textbf{Validity:} achieved FPR tracks target; no FPR floor.
+\item \textbf{Utility:} coverage is non-trivial at reasonable FPR (e.g., 0.05--0.10).
+\item \textbf{Stability:} lead time is consistent and non-trivial.
+\item \textbf{Robustness:} performance persists across seed ranges (and ideally boundaries).
+\end{enumerate}
+
+Our baseline fails validity in one orientation and is weak under strict low-FPR (0.05) even in the valid orientation.
+
+\subsection{Why this negative result is useful}
+
+This work clarifies why ``hard indicators'' are difficult: it is easy to produce scores with seemingly good AUC, but much harder to produce alarms that are usable under risk constraints. The protocol turns this into a measurable, reproducible failure mode.
+
+\subsection{Limitations}
+
+\begin{itemize}
+\item This manuscript studies a single boundary (modular addition, small transformer family).
+\item Indicator engineering is limited by the baseline tuple; we do not claim optimal features.
+\item Some quantities (e.g., representation-level measures) require heavier instrumentation.
+\end{itemize}
+
+\subsection{Next steps (v0.4 direction)}
+
+\begin{itemize}
+\item Develop calibration-first indicators (e.g., autocorrelation/variance-based early-warning proxies).
+\item Use multi-gate detectors (evidence aggregation) to reduce FPR floors.
+\item Expand Phase B to additional seed ranges and boundaries.
+\end{itemize}
+
+\section*{Reproducibility Appendix}
+
+\subsection*{Key artifacts}
+
+\begin{itemize}
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/estimator_spec.v0_2.yaml}
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/estimator_spec.v0_2_1.yaml}
+\item \path{experiments/grokking_hard_indicators_v0_2/code/protocol/prereg_v0_2.md}
+\item \path{experiments/grokking_hard_indicators_v0_2/RESULTS_v0.2_v0.2.1.md}
+\item \path{experiments/grokking_hard_indicators_v0_2/results/v0.3_A1_component_diagnosis.md}
+\item \path{experiments/grokking_hard_indicators_v0_2/results/v0.3_A2_fpr_tradeoff.md}
+\end{itemize}
+
+\subsection*{Example reproduction commands}
+
+\begin{verbatim}
+cd "/path/to/F-I-T/experiments/grokking_hard_indicators_v0_2"
+
+# Environment
+python -m venv .venv
+source .venv/bin/activate
+pip install -r code/requirements.txt
+pip install -e code
+
+# Phase B1 (seeds 100-119): generate runs, then sweep FPR operating points
+python -m grokking.runner.sweep --spec code/protocol/estimator_spec.v0_2.yaml --out runs_v0_2 --phase eval
+python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2/eval --score_sign=+1
+python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2/eval --score_sign=-1
+
+# Phase B2 (seeds 120-139): fresh held-out seeds
+python -m grokking.runner.sweep --spec code/protocol/estimator_spec.v0_2_1.yaml --out runs_v0_2_1 --phase eval
+python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2_1/eval --score_sign=+1
+python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2_1/eval --score_sign=-1
+\end{verbatim}
+
+\section*{References}
+
+\begin{thebibliography}{9}
+
+\bibitem{power2022grokking}
+A.~Power et al.
+\newblock Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets.
+\newblock \emph{arXiv:2201.02177}, 2022.
+
+\bibitem{scheffer2009earlywarning}
+M.~Scheffer et al.
+\newblock Early-warning signals for critical transitions.
+\newblock \emph{Nature}, 461:53--59, 2009.
+
+\bibitem{fawcett2006roc}
+T.~Fawcett.
+\newblock An introduction to ROC analysis.
+\newblock \emph{Pattern Recognition Letters}, 27(8):861--874, 2006.
+
+\bibitem{guo2017calibration}
+C.~Guo, G.~Pleiss, Y.~Sun, and K.~Q. Weinberger.
+\newblock On Calibration of Modern Neural Networks.
+\newblock In \emph{ICML}, 2017. \emph{arXiv:1706.04599}.
+
+\end{thebibliography}
+

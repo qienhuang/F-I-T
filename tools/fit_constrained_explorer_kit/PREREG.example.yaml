@@ -1,0 +1,38 @@
+preregistration:
+  kit_id: fit_constrained_explorer_kit
+  case_id: your_case_id
+  pack_version: v0
+  date_locked: "YYYY-MM-DD"
+  intent:
+    primary_goal: constrained_exploration_under_budget
+
+domain:
+  name: toy_bitstring
+  n_bits: 128
+  constraint:
+    type: max_ones
+    max_ones: 20
+  oracle:
+    type: hidden_linear_reward
+    noise_std: 0.0
+
+budget:
+  oracle_evals_max: 1000
+
+search:
+  seed_string: YOUR_SEED_STRING
+  init_random: 100
+  batch_size: 50
+  rounds: 20
+  policies: [random, evo_mutate_best, surrogate_ucb]
+  evo:
+    mutate_bits_per_child: 3
+    parents_top_k: 20
+    children_per_round: 200
+  surrogate:
+    ridge_lambda: 1.0
+    ucb_beta: 1.0
+
+outputs:
+  out_root: out
+

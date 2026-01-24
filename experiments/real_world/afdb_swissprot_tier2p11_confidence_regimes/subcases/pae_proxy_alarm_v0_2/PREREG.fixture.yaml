@@ -1,0 +1,92 @@
+preregistration:
+  case_id: pae_proxy_alarm_v0_2
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: fixture_smoke_v0
+  date_locked: "2026-01-24"
+  intent:
+    primary_training_target: active_acquisition_under_low_fpr_monitorability
+    non_claims:
+      - This fixture exists to verify the subcase pipeline on a tiny synthetic metrics file.
+
+boundary:
+  feature_whitelist:
+    - length
+    - I1_hi_conf_frac
+    - I2_mean_plddt
+    - I3_plddt_entropy
+    - C1_low_conf_frac
+  label_field: C2_pae_offdiag
+  tau_pae: 10.0
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_label: true
+  train_boundary:
+    features: B0_only
+    labels: PAE_oracle_revealed_on_query
+    out_of_scope:
+      - PAE_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+      - PAE
+
+data:
+  input_metrics_path: fixtures/metrics_per_protein.csv
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: FIT_PAE_ACTIVE_FIXTURE_V0
+
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: free_label_for_offline_measurement
+  metrics:
+    - roc_auc
+    - pr_auc
+    - monitorability_operating_points
+
+split_labeled:
+  train_frac: 0.7
+  val_frac: 0.3
+
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+    solver: lbfgs
+
+monitorability:
+  fpr_targets: [0.01, 0.05]
+  primary_fpr_target: 0.05
+
+acquisition:
+  init_labeled_n: 20
+  rounds: 5
+  batch_size: 10
+  policies: [random_hash, uncertainty, high_score]
+  tie_breaker: stable_hash
+
+event:
+  name: E_covjump
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+  use_fpr_target: 0.05
+
+outputs:
+  out_root: out
+  run_id_style: manual
+  artifacts:
+    - PREREG.locked.yaml
+    - dataset_snapshot.json
+    - boundary_snapshot.json
+    - decision_trace.csv
+    - round_metrics.json
+    - eval_report.md
+    - tradeoff_onepage.pdf
+    - run_manifest.json

@@ -2,7 +2,7 @@
 
 Status: **core artifact** (one-page operational entry). For the full specification and EST details, see [`docs/v2.4.md`](../v2.4.md) and the update note [`docs/v2.4.1.md`](../v2.4.1.md).
 
-Navigation: [`core index`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`Reconstruction guide`](./reconstruction_guide.md)
+Navigation: [`core index`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`How to falsify FIT`](./how_to_falsify_fit.md) | [`Reconstruction guide`](./reconstruction_guide.md)
 
 Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 

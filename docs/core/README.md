@@ -27,6 +27,7 @@ Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in 
 ### Extensions and Guardrails
 - [`FIT_Core_Extension_Post_Phi3.md`](./FIT_Core_Extension_Post_Phi3.md) - post-Φ₃ bifurcation (two structurally viable paths)
 - [`FIT_Misuse_Guard_and_FAQ.md`](./FIT_Misuse_Guard_and_FAQ.md) - misuse guard and FAQ (red lines and boundary conditions)
+- [`how_to_falsify_fit.md`](./how_to_falsify_fit.md) - how to falsify FIT (short guide; anti-ToE guardrail)
 
 ### Applications
 - [`grokking_phase_mapping.md`](./grokking_phase_mapping.md) - Grokking as FIT phase transition (Φ₁→Φ₂→Φ₃ mapping for ML)

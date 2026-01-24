@@ -1,0 +1,98 @@
+preregistration:
+  case_id: pae_proxy_alarm_v0_2
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v0.2_repo_ready
+  date_locked: '2026-01-24'
+  intent:
+    primary_training_target: active_acquisition_under_low_fpr_monitorability
+    secondary_training_targets:
+    - EST_boundary_discipline
+    - decision_trace_logging
+    non_claims:
+    - No biological ground-truth claims about folding
+    - PAE is an oracle label channel in this protocol
+boundary:
+  feature_whitelist:
+  - length
+  - I1_hi_conf_frac
+  - I2_mean_plddt
+  - I3_plddt_entropy
+  - C1_low_conf_frac
+  label_field: C2_pae_offdiag
+  tau_pae: 10.0
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_label: true
+  train_boundary:
+    features: B0_only
+    labels: PAE_oracle_revealed_on_query
+    out_of_scope:
+    - PAE_as_feature
+    - MSA
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+    - PAE
+    - MSA
+data:
+  input_metrics_path: ../../out/<B1_RUN_ID>/metrics_per_protein.parquet
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: FIT_PAE_ACTIVE_V0.2
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: free_label_for_offline_measurement
+  metrics:
+  - roc_auc
+  - pr_auc
+  - monitorability_operating_points
+split_labeled:
+  train_frac: 0.8
+  val_frac: 0.2
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+    solver: lbfgs
+monitorability:
+  fpr_targets:
+  - 0.01
+  - 0.05
+  primary_fpr_target: 0.01
+acquisition:
+  init_labeled_n: 500
+  rounds: 20
+  batch_size: 250
+  policies:
+  - random_hash
+  - uncertainty
+  - high_score
+  tie_breaker: stable_hash
+  score_definitions:
+    random_hash: stable_hash_order on ids
+    uncertainty: abs(p-0.5) ascending
+    high_score: p descending
+event:
+  name: E_covjump
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+  use_fpr_target: 0.01
+outputs:
+  out_root: out
+  run_id_style: timestamp
+  artifacts:
+  - PREREG.locked.yaml
+  - dataset_snapshot.json
+  - boundary_snapshot.json
+  - decision_trace.csv
+  - round_metrics.json
+  - eval_report.md
+  - tradeoff_onepage.pdf
+  - run_manifest.json

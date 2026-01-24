@@ -1,0 +1,84 @@
+preregistration:
+  kit_id: fit_proxy_alarm_kit
+  case_id: fixture_proxy_alarm_v0
+  pack_version: fixture_smoke_v0
+  date_locked: "2026-01-24"
+  intent:
+    primary_training_target: active_acquisition_under_low_fpr_monitorability
+    non_claims:
+      - This fixture exists to verify the kit pipeline on a tiny synthetic metrics file.
+
+boundary:
+  # Deploy boundary: features only
+  feature_whitelist:
+    - length
+    - f_hi_conf_frac
+    - f_mean_conf
+    - f_entropy
+    - f_low_conf_frac
+
+  # Train-only oracle channel (label store)
+  label_field: oracle_uncertainty_score
+  tau_label: 10.0
+
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_label: true
+
+  train_boundary:
+    features: B0_only
+    labels: oracle_revealed_on_query
+    out_of_scope:
+      - oracle_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+      - oracle
+
+data:
+  input_metrics_path: fixtures/metrics.csv
+  input_format_fallback: csv
+  id_field: item_id
+  seed_string: FIT_PROXY_ALARM_FIXTURE_V0
+
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: free_label_for_offline_measurement
+  fpr_tolerance: 0.005
+
+split_labeled:
+  train_frac: 0.7
+  val_frac: 0.3
+
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 500
+    tol: 1.0e-6
+    class_weight: balanced
+
+monitorability:
+  fpr_targets: [0.01, 0.05, 0.10]
+  primary_fpr_target: 0.05
+
+acquisition:
+  init_labeled_n: 20
+  rounds: 5
+  batch_size: 10
+  policies: [random_hash, uncertainty, high_score]
+
+event:
+  name: E_covjump
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+  use_fpr_target: 0.05
+
+outputs:
+  out_root: out
+  run_id_style: timestamp

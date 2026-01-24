@@ -1,0 +1,13 @@
+# local data
+data/coords/
+data/pae/
+data/msa/
+
+# outputs
+out/
+
+# python
+__pycache__/
+*.py[cod]
+*.pyc.*
+.pytest_cache/

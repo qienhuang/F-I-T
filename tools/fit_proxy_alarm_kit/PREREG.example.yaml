@@ -1,0 +1,76 @@
+preregistration:
+  kit_id: fit_proxy_alarm_kit
+  case_id: your_proxy_alarm_case
+  pack_version: v0
+  date_locked: "YYYY-MM-DD"
+
+boundary:
+  # Deploy boundary: allowed features at inference time
+  feature_whitelist:
+    - length
+    - f1
+    - f2
+
+  # Train-only oracle channel (label store)
+  label_field: oracle_score
+  tau_label: 10.0
+
+  data_filters:
+    min_length: 0
+    max_length: 1000000000
+    drop_na_features: true
+    drop_na_label: true
+
+  train_boundary:
+    features: B0_only
+    labels: oracle_revealed_on_query
+    out_of_scope:
+      - oracle_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+
+data:
+  input_metrics_path: path/to/metrics.csv
+  input_format_fallback: csv
+  id_field: item_id
+  seed_string: FIT_PROXY_ALARM_V0
+
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: free_label_for_offline_measurement
+  fpr_tolerance: 0.01
+
+split_labeled:
+  train_frac: 0.8
+  val_frac: 0.2
+
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 500
+    tol: 1.0e-6
+    class_weight: balanced
+
+monitorability:
+  fpr_targets: [0.01, 0.05, 0.10]
+  primary_fpr_target: 0.05
+
+acquisition:
+  init_labeled_n: 500
+  rounds: 20
+  batch_size: 250
+  policies: [random_hash, uncertainty, high_score]
+
+event:
+  name: E_covjump
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+  use_fpr_target: 0.05
+
+outputs:
+  out_root: out
+  run_id_style: timestamp

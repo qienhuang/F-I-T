@@ -1,0 +1,160 @@
+preregistration:
+  case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v1.1_repo_ready
+  date_locked: '2026-01-24'
+  task:
+    tier: tier2p11
+    type: topological_event
+    proposition: P11
+    description: Detect confidence-regime shift signatures across sequence-length
+      bins under explicit boundary modes (B0/B1/B2).
+  success_criteria:
+  - Pipeline runs end-to-end producing required artifacts.
+  - If boundary provides >=2 constraint estimators, coherence gate passes or run is
+    labeled ESTIMATOR_UNSTABLE.
+  - Event detection produces either (a) >=1 detected event or (b) an explicit 'none
+    detected' report under locked thresholds.
+  failure_labels:
+    estimator_unstable: ESTIMATOR_UNSTABLE
+    scope_limited: SCOPE_LIMITED
+    boundary_dependent: BOUNDARY_DEPENDENT
+boundary:
+  afdb_release_version: v6
+  dataset_scope: swissprot
+  boundary_mode: B0_COORD_ONLY
+  formats:
+    coords:
+    - cif
+    - pdb
+    pae:
+    - json
+    msa:
+    - a3m
+  paths:
+    coords_dir: data/coords
+    pae_dir: data/pae
+    msa_dir: data/msa
+  selection:
+    universe_source:
+      type: scan_coords_dir
+      pattern: AF-<ACCESSION>-*.{cif,pdb}
+    sampler:
+      type: deterministic_hash
+      hash_fn: sha256
+      seed_string: FIT_AFDB_v1.1
+      target_n_valid: 10000
+      max_draw_multiplier: 3
+    filters:
+      exclude_fragments_by_name: true
+      min_length: 50
+      max_length: 2500
+  artifact_availability:
+    pae_available: false
+    msa_available: false
+  out_of_scope_signals:
+  - External disorder predictors
+  - PDB alignment metrics (TM-score/RMSD)
+  - UniProt annotations beyond accession and length
+axis:
+  type: length_bins
+  bin_width_aa: 50
+  min_items_per_bin: 200
+  binning_rule: inclusive_lower_exclusive_upper
+windows:
+  smoothing_bins: 3
+  event_jump_bins: 2
+  event_persist_bins: 2
+estimators:
+  I_hat:
+    primary: I1_hi_conf_frac
+    family:
+    - I1_hi_conf_frac
+    - I2_mean_plddt
+    - I3_plddt_entropy
+  C_hat:
+    primary: C_primary
+    family:
+    - C1_low_conf_frac
+    - C2_pae_offdiag
+    - C3_msa_deficit
+  F_hat:
+    family:
+    - F1_log_len
+    - F2_low_msa_pressure
+  definitions:
+    I1_hi_conf_frac: frac(plddt>=70) per protein; then bin median
+    I2_mean_plddt: mean(plddt) per protein; then bin median
+    I3_plddt_entropy: entropy(hist4(plddt bands)) per protein; then bin median
+    C1_low_conf_frac: frac(plddt<50) per protein; then bin median
+    C2_pae_offdiag: median(PAE_ij for |i-j|>=32) per protein; then bin median
+    C3_msa_deficit: -log(1+msa_depth) per protein; then bin median
+    F1_log_len: bin median log(length)
+    F2_low_msa_pressure: bin median -log(1+msa_depth)
+  composites:
+    epsilon: 1.0e-06
+    norm:
+      method: robust_quantile_scale
+      lower_q: 0.05
+      upper_q: 0.95
+      clip_0_1: true
+    C_rule_by_boundary:
+      B0_COORD_ONLY:
+        type: single
+        C_ids:
+        - C1_low_conf_frac
+      B1_COORD_PLUS_PAE:
+        type: geometric_mean
+        C_ids:
+        - C1_low_conf_frac
+        - C2_pae_offdiag
+        normalize:
+        - C2_pae_offdiag
+      B2_COORD_PLUS_PAE_PLUS_MSA:
+        type: geometric_mean
+        C_ids:
+        - C1_low_conf_frac
+        - C2_pae_offdiag
+        - C3_msa_deficit
+        normalize:
+        - C2_pae_offdiag
+        - C3_msa_deficit
+p11_event:
+  event_id: E_regime
+  delta_R: 0.12
+  cooccurrence_required: 2
+  signals:
+  - id: drop_I1
+    delta: 0.08
+    metric: I1_hi_conf_frac
+    direction: down
+  - id: rise_C1
+    delta: 0.06
+    metric: C1_low_conf_frac
+    direction: up
+  - id: rise_C2
+    delta: 2.0
+    metric: C2_pae_offdiag
+    direction: up
+    requires:
+    - PAE
+coherence_gate:
+  metric: event_alignment
+  tolerance_bins: 1
+  if_available_compare:
+  - C1_low_conf_frac
+  - C2_pae_offdiag
+  - C3_msa_deficit
+  fail_label: ESTIMATOR_UNSTABLE
+outputs:
+  out_root: out
+  run_id_style: timestamp
+  artifacts:
+  - accessions_selected.txt
+  - accessions_selected.sha256
+  - metrics_per_protein.parquet
+  - metrics_per_bin.parquet
+  - regime_report.md
+  - tradeoff_onepage.pdf
+  - boundary_snapshot.json
+  - run_manifest.json
+  - EST_PREREG.locked.yaml

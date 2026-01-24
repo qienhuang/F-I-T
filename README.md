@@ -10,24 +10,28 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
-**Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
+- **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
-**Papers (Zenodo):**
-- **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-- **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-- **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
+- **Papers (Zenodo)**:
+    - **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
+    - **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+    - **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
 
 
-**Case studies:**
-- [**Li² grokking scaling-law replication (based on the Li² paper; independently verified)**](experiments/li2_scaling_law/README.md)
-- [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
-- [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
-- [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+- **Case studies:**
+    - [**Li² grokking scaling-law replication (based on the Li² paper; independently verified)**](experiments/li2_scaling_law/README.md)
+    - [**AlphaFold DB (AFDB) Swiss-Prot: confidence regimes under instrumentation boundaries (Tier-2 / P11)**](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)
+    - [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
+    - [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
+    - [**Enterprise IT: From Tools to Platforms**](docs/cases/CASE_03_Enterprise_IT_Evolution.md)
+    - [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
+    - [**Data-Driven Inverse Design of Bicontinuous Multiscale Structures (L-BOM)**](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) ([workbook](docs/cases/CASE_05_LBOM_Workbook.md), [pitch](docs/cases/CASE_05_Computational_Phase_Transition_Pitch.md))
+    - [**BioArc: Constrained Architecture Search for Biological Foundation Models (NAS)**](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)
 
-*Note: names are cited as paper authors; no affiliation or endorsement is implied.*
+        *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
 
-**Structural archetypes (patterns):**
-- [**Patterns (reusable templates)**](docs/patterns/README.md)
+- **Structural archetypes (patterns):**
+    - [**Patterns (reusable templates)**](docs/patterns/README.md)
 
 ---
  
@@ -118,6 +122,7 @@ Its purpose: first reduce any problem of "evolution, development, origin, collap
 - **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
 - **CPU-first local agent blueprint (16GB RAM, DeepSeek distill)**: [papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
 - **CPU-first local agent demo (action gate + audit log)**: [examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
+- **Dr.One demo (self-edit loop + monitorability gate)**: [examples/dr_one_demo/README.md](examples/dr_one_demo/README.md)
 - **Case note (R1-style RL + risk control)**: [docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — defense-in-depth: content gating + action gating
 - **Li² replication protocol (one-click)**: [experiments/li2_scaling_law/FIT_VALIDATION_README.md](experiments/li2_scaling_law/FIT_VALIDATION_README.md) + [experiments/li2_scaling_law/run_fit_validation.py](experiments/li2_scaling_law/run_fit_validation.py)
 - **Cloud runners (Li²)**: [experiments/li2_scaling_law/colab_li2_scaling_law.ipynb](experiments/li2_scaling_law/colab_li2_scaling_law.ipynb) (Colab) + [experiments/li2_scaling_law/aistudio_paddle_script_task/README.md](experiments/li2_scaling_law/aistudio_paddle_script_task/README.md) (Baidu AI Studio, Paddle)

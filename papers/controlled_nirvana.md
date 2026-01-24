@@ -1,7 +1,7 @@
 # Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems
 
 **Status:** Zenodo-archived draft (Markdown canonical; PDF exports in this folder).  
-**Source:** Derived from earlier PDF drafts; latest PDF export: `controlled_nirvana.v1.3.pdf` (2026-01-19).  
+**Source:** Derived from earlier PDF drafts; latest PDF export: `controlled_nirvana.v1.4.1.pdf` (2026-01-22). LaTeX source updated to v1.5.  
 **License:** CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
 
 **Author:** Qien Huang  
@@ -21,7 +21,10 @@ For PDF exports and external readers, prefer the canonical GitHub links below (r
 - FIT Core Card: [`docs/core/fit_core_card.md`](../docs/core/fit_core_card.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/fit_core_card.md
 - Phase Algebra + PT-MSS: [`docs/core/phase_algebra.md`](../docs/core/phase_algebra.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/phase_algebra.md
 - Phi3 stability criteria: [`docs/core/phi3_stability.md`](../docs/core/phi3_stability.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/phi3_stability.md
+- Monitorability (AUC ≠ alarm usability): [`docs/core/monitorability.md`](../docs/core/monitorability.md) | https://github.com/qienhuang/F-I-T/blob/main/docs/core/monitorability.md
 - Prototype hook (Emptiness Window): [`examples/controlled_nirvana/README.md`](../examples/controlled_nirvana/README.md) | https://github.com/qienhuang/F-I-T/blob/main/examples/controlled_nirvana/README.md
+- Dr.One demo (self-edit + monitorability gate): [`examples/dr_one_demo/README.md`](../examples/dr_one_demo/README.md) | https://github.com/qienhuang/F-I-T/blob/main/examples/dr_one_demo/README.md
+- Self-evolving FIT control (v0.1 scaffold): [`experiments/self_evolving_fit_control_v0_1/README.md`](../experiments/self_evolving_fit_control_v0_1/README.md) | https://github.com/qienhuang/F-I-T/blob/main/experiments/self_evolving_fit_control_v0_1/README.md
 - Related paper (tempo mismatch): [`papers/irreversible-operations-tempo-mismatch.arxiv.md`](./irreversible-operations-tempo-mismatch.arxiv.md) | https://github.com/qienhuang/F-I-T/blob/main/papers/irreversible-operations-tempo-mismatch.arxiv.md
 
 ## Abstract
@@ -132,6 +135,19 @@ Trigger rule (example):
 `open_window := (a(W) >= a_min) ∧ (k(W) <= k_min) ∧ (m(W) = true)`
 
 This is intentionally a “minimal registrable” rule: it can be falsified, logged, and reviewed.
+
+#### 4.4.0 Validity gate: monitorability (FPR controllability)
+
+Grokking early-warning experiments (v0.2–v0.3) show a concrete failure mode: a detector can have non-trivial ranking performance (AUC) while being unusable as an alarm because the false-positive rate is *not controllable* (an “FPR floor” around ≈0.44 was observed under a sign-inverted orientation across target thresholds). In such cases, there exists no threshold that satisfies a strict operating point such as `FPR=0.05`, so the alarm becomes operationally meaningless.
+
+For deployment, we therefore recommend a validity gate for any detector used inside the trigger protocol:
+
+- **FPR controllability test:** for target set `{0.05, 0.10, 0.15}`, verify that achieved FPR tracks targets within tolerance on declared negative windows; and
+- **Floor check:** verify that the minimum achievable achieved-FPR is `<= f_max` (no hard FPR floor above the risk budget).
+
+If the detector fails this gate, it should be excluded from window triggering (or treated as a monitorability-risk event that opens a conservative window by default).
+
+Empirical anchor: `experiments/grokking_hard_indicators_v0_2/results/v0.3_A2_fpr_tradeoff.md`.
 
 #### 4.4.1 Candidate probe families (mechanistic interpretability; optional)
 
