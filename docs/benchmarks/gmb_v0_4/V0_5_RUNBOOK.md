@@ -34,6 +34,37 @@ In your local `grokking/` workspace:
 
 ---
 
+## Common issue: it runs on CPU (not GPU)
+
+If your progress bar shows `seed=... (cpu)`, the most common cause is a **CPU-only PyTorch** install in the Python you're using to run `grokking`.
+
+Quick check:
+
+```bash
+python -c "import torch; print('torch', torch.__version__); print('cuda_available', torch.cuda.is_available()); print('device_count', torch.cuda.device_count())"
+```
+
+If you see `torch ... +cpu` or `cuda_available False`, training will fall back to CPU even if `nvidia-smi` can see your GPU.
+
+### GPU setup (publish-safe guidance)
+
+Use a Python version that reliably has CUDA wheels available (typically **Python 3.12 or 3.11**). Newer Python versions may end up with CPU-only wheels depending on the PyTorch release cadence.
+
+Recommended workflow (OS-agnostic):
+
+1) Create a clean virtual environment inside your `grokking/` workspace.  
+2) Install a CUDA-enabled PyTorch build (follow the official PyTorch install command from `pytorch.org` for your CUDA version).  
+3) Verify `torch.cuda.is_available()` is true.  
+4) Run `grokking.runner.sweep` using that venv interpreter.
+
+### Mac note
+
+On Apple Silicon, the runner will prefer `mps` if available. On NVIDIA machines, it should pick `cuda` when `torch.cuda.is_available()` is true.
+
+Local-only setup notes:
+
+- If you keep machine-specific commands (paths, CUDA wheel URLs) as an internal lab memo, store them outside the public repo (e.g. under `chat-room/` in your local workspace).
+
 ## Step 1 (CPU, ~5–15 min): sanity check on existing eval runs
 
 Run on an existing runs directory (any `runs/.../seed_*` directory you already have):
@@ -140,4 +171,3 @@ Then fill `gmb_results_v0.4.<run_id>.yaml` using the v0.4 schema:
 ## Why this matters for AI safety (one sentence)
 
 This hold-out run makes “monitorability under a risk budget” concrete: only scores that pass Layer B are admissible to trigger authority suspension (tool gating); everything else is diagnostic-only.
-

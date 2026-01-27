@@ -1,0 +1,23 @@
+# FIT-Math Explorer search space v0.1
+# Candidate methods for math discovery (schema-lite).
+representation_families:
+  - invariants:
+      - "dimension_like"
+      - "rank_like"
+      - "entropy_like"
+      - "spectral_like"
+  - normal_forms:
+      - "canonical_representation_A"
+      - "canonical_representation_B"
+lemma_templates:
+  - "rewrite_normalize"
+  - "induction_on_structure"
+  - "bound_by_invariant"
+strategy_policies:
+  - "normalize_then_induct"
+  - "decompose_then_rewrite"
+budgets:
+  proof_search_steps: [1e4, 5e4, 2e5]
+  lemma_library_max: [50, 200, 1000]
+robustness_sweeps:
+  representation_perturbations: ["rename", "reparameterize", "equivalent_definition"]

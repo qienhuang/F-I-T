@@ -1,0 +1,14 @@
+# Detector pipeline search space (world evolution) v0.1
+families:
+  - name: "rolling_stats"
+    scores:
+      - "var_y"           # rolling variance of y
+      - "ac1_y"           # rolling lag-1 autocorrelation of y
+      - "trend_y"         # rolling slope of y
+  - name: "activity_based"
+    scores:
+      - "activity_mean"
+      - "activity_trend"
+windows: [25, 50, 100, 200]
+smoothing_alpha: [0.0, 0.1, 0.2]
+calibration_methods: ["quantile"]  # keep minimal for v0.1 demo

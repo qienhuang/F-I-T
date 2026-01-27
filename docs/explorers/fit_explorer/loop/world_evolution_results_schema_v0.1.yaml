@@ -1,0 +1,42 @@
+# world_evolution_results_schema_v0.1.yaml
+schema_version: "v0.1"
+candidate_id: ""
+run_id: ""
+date: "YYYY-MM-DD"
+seed_set: []
+
+world:
+  name: ""
+  params: {}
+event:
+  t_star_by_run: []
+  delta_safe: null
+  H_pos: null
+
+gate_results:
+  monitorability:
+    passed: false
+    achieved_fpr: []   # list of {target, achieved}
+    fpr_min: null
+    ok_targets: null
+    diagnostics:
+      support_size_neg: null
+      tie_dominance: null
+  robustness:
+    passed: null
+    seed_pass_rate: null
+    label_flip_rate: null
+
+utility:
+  at_fpr:
+    - fpr: 0.05
+      coverage: null
+      lead_time_median: null
+      lead_time_iqr: null
+    - fpr: 0.10
+      coverage: null
+      lead_time_median: null
+      lead_time_iqr: null
+
+label: "RANK_ONLY"  # SUPPORTED_FOR_ALARM | RANK_ONLY | ESTIMATOR_UNSTABLE | INCONCLUSIVE | SCOPE_LIMITED
+notes: ""

@@ -1,0 +1,22 @@
+# fit_math_prereg_template_v0.1.yaml
+prereg:
+  date_locked: "YYYY-MM-DD"
+  candidate_id: "math:..."
+  boundary:
+    system: "Lean4"
+    axioms: "ZFC-like or type theory fragment"
+    scope: "structures: groups/graphs/etc."
+  budgets:
+    proof_search_steps: 50000
+    lemma_library_max: 200
+  gates:
+    checkability: true
+    budget: true
+    robustness:
+      representation_sweeps: ["rename", "equivalent_definition"]
+      max_flip_rate: 0.2
+  stop_condition:
+    max_variants: 20
+    label_if_not_fixed: "BUDGET_INCONCLUSIVE"
+  reporting:
+    report_all_variants: true

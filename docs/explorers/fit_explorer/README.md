@@ -80,10 +80,12 @@ Then inspect:
 
 - Synthesis discipline (failure labels -> admissible actuators -> prereg -> gates): `docs/est/synthesis_playbook_v0.1.md`
 - Monitorability boundary (why AUC can be insufficient under low-FPR): `docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md`
+- Extensions:
+  - World-Evolution v0.1 (toy evolving worlds + runnable demo): `docs/world_evolution/README.md`
+  - Math-Discovery v0.1 (representations/lemmas/strategies + verifier interface): `docs/math_discovery/README.md`
 
 ---
 
 ## Notes on `results/` in this pack
 
 The files under `results/` are illustrative placeholders for explorer outputs. They are not new empirical claims.
-

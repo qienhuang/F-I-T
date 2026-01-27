@@ -1,0 +1,27 @@
+# world_evolution_demo default parameters (v0.1)
+date: "2026-01-27"
+world:
+  name: stochastic_majority_ca
+  grid: 32
+  steps: 600
+  init_p: 0.9
+  schedule:
+    p0: 0.02
+    p1: 0.45
+event:
+  observable: magnetization
+  theta: 0.25
+  delta_safe: 80
+  H_pos: 120
+exploration:
+  n_candidates: 60
+  search_space:
+    base_series: [magnetization, density, activity]
+    score: [var_y, ac1_y, trend_y, const_1, const_0]
+    W: [25, 50, 100, 200]
+    alpha: [0.0, 0.1, 0.2]
+gates:
+  fpr_targets: [0.01, 0.05, 0.10]
+  eps: 0.01
+  floor_max: 0.20
+  min_targets_ok: 2

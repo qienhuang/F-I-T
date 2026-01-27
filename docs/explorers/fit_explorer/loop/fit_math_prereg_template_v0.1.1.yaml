@@ -1,0 +1,36 @@
+# fit_math_prereg_template_v0.1.1.yaml
+prereg:
+  date_locked: "YYYY-MM-DD"
+  candidate_id: "math:..."
+  scope:
+    system: "Lean4|Coq|Isabelle"
+    axioms: "type theory fragment / theory boundary"
+    object_domain: "e.g., groups/graphs/rewriting systems"
+  interface:
+    explorer_verifier: "docs/math_discovery/explorer_verifier_interface_v0.1.1.md"
+    evidence_chain_required: true
+
+budgets:
+  proof_search_steps: 50000
+  wall_time_s: 120
+  lemma_library_max: 200
+
+gates:
+  checkability: true
+  budget: true
+  robustness:
+    sweeps_spec: "docs/math_discovery/representation_sweeps_v0.1.1.md"
+    sweeps: ["S1_alpha_rename", "S2_def_unfold", "S4_budget_micro_sweep"]
+    max_flip_rate: 0.2
+  governance:
+    enabled: false  # set true if an agent has tools
+
+actuator_policy:
+  doc: "docs/math_discovery/actuator_selection_policy_v0.1.1.md"
+  max_variants: 20
+  stop_label_if_unresolved: "BUDGET_INCONCLUSIVE"
+
+reporting:
+  report_all_variants: true
+  include_negative_results: true
+  require_verifier_hashes_for_supported: true

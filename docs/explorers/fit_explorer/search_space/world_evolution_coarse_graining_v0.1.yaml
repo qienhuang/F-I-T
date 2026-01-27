@@ -1,0 +1,22 @@
+# Coarse-graining search space (world evolution) v0.1
+# g(x_t) candidates: map micro state -> effective variables z_t
+families:
+  - name: "global_order"
+    operators:
+      - "density"          # mean of binary grid
+      - "magnetization"    # |density - 0.5| * 2
+      - "activity"         # fraction of changed cells per step
+  - name: "local_agreement"
+    operators:
+      - "neighbor_agreement_rate"  # fraction of neighbor pairs equal
+  - name: "multi_scale_blocks"
+    params:
+      block_sizes: [2, 4, 8]
+    operators:
+      - "block_density_variance"   # variance of block means
+      - "block_density_entropy"    # entropy of block means binned
+  - name: "spectral"
+    operators:
+      - "low_freq_energy_ratio"    # FFT low-frequency energy / total (optional)
+notes:
+  - "Start small: global_order + multi_scale_blocks are enough for first maps."

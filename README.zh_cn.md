@@ -1,37 +1,194 @@
 ![Logo](imgs/banner_v2.png)
 
-# F-I-T（Force–Information–Time）动力学框架
+# F-I-T（力–信息–时间）动力学框架
 
-## 一个以约束为核心、面向物理/生物/认知/社会/AI 演化的元语言
+## 一个用于分析物理、生物、认知、社会和AI系统演化的最小化、可证伪框架。
 
-[[English]](README.md)
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
-
-**Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401 | **最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020
-
-**已发布论文（Zenodo）**：
-- **建议先读（入口）— FIT（力–信息–时间）动力学：起源与设计目标:** https://doi.org/10.5281/zenodo.18142211
-- **AI 安全— AI学习系统中的不可逆操作与节拍失配：定义、阈值与最小治理接口:** https://doi.org/10.5281/zenodo.18142151
-- **AI 安全（grokking）— Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
-
-
-**案例研究：**
-- [**Li² Grokking scaling law 复现（基于 Li² 论文；独立验证）**](experiments/li2_scaling_law/README.md)
-- [**智能手机与注意力系统**](docs/zh_cn/cases/CASE_01_Phone_Attention_System.md)
-- [**内容平台与内卷**](docs/zh_cn/cases/CASE_02_Content_Platform_Involution.md)
-- [**学习：从记忆到理解**](docs/zh_cn/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
-
-*注：人名仅作为论文作者引用；不暗示任何从属关系或背书。*
-
-**结构原型库（Patterns）：**
-- [**Patterns（可复用结构模板）**](docs/zh_cn/patterns/README.md)
+[[English]](README.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
 ---
 
-**当前规范（v2.4.1）**：[docs/v2.4.md](docs/v2.4.md)
-**框架建立**：2025 年 12 月 10 日（原始版本）
+## 从这里开始（选择你的路径）
+
+| 如果你是... | 从这里开始 |
+|-------------|------------|
+| **FIT 新手**（5分钟） | [核心卡片](docs/core/fit_core_card.md) — 一页了解原语 + 直觉 |
+| **评估框架** | [FIT 的主张](#fit-的主张与非主张) → [Tier-1 证据](#tier-1-证据玩具系统) |
+| **从事 AI 安全** | [AI 安全索引](docs/ai_safety/README.md) → [FIT 用于 AI 安全](docs/ai_safety/fit_ai_safety_mapping.md) |
+| **运行实验** | [工具包](#工具包) → [Li² 复现](experiments/li2_scaling_law/README.md) |
+| **阅读完整规范** | [v2.4 规范](docs/v2.4.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
+
+---
+
+## 核心思想
+
+许多系统的失败不是因为缺乏力量或信息，而是因为**高影响的改变在纠正发生之前就已变得不可逆**。
+
+FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视为一等变量。
+
+**五个原语**：
+
+| 原语 | 捕获的内容 |
+|------|------------|
+| **状态 (S)** | 系统配置 |
+| **力 (F)** | 有向影响 / 漂移 |
+| **信息 (I)** | 熵减少 / 知识增益 |
+| **约束 (C)** | 可达状态空间缩减 |
+| **时间 (T)** | 从 F–I 交互中涌现的特征尺度 |
+
+**纪律**：所有主张必须绑定到显式的估计器元组。无估计器 → 无主张。
+
+---
+
+## FIT 的主张与非主张
+
+| FIT 不主张 | FIT 主张 |
+|------------|----------|
+| ❌ "万物理论" | ✅ 讨论演化的最小元语言 |
+| ❌ 替代 FEP、构造理论等 | ✅ 可通过计算/实证实验证伪 |
+| ❌ 预测精确轨迹的能力 | ✅ 初步 Tier-1 验证显示有前景的结果 |
+| ❌ 所有命题在所有领域都已验证 | ✅ AI 安全应用是可操作的 |
+
+---
+
+## Tier-1 证据（玩具系统）
+
+| 系统 | 结果 | 命题 |
+|------|------|------|
+| **Langton's Ant** | 97.5% 理论–观测匹配 | 相变 / nirvana 预测 |
+| **Conway's GoL** | 0% 违例 | P7 信息界 |
+| **Conway's GoL** | ρ = 0.775 | P10 估计器一致性 |
+
+![Conway's Game of Life: Tier-1 验证快照](experiments/figures/conway_status_overview.png)
+
+*图：Conway 生命游戏 Tier-1 验证（详见 [v2.4 规范](docs/v2.4.md)）。*
+
+**Tier-2 状态**：Grokking 实验可评估且可复现；基线在严格低 FPR 约束下尚未成为稳定的硬指标。见 [tier2_grokking](experiments/tier2_grokking/README.md) 和 [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md)。
+
+---
+
+## 论文
+
+| 主题 | 链接 |
+|------|------|
+| **FIT 起源与设计目标**（从这里开始） | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
+| **AI 安全：不可逆操作与节奏错配** | [Zenodo](https://doi.org/10.5281/zenodo.18142151) |
+| **AI 安全（grokking）：受控涅槃** | [Zenodo](https://doi.org/10.5281/zenodo.18155425) / [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634) |
+| **AI 安全（grokking）：硬指标协议** | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
+| **马尔可夫沙箱 (math.PR)** | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
+| **超越道德宪章** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
+| **为什么公司转型太晚** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
+
+---
+
+## 案例研究
+
+自包含的 FIT 分析（即读即用）。每个案例都有明确的边界和可观测信号。
+
+| 案例 | 聚焦 |
+|------|------|
+| [Grokking 缩放律 (Li²)](experiments/li2_scaling_law/README.md) | ML 相变 |
+| [AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | 真实世界仪器边界 |
+| [智能手机与注意力](docs/cases/CASE_01_Phone_Attention_System.md) | 注意力动力学 + 约束累积 |
+| [内容平台内卷](docs/cases/CASE_02_Content_Platform_Involution.md) | 反馈循环 + 协调失败 |
+| [企业 IT 演化](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | 基础设施锁定 + 节奏错配 |
+| [学习：从记忆到理解](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md) | Grokking 作为相变 |
+| [双连续多尺度设计](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) | 边界等同微结构库 |
+| [BioArc 架构搜索](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md) | 约束下的预算探索 |
+| [运动想象 BCI](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md) | 低 FPR 预算下的可监控性 |
+
+---
+
+## 工具包
+
+可运行、CPU 优先的构建块。每个都产出可审计的产物。
+
+| 工具包 | 用途 |
+|--------|------|
+| [工具包索引](tools/README.md) | 所有可运行演示的入口 |
+| [FIT 代理警报工具包](tools/fit_proxy_alarm_kit/README.md) | 非 LLM 专家 + 标签预算 + 固定 FPR |
+| [FIT 约束探索工具包](tools/fit_constrained_explorer_kit/README.md) | 硬约束下的预算搜索 |
+| [FIT EWBench 工具包](tools/fit_ewbench_kit/README.md) | 提示套件运行器 + 日志 + 报告 |
+| [FIT Hopfield 实验室工具包](tools/fit_hopfield_lab_kit/README.md) | 玩具联想记忆实验室 + 相图 |
+| [探索器索引（FIT-Explorer + 扩展）](docs/explorers/README.md) | 预算方法搜索规范 + 扩展入口 |
+| [World-Evolution 探索（v0.1）](docs/world_evolution/README.md) | 玩具演化世界 + 有效变量/告警方法搜索 demo |
+| [Math-Discovery 引擎（v0.1）](docs/math_discovery/README.md) | 对表征/引理/策略的可审计探索（以规范为先） |
+| [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking 警报可接受性基准 |
+
+---
+
+## AI 安全专题
+
+| 资源 | 描述 |
+|------|------|
+| [AI 安全索引](docs/ai_safety/README.md) | 主入口 |
+| [FIT 用于 AI 安全](docs/ai_safety/fit_ai_safety_mapping.md) | 5分钟概览 + 2小时自评检查表 |
+| [自指 IO 标准](docs/ai_safety/self_referential_io.md) | IO 约束规范 |
+| [CPU 优先本地代理](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM 蓝图 |
+| [Dr.One 演示](examples/dr_one_demo/README.md) | 自编辑循环 + 可监控性门 |
+| [DeepSeek R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1 风格 RL + 风险控制 |
+
+### Dr.One：基线 vs 受控
+
+![Dr.One 策略评估：基线 vs 受控](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
+
+*如果低 FPR 警报可行，控制器可以在不停止计算的情况下扣留不安全操作的执行权限。可复现性：[MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md)*
+
+---
+
+## 规范版本
+
+| 版本 | 描述 | 链接 |
+|------|------|------|
+| **v2.4.1**（当前） | EST + Tier-1 验证 | [docs/v2.4.md](docs/v2.4.md) |
+| v2.3 | Tier-1 验证 | [docs/v2.3.md](docs/v2.3.md) |
+| v2.1 | 遗留讨论版 | [docs/v2.1.md](docs/v2.1.md) |
+
+**稳定性**：2.x 核心已稳定；修订由反例驱动。见[版本策略](docs/core/Versioning_Policy.md)。
+
+---
+
+## 路线图
+
+| 里程碑 | 目标 |
+|--------|------|
+| **M0** | 稳定 2.x 规范；发布 Tier-1 脚本 |
+| **M1** | 参考实现；5–8 个命题有可复现状态 |
+| **M2** | 连续时间 FIT（SDE 层）；约束累积定理 |
+| **M3** | 量子 FIT（Lindbladian 层） |
+| **M4** | 统一 v3.0（离散 / 连续 / 量子） |
+| **M5** | 应用：AI 安全、复杂性科学、制度设计 |
+
+**完整路线图**：[docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
+
+---
+
+## 仓库地图
+
+```
+docs/           规范和笔记
+  ai_safety/    自指 IO 和治理
+  benchmarks/   规范 + 预注册模板（如 GMB v0.4）
+  explorers/    预算方法搜索（FIT-Explorer）
+experiments/    可运行演示和验证产物
+papers/         草稿和特定场所的写作
+proposals/      实践者试点和模板
+skills/         Codex CLI 技能（可选）
+tools/          可运行工具包
+```
+
+---
+
+## 引用
+
+**Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401
+**最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020
+
+见 [CITATION.cff](CITATION.cff) 获取复制/粘贴格式。
+
+---
+
+## 元数据
 
 **作者**：Qien Huang（独立研究者）
 **邮箱**：qienhuang@hotmail.com
@@ -39,145 +196,6 @@
 **仓库**：https://github.com/qienhuang/F-I-T
 **ORCID**：https://orcid.org/0009-0003-7731-4294
 
-## 规范文档（从这里开始）
-
-> **首次阅读推荐顺序**：核心卡 → 当前规范（v2.4）→ 入口文档
-
-- **最快入口（核心卡，v2.4.1+）**：[docs/zh_cn/core/fit_core_card.md](docs/zh_cn/core/fit_core_card.md)
-- **当前规范（v2.4.1，EST + Tier-1 验证）**：[docs/v2.4.md](docs/v2.4.md)（EN），[docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md)（中文）
-- **上一版（v2.3，Tier-1 验证）**：[docs/v2.3.md](docs/v2.3.md)
-- **讨论版（v2.1）**：[docs/v2.1.md](docs/v2.1.md)
-- **更新日志**：[CHANGELOG.md](CHANGELOG.md)
-- **版本策略**：[docs/core/Versioning_Policy.md](docs/core/Versioning_Policy.md)
-
-> **稳定性说明**：2.x 核心已稳定；修订由反例驱动。详见 [版本策略](docs/core/Versioning_Policy.md)。
-
-## 为什么 F-I-T？
-
-从量子、分子到细胞、个体、组织、国家乃至文明——为什么会出现清晰的层级结构？为什么演化常常呈现"振荡—稳定—聚合—再稳定"的重复节奏？为什么很多系统的失败不是因为能力不足或信息缺失，而是因为**节奏错了**？
-
-我试图把"演化"压缩到三个最小变量：
-
-- **Force（F）**：驱动或约束系统变化的作用（交互、选择压力、制度约束、目标函数梯度）
-- **Information（I）**：能在时间中保持并产生因果效应的结构（编码、形态、模式、模型）
-- **Time（T）**：不是背景刻度，而是 F 与 I 相互作用涌现出的特征时间尺度谱（节奏）
-
-**F-I-T 是元框架，不是某个具体领域的理论。**
-它的用法：先把任何"演化/发展/起源/崩溃/创新"问题还原到 `(F, I, T)`，再讨论层级、临界点与转变路径。
-
----
-
-## FIT 声明什么（以及不声明什么）
-
-**FIT 不声明**：
-- ❌ 复杂系统的"万有理论"
-- ❌ 取代现有框架（自由能原理、Constructor Theory 等）
-- ❌ 能预测复杂系统的精确轨迹
-- ❌ 所有命题已在所有领域得到验证
-
-**FIT 声明**：
-- ✅ 一套用于跨领域讨论演化的最小元语言
-- ✅ 可通过计算与实证实验证伪
-- ✅ 初步 Tier-1 验证在受控系统中显示出有希望的结果
-- ✅ 在 AI 安全与复杂性科学中的应用是可行的
-
----
-
-## FIT v2.4 概览
-
-**问题**：现代科学通过碎片化的视角（热力学、信息论、复杂性科学、机器学习）来研究演化。它们各自成功，但缺乏跨领域综合所需的共享公理。
-
-**FIT 的回应**：把"演化"压缩到五个原语和六条原则。生成 18 条可证伪命题，绑定到显式估计器元组。
-
-**核心洞察**：许多系统失败不是因为缺乏能力或信息，而是因为高影响变化在纠偏发生之前就变得不可逆。FIT 把节奏（纠偏时间尺度）作为一阶变量。
-
-**五个原语**：
-
-| 原语 | 定义 | 解释 |
-|------|------|------|
-| **状态（S）** | $S_t \in \mathcal{S}$ | 时刻 $t$ 的系统配置 |
-| **力（F）** | $\mathbb{E}[S_{t+1} - S_t \mid S_t] = \alpha F(S_t, t)$ | 广义漂移 / 定向影响 |
-| **信息（I）** | $I_{\text{gain}} := H(P_0) - H(P_1)$ | 熵减少 / 知识增益 |
-| **约束（C）** | $C(t) := \log \lvert \mathcal{S} \rvert - \log \lvert \mathcal{S}_{\text{accessible}}(t) \rvert$ | 可达状态空间缩减 |
-| **时间（T）** | 有序索引 $t$，带特征尺度 | 由 F–I 交互涌现 |
-
-**v2.4 关键特性**：
-- **估计器选择理论（EST）**：8 条可接受性公理（A1–A8），防止"估计器黑客"批评
-- **18 条可证伪命题**，带显式成功/失败标准
-- **Tier-1 验证**：Langton's Ant 理论–观测匹配 97.5%，Conway's GoL P7 边界 0% 违规
-- **AI 安全轨道**：节奏错配 + 不可逆操作作为独特失效模式
-
-**阅读完整规范**：[docs/v2.4.md](docs/v2.4.md)
-
-## 入口（实践导向）
-
-- **AI 安全索引**：[docs/ai_safety/README.md](docs/ai_safety/README.md)
-- **FIT 与 AI 安全（从这里开始）**：[docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5 分钟概览 + 2 小时自检清单
-- **两周试跑（面向团队）**：[proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
-- **自指涉能力的 IO 控制标准**：[docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
-- **CPU 优先本地智能体蓝图（16GB 内存，DeepSeek 蒸馏）**：[papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)（[中文版](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.zh_cn.md)）
-- **CPU 优先本地智能体 demo（动作门控 + 审计日志）**：[examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
-- **案例笔记（R1 风格 RL + 风控）**：[docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — 纵深防御：内容 gating + 不可逆 action gating
-- **Li² 复现协议（一键）**：[experiments/li2_scaling_law/FIT_VALIDATION_README.md](experiments/li2_scaling_law/FIT_VALIDATION_README.md) + [experiments/li2_scaling_law/run_fit_validation.py](experiments/li2_scaling_law/run_fit_validation.py)
-- **云端运行入口（Li²）**：[experiments/li2_scaling_law/colab_li2_scaling_law.ipynb](experiments/li2_scaling_law/colab_li2_scaling_law.ipynb)（Colab）+ [experiments/li2_scaling_law/aistudio_paddle_script_task/README.md](experiments/li2_scaling_law/aistudio_paddle_script_task/README.md)（百度 AI Studio / Paddle）
-- **可运行 demo**：[examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
-- **Tier-2.5 演示（预注册）**：[experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 服务请求；将 FIT 指标应用于真实世界数据（非验证声明）
-- **arXiv 锚定草稿（IO × 节奏错配）**：[papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)
-
-### Tier-2.5（NYC 311）— 决策视图
-
-![NYC 311 Tier-2.5（预注册演示）：window-normalized rho 与 backlog（HPD；created-date 边界=2024；in-scope vs closure tail）](experiments/real_world/nyc_311_tier2p5/figures/run003_v3_W14_H14/decision_view.png)
-
-这是一个**预注册演示**（不是"真实世界验证"声明）。垂直标记指示 **created-date 边界**：arrivals 按构造过滤到 2024 年，而 closures 可能延续到 2025 年（closure tail；在该边界设定下对 H1 属于 out of scope）。
-
-**当前解读（HPD 2024；W=14, H=14）**：coherence gate 通过，但 H1 为 **INCONCLUSIVE**，因为在 created-date 边界内 **rho 始终 < 1**（in-scope 的 tempo mismatch 事件数为 0）。
-
-可复现性 + 护栏：[prereg_v3.yaml](experiments/real_world/nyc_311_tier2p5/prereg_v3.yaml) 和 [experiment README](experiments/real_world/nyc_311_tier2p5/README.md)。
-
-## Tier-1 证据（玩具系统）
-
-- **Langton's Ant（开放边界）**：净位移理论–观测匹配 97.5%；支持关键相变/涅槃相关预测
-- **Conway's Game of Life**：P7 信息边界（0% 违规），P10 估计器一致性（rho = 0.775）；P2 约束单调性在当前估计器下被挑战
-
-![Conway's Game of Life: Tier-1 validation snapshot (FIT v2.4).](experiments/figures/conway_status_overview.png)
-
-*图：Conway's Game of Life Tier-1 验证快照（详见 [docs/v2.4.md](docs/v2.4.md)）*
-
-## 路线图
-
-| 里程碑 | 目标 | 时间窗 |
-|--------|------|--------|
-| **M0** | 稳定 2.x 规范；发布 Tier-1 验证脚本（GoL、Langton's Ant） | 0–3 月 |
-| **M1** | Python 参考实现；5–8 条命题可复现状态 | 3–9 月 |
-| **M2** | 连续时间 FIT（SDE 层）；证明约束累积定理 | 6–18 月 |
-| **M3** | 量子 FIT（Lindbladian 层）；演示 P2/P3 的量子类比 | 9–24 月 |
-| **M4** | 合并离散/连续/量子为统一 v3.0 | 18–36 月 |
-| **M5** | 应用：AI 安全、复杂性科学、制度设计 | 持续 |
-
-**完整路线图**：[docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
-
-## 仓库结构
-
-- `docs/` — 规范与笔记
-- `proposals/` — 实践者试跑与模板
-- `docs/ai_safety/` — 自指涉 IO 与治理文档
-- `examples/` 和 `experiments/` — 可运行 demo 与验证产物
-- `papers/` — 草稿与特定投稿文件
-- `CITATION.cff` — 本仓库的引用元数据
-
-## 引用
-
-使用 `CITATION.cff` 获取复制粘贴格式，或通过 Zenodo 引用：
-
-- Zenodo（所有版本）：https://doi.org/10.5281/zenodo.18012401
-- 最新版（v2.4.1）：https://doi.org/10.5281/zenodo.18112020
-
-## 许可证
-
-本仓库中的文本和文档采用 **CC BY 4.0** 许可。
-
-## AI 辅助写作声明
-
-部分起草与编辑由大语言模型辅助完成。作者对所有内容、声明和错误负全责。
+**AI 辅助起草声明**：部分起草工作由大语言模型辅助完成。作者对所有内容负全责。
 
 ![footer_banner](imgs/footer_banner.png)

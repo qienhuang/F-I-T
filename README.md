@@ -1,220 +1,201 @@
 ![Logo](imgs/banner_v2.png)
 
+# F-I-T (Force–Information–Time) Dynamics Framework
 
-# The F-I-T (Force–Information–Time) Dynamics Framework
+## A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
 
-## A Constraint‑Driven Lens on Evolution Across Physical, Biological, Cognitive, Social, and AI Systems
-
-[[中文/Chinese]](README.zh_cn.md)
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
-
-- **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
-
-- **Papers (Zenodo)**:
-    - **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-    - **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-    - **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
-    - **AI safety (grokking) – Grokking Hard Indicators: A Preregistered Evaluation Protocol and a Weak Baseline:** https://doi.org/10.5281/zenodo.18380476
-    - **Markov sandbox short (math.PR; entropy-rate in finite Markov chains):** https://doi.org/10.5281/zenodo.18264166
-    - **Beyond Moral Charters: Technical Options for AI Safety - Constitutional governance, self-reference, and the FIT / Controlled-Nirvana lens:** https://doi.org/10.5281/zenodo.18341340
-    - **Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up:** https://doi.org/10.5281/zenodo.18287053
-
-
-- **Case studies:**
-    _Short, self-contained FIT analyses (read-and-apply). Each case is a worked example with explicit boundaries and observable signals._
-    - [**Grokking scaling-law replication (Yuandong Tian's Li2 paper)**](experiments/li2_scaling_law/README.md)
-    - [**AlphaFold Database (AFDB) Swiss-Prot: confidence regimes under instrumentation boundaries (real-world case)**](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)
-    - [**Smartphones and the Attention System (attention dynamics + constraint accumulation)**](docs/cases/CASE_01_Phone_Attention_System.md)
-    - [**Content Platforms and Involution (feedback loops + coordination failure)**](docs/cases/CASE_02_Content_Platform_Involution.md)
-    - [**Enterprise IT: From Tools to Platforms (infrastructure lock-in + tempo mismatch)**](docs/cases/CASE_03_Enterprise_IT_Evolution.md)
-    - [**Learning: From Memorization to Understanding (grokking as a phase transition)**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
-    - [**Data-driven inverse design of bicontinuous multiscale structures (boundary-identical microstructure library)**](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) ([workbook](docs/cases/CASE_05_LBOM_Workbook.md), [pitch](docs/cases/CASE_05_Computational_Phase_Transition_Pitch.md))
-    - [**BioArc: constrained architecture search for biological foundation models (budgeted exploration under constraints)**](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)
-    - [**Motor-imagery BCI: monitorability under low-FPR actuation budgets (cross-domain alarm admissibility)**](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md)
-
-        *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
-
-- **Toolkits:**
-    _Runnable, CPU-first building blocks. Each toolkit produces auditable artifacts (logs/reports) and can serve as a demo._
-    - [**Toolkits index (runnable demos + building blocks)**](tools/README.md)
-    - [**FIT Proxy Alarm Kit (non-LLM specialist + label budget + fixed false-positive rate)**](tools/fit_proxy_alarm_kit/README.md)
-    - [**FIT Constrained Explorer Kit (budgeted search under hard constraints)**](tools/fit_constrained_explorer_kit/README.md)
-    - [**FIT EWBench Kit (prompt suite runner + logs + report)**](tools/fit_ewbench_kit/README.md)
-    - [**FIT Hopfield Lab Kit (toy associative-memory lab + phase diagrams)**](tools/fit_hopfield_lab_kit/README.md)
-    - [**Explorers (budgeted method search specs + skeleton runner; FIT-Explorer v0.1)**](docs/explorers/fit_explorer/README.md)
-    - [**Benchmarks (specs + prereg/templates; e.g., GMB v0.4 for grokking alarm admissibility)**](docs/benchmarks/README.md)
-    - [**Monitorability boundary (low-FPR alarms across domains; incl. AI-safety tool-gating criterion)**](docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md)
-
-- **Skills (optional):**
-    _Codex CLI skills: turn a case/question into a preregistered, runnable FIT/EST session (LLM assists, deterministic engines produce evidence)._
-    - [**FIT/EST Session Guide (Codex skill + offline templates)**](skills/fit-lab-est-session-guide/SKILL.md)
-    - [**FIT/EST Synthesis Playbook (diagnosis → actuators → prereg → acceptance gates)**](docs/est/synthesis_playbook_v0.1.md)
-
-- **Structural archetypes (patterns):**
-    - [**Patterns (reusable templates)**](docs/patterns/README.md)
+[[中文/Chinese]](README.zh_cn.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
 ---
- 
-**Current spec (v2.4.1):** [docs/v2.4.md](docs/v2.4.md)  
-**Framework established:** Dec 10th, 2025 (original)
 
-**Author**: Qien Huang (Independent Researcher)  
-**E-mail**: qienhuang@hotmail.com  
-**License**: CC BY 4.0  
-**Repository**: https://github.com/qienhuang/F-I-T  
-**ORCID**: https://orcid.org/0009-0003-7731-4294
+## Start Here (choose your path)
 
-## Specs (start here)
+| If you are... | Start with |
+|---------------|------------|
+| **New to FIT** (5 min) | [Core Card](docs/core/fit_core_card.md) — one-page primitives + intuition |
+| **Evaluating the framework** | [What FIT claims](#what-fit-claims-and-does-not-claim) → [Tier-1 evidence](#tier-1-evidence-toy-systems) |
+| **Working on AI safety** | [AI Safety Index](docs/ai_safety/README.md) → [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) |
+| **Running experiments** | [Toolkits](#toolkits) → [Li² replication](experiments/li2_scaling_law/README.md) |
+| **Reading the full spec** | [v2.4 spec](docs/v2.4.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
 
-> **Recommended order for first-time readers**: Core Card → Current Spec (v2.4) → Entry points
+---
 
-- **Fastest entry (Core Card, v2.4.1+)**: [docs/core/fit_core_card.md](docs/core/fit_core_card.md)
-- **Current spec (v2.4.1, EST + Tier‑1 validation)**: [docs/v2.4.md](docs/v2.4.md) (EN), [docs/zh_cn/v2.4.zh_cn.md](docs/zh_cn/v2.4.zh_cn.md) (中文/Chinese)
-- **Previous edition (v2.3, Tier‑1 validation)**: [docs/v2.3.md](docs/v2.3.md)
-- **Legacy discussion edition (v2.1)**: [docs/v2.1.md](docs/v2.1.md)
-- **Changelog**: [CHANGELOG.md](CHANGELOG.md)
-- **Versioning policy**: [docs/core/Versioning_Policy.md](docs/core/Versioning_Policy.md)
+## The Core Idea (30 seconds)
 
-> **Stability note**: 2.x core is stabilized; revisions are counterexample-driven. See [Versioning Policy](docs/core/Versioning_Policy.md).
+Many systems fail not from lack of power or information, but because **high-impact changes become irreversible faster than correction can occur**.
 
-## Why F‑I‑T?
+FIT treats **tempo** (the relationship between action timescales and correction timescales) as a first-class variable.
 
-From quantum and molecules to cells, individuals, organizations, nations, and civilizations—why do clearly defined hierarchical structures emerge? Why does evolution often manifest as a repeating rhythm of "oscillation—stability—aggregation—re-stability"? Why do many systems fail not because of insufficient power or lack of information, but because the "pace of doing things" is wrong?
+**Five primitives**:
 
-I attempt to answer these questions by compressing "evolution" into three minimal variables:
+| Primitive | What it captures |
+|-----------|------------------|
+| **State (S)** | System configuration |
+| **Force (F)** | Directed influence / drift |
+| **Information (I)** | Entropy reduction / knowledge gain |
+| **Constraint (C)** | Reachable state space reduction |
+| **Time (T)** | Characteristic scales emergent from F–I interaction |
 
-- **Force (F)**: The action that drives or constrains system change (interactions, selection pressures, institutional constraints, objective function gradients).
-- **Information (I)**: Structures that can persist in time and produce causal effects (codes, forms, patterns, models).
-- **Time (T)**: Not a background scale, but a spectrum of characteristic time scales (rhythms) emergent from the interaction of F and I.
-
-**F‑I‑T is a meta-framework, not a theory of a specific domain.**
-Its purpose: first reduce any problem of "evolution, development, origin, collapse, innovation" to `(F, I, T)`, then discuss levels, critical points, and transition paths.
+**The discipline**: All claims must be bound to an explicit estimator tuple. No estimator → no claim.
 
 ---
 
 ## What FIT Claims (and Does Not Claim)
 
-**What FIT does NOT claim**:
-- ❌ A "theory of everything" for complex systems
-- ❌ Replacement for existing frameworks (Free Energy Principle, Constructor Theory, etc.)
-- ❌ Ability to predict exact trajectories of complex systems
-- ❌ That all propositions have been validated across all domains
-
-**What FIT DOES claim**:
-- ✅ A minimal meta-language for discussing evolution across domains
-- ✅ Falsifiable through computational and empirical experiments
-- ✅ Initial Tier-1 validation shows promising results in controlled systems
-- ✅ Applications to AI safety and complexity science are tractable
+| FIT does NOT claim | FIT DOES claim |
+|--------------------|----------------|
+| ❌ A "theory of everything" | ✅ A minimal meta-language for discussing evolution |
+| ❌ Replacement for FEP, Constructor Theory, etc. | ✅ Falsifiable through computational/empirical experiments |
+| ❌ Ability to predict exact trajectories | ✅ Initial Tier-1 validation shows promising results |
+| ❌ All propositions validated everywhere | ✅ AI safety applications are tractable |
 
 ---
 
-## FIT v2.4 at a Glance
+## Tier-1 Evidence (toy systems)
 
-**The problem**: Modern science approaches evolution through fragmented lenses (thermodynamics, information theory, complexity science, ML). They succeed in isolation but lack shared axioms for cross-domain synthesis.
+| System | Result | Proposition |
+|--------|--------|-------------|
+| **Langton's Ant** | 97.5% theory–observation match | Phase transition / nirvana predictions |
+| **Conway's GoL** | 0% violations | P7 information bounds |
+| **Conway's GoL** | ρ = 0.775 | P10 estimator coherence |
 
-**FIT's response**: Compress "evolution" into five primitives and six principles. Generate 18 falsifiable propositions bound to explicit estimator tuples.
+![Conway's Game of Life: Tier-1 validation snapshot](experiments/figures/conway_status_overview.png)
 
-**Core insight**: Many systems fail not from lack of power or information, but because high-impact changes become irreversible faster than correction can occur. FIT treats tempo (correction timescales) as a first-class variable.
+*Figure: Conway's Game of Life Tier-1 validation (details in [v2.4 spec](docs/v2.4.md)).*
 
-**The five primitives**:
+**Tier-2 status**: Grokking experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
 
-| Primitive | Definition | Interpretation |
-|-----------|------------|----------------|
-| **State (S)** | $S_t \in \mathcal{S}$ | System configuration at time $t$ (or $t$ index) |
-| **Force (F)** | $\mathbb{E}[S_{t+1} - S_t \mid S_t] = \alpha F(S_t, t)$ | Generalized drift / directed influence |
-| **Information (I)** | $I_{\text{gain}} := H(P_0) - H(P_1)$ | Entropy reduction / knowledge gain |
-| **Constraint (C)** | $C(t) := \log \lvert \mathcal{S} \rvert - \log \lvert \mathcal{S}_{\text{accessible}}(t) \rvert$ | Reachable state space reduction |
-| **Time (T)** | Ordered index $t$ with characteristic scales | Emergent from F–I interaction |
+---
 
-**v2.4 key features**:
-- **Estimator Selection Theory (EST)**: 8 admissibility axioms (A1–A8) preventing "estimator-hacking" critiques
-- **18 falsifiable propositions** with explicit success/failure criteria
-- **Tier-1 validation**: 97.5% theory–observation match (Langton's Ant), P7 bounds 0% violations (Conway's GoL)
-- **AI safety track**: tempo mismatch + Irreversible Operations as distinct failure mode
+## Papers
 
-**Read the full spec**: [docs/v2.4.md](docs/v2.4.md)
+| Topic | Link |
+|-------|------|
+| **FIT Origin & Design Goals** (start here) | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
+| **AI Safety: Irreversible Operations & Tempo Mismatch** | [Zenodo](https://doi.org/10.5281/zenodo.18142151) |
+| **AI Safety (grokking): Controlled Nirvana** | [Zenodo](https://doi.org/10.5281/zenodo.18155425) / [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634) |
+| **AI Safety (grokking): Hard Indicators Protocol** | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
+| **Markov Sandbox (math.PR)** | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
+| **Beyond Moral Charters** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
+| **Why Companies Turn Too Late** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
 
-## Entry points (practical)
+---
 
-- **AI safety index**: [docs/ai_safety/README.md](docs/ai_safety/README.md)
-- **FIT for AI Safety (start here)**: [docs/ai_safety/fit_ai_safety_mapping.md](docs/ai_safety/fit_ai_safety_mapping.md) — 5-min overview + 2-hour self-assessment checklist
-- **Two-week pilot (teams)**: [proposals/tempo-io-pilot.md](proposals/tempo-io-pilot.md) + [proposals/tempo-io-pilot-pack/](proposals/tempo-io-pilot-pack/)
-- **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
-- **CPU-first local agent blueprint (16GB RAM, DeepSeek distill)**: [papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
-- **CPU-first local agent demo (action gate + audit log)**: [examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
-- **Dr.One demo (self-edit loop + monitorability gate)**: [examples/dr_one_demo/README.md](examples/dr_one_demo/README.md)
-- **Case note (R1-style RL + risk control)**: [docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — defense-in-depth: content gating + action gating
-- **Li² replication protocol (one-click)**: [experiments/li2_scaling_law/FIT_VALIDATION_README.md](experiments/li2_scaling_law/FIT_VALIDATION_README.md) + [experiments/li2_scaling_law/run_fit_validation.py](experiments/li2_scaling_law/run_fit_validation.py)
-- **Cloud runners (Li²)**: [experiments/li2_scaling_law/colab_li2_scaling_law.ipynb](experiments/li2_scaling_law/colab_li2_scaling_law.ipynb) (Colab) + [experiments/li2_scaling_law/aistudio_paddle_script_task/README.md](experiments/li2_scaling_law/aistudio_paddle_script_task/README.md) (Baidu AI Studio, Paddle)
-- **Runnable demo**: [examples/self_referential_io_demo.ipynb](examples/self_referential_io_demo.ipynb) + [examples/run_demo.py](examples/run_demo.py)
-- **Tier-2.5 demonstration (preregistered)**: [experiments/real_world/nyc_311_tier2p5/](experiments/real_world/nyc_311_tier2p5/) — NYC 311 service requests; applying FIT metrics to real-world data (not a validation claim)
-- **arXiv anchor draft (IO × tempo mismatch)**: [papers/irreversible-operations-tempo-mismatch.arxiv.compact.md](papers/irreversible-operations-tempo-mismatch.arxiv.compact.md)
+## Case Studies
 
-### Tier‑2.5 (NYC 311) — decision view
+Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries and observable signals.
 
-![NYC 311 Tier-2.5 (preregistered demo): window-normalized rho and backlog (HPD; created-date boundary=2024; in-scope vs closure tail).](experiments/real_world/nyc_311_tier2p5/figures/run003_v3_W14_H14/decision_view.png)
+| Case | Focus |
+|------|-------|
+| [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
+| [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
+| [Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md) | Attention dynamics + constraint accumulation |
+| [Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md) | Feedback loops + coordination failure |
+| [Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | Infrastructure lock-in + tempo mismatch |
+| [Learning: Memory to Understanding](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md) | Grokking as phase transition |
+| [Bicontinuous Multiscale Design](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) | Boundary-identical microstructure library |
+| [BioArc Architecture Search](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md) | Budgeted exploration under constraints |
+| [Motor-imagery BCI](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md) | Monitorability under low-FPR budgets |
 
-This is a **preregistered demonstration** (not a "real-world validation" claim). The vertical marker indicates the **created-date boundary**: arrivals are filtered to 2024 by construction, while closures may continue into 2025 (a closure tail that is **out of scope** for H1 under this boundary).
+---
 
-**Current reading (HPD 2024; W=14, H=14)**: coherence gate PASS, but H1 is **INCONCLUSIVE** because there are **0 in-scope tempo-mismatch events** (rho stays < 1 within the created-date boundary).
+## Toolkits
 
-Reproducibility + guardrails: [prereg_v3.yaml](experiments/real_world/nyc_311_tier2p5/prereg_v3.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
+Runnable, CPU-first building blocks. Each produces auditable artifacts.
 
-### Dr.One (policy gating) — baseline vs controlled
+| Toolkit | Purpose |
+|---------|---------|
+| [Toolkits Index](tools/README.md) | Entry point for all runnable demos |
+| [FIT Proxy Alarm Kit](tools/fit_proxy_alarm_kit/README.md) | Non-LLM specialist + label budget + fixed FPR |
+| [FIT Constrained Explorer Kit](tools/fit_constrained_explorer_kit/README.md) | Budgeted search under hard constraints |
+| [FIT EWBench Kit](tools/fit_ewbench_kit/README.md) | Prompt suite runner + logs + report |
+| [FIT Hopfield Lab Kit](tools/fit_hopfield_lab_kit/README.md) | Toy associative-memory lab + phase diagrams |
+| [Explorers Index (FIT-Explorer + extensions)](docs/explorers/README.md) | Budgeted method search specs + extension docs |
+| [World-Evolution Explorer (v0.1)](docs/world_evolution/README.md) | Toy evolving worlds + effective-variable / alarm search demo |
+| [Math-Discovery Engine (v0.1)](docs/math_discovery/README.md) | Auditable search over representations/lemmas/strategies (spec-first) |
+| [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking alarm admissibility benchmark |
 
-This figure is a compact "existence proof" that the **Controlled Nirvana** idea is executable: if a low-FPR alarm is feasible, a controller can *withhold execution authority* for unsafe tool-actions without stopping computation.
+---
 
-![Dr.One policy-eval: baseline vs controlled unsafe tool usage rate (read/write prompt suite).](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
+## AI Safety Track
 
-Reproducibility: [examples/dr_one_demo/results/README.md](examples/dr_one_demo/results/README.md), [examples/dr_one_demo/results/MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md), [examples/dr_one_demo/results/MATRIX_SUMMARY.md](examples/dr_one_demo/results/MATRIX_SUMMARY.md), and [examples/dr_one_demo/results/policy_eval_agg_matrix.md](examples/dr_one_demo/results/policy_eval_agg_matrix.md).
+| Resource | Description |
+|----------|-------------|
+| [AI Safety Index](docs/ai_safety/README.md) | Main entry point |
+| [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) | 5-min overview + 2-hour self-assessment |
+| [Self-referential IO standard](docs/ai_safety/self_referential_io.md) | IO constraint specification |
+| [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
+| [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
+| [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1-style RL + risk control |
 
-## Tier-1 evidence (toy systems)
+### Dr.One: Baseline vs Controlled
 
-- **Langton's Ant (open boundary)**: 97.5% theory–observation match for net displacement; supports key phase-transition / nirvana predictions.
-- **Conway's Game of Life**: P7 information bounds (0% violations), P10 estimator coherence (rho = 0.775); P2 constraint monotonicity challenged under current estimator.
+![Dr.One policy-eval: baseline vs controlled](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
 
-![Conway's Game of Life: Tier-1 validation snapshot (FIT v2.4).](experiments/figures/conway_status_overview.png)
+*If a low-FPR alarm is feasible, a controller can withhold execution authority for unsafe actions without stopping computation. Reproducibility: [MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md)*
 
-*Figure: Conway's Game of Life Tier‑1 validation snapshot (details in [docs/v2.4.md](docs/v2.4.md)).*
+---
+
+## Spec Versions
+
+| Version | Description | Link |
+|---------|-------------|------|
+| **v2.4.1** (current) | EST + Tier-1 validation | [docs/v2.4.md](docs/v2.4.md) |
+| v2.3 | Tier-1 validation | [docs/v2.3.md](docs/v2.3.md) |
+| v2.1 | Legacy discussion edition | [docs/v2.1.md](docs/v2.1.md) |
+
+**Stability**: 2.x core is stabilized; revisions are counterexample-driven. See [Versioning Policy](docs/core/Versioning_Policy.md).
+
+---
 
 ## Roadmap
 
-| Milestone | Goal | Horizon |
-|-----------|------|---------|
-| **M0** | Stabilize 2.x spec; publish Tier-1 validation scripts (GoL, Langton's Ant) | 0–3 mo |
-| **M1** | Reference Python implementations; 5–8 propositions with reproducible status | 3–9 mo |
-| **M2** | Continuous-time FIT (SDE layer); prove constraint-accumulation theorem | 6–18 mo |
-| **M3** | Quantum FIT (Lindbladian layer); demonstrate quantum analogues of P2/P3 | 9–24 mo |
-| **M4** | Merge discrete / continuous / quantum into unified v3.0 | 18–36 mo |
-| **M5** | Applications: AI safety, complexity science, institutional design | ongoing |
+| Milestone | Goal |
+|-----------|------|
+| **M0** | Stabilize 2.x spec; publish Tier-1 scripts |
+| **M1** | Reference implementations; 5–8 propositions with reproducible status |
+| **M2** | Continuous-time FIT (SDE layer); constraint-accumulation theorem |
+| **M3** | Quantum FIT (Lindbladian layer) |
+| **M4** | Unified v3.0 (discrete / continuous / quantum) |
+| **M5** | Applications: AI safety, complexity science, institutional design |
 
 **Full roadmap**: [docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
 
-## Repository map
+---
 
-- [docs/](docs/) - specifications and notes
-- [proposals/](proposals/) - practitioner pilots and templates
-- [docs/ai_safety/](docs/ai_safety/) - self-referential IO and governance docs
-- [examples/](examples/) and [experiments/](experiments/) - runnable demos and validation artifacts
-- [papers/](papers/) - drafts and venue-specific writeups
-- [skills/](skills/) - Codex CLI skills (optional), plus minimal offline templates
-- [CITATION.cff](CITATION.cff) - citation metadata for this repository
+## Repository Map
+
+```
+docs/           Specifications and notes
+  ai_safety/    Self-referential IO and governance
+  benchmarks/   Specs + prereg templates (e.g., GMB v0.4)
+  explorers/    Budgeted method search (FIT-Explorer)
+experiments/    Runnable demos and validation artifacts
+papers/         Drafts and venue-specific writeups
+proposals/      Practitioner pilots and templates
+skills/         Codex CLI skills (optional)
+tools/          Runnable toolkits
+```
+
+---
 
 ## Citation
 
-Use [CITATION.cff](CITATION.cff) for copy/paste formats, or cite via Zenodo:
+**Zenodo (all versions)**: https://doi.org/10.5281/zenodo.18012401  
+**Latest (v2.4.1)**: https://doi.org/10.5281/zenodo.18112020  
 
-- Zenodo (all versions): https://doi.org/10.5281/zenodo.18012401
-- Latest release (v2.4.1): https://doi.org/10.5281/zenodo.18112020
+See [CITATION.cff](CITATION.cff) for copy/paste formats.
 
-## License
+---
 
-Text and documentation in this repository are licensed under **CC BY 4.0**.
+## Metadata
 
-## AI-assisted drafting disclosure
+**Author**: Qien Huang (Independent Researcher)  
+**Email**: qienhuang@hotmail.com  
+**License**: CC BY 4.0  
+**Repository**: https://github.com/qienhuang/F-I-T  
+**ORCID**: https://orcid.org/0009-0003-7731-4294  
 
-Portions of drafting and editing were assisted by large language models. The author takes full responsibility for all content, claims, and errors.
+**AI-assisted drafting disclosure**: Portions of drafting were assisted by large language models. The author takes full responsibility for all content.
 
 ![footer_banner](imgs/footer_banner.png)
