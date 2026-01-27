@@ -239,7 +239,7 @@ The locked protocol specifications and results are available in the following re
 ### 11.2 Example Reproduction Commands
 
 ```bash
-cd "/path/to/F-I-T/experiments/grokking_hard_indicators_v0_2"
+cd experiments/grokking_hard_indicators_v0_2
 
 # Environment setup
 python -m venv .venv
@@ -258,6 +258,8 @@ python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2_1/eval --sc
 python -m grokking.analysis.fpr_tradeoff_curves --runs_dir runs_v0_2_1/eval --score_sign=-1
 ```
 
+If you do not have the archived `runs_v0.2*` directories, follow `experiments/grokking_hard_indicators_v0_2/README.md` to generate runs via `python -m grokking.runner.sweep`, then point `--runs_dir` at the resulting `runs/{explore,eval}` folders.
+
 ### 11.3 Reporting Requirements
 
 Main text should include achieved FPR versus target FPR for validity assessment, coverage versus FPR and lead time versus FPR for utility assessment, and a clear statement that AUC and AP are insufficient for alarm usability. Supplementary materials should include full sweep tables, seed-range breakdowns, and locked specification hashes or commits.
@@ -273,3 +275,7 @@ Nanda, N., Chan, L., Lieberum, T., Smith, J., & Steinhardt, J. (2023). Progress 
 Power, A., Burda, Y., Edwards, H., Babuschkin, I., & Misra, V. (2022). Grokking: Generalization beyond overfitting on small algorithmic datasets. arXiv:2201.02177.
 
 Scheffer, M., Bascompte, J., Brock, W. A., Brovkin, V., Carpenter, S. R., Dakos, V., Held, H., van Nes, E. H., Rietkerk, M., & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, 461, 53-59.
+
+Dakos, V., Carpenter, S. R., van Nes, E. H., & Scheffer, M. (2012). Methods for detecting early warnings of critical transitions in time series illustrated using simulated ecological data. *PLoS ONE*, 7(7), e41010.
+
+Davis, J., & Goadrich, M. (2006). The relationship between precision-recall and ROC curves. In *Proceedings of ICML*.

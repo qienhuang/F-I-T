@@ -2,7 +2,7 @@
 
 This folder contains an arXiv-ready LaTeX source for the canonical markdown:
 
-- `../grokking_hard_indicators_v0_3.v0.md`
+- `../grokking_hard_indicators_v0_3.md`
 
 ## Build locally
 
@@ -28,4 +28,3 @@ This creates `grokking_hard_indicators_arxiv_v0.3.zip` containing:
 
 If the zip already exists and cannot be overwritten, the script writes
 `grokking_hard_indicators_arxiv_v0.3_YYYYMMDD_HHMMSS.zip` instead.
-

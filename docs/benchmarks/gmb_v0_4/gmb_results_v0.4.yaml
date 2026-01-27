@@ -1,0 +1,67 @@
+# GMB results schema v0.4
+# This is a machine-readable, repo-friendly summary schema.
+schema_version: "v0.4"
+meta:
+  benchmark: "GMB"
+  run_id: "<unique id>"
+  date: "YYYY-MM-DD"
+  commit_hash: "<git commit>"
+  prereg_path: "docs/benchmarks/gmb_v0_4/gmb_prereg_v0.4.yaml"
+
+boundary:
+  task: "<task name>"
+  model: "<arch>"
+  seeds_eval: []
+event:
+  type: "E_jump"
+  t_event_by_seed: {}  # seed -> t*
+
+summary:
+  n_seeds: 0
+  n_events: 0
+  notes: ""
+
+indicators:
+  - name: "CSD_lag1"
+    family: "dynamics"
+    layer_A:
+      auc: null
+      ap: null
+    layer_B:
+      targets: [0.01, 0.05, 0.10]
+      achieved:  # list of {target, achieved}
+        - {target: 0.01, achieved: null}
+        - {target: 0.05, achieved: null}
+        - {target: 0.10, achieved: null}
+      ok_targets: null
+      fpr_min: null
+      controllability_pass: null
+      fpr_floor_detected: null
+    layer_C:
+      at_fpr:
+        - fpr: 0.05
+          coverage: null
+          lead_time_median: null
+          lead_time_iqr: null
+          lead_time_success: null
+        - fpr: 0.10
+          coverage: null
+          lead_time_median: null
+          lead_time_iqr: null
+          lead_time_success: null
+    layer_D:
+      family_size: null
+      pass_rate: null
+      label_flip_rate: null
+      sensitivity_notes: ""
+    label: "INCONCLUSIVE"  # SUPPORTED_FOR_ALARM | RANK_ONLY | ESTIMATOR_UNSTABLE | INCONCLUSIVE | SCOPE_LIMITED
+    diagnostics:
+      effective_support_size: null
+      tie_dominance: null
+      comments: ""
+
+tables:
+  gate_summary_path: "results/tables/gate_summary.csv"
+  utility_at_fpr_path: "results/tables/utility_at_fpr.csv"
+  robustness_path: "results/tables/robustness.csv"
+

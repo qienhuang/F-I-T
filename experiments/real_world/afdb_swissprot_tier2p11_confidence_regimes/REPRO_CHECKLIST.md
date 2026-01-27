@@ -55,8 +55,8 @@ python -m src.run --prereg EST_PREREG.yaml
 In `out/<run_id>/` confirm:
 
 - `accessions_selected.txt` and `accessions_selected.sha256`
-- `metrics_per_protein.parquet`
-- `metrics_per_bin.parquet`
+- `metrics_per_protein.parquet` (or `.csv` fallback)
+- `metrics_per_bin.parquet` (or `.csv` fallback)
 - `regime_report.md`
 - `tradeoff_onepage.pdf`
 - `boundary_snapshot.json`

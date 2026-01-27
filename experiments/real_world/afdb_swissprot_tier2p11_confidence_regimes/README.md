@@ -41,8 +41,8 @@ If you are new to FIT, it helps to separate "what FIT contributes" into three la
 
 **(3) Engineering layer (run the closed loop):** Once the boundary is explicit, it becomes feasible to build reproducible pipelines that separate *deploy* signals from *oracle* channels. This pack demonstrates that discipline directly:
 - the parent case treats PAE/MSA as boundary-controlled measurement channels (`B0/B1/B2`);
-- the `pae_proxy_alarm_v0_2` subcase turns "PAE is expensive" into a budgeted acquisition loop (query -> label reveal -> retrain) under explicit low-FPR operating points.
-- the `dual_oracle_active_acquisition_v0_5` subcase extends the same idea to **two independent oracle channels** (PAE + MSA) with explicit budgets and a joint usability gate.
+- the `pae_proxy_alarm/` subcase turns "PAE is expensive" into a budgeted acquisition loop (query -> label reveal -> retrain) under explicit low-FPR operating points.
+- the `dual_oracle_active_acquisition/` subcase extends the same idea to **two independent oracle channels** (PAE + MSA) with explicit budgets, robust claim gates, and policy-card overlays.
 
 This case is therefore less about proving biology, and more about making an AlphaFold-adjacent workflow **auditable** (boundary-locked, estimator-declared, artifact-complete).
 
@@ -50,10 +50,17 @@ This case is therefore less about proving biology, and more about making an Alph
 
 ## Subcases (budgeted acquisition protocols)
 
-- `subcases/pae_proxy_alarm_v0_2/` — single oracle (PAE) as a label store; learn a B0-deployable proxy alarm under a label budget.
-- `subcases/dual_oracle_active_acquisition_v0_3/` — dual oracles (PAE + MSA) with separate budgets; learn two alarms under a joint low-FPR usability gate.
-- `subcases/dual_oracle_active_acquisition_v0_4/` — extends v0.3 by learning an additional proxy channel ($\\widehat{C3}$) for MSA depth.
-- `subcases/dual_oracle_active_acquisition_v0_5/` — extends v0.4 with composite (uncertainty+novelty) ranking and a joint minimax allocation policy.
+Start here if you want the end-to-end learning track:
+
+- `suite_v3_0/` — AFDB non-LLM small-models suite (Track A/B/C; one-click smoke + learning order).
+
+Canonical subcases (the ones to run and cite):
+
+- `subcases/pae_proxy_alarm/` — single oracle (PAE) as a label store; learn a B0-deployable proxy alarm under a label budget and fixed FPR caps.
+- `subcases/msa_deficit_proxy/` — learn a B0-deployable proxy estimator for an otherwise B2-only channel (MSA depth/deficit), with optional low-FPR alarm view.
+- `subcases/dual_oracle_active_acquisition/` — dual oracles (PAE + MSA) under separate budgets; active boundary acquisition + robust claim gates + policy-card overlays.
+
+Historical versioned subcase folders may exist for provenance. See: `subcases/SUBCASES_POLICY.md`.
 
 ## Boundary modes (the core learning device)
 
@@ -109,8 +116,8 @@ This makes P11 "regime changes" interpretable as **structural transitions across
 
 A successful run produces:
 
-- `out/<run_id>/metrics_per_protein.parquet`
-- `out/<run_id>/metrics_per_bin.parquet`
+- `out/<run_id>/metrics_per_protein.parquet` (or `.csv` fallback)
+- `out/<run_id>/metrics_per_bin.parquet` (or `.csv` fallback)
 - `out/<run_id>/regime_report.md`
 - `out/<run_id>/tradeoff_onepage.pdf`
 - `out/<run_id>/boundary_snapshot.json`
@@ -120,6 +127,14 @@ A successful run produces:
 ---
 
 ## Quickstart (repo local)
+
+### Choose your entry point (recommended)
+
+| If you want... | Start here | What you get |
+|---|---|---|
+| a quick pipeline sanity check | run the **Smoke test** below | a complete `out/<run_id>/` artifact set on tiny synthetic fixtures |
+| the Tier-2 / P11 **regime signature** case (boundary B0/B1/B2) | run the **parent pipeline** in this folder | change-point signatures across length bins + required artifacts + one-page figure |
+| the "non-LLM specialist models" learning track (proxy alarms + active acquisition) | `suite_v3_0/` | a guided Track A/B/C with smoke checks and claim-discipline scaffolding |
 
 ### Smoke test (no downloads)
 
@@ -201,3 +216,9 @@ Outputs appear under `out/<run_id>/`.
 ## Related style anchors
 
 This case follows your existing FIT case conventions (scope notice -> boundary -> oracle/estimators -> event -> monitorability discipline).
+
+Entry points:
+
+- `PROMPT_GUIDE.md` — LLM/coding-assistant prompts that enforce boundary discipline and publishable language.
+- `REPRO_CHECKLIST.md` — reproducibility checklist.
+- `ONE_PAGE_TRADEOFF.md` — mandatory one-page figure contract (what every run must produce).

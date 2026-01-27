@@ -1,5 +1,6 @@
 ![Logo](imgs/banner_v2.png)
 
+> Legacy landing page (archival). Canonical entry: `README.md` + `MANIFEST.md`.
 
 # The F-I-T (Force–Information–Time) Dynamics Framework
 
@@ -10,46 +11,28 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
-- **Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
+**Zenodo (all versions):** https://doi.org/10.5281/zenodo.18012401 | **Latest release (v2.4.1):** https://doi.org/10.5281/zenodo.18112020   
 
-- **Papers (Zenodo)**:
-    - **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
-    - **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
-    - **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
-    - **AI safety (grokking) – Grokking Hard Indicators: A Preregistered Evaluation Protocol and a Weak Baseline:** https://doi.org/10.5281/zenodo.18380476
-    - **Markov sandbox short (math.PR; entropy-rate in finite Markov chains):** https://doi.org/10.5281/zenodo.18264166
-    - **Beyond Moral Charters: Technical Options for AI Safety - Constitutional governance, self-reference, and the FIT / Controlled-Nirvana lens:** https://doi.org/10.5281/zenodo.18341340
-    - **Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up:** https://doi.org/10.5281/zenodo.18287053
+**Papers (Zenodo):**
+- **Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals:** https://doi.org/10.5281/zenodo.18142211
+- **AI safety – Irreversible Operations and Tempo Mismatch in AI Learning Systems:** https://doi.org/10.5281/zenodo.18142151
+- **AI safety (grokking) – Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems:** Zenodo https://doi.org/10.5281/zenodo.18155425 | SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634  
+- **AI safety (grokking) – Grokking Hard Indicators: A Preregistered Evaluation Protocol and a Weak Baseline:** https://doi.org/10.5281/zenodo.18380476
 
 
-- **Case studies:**
-    _Short, self-contained FIT analyses (read-and-apply). Each case is a worked example with explicit boundaries and observable signals._
-    - [**Grokking scaling-law replication (Yuandong Tian's Li2 paper)**](experiments/li2_scaling_law/README.md)
-    - [**AlphaFold Database (AFDB) Swiss-Prot: confidence regimes under instrumentation boundaries (real-world case)**](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)
-    - [**Smartphones and the Attention System (attention dynamics + constraint accumulation)**](docs/cases/CASE_01_Phone_Attention_System.md)
-    - [**Content Platforms and Involution (feedback loops + coordination failure)**](docs/cases/CASE_02_Content_Platform_Involution.md)
-    - [**Enterprise IT: From Tools to Platforms (infrastructure lock-in + tempo mismatch)**](docs/cases/CASE_03_Enterprise_IT_Evolution.md)
-    - [**Learning: From Memorization to Understanding (grokking as a phase transition)**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
-    - [**Data-driven inverse design of bicontinuous multiscale structures (boundary-identical microstructure library)**](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) ([workbook](docs/cases/CASE_05_LBOM_Workbook.md), [pitch](docs/cases/CASE_05_Computational_Phase_Transition_Pitch.md))
-    - [**BioArc: constrained architecture search for biological foundation models (budgeted exploration under constraints)**](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)
+**Case studies:**
+- [**Li² grokking scaling-law replication (based on the Li² paper; independently verified)**](experiments/li2_scaling_law/README.md)
+- [**Smartphones and the Attention System**](docs/cases/CASE_01_Phone_Attention_System.md)
+- [**Content Platforms and Involution**](docs/cases/CASE_02_Content_Platform_Involution.md)
+- [**Learning: From Memorization to Understanding**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
 
-        *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
+*Note: names are cited as paper authors; no affiliation or endorsement is implied.*
 
-- **Toolkits:**
-    _Runnable, CPU-first building blocks. Each toolkit produces auditable artifacts (logs/reports) and can serve as a demo._
-    - [**Toolkits index (runnable demos + building blocks)**](tools/README.md)
-    - [**FIT Proxy Alarm Kit (non-LLM specialist + label budget + fixed false-positive rate)**](tools/fit_proxy_alarm_kit/README.md)
-    - [**FIT Constrained Explorer Kit (budgeted search under hard constraints)**](tools/fit_constrained_explorer_kit/README.md)
-    - [**FIT EWBench Kit (prompt suite runner + logs + report)**](tools/fit_ewbench_kit/README.md)
-    - [**FIT Hopfield Lab Kit (toy associative-memory lab + phase diagrams)**](tools/fit_hopfield_lab_kit/README.md)
-    - [**Benchmarks (specs + prereg/templates; e.g., GMB v0.4 for grokking alarm admissibility)**](docs/benchmarks/README.md)
+**Structural archetypes (patterns):**
+- [**Patterns (reusable templates)**](docs/patterns/README.md)
 
-- **Skills (optional):**
-    _Codex CLI skills: turn a case/question into a preregistered, runnable FIT/EST session (LLM assists, deterministic engines produce evidence)._
-    - [**FIT/EST Session Guide (Codex skill + offline templates)**](skills/fit-lab-est-session-guide/SKILL.md)
-
-- **Structural archetypes (patterns):**
-    - [**Patterns (reusable templates)**](docs/patterns/README.md)
+**Benchmarks (specs):**
+- [**Benchmarks index (specs + prereg/templates; e.g., GMB v0.4)**](docs/benchmarks/README.md)
 
 ---
  
@@ -140,7 +123,6 @@ Its purpose: first reduce any problem of "evolution, development, origin, collap
 - **Self-referential IO standard**: [docs/ai_safety/self_referential_io.md](docs/ai_safety/self_referential_io.md) + [docs/ai_safety/io_sr_mapping.md](docs/ai_safety/io_sr_mapping.md)
 - **CPU-first local agent blueprint (16GB RAM, DeepSeek distill)**: [papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
 - **CPU-first local agent demo (action gate + audit log)**: [examples/cpu_first_local_agent_demo/README.md](examples/cpu_first_local_agent_demo/README.md)
-- **Dr.One demo (self-edit loop + monitorability gate)**: [examples/dr_one_demo/README.md](examples/dr_one_demo/README.md)
 - **Case note (R1-style RL + risk control)**: [docs/ai_safety/deepseek_r1_fit_case_note.md](docs/ai_safety/deepseek_r1_fit_case_note.md) — defense-in-depth: content gating + action gating
 - **Li² replication protocol (one-click)**: [experiments/li2_scaling_law/FIT_VALIDATION_README.md](experiments/li2_scaling_law/FIT_VALIDATION_README.md) + [experiments/li2_scaling_law/run_fit_validation.py](experiments/li2_scaling_law/run_fit_validation.py)
 - **Cloud runners (Li²)**: [experiments/li2_scaling_law/colab_li2_scaling_law.ipynb](experiments/li2_scaling_law/colab_li2_scaling_law.ipynb) (Colab) + [experiments/li2_scaling_law/aistudio_paddle_script_task/README.md](experiments/li2_scaling_law/aistudio_paddle_script_task/README.md) (Baidu AI Studio, Paddle)
@@ -158,9 +140,9 @@ This is a **preregistered demonstration** (not a "real-world validation" claim).
 
 Reproducibility + guardrails: [prereg_v3.yaml](experiments/real_world/nyc_311_tier2p5/prereg_v3.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
 
-### Dr.One (policy gating) — baseline vs controlled
+### Dr.One (policy gating) â€” baseline vs controlled
 
-This figure is a compact "existence proof" that the **Controlled Nirvana** idea is executable: if a low-FPR alarm is feasible, a controller can *withhold execution authority* for unsafe tool-actions without stopping computation.
+This figure is a compact â€œexistence proofâ€ that the **Controlled Nirvana** idea is executable: if a low-FPR alarm is feasible, a controller can *withhold execution authority* for unsafe tool-actions without stopping computation.
 
 ![Dr.One policy-eval: baseline vs controlled unsafe tool usage rate (read/write prompt suite).](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
 
@@ -195,7 +177,6 @@ Reproducibility: `examples/dr_one_demo/results/README.md` and `examples/dr_one_d
 - `docs/ai_safety/` - self-referential IO and governance docs
 - `examples/` and `experiments/` - runnable demos and validation artifacts
 - `papers/` - drafts and venue-specific writeups
-- `skills/` - Codex CLI skills (optional), plus minimal offline templates
 - `CITATION.cff` - citation metadata for this repository
 
 ## Citation

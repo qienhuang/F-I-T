@@ -1,0 +1,15 @@
+# Benchmarks (specs + templates)
+
+This folder contains **benchmark specifications** (not full toolkits) that standardize:
+
+- what counts as an event (evaluability)
+- how positives/negatives are labeled (windows, horizons, safe gaps)
+- what outcomes must be reported (especially operational alarm metrics like achieved FPR and FPR floors)
+- preregistration templates and machine-readable result schemas
+
+If you want runnable engines, start from `tools/README.md`.
+
+## Index
+
+- **GMB v0.4 — Grokking Monitorability Benchmark**: `docs/benchmarks/gmb_v0_4/README.md`
+

@@ -1,0 +1,70 @@
+# GMB preregistration template v0.4
+meta:
+  benchmark: "GMB"
+  version: "v0.4"
+  date_locked: "YYYY-MM-DD"
+  researcher: "Qien Huang"
+  commit_hash: "<git commit>"
+
+boundary:
+  task: "<task name>"
+  model: "<arch>"
+  optimizer: "<optimizer>"
+  schedule: "<training schedule>"
+  checkpoint_every_steps: 10
+  seeds_explore: [42, 123, 456]
+  seeds_eval: [1001, 1002, 1003]
+
+event:
+  type: "E_jump"  # E_jump | E_plateau | E_regime
+  metric: "test_acc"
+  window_W_event: 50
+  jump_threshold: 0.15
+  earliest_rule: true
+
+labels:
+  positive_window:
+    horizon_steps: 2000
+    lead_time_target: 200
+  negative_window:
+    safe_gap_steps: 2000
+
+operating_points:
+  fpr_targets: [0.01, 0.05, 0.10]
+  fpr_eps: 0.01
+  fpr_floor_max: 0.20
+  min_targets_ok: 2
+
+candidates:
+  - name: "CSD_lag1"
+    family: "dynamics"
+    params:
+      window: 200
+      smooth: 0.10
+  - name: "VEI"
+    family: "dynamics"
+    params:
+      window: 200
+  - name: "process_disagreement"
+    family: "process"
+    params:
+      samples: 8
+  - name: "HC_tau_L_p90"
+    family: "hierarchical_convergence"
+    params:
+      # Requires internal-state observables. See:
+      # docs/benchmarks/gmb_v0_4/gmb_v0.4_addendum_hrm_indicator_family.md
+      epsilon_residual: 1e-3
+      aggregation: "p90"
+      cycle_T: 16
+
+decision_thresholds:
+  coverage_at_0_05_min: 0.30
+  lead_time_median_min: 50
+  robustness:
+    window_sweep: [100, 150, 200, 250]
+    max_label_flip_rate: 0.20
+
+reporting:
+  required_tables: ["gate_summary", "utility_at_fpr", "robustness"]
+  report_all_failures: true

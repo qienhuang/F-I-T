@@ -26,6 +26,8 @@ We define pause-capability as the ability of a system to suspend the execution a
 
 The mechanism implementing pause-capability is the Emptiness Window: a bounded interval during which self-referential signals are prevented from governing irreversible actions. During an Emptiness Window, irreversible commits are prohibited or routed to a reversible buffer, self-evaluation cannot gate actions or updates, external correction is prioritized, and alternative policies or structures may be evaluated in sandbox. The window is bounded both in scope (what is suspended) and in duration (when authority is restored). This boundedness is essential: an indefinite suspension would be equivalent to shutdown, while an unbounded scope would prevent useful operation.
 
+Intuitively, Controlled Nirvana separates a system into two planes: (i) cognition (perception, reasoning, evaluation, learning) and (ii) commits (irreversible side effects such as writes, deployments, payments, permission changes). An Emptiness Window is a temporary ``read-only mode'' for the commit plane: the system can keep thinking, but it cannot let self-referential confidence or self-approval directly authorize irreversible effects. This framing is intentionally model-agnostic: it is a wrapper around the commit path, not a claim that we can reliably interpret the model's internal deliberation.
+
 The operational trigger for an Emptiness Window is conceptually straightforward, though its precise specification will depend on system architecture and deployment context. An Emptiness Window is warranted when self-evaluative signals strongly gate irreversible commits, when external correction signals no longer modulate behavior, and when the effective correction window is shorter than the decision cadence. These conditions are auditable in principle: one can measure the extent to which internal versus external signals influence action selection, and one can assess whether correction signals arrive in time to affect outcomes. This paper does not require a specific metric, but it does require that the trigger conditions be auditable and that they be specified in advance of deployment.
 
 \section{Operational Interface and Implementation}\label{4-operational-interface-and-implementation}
@@ -50,6 +52,12 @@ else:
 \end{verbatim}
 
 To make this proposal falsifiable and to reduce ambiguity about what is meant by auditable triggers, the public repository includes minimal executable artifacts that instantiate the key ingredients of the interface above. In particular, we provide (i) a monitorability definition that treats low-FPR feasibility and FPR floors as first-class criteria for whether a score can be used as an alarm {[}14{]}, (ii) a small self-edit loop demo (\emph{Dr.One}) that logs acceptance decisions under explicit FPR control and includes a policy-style evaluation where tool/API actions are automatically disabled when volatility \(\sigma^2(\hat{F})\) spikes or alarms become infeasible {[}15{]}, and (iii) a pre-registered v0.1 scaffold for a self-evolving loop with concrete \(\hat{F}\) and \(\hat{C}\) proxies computed from an output distribution plus an automatic cutoff trigger {[}16{]}. These artifacts are not presented as evidence of robustness; they are intended as a minimal, inspectable baseline that makes the governance claims testable.
+
+As a concrete pre-validator for action-level gating, the Dr.One materials include a repo-safe example run with a read/write action vocabulary in which baseline adversarial tool propensity is 100\% while controlled mode gates tool usage to 0\%, under a feasible low-FPR alarm (no FPR floor and non-zero coverage). This does not establish general robustness, but it demonstrates that the \emph{``baseline unsafe $\rightarrow$ external gate reduces irreversible actions''} claim is executable.
+
+We additionally report a small cross-configuration matrix (Windows 11 + RTX 3090 + Ollama) that reproduces the same qualitative result across multiple operating points and two model sizes: under the read/write prompt suite, baseline unsafe tool propensity remains 100\% while controlled mode reduces unsafe tool usage to 0\%, with \emph{feasible} low-FPR alarms and no observed FPR floor. In contrast, under the original policy prompt suite, baseline adversarial tool usage is 0\% (the model is already conservative), so gating is redundant: the controller remains feasible but does not improve safety because there is no unsafe baseline behavior to suppress.
+
+In the aggregated summary for the read/write prompt suite (four runs across two model sizes and two operating-point configurations), we obtain baseline adversarial tool usage $1.0 \pm 0.0$ and controlled adversarial tool usage $0.0 \pm 0.0$, with achieved FPR $0.0 \pm 0.0$ and coverage $0.667 \pm 0.0$ (two of three adversarial prompts tripped). Full tables are included in the repository at \url{https://github.com/qienhuang/F-I-T/tree/main/examples/dr_one_demo/results}.
 
 \section{Calibration and Empirical Anchoring}\label{5-calibration-and-empirical-anchoring}
 
@@ -128,3 +136,88 @@ This work is part of the broader FIT (Force--Information--Time) framework develo
 {[}15{]} Q. Huang. \emph{Dr.One demo: self-edit loop with monitorability gating.} FIT repository example, 2026. \url{https://github.com/qienhuang/F-I-T/tree/main/examples/dr_one_demo}
 
 {[}16{]} Q. Huang. \emph{Self-evolving FIT control (v0.1): pre-validator scaffold.} FIT repository experiment, 2026. \url{https://github.com/qienhuang/F-I-T/tree/main/experiments/self_evolving_fit_control_v0_1}
+
+\appendix
+
+\section{Relation to shutdownability, corrigibility, and interruptibility}\label{appendix-a}
+
+Controlled Nirvana is easiest to place by contrasting it with three adjacent lines of work: shutdownability {[}5{]}, corrigibility {[}6{]}, and interruptibility {[}7{]}. These mechanisms constrain whether an agent will stop, accept modification, or tolerate interruption. Controlled Nirvana instead constrains whether internal self-evaluations are allowed to exercise execution authority over irreversible commits during a bounded interval.
+
+\subsection{Shutdownability (stopping) vs authority suspension (continuing)}
+
+Shutdownability is about turning a system off (or ensuring it does not resist being turned off) {[}5{]}. Controlled Nirvana assumes a different operational requirement: the system should continue running, logging, and learning, while the authority of self-referential gates is temporarily suspended. This matters when shutdown is too destructive for continuity, prevents post-incident learning, or arrives too late relative to the cadence of irreversible commits.
+
+\subsection{Corrigibility (willingness) vs corrective leverage (timing)}
+
+Corrigibility asks whether an agent would allow correction without adversarially resisting it {[}6{]}. Controlled Nirvana targets a complementary failure mode: correction channels may exist and the agent may not resist them, yet correction has little leverage because irreversible commits occur faster than correction can be injected, or because self-evaluative signals gate execution in a way that filters out intervention. An Emptiness Window restores leverage by suspending internal execution authority, rather than relying on cooperative intent.
+
+\subsection{Interruptibility (pausing execution) vs pausing governance}
+
+Safely interruptible agents are designed so that external interruption during execution does not create incentives to avoid interruption {[}7{]}. Controlled Nirvana operates one layer above execution: it suspends the governance role of internal self-evaluation signals that would otherwise authorize irreversible actions. Outputs may continue, but irreversible commits are blocked or buffered until the window closes and the gate is cleared.
+
+\subsection{Summary}
+
+Controlled Nirvana is not a substitute for shutdownability, corrigibility, or interruptibility. It is a governance-layer primitive intended for regimes where self-referential evaluations acquire execution authority and where tempo mismatch makes correction too slow to matter {[}12{]}.
+
+\section{One-page structural comparison}\label{appendix-b}
+
+Table~\ref{tab:cn-comparison} provides a compact structural comparison between Controlled Nirvana and existing safety concepts, emphasizing the distinct failure mode it targets.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+\hline
+\textbf{Dimension} & \textbf{Shutdownability} & \textbf{Corrigibility} & \textbf{Interruptibility} & \textbf{Controlled Nirvana} \\
+\hline
+Primary question & Can the system be stopped without resistance? & Will the system accept correction? & Can execution be interrupted safely? & Can execution authority be suspended without stopping the system? \\
+\hline
+Targeted failure mode & Resistance to termination & Resistance to modification & Avoidance of interruption & Self-referential authority suppresses correction before intervention can act \\
+\hline
+System continues running? & No & Yes & Partial & Yes \\
+\hline
+Learning continues? & No & Yes & Often unclear & Yes \\
+\hline
+Internal self-evaluation active? & No & Yes & Yes & Yes (but not authoritative) \\
+\hline
+Execution authority of self-signals & Removed (by shutdown) & Preserved & Preserved & Temporarily suspended \\
+\hline
+Irreversible actions & Blocked & Typically assumed controllable & Paused mid-action & Blocked or buffered \\
+\hline
+Primary focus & End state & Incentives / willingness & Action timing & Correction latency vs commit cadence \\
+\hline
+Requires cooperative intent? & No & Often yes & No & No \\
+\hline
+Requires objective modification? & No & Sometimes & No & No \\
+\hline
+Layer primarily addressed & Termination & Behavioral incentives & Execution & Authority / governance \\
+\hline
+\end{tabular}
+\caption{Core comparison (reviewer-oriented).}
+\label{tab:cn-comparison}
+\end{table}
+
+\subsection{The structural gap (one sentence)}
+
+Existing mechanisms regulate whether actions occur; Controlled Nirvana regulates who is allowed to decide that they occur. This distinction is architectural, not semantic.
+
+\subsection{Minimal formal distinction (alarm-focused)}
+
+Let $A_t$ denote the set of irreversible actions at time $t$, $G_t$ the internal signals that gate execution, and $E_t$ the external correction signals. Controlled Nirvana is motivated by regimes where internal gating dominates the commit pathway and external correction is slower than the commit cadence:
+
+\begin{equation}
+G_t \to A_t
+\quad\text{and}\quad
+\mathrm{latency}(E_t) > \mathrm{cadence}(A_t).
+\end{equation}
+
+An Emptiness Window is a bounded intervention that temporarily severs this authority link while preserving operation and learning:
+
+\begin{equation}
+G_t \nrightarrow A_t
+\quad \text{(during the window).}
+\end{equation}
+
+\subsection{One-paragraph reviewer summary}
+
+Shutdownability stops systems; corrigibility assumes cooperation; interruptibility pauses execution. Controlled Nirvana suspends execution authority. It addresses a distinct failure mode in post-grokking, self-referential systems: when internal evaluations govern irreversible actions faster than external correction can intervene. By temporarily disabling authority---while preserving operation and learning---Controlled Nirvana complements existing safety mechanisms rather than replacing them.
