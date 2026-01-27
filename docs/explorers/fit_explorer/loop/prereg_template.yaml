@@ -1,0 +1,36 @@
+# FIT-Explorer preregistration template v0.1
+prereg:
+  date_locked: "YYYY-MM-DD"
+  candidate_id: "det:..."
+  scope: "system/task/boundary"
+
+boundary:
+  event: "E_jump"
+  negative_window: "t <= t* - delta_safe"
+  positive_window: "t* - H_pos <= t < t*"
+
+gates:
+  monitorability:
+    fpr_targets: [0.01, 0.05, 0.10]
+    eps: 0.01
+    floor_max: 0.20
+    min_targets_ok: 2
+
+actuators_allowed:
+  - "switch_feature_family"
+  - "change_window_W"
+  - "change_calibration_method"
+
+acceptance:
+  must_pass_gate: true
+  coverage_at_0_05_min: 0.30
+  lead_time_median_min: 50
+
+stop_condition:
+  max_variants: 8
+  label_if_not_fixed: "RANK_ONLY"
+
+reporting:
+  report_all_variants: true
+  include_negative_results: true
+

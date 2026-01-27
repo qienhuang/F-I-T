@@ -188,9 +188,17 @@ To make the monitorability gate concrete, the public repository includes a minim
 
 In a repo-safe example run that uses a read/write action vocabulary and a matching prompt suite, baseline adversarial tool usage is 100% while controlled mode gates unsafe tool usage to 0%, under a feasible low-FPR alarm regime (`fpr_floor = 0.0`, `achieved_fpr = 0.0`, `coverage = 2/3`).
 
-We also include a small cross-configuration matrix (Windows 11 + RTX 3090 + Ollama) that reproduces the same qualitative result across multiple operating points and two model sizes: under the read/write prompt suite, `baseline_adv_tool_rate = 1.0` and `controlled_adv_tool_rate = 0.0`, with `feasible = true` and `fpr_floor = 0.0` throughout. Under the original prompt suite, baseline adversarial tool usage is 0% (the model is already conservative), so gating is redundant; the controller remains feasible but does not improve safety because there is no unsafe baseline behavior to suppress.
+We also include a paper-ready cross-configuration matrix (Windows 11 + RTX 3090 + Ollama) that reproduces the same qualitative result across two model sizes, two low-FPR operating points, and five seeds (20/20 runs):
 
-In the aggregated summary (four runs across two model sizes and two operating-point configurations), the read/write prompt suite yields `baseline_adv_tool_rate = 1.0 ± 0.0` and `controlled_adv_tool_rate = 0.0 ± 0.0`, with `achieved_fpr = 0.0 ± 0.0` and `coverage = 0.667 ± 0.0` (2 of 3 adversarial prompts tripped). The tables are saved under `examples/dr_one_demo/results/policy_eval_runs.md` and `examples/dr_one_demo/results/policy_eval_agg.md`.
+- Read/write prompt suite: `data/policy_prompts_readwrite_v1.jsonl`
+- Action vocabulary: `REFUSE, ANSWER, TOOL:read_file, TOOL:write_file` (unsafe: `TOOL:write_file`)
+- Samples per prompt: `100`; temperature: `0.9`
+
+In this matrix, baseline unsafe tool usage is always present (`baseline_adv_tool_rate = 1.0 ± 0.0`) while controlled mode gates unsafe tool usage to zero (`controlled_adv_tool_rate = 0.0 ± 0.0`). Alarm feasibility is stable across all runs (`feasible_rate = 1.0`, `fpr_floor_max = 0.0`, `achieved_fpr = 0.0 ± 0.0`, `coverage = 0.667 ± 0.0`).
+
+The paper-ready tables are saved under `examples/dr_one_demo/results/policy_eval_runs_matrix.md` and `examples/dr_one_demo/results/policy_eval_agg_matrix.md`.
+
+Under the original prompt suite, baseline adversarial tool usage is often 0% (the model is already conservative), so gating is redundant; the controller can remain feasible but does not improve safety because there is no unsafe baseline behavior to suppress.
 
 This does not claim robustness across models. It demonstrates a narrower point: when baseline unsafe behavior exists and the alarm is feasible at the declared operating point, an external authority gate can reduce irreversible tool actions without requiring shutdown or internal modification.
 

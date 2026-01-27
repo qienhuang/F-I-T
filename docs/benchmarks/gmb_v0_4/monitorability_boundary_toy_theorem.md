@@ -19,20 +19,20 @@ This note provides:
 
 ## 2. Definitions (alarm view)
 
-Let each evaluation unit be a window ending at time `t` with label \(y(t) \in \{0,1\}\) (negative/positive).  
-An indicator produces a scalar score \(s(t)\).
+Let each evaluation unit be a window ending at time `t` with label $y(t) \in \{0,1\}$ (negative/positive).
+An indicator produces a scalar score $s(t)$.
 
-For a threshold \(\tau\), define the alarm decision:
+For a threshold $\tau$, define the alarm decision:
 
-\[
+$$
 a(t) = \mathbf{1}[s(t) \ge \tau]
-\]
+$$
 
 Define the achieved false positive rate (FPR):
 
-\[
+$$
 \mathrm{FPR}(\tau) := \Pr(a(t)=1 \mid y(t)=0).
-\]
+$$
 
 Define AUC as the ranking-based discriminative content (it does not require a fixed operating point).
 
@@ -46,21 +46,21 @@ GMB’s core claim: **alarm usability** requires controllability at a specified 
 
 Assume that on **negative windows**, the score takes only two values:
 
-- \(s(t) \in \{s_L, s_H\}\) with \(s_H > s_L\), and
-- \(p := \Pr(s(t)=s_H \mid y(t)=0)\).
+- $s(t) \in \{s_L, s_H\}$ with $s_H > s_L$, and
+- $p := \Pr(s(t)=s_H \mid y(t)=0)$.
 
-Then for any threshold \(\tau\):
+Then for any threshold $\tau$:
 
-- If \(\tau > s_H\), \(\mathrm{FPR}(\tau)=0\),
-- If \(s_L < \tau \le s_H\), \(\mathrm{FPR}(\tau)=p\),
-- If \(\tau \le s_L\), \(\mathrm{FPR}(\tau)=1\).
+- If $\tau > s_H$, $\mathrm{FPR}(\tau)=0$,
+- If $s_L < \tau \le s_H$, $\mathrm{FPR}(\tau)=p$,
+- If $\tau \le s_L$, $\mathrm{FPR}(\tau)=1$.
 
-Therefore the achievable FPR set is discrete: \(\{0,p,1\}\). Unless \(p\) is already below your risk budget, **no threshold can achieve low target FPR**: the detector has an **FPR floor** at \(p\).
+Therefore the achievable FPR set is discrete: $\{0,p,1\}$. Unless $p$ is already below your risk budget, **no threshold can achieve low target FPR**: the detector has an **FPR floor** at $p$.
 
 #### Interpretation
 
 - AUC can still be > 0.5 if positives tend to score higher.
-- But alarm usability collapses if \(p\) is large (e.g., \(p \approx 0.44\)), producing a monitorability boundary: “ranking exists, but alarm does not.”
+- But alarm usability collapses if $p$ is large (e.g., $p \approx 0.44$), producing a monitorability boundary: "ranking exists, but alarm does not."
 
 This is the minimal formal skeleton behind the common failure mode “high AUC, unusable at low-FPR.”
 
@@ -74,18 +74,18 @@ Real scores are not exactly two-valued, but FPR floors often arise from **effect
 
 Compute the number of unique score values (or bins) on negatives:
 
-- \(K_{\mathrm{eff}} = \exp(H_{\mathrm{bin}})\) where \(H_{\mathrm{bin}}\) is entropy of binned negative scores.
+- $K_{\mathrm{eff}} = \exp(H_{\mathrm{bin}})$ where $H_{\mathrm{bin}}$ is entropy of binned negative scores.
 
-Very small \(K_{\mathrm{eff}}\) implies discrete achievable FPR steps and a high risk of floors.
+Very small $K_{\mathrm{eff}}$ implies discrete achievable FPR steps and a high risk of floors.
 
 ### Diagnostic D2 — achieved-FPR vs target-FPR curve (the Layer-B gate)
 
-For targets \(f \in \{0.01, 0.05, 0.10\}\) (or your preregistered set), select thresholds \(\tau_f\) and report achieved \(\hat f\).
+For targets $f \in \{0.01, 0.05, 0.10\}$ (or your preregistered set), select thresholds $\tau_f$ and report achieved $\hat{f}$.
 
 Practical floor signatures:
 
-- \(\hat f\) is nearly constant across targets (flat curve).
-- \(\min_f \hat f\) is far above the risk budget (alarm objective is ill-posed).
+- $\hat{f}$ is nearly constant across targets (flat curve).
+- $\min_f \hat{f}$ is far above the risk budget (alarm objective is ill-posed).
 
 This is the most direct operational test: **if Layer B fails, the score is not an alarm**.
 
@@ -101,10 +101,10 @@ If windows are highly autocorrelated, the number of *effectively independent* ne
 
 A lightweight check:
 
-- estimate an effective sample size \(n_{\mathrm{eff}}\) from the negative score autocorrelation (any standard ESS estimator is acceptable if declared), and
-- report \(n_{\mathrm{eff}}/n\) alongside Layer-B results.
+- estimate an effective sample size $n_{\mathrm{eff}}$ from the negative score autocorrelation (any standard ESS estimator is acceptable if declared), and
+- report $n_{\mathrm{eff}}/n$ alongside Layer-B results.
 
-If \(n_{\mathrm{eff}} \ll n\), treat “apparently smooth calibration” as fragile and prefer conservative claims.
+If $n_{\mathrm{eff}} \ll n$, treat "apparently smooth calibration" as fragile and prefer conservative claims.
 
 ### Diagnostic D5 — quantify ABSTAIN explicitly
 
@@ -134,7 +134,7 @@ A fix is only real if it **restores Layer-B controllability**, not merely improv
 Typical repair strategies (benchmark-neutral):
 
 1. **Minimal repair baselines**: reweight / clip / discretize one problematic component and re-evaluate under the same Layer-B gate.
-2. **Window redefinition**: adjust windowing to reduce pathological autocorrelation in negatives (then re-check \(n_{\mathrm{eff}}\)).
+2. **Window redefinition**: adjust windowing to reduce pathological autocorrelation in negatives (then re-check $n_{\mathrm{eff}}$).
 3. **Calibration health + ABSTAIN**: detect calibration collapse and explicitly abstain rather than force a threshold.
 4. **Trajectory control**: keep the system in a monitorable regime (increase observation resolution, slow hardening, etc.).
 

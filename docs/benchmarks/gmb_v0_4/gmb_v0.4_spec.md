@@ -118,13 +118,13 @@ Pass criteria (default):
 1. **FPR controllability**: at least `m_ok` targets satisfy
 
 $$
-|f\_{\mathrm{hat}} - f| \le \epsilon
+|\hat{f} - f| \le \epsilon
 $$
 
 2. **No FPR floor**: the minimum achievable FPR is below `f_floor_max`:
 
 $$
-\min_{f \in F} f\_{\mathrm{hat}} \le f\_{\mathrm{floor\_max}}
+\min_{f \in F} \hat{f} \le f_{\text{floor\_max}}
 $$
 
 If Layer B fails, the indicator is **invalid for alarm** regardless of AUC/AP.

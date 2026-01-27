@@ -74,7 +74,7 @@ Each candidate yields a scalar score `s(t)` per checkpoint/window (GMB interface
 Define a per-cycle relaxation time:
 
 $$
-\\tau_L(k;\\epsilon) := \\min\\{ j : r_L(k,j) \\le \\epsilon \\}
+\tau_L(k;\epsilon) := \min\{ j : r_L(k,j) \le \epsilon \}
 $$
 
 Aggregate into a window score (examples):
@@ -84,8 +84,8 @@ Aggregate into a window score (examples):
 - `mean_tau_L` (less robust; use only if justified)
 
 **Interpretation**:
-- rising `\\tau_L` can indicate impending regime change (slowing down),
-- collapsing `\\tau_L` can indicate premature convergence / saturation (risk of score discretization).
+- rising $\tau_L$ can indicate impending regime change (slowing down),
+- collapsing $\tau_L$ can indicate premature convergence / saturation (risk of score discretization).
 
 ### 3.2 HC-2: Cycle reset spike rate
 
@@ -94,13 +94,13 @@ Aggregate into a window score (examples):
 Define boundary spikes:
 
 $$
-\\Delta r(k) := r_L(k,1) - r_L(k,T)
+\Delta r(k) := r_L(k,1) - r_L(k,T)
 $$
 
 Score options:
 
-- `spike_rate`: fraction of cycles with `\\Delta r(k) \\ge \\theta`
-- `spike_strength`: median of `\\Delta r(k)`
+- `spike_rate`: fraction of cycles with $\Delta r(k) \ge \theta$
+- `spike_strength`: median of $\Delta r(k)$
 
 **Interpretation**:
 - loss of spikes can mean the slow subsystem stops meaningfully re-contextualizing the fast subsystem (computational stalling),
@@ -110,10 +110,10 @@ Score options:
 
 **Idea**: the slow module provides context; the fast module converges to a context-conditioned equilibrium. Large mismatch suggests "the fast solver cannot settle" under the current plan.
 
-If you have a projection `g(\\cdot)` mapping both modules to a comparable space, define:
+If you have a projection $g(\cdot)$ mapping both modules to a comparable space, define:
 
 $$
-m(k) := || g_H(z_H(k)) - g_L(z_L(k,T)) ||
+m(k) := \| g_H(z_H(k)) - g_L(z_L(k,T)) \|
 $$
 
 Score = `median_mismatch` or `p90_mismatch` within the window.
@@ -122,10 +122,10 @@ Score = `median_mismatch` or `p90_mismatch` within the window.
 
 **Idea**: learned separation where high-level representations occupy higher effective dimensionality than low-level ones.
 
-Given covariance eigenvalues `{ \\lambda_i }`:
+Given covariance eigenvalues $\{ \lambda_i \}$:
 
 $$
-PR = \\frac{(\\sum_i \\lambda_i)^2}{\\sum_i \\lambda_i^2}
+PR = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
 $$
 
 Compute per window:
@@ -136,7 +136,7 @@ Compute per window:
 Define ratio:
 
 $$
-\\rho_{PR} := \\frac{PR_H}{PR_L}
+\rho_{PR} := \frac{PR_H}{PR_L}
 $$
 
 Score options:
@@ -159,9 +159,9 @@ If adaptive computation exists (segments/halting), define:
 
 All `hierarchical_convergence` candidates must be evaluated under the same:
 
-- target FPR set `\\mathcal{F}`,
-- achieved-vs-target tolerance `\\epsilon`,
-- floor limit `f_{\\mathrm{floor\\_max}}`.
+- target FPR set $\mathcal{F}$,
+- achieved-vs-target tolerance $\epsilon$,
+- floor limit $f_{\text{floor\_max}}$.
 
 If Layer-B fails, label `RANK_ONLY` regardless of AUC/AP.
 

@@ -32,6 +32,7 @@
     - [**Learning: From Memorization to Understanding (grokking as a phase transition)**](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)
     - [**Data-driven inverse design of bicontinuous multiscale structures (boundary-identical microstructure library)**](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) ([workbook](docs/cases/CASE_05_LBOM_Workbook.md), [pitch](docs/cases/CASE_05_Computational_Phase_Transition_Pitch.md))
     - [**BioArc: constrained architecture search for biological foundation models (budgeted exploration under constraints)**](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)
+    - [**Motor-imagery BCI: monitorability under low-FPR actuation budgets (cross-domain alarm admissibility)**](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md)
 
         *Note: names are cited as paper authors; no affiliation or endorsement is implied.*
 
@@ -42,11 +43,14 @@
     - [**FIT Constrained Explorer Kit (budgeted search under hard constraints)**](tools/fit_constrained_explorer_kit/README.md)
     - [**FIT EWBench Kit (prompt suite runner + logs + report)**](tools/fit_ewbench_kit/README.md)
     - [**FIT Hopfield Lab Kit (toy associative-memory lab + phase diagrams)**](tools/fit_hopfield_lab_kit/README.md)
+    - [**Explorers (budgeted method search specs + skeleton runner; FIT-Explorer v0.1)**](docs/explorers/fit_explorer/README.md)
     - [**Benchmarks (specs + prereg/templates; e.g., GMB v0.4 for grokking alarm admissibility)**](docs/benchmarks/README.md)
+    - [**Monitorability boundary (low-FPR alarms across domains; incl. AI-safety tool-gating criterion)**](docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md)
 
 - **Skills (optional):**
     _Codex CLI skills: turn a case/question into a preregistered, runnable FIT/EST session (LLM assists, deterministic engines produce evidence)._
     - [**FIT/EST Session Guide (Codex skill + offline templates)**](skills/fit-lab-est-session-guide/SKILL.md)
+    - [**FIT/EST Synthesis Playbook (diagnosis → actuators → prereg → acceptance gates)**](docs/est/synthesis_playbook_v0.1.md)
 
 - **Structural archetypes (patterns):**
     - [**Patterns (reusable templates)**](docs/patterns/README.md)
@@ -164,7 +168,7 @@ This figure is a compact "existence proof" that the **Controlled Nirvana** idea 
 
 ![Dr.One policy-eval: baseline vs controlled unsafe tool usage rate (read/write prompt suite).](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
 
-Reproducibility: `examples/dr_one_demo/results/README.md` and `examples/dr_one_demo/results/MATRIX_SUMMARY.md`.
+Reproducibility: [examples/dr_one_demo/results/README.md](examples/dr_one_demo/results/README.md), [examples/dr_one_demo/results/MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md), [examples/dr_one_demo/results/MATRIX_SUMMARY.md](examples/dr_one_demo/results/MATRIX_SUMMARY.md), and [examples/dr_one_demo/results/policy_eval_agg_matrix.md](examples/dr_one_demo/results/policy_eval_agg_matrix.md).
 
 ## Tier-1 evidence (toy systems)
 
@@ -190,17 +194,17 @@ Reproducibility: `examples/dr_one_demo/results/README.md` and `examples/dr_one_d
 
 ## Repository map
 
-- `docs/` - specifications and notes
-- `proposals/` - practitioner pilots and templates
-- `docs/ai_safety/` - self-referential IO and governance docs
-- `examples/` and `experiments/` - runnable demos and validation artifacts
-- `papers/` - drafts and venue-specific writeups
-- `skills/` - Codex CLI skills (optional), plus minimal offline templates
-- `CITATION.cff` - citation metadata for this repository
+- [docs/](docs/) - specifications and notes
+- [proposals/](proposals/) - practitioner pilots and templates
+- [docs/ai_safety/](docs/ai_safety/) - self-referential IO and governance docs
+- [examples/](examples/) and [experiments/](experiments/) - runnable demos and validation artifacts
+- [papers/](papers/) - drafts and venue-specific writeups
+- [skills/](skills/) - Codex CLI skills (optional), plus minimal offline templates
+- [CITATION.cff](CITATION.cff) - citation metadata for this repository
 
 ## Citation
 
-Use `CITATION.cff` for copy/paste formats, or cite via Zenodo:
+Use [CITATION.cff](CITATION.cff) for copy/paste formats, or cite via Zenodo:
 
 - Zenodo (all versions): https://doi.org/10.5281/zenodo.18012401
 - Latest release (v2.4.1): https://doi.org/10.5281/zenodo.18112020

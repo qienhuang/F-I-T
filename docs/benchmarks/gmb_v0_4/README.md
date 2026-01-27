@@ -13,6 +13,7 @@ Ranking metrics (AUC/AP) can look non-trivial while a score is **unusable as an 
 - Spec: `docs/benchmarks/gmb_v0_4/gmb_v0.4_spec.md`
 - Companion note (toy theorem + diagnostics): `docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md`
 - Addendum (indicator family): `docs/benchmarks/gmb_v0_4/gmb_v0.4_addendum_hrm_indicator_family.md`
+- v0.5 runbook (CPU + single-GPU): `docs/benchmarks/gmb_v0_4/V0_5_RUNBOOK.md`
 - Prereg template: `docs/benchmarks/gmb_v0_4/gmb_prereg_v0.4.yaml`
 - Results schema: `docs/benchmarks/gmb_v0_4/gmb_results_v0.4.yaml`
 - Filled example (illustrative only): `docs/benchmarks/gmb_v0_4/gmb_results_v0.4.example.yaml`
@@ -58,4 +59,3 @@ Notes:
 
 - Layer A (AUC/AP) is intentionally not re-extracted in this run; treat this as a calibration/utility example.
 - If a metric is unavailable, write `null` and explain why in the YAML notes (do not backfill by hand).
-

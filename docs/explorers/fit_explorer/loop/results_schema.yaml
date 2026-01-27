@@ -1,0 +1,34 @@
+# FIT-Explorer results schema v0.1
+schema_version: "v0.1"
+candidate_id: ""
+run_id: ""
+date: "YYYY-MM-DD"
+commit_hash: ""
+
+gate_results:
+  monitorability:
+    passed: false
+    achieved_fpr: []
+    fpr_min: null
+    ok_targets: null
+    diagnostics:
+      support_size_neg: null
+      tie_dominance: null
+
+utility:
+  at_fpr:
+    - fpr: 0.05
+      coverage: null
+      lead_time_median: null
+      lead_time_iqr: null
+    - fpr: 0.10
+      coverage: null
+      lead_time_median: null
+      lead_time_iqr: null
+
+robustness:
+  pass_rate: null
+  label_flip_rate: null
+
+label: "RANK_ONLY"  # SUPPORTED_FOR_ALARM | RANK_ONLY | ESTIMATOR_UNSTABLE | INCONCLUSIVE | SCOPE_LIMITED
+notes: ""

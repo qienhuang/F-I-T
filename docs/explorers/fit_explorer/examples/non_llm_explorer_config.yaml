@@ -1,0 +1,25 @@
+# non_llm_explorer_config.yaml (example)
+date: "2026-01-27"
+
+budget:
+  N0: 50
+  eta0: 0.33
+  eta1: 0.50
+
+boundary:
+  system: "grokking"
+  event: "E_jump"
+  negative_window: "t <= t* - delta_safe"
+  positive_window: "t* - H_pos <= t < t*"
+
+search_space:
+  detector:
+    families: ["dynamics", "process", "judge", "hierarchical_convergence"]
+    windows: [50, 100, 200, 400]
+    smoothing: [0.0, 0.1, 0.2]
+    calibration_methods: ["quantile", "isotonic", "temperature"]
+
+# Use an `out/` folder so this pack's checked-in `results/` placeholders
+# don't get overwritten by accident.
+output_dir: "out/fit_explorer_demo"
+

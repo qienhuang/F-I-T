@@ -1,0 +1,12 @@
+schema_version: "v0.1"
+date: "2026-01-27"
+entries:
+  - region_id: "detector/dynamics/CSD/W50"
+    label: "FPR_FLOOR"
+    evidence:
+      achieved_fpr_min: 0.44
+      note: "threshold sweep degenerates; unusable alarm"
+  - region_id: "agent_config/skills/L2_network"
+    label: "AUTHORITY_EXPANSION_LEAK"
+    evidence:
+      note: "network write without promotion gate"

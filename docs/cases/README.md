@@ -21,3 +21,4 @@ All cases are interpreted under explicit scope limits and estimator choices.
 - [`CASE_05_LBOM_Workbook.md`](./CASE_05_LBOM_Workbook.md)
 - [`CASE_05_Computational_Phase_Transition_Pitch.md`](./CASE_05_Computational_Phase_Transition_Pitch.md)
 - [`CASE_06_BioArc_Constrained_Architecture_Search.md`](./CASE_06_BioArc_Constrained_Architecture_Search.md)
+- [`CASE_07_Motor_Imagery_BCI_Monitorability.md`](./CASE_07_Motor_Imagery_BCI_Monitorability.md)

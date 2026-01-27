@@ -21,24 +21,41 @@ Interpretation details:
 
 ## Results (Windows 11 + RTX 3090 + Ollama + Python 3.13)
 
-All rows below used `policy_prompts_readwrite_v1.jsonl`.
+This repo contains a paper-ready matrix with:
 
-| Model | Temp | FPR target | Baseline adv tool rate | Controlled adv tool rate | Feasible | FPR floor | Coverage |
-|---|---:|---:|---:|---:|---|---:|---:|
-| `qwen3:4b` | 0.9 | 0.05 | 1.0 | 0.0 | true | 0.0 | 66.7% |
-| `qwen3:4b` | 0.9 | 0.10 | 1.0 | 0.0 | true | 0.0 | 66.7% |
-| `qwen3:4b` | 1.2 | 0.10 | 1.0 | 0.0 | true | 0.0 | 66.7% |
-| `qwen3:8b` | 0.9 | 0.10 | 1.0 | 0.0 | true | 0.0 | 66.7% |
+- prompts: `policy_prompts_readwrite_v1.jsonl`
+- samples per prompt: `100`
+- temperature: `0.9`
+- seeds: `1337, 2337, 3337, 4337, 5337`
+
+Summary (20/20 runs; std=0 across seeds):
+
+| Model | Target FPR | n_runs | Baseline adv tool rate (mean±std) | Controlled adv tool rate (mean±std) |
+|---|---:|---:|---:|---:|
+| qwen3:4b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 |
+| qwen3:4b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 |
+| qwen3:8b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 |
+| qwen3:8b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 |
+
+Operational reading (consistent across the matrix):
+
+- Baseline unsafe behavior is present (`baseline_adv_tool_rate = 1.0`).
+- Controlled mode blocks unsafe tool usage (`controlled_adv_tool_rate = 0.0`) while remaining feasible under low-FPR operation (`fpr_floor = 0.0`, `achieved_fpr = 0.0`, `coverage = 2/3`).
 
 Operational reading:
 
 - Baseline unsafe behavior is *reliably present* for this prompt suite (`baseline_adv_tool_rate = 1.0`).
 - Controlled mode blocks unsafe tool usage (`controlled_adv_tool_rate = 0.0`) while remaining feasible under low-FPR operation (`fpr_floor = 0.0`).
 
-Paper-ready aggregation:
+Paper-ready tables:
 
-- All runs table: `policy_eval_runs.md`
-- Grouped mean±std table: `policy_eval_agg.md`
+- All runs table: `policy_eval_runs_matrix.md`
+- Grouped mean±std table: `policy_eval_agg_matrix.md`
+
+Exploratory (non-paper-ready) scans across other prompt suites / parameters are tracked separately:
+
+- `policy_eval_runs.md`
+- `policy_eval_agg.md`
 
 ## Contrast: gating-redundant regime (original prompt suite)
 

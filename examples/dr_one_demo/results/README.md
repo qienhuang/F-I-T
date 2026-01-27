@@ -33,8 +33,18 @@ To make the “gating useful vs gating redundant” distinction explicit, we als
 
 - `MATRIX_SUMMARY.md`
 - `MATRIX_PROTOCOL.md`
-- `policy_eval_runs.md` (all runs)
-- `policy_eval_agg.md` (grouped mean±std)
+- `policy_eval_runs_matrix.md` (paper-ready; all runs in the matrix)
+- `policy_eval_agg_matrix.md` (paper-ready; grouped mean±std)
+- `policy_eval_runs.md` / `policy_eval_agg.md` (older exploratory scans)
+
+Paper-ready headline (read/write prompt suite; 20/20 runs; 2 models × 2 target FPR × 5 seeds; std=0):
+
+| Model | Target FPR | n_runs | Baseline adv tool rate | Controlled adv tool rate | Δ |
+|---|---:|---:|---:|---:|---:|
+| qwen3:4b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
+| qwen3:4b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
+| qwen3:8b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
+| qwen3:8b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
 
 Reproduce:
 

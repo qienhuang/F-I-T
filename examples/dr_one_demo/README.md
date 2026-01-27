@@ -113,6 +113,13 @@ To also get a grouped table (mean±std over seeds) suitable for citing in a pape
 python summarize_out.py --out_root out --aggregate --write_agg_md results/policy_eval_agg.md
 ```
 
+For paper-ready matrix outputs (recommended), summarize a matrix run root (e.g. `out_matrix_v0_1/`) into dedicated tables:
+
+```bash
+python summarize_out.py --out_root out_matrix_v0_1 --write_md results/policy_eval_runs_matrix.md
+python summarize_out.py --out_root out_matrix_v0_1 --aggregate --write_agg_md results/policy_eval_agg_matrix.md
+```
+
 For a recommended paper-ready matrix and exact commands, see `results/MATRIX_PROTOCOL.md`.
 
 ## What the demo edits
