@@ -61,7 +61,6 @@ indicators:
       comments: ""
 
 tables:
-  gate_summary_path: "results/tables/gate_summary.csv"
-  utility_at_fpr_path: "results/tables/utility_at_fpr.csv"
-  robustness_path: "results/tables/robustness.csv"
-
+  gate_summary_path: "tables/gate_summary.csv"
+  utility_at_fpr_path: "tables/utility_at_fpr.csv"
+  robustness_path: "tables/robustness.csv"

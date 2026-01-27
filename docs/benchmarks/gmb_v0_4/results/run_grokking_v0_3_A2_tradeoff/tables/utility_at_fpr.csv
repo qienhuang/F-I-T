@@ -1,0 +1,26 @@
+configuration,fpr_threshold,coverage_pct,n_covered,n_total,lead_time_mean_steps,lead_time_std_steps,notes
+B1_sign_minus1,0.010,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_minus1,0.020,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_minus1,0.050,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_minus1,0.100,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_minus1,0.150,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_minus1,0.200,100.0,20,20,18775,,Uncontrolled - 100% coverage but FPR too high
+B1_sign_plus1,0.010,0.0,0,20,,,No coverage at FPR=0.01
+B1_sign_plus1,0.020,0.0,0,20,,,No coverage at FPR=0.02
+B1_sign_plus1,0.050,35.0,7,20,12071,,Recommended: balanced tradeoff
+B1_sign_plus1,0.100,70.0,14,20,13071,,Recommended: best tradeoff (2x coverage vs FPR=0.05)
+B1_sign_plus1,0.150,75.0,15,20,14167,,Higher coverage but more false positives
+B1_sign_plus1,0.200,85.0,17,20,13588,,Higher coverage but more false positives
+B2_sign_minus1,0.010,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_minus1,0.020,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_minus1,0.050,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_minus1,0.100,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_minus1,0.150,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_minus1,0.200,95.0,19,20,18895,,Uncontrolled - high coverage but FPR too high
+B2_sign_plus1,0.010,0.0,0,20,,,No coverage at FPR=0.01
+B2_sign_plus1,0.020,10.0,2,20,7250,,Low coverage at FPR=0.02
+B2_sign_plus1,0.050,35.0,7,20,15357,,Recommended: balanced tradeoff
+B2_sign_plus1,0.100,65.0,13,20,11769,,Recommended: best tradeoff
+B2_sign_plus1,0.150,70.0,14,20,14857,,Higher coverage but more false positives
+B2_sign_plus1,0.200,75.0,15,20,15000,,Higher coverage but more false positives
+

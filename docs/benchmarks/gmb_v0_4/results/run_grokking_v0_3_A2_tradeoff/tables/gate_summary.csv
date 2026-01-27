@@ -1,0 +1,26 @@
+configuration,fpr_target,fpr_achieved,fpr_min,floor_detected,notes
+B1_sign_minus1,0.010,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_minus1,0.020,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_minus1,0.050,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_minus1,0.100,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_minus1,0.150,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_minus1,0.200,0.4407,0.4407,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B1_sign_plus1,0.010,0.0100,0.0100,no,FPR controlled - normal behavior
+B1_sign_plus1,0.020,0.0200,0.0100,no,FPR controlled - normal behavior
+B1_sign_plus1,0.050,0.0500,0.0100,no,FPR controlled - normal behavior
+B1_sign_plus1,0.100,0.1000,0.0100,no,FPR controlled - normal behavior
+B1_sign_plus1,0.150,0.1500,0.0100,no,FPR controlled - normal behavior
+B1_sign_plus1,0.200,0.2000,0.0100,no,FPR controlled - normal behavior
+B2_sign_minus1,0.010,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_minus1,0.020,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_minus1,0.050,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_minus1,0.100,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_minus1,0.150,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_minus1,0.200,0.4442,0.4442,yes,Uncontrolled FPR floor at 0.44 - score inversion issue
+B2_sign_plus1,0.010,0.0100,0.0100,no,FPR controlled - normal behavior
+B2_sign_plus1,0.020,0.0200,0.0100,no,FPR controlled - normal behavior
+B2_sign_plus1,0.050,0.0500,0.0100,no,FPR controlled - normal behavior
+B2_sign_plus1,0.100,0.1000,0.0100,no,FPR controlled - normal behavior
+B2_sign_plus1,0.150,0.1500,0.0100,no,FPR controlled - normal behavior
+B2_sign_plus1,0.200,0.2000,0.0100,no,FPR controlled - normal behavior
+

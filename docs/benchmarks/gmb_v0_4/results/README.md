@@ -19,5 +19,9 @@ And include:
 
 - Do not copy private datasets or internal drafts into this repo.
 - If a metric is unavailable, write `null` and explain why in the YAML notes.
-- Prefer reporting “INCONCLUSIVE” over inventing a number.
+- Prefer reporting `INCONCLUSIVE` over inventing a number.
+
+## Current runs
+
+- `run_grokking_v0_3_A2_tradeoff/` (2026-01-21) - grokking v0.3 Phase A2 FPR sweep packaged as a real GMB v0.4 run.
 
