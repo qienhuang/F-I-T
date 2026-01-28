@@ -2,7 +2,7 @@
 
 # F-I-T (Force–Information–Time) Dynamics Framework
 
-## A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
+### A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
 
 [[中文/Chinese]](README.zh_cn.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
 
@@ -16,7 +16,7 @@
 | **Evaluating the framework** | [What FIT claims](#what-fit-claims-and-does-not-claim) → [Tier-1 evidence](#tier-1-evidence-toy-systems) |
 | **Working on AI safety** | [AI Safety Index](docs/ai_safety/README.md) → [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) |
 | **Running experiments** | [Toolkits](#toolkits) → [Li² replication](experiments/li2_scaling_law/README.md) |
-| **Reading the full spec** | [v2.4 spec](docs/v2.4.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
+| **Reading the full spec** | [v2.4 spec](docs/v2.4.md)  / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
 
 ---
 
@@ -125,6 +125,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) | 5-min overview + 2-hour self-assessment |
 | [Self-referential IO standard](docs/ai_safety/self_referential_io.md) | IO constraint specification |
 | [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
+| [Slow-evolving agent architecture (v0.2)](docs/agents/README.md) | FIT/EST-aligned agent specs + runnable pre-validator checklist |
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
 | [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1-style RL + risk control |
 

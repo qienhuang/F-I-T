@@ -125,6 +125,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [FIT 用于 AI 安全](docs/ai_safety/fit_ai_safety_mapping.md) | 5分钟概览 + 2小时自评检查表 |
 | [自指 IO 标准](docs/ai_safety/self_referential_io.md) | IO 约束规范 |
 | [CPU 优先本地代理](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM 蓝图 |
+| [慢演化代理架构（v0.2）](docs/agents/README.md) | FIT/EST 对齐的 agent 架构规范 + 可运行的预验证清单 |
 | [Dr.One 演示](examples/dr_one_demo/README.md) | 自编辑循环 + 可监控性门 |
 | [DeepSeek R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1 风格 RL + 风险控制 |
 
@@ -181,7 +182,7 @@ tools/          可运行工具包
 
 ## 引用
 
-**Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401
+**Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401  
 **最新版（v2.4.1）**：https://doi.org/10.5281/zenodo.18112020
 
 见 [CITATION.cff](CITATION.cff) 获取复制/粘贴格式。
@@ -190,11 +191,11 @@ tools/          可运行工具包
 
 ## 元数据
 
-**作者**：Qien Huang（独立研究者）
-**邮箱**：qienhuang@hotmail.com
-**许可证**：CC BY 4.0
-**仓库**：https://github.com/qienhuang/F-I-T
-**ORCID**：https://orcid.org/0009-0003-7731-4294
+**作者**：Qien Huang（独立研究者）  
+**邮箱**：qienhuang@hotmail.com   
+**许可证**：CC BY 4.0   
+**仓库**：https://github.com/qienhuang/F-I-T   
+**ORCID**：https://orcid.org/0009-0003-7731-4294   
 
 **AI 辅助起草声明**：部分起草工作由大语言模型辅助完成。作者对所有内容负全责。
 
