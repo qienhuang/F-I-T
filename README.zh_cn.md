@@ -63,7 +63,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 *图：Conway 生命游戏 Tier-1 验证（详见 [v2.4 规范](docs/v2.4.md)）。*
 
-**Tier-2 状态**：Grokking 实验可评估且可复现；基线在严格低 FPR 约束下尚未成为稳定的硬指标。见 [tier2_grokking](experiments/tier2_grokking/README.md) 和 [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md)。
+**Tier-2 证据**：Grokking 实验可评估且可复现；基线在严格低 FPR 约束下尚未成为稳定的硬指标。见 [tier2_grokking](experiments/tier2_grokking/README.md) 和 [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md)。同时，现已提供一个真实世界的 Tier-2 / P11 案例（NYC TLC Yellow Taxi 2019–2023）：在 EST gate 下，全量池化的 coherence 失败，但在预注册窗口内可得到可审计的“范围受限有效性”（`OK_PER_YEAR`、`OK_PER_WINDOW`）：[nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md)（结果汇总：[RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md)；可视化：[摘要图](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg)，[过程图](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)）。
 
 ---
 
@@ -89,6 +89,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 |------|------|
 | [Grokking 缩放律 (Li²)](experiments/li2_scaling_law/README.md) | ML 相变 |
 | [AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | 真实世界仪器边界 |
+| [NYC TLC（Yellow）体制跃迁](experiments/real_world/nyc_tlc_tier2p1/README.md) | Tier-2 P11；coherence 窗口化与水平位移 |
 | [智能手机与注意力](docs/cases/CASE_01_Phone_Attention_System.md) | 注意力动力学 + 约束累积 |
 | [内容平台内卷](docs/cases/CASE_02_Content_Platform_Involution.md) | 反馈循环 + 协调失败 |
 | [企业 IT 演化](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | 基础设施锁定 + 节奏错配 |

@@ -16,7 +16,7 @@
 | **Evaluating the framework** | [What FIT claims](#what-fit-claims-and-does-not-claim) → [Tier-1 evidence](#tier-1-evidence-toy-systems) |
 | **Working on AI safety** | [AI Safety Index](docs/ai_safety/README.md) → [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) |
 | **Running experiments** | [Toolkits](#toolkits) → [Li² replication](experiments/li2_scaling_law/README.md) |
-| **Reading the full spec** | [v2.4 spec](docs/v2.4.md)  / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
+| **Reading the full spec** | [v2.4 spec (English)](docs/v2.4.md)  / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
 
 ---
 
@@ -63,7 +63,10 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 *Figure: Conway's Game of Life Tier-1 validation (details in [v2.4 spec](docs/v2.4.md)).*
 
-**Tier-2 status**: Grokking experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
+## Tier-2 Evidence
+- **Grokking** experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
+- A real-world Tier-2 / P11 case is now available on **NYC TLC Yellow Taxi** data. Under EST gates, pooled coherence fails while preregistered windowing yields auditable scope-limited validity (`OK_PER_YEAR`, `OK_PER_WINDOW`): [nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md) (results: [RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md); viz: [summary](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg), paper: [Phase-Conditioned Constraint Coherence in a Real-World Mobility System](papers\phase-conditioned_constraint_coherence_in_a_real-world_mobility_system.v1.md))  
+![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ---
 
@@ -78,7 +81,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | **Markov Sandbox (math.PR)** | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
 | **Beyond Moral Charters** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
 | **Why Companies Turn Too Late** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
-
+| **Phase-Conditioned Constraint Coherence in a Real-World Mobility System** | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
 ---
 
 ## Case Studies
@@ -89,6 +92,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 |------|-------|
 | [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
 | [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
+| [NYC TLC (Yellow) regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md) | Tier-2 P11; coherence windowing and level shifts |
 | [Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md) | Attention dynamics + constraint accumulation |
 | [Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md) | Feedback loops + coordination failure |
 | [Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | Infrastructure lock-in + tempo mismatch |
