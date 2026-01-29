@@ -1,0 +1,162 @@
+# EST Pre-Registration: NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11
+# Version: 1.6
+# Date: 2026-01-29
+# Primary focus: P11 (regime-change signatures in I/C)
+#
+# CHANGE LOG from v1.5:
+# - Generalize coherence windowing beyond calendar years:
+#   * date_ranges windowing supports preregistered regime blocks (e.g., pre/post-COVID).
+#   * This treats "level shift" as a preregistered boundary (window), not a post-hoc explanation.
+
+meta:
+  case_id: nyc_tlc_tier2p11
+  version: "1.6"
+  date: "2026-01-29"
+  tier: 2
+  proposition: P11
+  status: active
+  prior_versions:
+    - version: "1.5"
+      coherence_status: OK_PER_YEAR
+      key_finding: "Per-year coherence passed; pooled coherence failed due to level shifts (Simpson's paradox)."
+
+# Data boundary specification
+boundary:
+  dataset_type: ["yellow"]
+  time_range:
+    start: "2019-01-01"
+    end: "2023-12-31"
+  aggregation:
+    bucket: "D"
+    timezone: "America/New_York"
+  schema_version: "2022+"
+  raw_glob: "data/raw/yellow_tripdata_*.parquet"
+
+# State definition
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts
+
+# Estimator family
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (time cost)"
+      enabled: true
+
+    C_price_pressure:
+      type: log1p_ratio
+      formula: "log1p(total_fare / total_distance_miles)"
+      description: "Fare per mile (money cost)"
+      enabled: true
+
+    C_concentration:
+      type: topk_share
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration - DISABLED: orthogonal to cost family"
+      enabled: false
+
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "DISABLED: activity measure, not constraint"
+      enabled: false
+
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+# Window parameters
+window:
+  smoothing: 7
+  derivative: 1
+  min_periods: 3
+
+# Coherence gate - preregistered regime blocks (pre/post-COVID)
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_price_pressure]
+  windowing:
+    type: date_ranges
+    aggregate: all_pass
+    allow_pooled_fail: true
+    windows:
+      - name: pre_covid
+        start: "2019-01-01"
+        end: "2020-02-29"
+      - name: post_covid
+        start: "2020-03-01"
+        end: "2023-12-31"
+  # Interpretation rule:
+  # - If both windows pass but pooled fails: status becomes OK_PER_WINDOW.
+  # - Signatures are interpretable within each window; pooled plots remain diagnostics.
+
+# Change-point detection
+regime_detection:
+  method: robust_zscore_peak
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7
+    rolling_window: 21
+    window_size: 14
+    shift_threshold: null
+  alternative_methods:
+    - rolling_mean_shift
+
+# Output artifacts
+outputs:
+  metrics_log: "outputs/metrics_log.parquet"
+  regime_report: "outputs/regime_report.md"
+  tradeoff_figure: "outputs/tradeoff_onepage.pdf"
+  coherence_report: "outputs/coherence_report.json"
+  change_points: "outputs/change_points.json"
+
+# Failure labels
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  OK_PER_WINDOW: "Coherence passes within preregistered windows; interpret within-window only"
+  OK_PER_YEAR: "Coherence passes within yearly windows; interpret within-year only"
+  SCOPE_LIMITED: "Data boundary restricts generalization"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+  SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+# Notes
+notes:
+  v1_6_rationale: |
+    v1.5 established that calendar-year windowing rescues coherence on 2019-2023 Yellow Taxi data:
+    pooled coherence can fail due to level shifts while within-window coherence is stable.
+
+    v1.6 generalizes this into preregistered date ranges (regime blocks):
+    we treat a known macro boundary (COVID onset) as a window boundary.
+
+    This makes "level shifts" an explicit, auditable boundary rather than a post-hoc narrative.
+

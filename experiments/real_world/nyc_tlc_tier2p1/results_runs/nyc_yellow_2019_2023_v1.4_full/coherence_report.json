@@ -1,0 +1,19 @@
+{
+  "status": "ESTIMATOR_UNSTABLE",
+  "pairs": [
+    {
+      "pair": [
+        "C_congestion",
+        "C_price_pressure"
+      ],
+      "rho": 0.5427348503511065,
+      "pvalue": 2.143775905214681e-140,
+      "n_points": 1826,
+      "threshold": 0.6,
+      "passed": false
+    }
+  ],
+  "threshold": 0.6,
+  "min_points": 30,
+  "n_constraint_estimators": 2
+}

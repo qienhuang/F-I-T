@@ -1,0 +1,171 @@
+# EST Pre-Registration: NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11
+# Version: 1.2
+# Date: 2026-01-28
+# Primary focus: P11 (regime-change signatures in I/C)
+
+meta:
+  case_id: nyc_tlc_tier2p11
+  version: "1.2"
+  date: "2026-01-28"
+  tier: 2
+  proposition: P11
+  status: active
+  last_run:
+    date: "2026-01-28"
+    boundary:
+      dataset_type: ["yellow"]
+      time_range:
+        start: "2019-01-01"
+        end: "2023-12-31"
+      raw_glob: "data/raw/yellow_tripdata_*.parquet"
+    summary:
+      n_files: 60
+      n_days: 1826
+      n_trips: 214117057
+      coherence_status: ESTIMATOR_UNSTABLE
+      coherence_pairs:
+        - pair: [C_congestion, C_scarcity]
+          rho: -0.6773076301093222
+        - pair: [C_congestion, C_concentration]
+          rho: -0.00895379048846959
+    artifacts:
+      - "results_runs/nyc_yellow_2019_2023_v1/coherence_report.json"
+      - "results_runs/nyc_yellow_2019_2023_v1/regime_report.md"
+      - "results_runs/nyc_yellow_2019_2023_v1/change_points.json"
+
+# Data boundary specification
+boundary:
+  dataset_type: ["yellow"]  # Supports: yellow, green, hvfhv
+  time_range:
+    start: "2019-01-01"
+    end: "2023-12-31"
+  aggregation:
+    bucket: "D"  # daily (D) or hourly (H)
+    timezone: "America/New_York"
+  schema_version: "2022+"  # TLC schema version
+  raw_glob: "data/raw/yellow_tripdata_*.parquet"
+
+# State definition
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts  # dict[zone_id, count]
+    - dropoff_zone_counts  # dict[zone_id, count]
+    - hourly_counts  # dict[hour, count] - for temporal entropy
+    - od_pair_counts  # dict["pu_do", count] - for OD entropy (optional)
+
+# Estimator family
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+
+    I_entropy_od:
+      type: shannon_entropy
+      source: od_pair_counts
+      description: "OD pair diversity (optional, requires OD data)"
+      enabled: false
+
+    I_temporal_entropy:
+      type: shannon_entropy
+      source: hourly_counts
+      description: "Hourly distribution entropy (intra-day diversity)"
+      enabled: false  # Enable when hourly data available
+
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (congestion/friction proxy)"
+      enabled: true
+
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "Supply/demand constraint proxy"
+      enabled: true
+
+    C_concentration:
+      type: topk_share  # or "gini"
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration (spatial inequality)"
+      enabled: true  # Now enabled by default for 3-estimator family
+
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+# Window parameters
+window:
+  smoothing: 7  # rolling mean window (days)
+  derivative: 1  # diff lag
+  min_periods: 3
+
+# Coherence gate
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_scarcity]
+    - [C_congestion, C_concentration]  # New pair for 3-estimator family
+
+# Change-point detection
+regime_detection:
+  method: robust_zscore_peak  # or "rolling_mean_shift"
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7  # days
+    rolling_window: 21
+    # For rolling_mean_shift:
+    window_size: 14
+    shift_threshold: null  # auto from 2*std if null
+  alternative_methods:
+    - rolling_mean_shift  # For robustness comparison
+
+# Output artifacts
+outputs:
+  metrics_log: "outputs/metrics_log.parquet"
+  regime_report: "outputs/regime_report.md"
+  tradeoff_figure: "outputs/tradeoff_onepage.pdf"
+  coherence_report: "outputs/coherence_report.json"
+  change_points: "outputs/change_points.json"
+
+# Failure labels
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  SCOPE_LIMITED: "Data boundary restricts generalization"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+  SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+# Notes for practitioners
+notes:
+  q_data_too_large: |
+    Start with one month (e.g., 2024-01), confirm pipeline produces
+    figure and report, then expand to full year.
+    Use time_bucket=D first, then H for hourly analysis.
+
+  q_constraint_validity: |
+    This is the EST training point: use estimator family + coherence gate
+    to constrain "definition freedom". If C_congestion vs C_scarcity
+    correlation is very low, mark ESTIMATOR_UNSTABLE, meaning your
+    chosen C family is inadequate - consider different proxies.

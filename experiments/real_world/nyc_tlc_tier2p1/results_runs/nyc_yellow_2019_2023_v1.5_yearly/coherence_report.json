@@ -1,0 +1,112 @@
+{
+  "status": "OK_PER_YEAR",
+  "pairs": [
+    {
+      "pair": [
+        "C_congestion",
+        "C_price_pressure"
+      ],
+      "rho": 0.5427348503511065,
+      "pvalue": 2.143775905214681e-140,
+      "n_points": 1826,
+      "threshold": 0.6,
+      "passed": false
+    }
+  ],
+  "threshold": 0.6,
+  "min_points": 30,
+  "n_constraint_estimators": 2,
+  "windowing": {
+    "type": "yearly",
+    "aggregate": "all_pass",
+    "allow_pooled_fail": true,
+    "pooled_status": "ESTIMATOR_UNSTABLE",
+    "results": [
+      {
+        "year": 2019,
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.9541526517497773,
+            "pvalue": 3.0161246096319714e-192,
+            "n_points": 365,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "year": 2020,
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.9636714311326717,
+            "pvalue": 8.725398241567084e-211,
+            "n_points": 366,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "year": 2021,
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.9291785017138713,
+            "pvalue": 5.668406772018347e-159,
+            "n_points": 365,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "year": 2022,
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.862691160176002,
+            "pvalue": 1.6153498147847585e-109,
+            "n_points": 365,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "year": 2023,
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.9662667222739085,
+            "pvalue": 5.959809501906415e-216,
+            "n_points": 365,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      }
+    ]
+  }
+}

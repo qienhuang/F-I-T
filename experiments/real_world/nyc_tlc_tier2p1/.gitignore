@@ -1,0 +1,15 @@
+# Local artifacts (do not commit)
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+
+data/raw/
+data/cleaned/
+data/cleaned_fixture/
+data/cleaned_fixture_45d/
+outputs/
+outputs_fixture/
+outputs_fixture_45d/
+_smoke_out/

@@ -1,0 +1,113 @@
+# EST Pre-Registration (fixture smoke test): NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11_fixture
+# Version: 0.1
+# Date: 2026-01-29
+#
+# Purpose:
+# - End-to-end smoke test WITHOUT downloading TLC parquet bundles.
+# - Uses tiny parquet fixtures in tests/fixtures/.
+#
+# IMPORTANT:
+# - This prereg is NOT evidence. It is a runnable validation of the pipeline wiring.
+
+meta:
+  case_id: nyc_tlc_tier2p11_fixture
+  version: "0.1"
+  date: "2026-01-29"
+  tier: 2
+  proposition: P11
+  status: fixture_smoke
+
+boundary:
+  dataset_type: ["yellow", "green", "hvfhv"]
+  time_range:
+    start: "2023-01-15"
+    end: "2023-01-16"
+  aggregation:
+    bucket: "D"
+    timezone: "America/New_York"
+  schema_version: "mixed"
+  raw_glob: "tests/fixtures/*_tripdata_sample.parquet"
+
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts
+    - dropoff_zone_counts
+
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (congestion/friction proxy)"
+      enabled: true
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "Supply/demand constraint proxy"
+      enabled: true
+    C_concentration:
+      type: topk_share
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration (spatial inequality)"
+      enabled: true
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+window:
+  smoothing: 3
+  derivative: 1
+  min_periods: 1
+
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_scarcity]
+    - [C_congestion, C_concentration]
+
+regime_detection:
+  method: robust_zscore_peak
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7
+    rolling_window: 21
+    window_size: 14
+    shift_threshold: null
+
+outputs:
+  # Suggested paths; CLI modules accept explicit --input/--output.
+  cleaned_state: "data/cleaned_fixture/daily_state.parquet"
+  metrics_log: "outputs_fixture/metrics_log.parquet"
+  coherence_report: "outputs_fixture/coherence_report.json"
+  regime_report: "outputs_fixture/regime_report.md"
+  change_points: "outputs_fixture/change_points.json"
+  tradeoff_figure: "outputs_fixture/tradeoff_onepage.pdf"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+

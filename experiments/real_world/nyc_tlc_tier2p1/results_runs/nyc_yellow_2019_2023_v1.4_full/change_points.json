@@ -1,0 +1,864 @@
+{
+  "method": "robust_zscore_peak",
+  "parameters": {
+    "zscore_threshold": 2.5,
+    "min_peak_distance": 7,
+    "rolling_window": 21,
+    "window_size": 14,
+    "shift_threshold": null
+  },
+  "change_points": [
+    {
+      "index": 19,
+      "date": "2019-01-21",
+      "value": 0.02524306576434565,
+      "score": 5.18276682560607,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 26,
+      "date": "2019-01-28",
+      "value": -0.020765208206064756,
+      "score": -3.1866779075012834,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 47,
+      "date": "2019-02-18",
+      "value": 0.02657530019263854,
+      "score": 3.026167695878031,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 54,
+      "date": "2019-02-25",
+      "value": -0.026718327644214224,
+      "score": -3.9170927003030944,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 61,
+      "date": "2019-03-04",
+      "value": 0.019004713450229804,
+      "score": 3.1487957244501166,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 68,
+      "date": "2019-03-11",
+      "value": -0.020367150756003483,
+      "score": -3.0478499866786186,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 131,
+      "date": "2019-05-13",
+      "value": -0.015466535589638841,
+      "score": -2.5247660659942133,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 145,
+      "date": "2019-05-27",
+      "value": 0.05197630660374131,
+      "score": 5.0530919227863915,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 152,
+      "date": "2019-06-03",
+      "value": -0.04506672757737196,
+      "score": -4.073441468776885,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 183,
+      "date": "2019-07-04",
+      "value": 0.05009165135778293,
+      "score": 5.996307557775233,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 190,
+      "date": "2019-07-11",
+      "value": -0.05490073762942016,
+      "score": -4.142471749866897,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 243,
+      "date": "2019-09-02",
+      "value": 0.027117140171387444,
+      "score": 3.9379445771098576,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 250,
+      "date": "2019-09-09",
+      "value": -0.04077530128627593,
+      "score": -4.397762195772729,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 271,
+      "date": "2019-09-30",
+      "value": 0.02798289012233468,
+      "score": 2.5643058872481896,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 285,
+      "date": "2019-10-14",
+      "value": 0.01999555640075723,
+      "score": 2.791573725323899,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 330,
+      "date": "2019-11-28",
+      "value": 0.03775842484636227,
+      "score": 2.6633856499151034,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 337,
+      "date": "2019-12-05",
+      "value": -0.04098104269058922,
+      "score": -2.592792004765041,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 357,
+      "date": "2019-12-25",
+      "value": 0.04745554199218871,
+      "score": 4.882516059915052,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 371,
+      "date": "2020-01-08",
+      "value": -0.029573474121602494,
+      "score": -3.26672585206406,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 383,
+      "date": "2020-01-20",
+      "value": 0.027229832144117783,
+      "score": 7.595563292924103,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 390,
+      "date": "2020-01-27",
+      "value": -0.021204714846960293,
+      "score": -4.6179741527370375,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 404,
+      "date": "2020-02-10",
+      "value": -0.01693061475210511,
+      "score": -2.8815910861227994,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 411,
+      "date": "2020-02-17",
+      "value": 0.04084523304313148,
+      "score": 6.586134797467953,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 418,
+      "date": "2020-02-24",
+      "value": -0.026940942522810207,
+      "score": -6.873950103903995,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 429,
+      "date": "2020-03-06",
+      "value": -0.009953657753239309,
+      "score": -2.521209936883774,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 451,
+      "date": "2020-03-28",
+      "value": -0.033642059152862114,
+      "score": -3.071117068779862,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 491,
+      "date": "2020-05-07",
+      "value": 0.03970307612757873,
+      "score": 3.408010927572489,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 516,
+      "date": "2020-06-01",
+      "value": -0.042897493727112046,
+      "score": -2.8715682929679702,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 556,
+      "date": "2020-07-11",
+      "value": -0.02926565663750047,
+      "score": -3.5595215069302006,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 563,
+      "date": "2020-07-18",
+      "value": 0.022913189556917235,
+      "score": 3.5438612390703126,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 614,
+      "date": "2020-09-07",
+      "value": 0.02169739766076617,
+      "score": 2.9266317894511618,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 621,
+      "date": "2020-09-14",
+      "value": -0.030823739132533223,
+      "score": -2.867884797210809,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 635,
+      "date": "2020-09-28",
+      "value": 0.01886654825435352,
+      "score": 4.177049269128522,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 642,
+      "date": "2020-10-05",
+      "value": -0.021613619284862384,
+      "score": -4.265463179960731,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 679,
+      "date": "2020-11-11",
+      "value": -0.020436653351061818,
+      "score": -3.8985278554684117,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 694,
+      "date": "2020-11-26",
+      "value": 0.06499846681997923,
+      "score": 7.586096742277213,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 701,
+      "date": "2020-12-03",
+      "value": -0.06117648092374184,
+      "score": -4.317356863233059,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 715,
+      "date": "2020-12-17",
+      "value": 0.02574600080728784,
+      "score": 2.7291956815363303,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 723,
+      "date": "2020-12-25",
+      "value": 0.06927329046678032,
+      "score": 5.61046876236415,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 737,
+      "date": "2021-01-08",
+      "value": -0.04411194111023775,
+      "score": -3.885218427518063,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 747,
+      "date": "2021-01-18",
+      "value": 0.01830780791046216,
+      "score": 2.691500741134817,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 754,
+      "date": "2021-01-25",
+      "value": -0.026953803217796946,
+      "score": -2.8740510667063144,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 762,
+      "date": "2021-02-02",
+      "value": 0.0239461637852596,
+      "score": 3.8255005872595405,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 785,
+      "date": "2021-02-25",
+      "value": -0.025138831396830152,
+      "score": -4.08073352793771,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 850,
+      "date": "2021-05-01",
+      "value": 0.013924689481659591,
+      "score": 6.240905960635652,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 861,
+      "date": "2021-05-12",
+      "value": 0.011516945533584622,
+      "score": 4.571402344903201,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 869,
+      "date": "2021-05-20",
+      "value": -0.018304107314362383,
+      "score": -2.5122515265702408,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 880,
+      "date": "2021-05-31",
+      "value": 0.04067464382927577,
+      "score": 5.571732432287302,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 887,
+      "date": "2021-06-07",
+      "value": -0.045129203992793965,
+      "score": -5.105226300803492,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 915,
+      "date": "2021-07-05",
+      "value": 0.0437588730168712,
+      "score": 3.203015212591328,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 937,
+      "date": "2021-07-27",
+      "value": -0.009226980136383567,
+      "score": -2.971265026517744,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 953,
+      "date": "2021-08-12",
+      "value": -0.009224772894437905,
+      "score": -2.7598685398595575,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 963,
+      "date": "2021-08-22",
+      "value": 0.02383161543524759,
+      "score": 2.6135182448923295,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 970,
+      "date": "2021-08-29",
+      "value": -0.03463482179402577,
+      "score": -3.8854483424947026,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 985,
+      "date": "2021-09-13",
+      "value": -0.054885664065766004,
+      "score": -3.5921709579170527,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 995,
+      "date": "2021-09-23",
+      "value": -0.03523503218014756,
+      "score": -3.5334937856643736,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1013,
+      "date": "2021-10-11",
+      "value": 0.02418504126122034,
+      "score": 3.956065465361536,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1020,
+      "date": "2021-10-18",
+      "value": -0.018816711011159892,
+      "score": -4.05705925000257,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1028,
+      "date": "2021-10-26",
+      "value": 0.019055619585713224,
+      "score": 7.619970635917971,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1035,
+      "date": "2021-11-02",
+      "value": -0.010251734653166533,
+      "score": -2.512347081016542,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1058,
+      "date": "2021-11-25",
+      "value": 0.049026745720607945,
+      "score": 4.151219671461255,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1065,
+      "date": "2021-12-02",
+      "value": -0.05026170864968016,
+      "score": -4.121651059186918,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1088,
+      "date": "2021-12-25",
+      "value": 0.051700018633236144,
+      "score": 5.004330215129483,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1095,
+      "date": "2022-01-01",
+      "value": -0.015470170685548013,
+      "score": -2.7579800373380357,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1111,
+      "date": "2022-01-17",
+      "value": 0.032574379392529274,
+      "score": 2.9957587689518688,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1118,
+      "date": "2022-01-24",
+      "value": -0.041797418354369675,
+      "score": -3.241239532156026,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1146,
+      "date": "2022-02-21",
+      "value": 0.03786968908712307,
+      "score": 5.794057950739232,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1153,
+      "date": "2022-02-28",
+      "value": -0.03284376957587476,
+      "score": -3.9459146984133415,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1218,
+      "date": "2022-05-04",
+      "value": 0.007800177190360635,
+      "score": 2.55465593003522,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1244,
+      "date": "2022-05-30",
+      "value": 0.04696603955267209,
+      "score": 4.097459336422718,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1251,
+      "date": "2022-06-06",
+      "value": -0.04063853709791054,
+      "score": -3.6469782824042434,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1286,
+      "date": "2022-07-11",
+      "value": -0.03212231476749139,
+      "score": -3.4168935222460646,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1304,
+      "date": "2022-07-29",
+      "value": -0.006837460921132799,
+      "score": -2.633525318952671,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1322,
+      "date": "2022-08-16",
+      "value": 0.012324638412456679,
+      "score": 3.6076729558960454,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1342,
+      "date": "2022-09-05",
+      "value": 0.038104326353053164,
+      "score": 3.458912229214218,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1349,
+      "date": "2022-09-12",
+      "value": -0.05846282360791877,
+      "score": -4.637350640949938,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1362,
+      "date": "2022-09-25",
+      "value": -0.0387516507174519,
+      "score": -4.1096504134878185,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1370,
+      "date": "2022-10-03",
+      "value": -0.03343336757648485,
+      "score": -2.5279042821179707,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1377,
+      "date": "2022-10-10",
+      "value": 0.03717868079123399,
+      "score": 5.353615335886004,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1384,
+      "date": "2022-10-17",
+      "value": -0.020217091625419847,
+      "score": -3.7585798490360784,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1422,
+      "date": "2022-11-24",
+      "value": 0.053677288495991515,
+      "score": 5.049709971988924,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1429,
+      "date": "2022-12-01",
+      "value": -0.054328681720135386,
+      "score": -4.710602580588971,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1452,
+      "date": "2022-12-24",
+      "value": 0.029154448418233336,
+      "score": 6.250097735857599,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1461,
+      "date": "2023-01-02",
+      "value": 0.03460363876453654,
+      "score": 3.423021962642811,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1468,
+      "date": "2023-01-09",
+      "value": -0.030839715237303,
+      "score": -2.967269653636154,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1510,
+      "date": "2023-02-20",
+      "value": 0.0383385636495821,
+      "score": 3.4943856774099054,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1517,
+      "date": "2023-02-27",
+      "value": -0.03529943189854379,
+      "score": -3.17867908963139,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1525,
+      "date": "2023-03-07",
+      "value": -0.018472384502534744,
+      "score": -3.083827624511201,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1555,
+      "date": "2023-04-06",
+      "value": 0.019042886638100498,
+      "score": 2.8630238431111814,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1629,
+      "date": "2023-06-19",
+      "value": 0.020490861733624133,
+      "score": 2.9648302226746517,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1644,
+      "date": "2023-07-04",
+      "value": 0.045336749100513885,
+      "score": 2.9517406151421772,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1651,
+      "date": "2023-07-11",
+      "value": -0.04706947592752675,
+      "score": -3.231840084014239,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1688,
+      "date": "2023-08-17",
+      "value": 0.011666219581600856,
+      "score": 2.5064345923301086,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1706,
+      "date": "2023-09-04",
+      "value": 0.031824660802878935,
+      "score": 3.494549997887548,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1713,
+      "date": "2023-09-11",
+      "value": -0.06512031069090085,
+      "score": -4.696069184218356,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1726,
+      "date": "2023-09-24",
+      "value": 0.06264702581002002,
+      "score": 4.0647880274820185,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1733,
+      "date": "2023-10-01",
+      "value": -0.04753968080701254,
+      "score": -2.5538259042081664,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1741,
+      "date": "2023-10-09",
+      "value": 0.02265022493249358,
+      "score": 2.8654578353538245,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1748,
+      "date": "2023-10-16",
+      "value": -0.02008159389068709,
+      "score": -3.710052223951788,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1786,
+      "date": "2023-11-23",
+      "value": 0.044935116010110576,
+      "score": 3.143164876818283,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1793,
+      "date": "2023-11-30",
+      "value": -0.05035161544792022,
+      "score": -2.932691038288374,
+      "direction": "negative",
+      "method": "robust_zscore_peak"
+    },
+    {
+      "index": 1818,
+      "date": "2023-12-25",
+      "value": 0.044398813706153284,
+      "score": 5.562452132230495,
+      "direction": "positive",
+      "method": "robust_zscore_peak"
+    }
+  ],
+  "alternative_results": {
+    "rolling_mean_shift": [
+      {
+        "index": 435,
+        "date": "2020-03-12",
+        "value": 0.007963008204054933,
+        "score": 0.03932816391316853,
+        "direction": "positive",
+        "method": "rolling_mean_shift"
+      },
+      {
+        "index": 450,
+        "date": "2020-03-27",
+        "value": 0.00786082359595719,
+        "score": -0.041535535978348505,
+        "direction": "negative",
+        "method": "rolling_mean_shift"
+      },
+      {
+        "index": 501,
+        "date": "2020-05-17",
+        "value": 0.00012349967988845023,
+        "score": -0.034359967235692804,
+        "direction": "negative",
+        "method": "rolling_mean_shift"
+      },
+      {
+        "index": 715,
+        "date": "2020-12-17",
+        "value": 0.02574600080728784,
+        "score": 0.032850123789654226,
+        "direction": "positive",
+        "method": "rolling_mean_shift"
+      }
+    ]
+  }
+}

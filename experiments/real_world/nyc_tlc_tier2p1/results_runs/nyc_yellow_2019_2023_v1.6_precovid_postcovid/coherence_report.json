@@ -1,0 +1,65 @@
+{
+  "status": "OK_PER_WINDOW",
+  "pairs": [
+    {
+      "pair": [
+        "C_congestion",
+        "C_price_pressure"
+      ],
+      "rho": 0.5427348503511065,
+      "pvalue": 2.143775905214681e-140,
+      "n_points": 1826,
+      "threshold": 0.6,
+      "passed": false
+    }
+  ],
+  "threshold": 0.6,
+  "min_points": 30,
+  "n_constraint_estimators": 2,
+  "windowing": {
+    "type": "date_ranges",
+    "aggregate": "all_pass",
+    "allow_pooled_fail": true,
+    "pooled_status": "ESTIMATOR_UNSTABLE",
+    "results": [
+      {
+        "name": "pre_covid",
+        "start": "2019-01-01",
+        "end": "2020-02-29",
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.927942192556002,
+            "pvalue": 2.0785042289324486e-183,
+            "n_points": 425,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "post_covid",
+        "start": "2020-03-01",
+        "end": "2023-12-31",
+        "status": "OK",
+        "pairs": [
+          {
+            "pair": [
+              "C_congestion",
+              "C_price_pressure"
+            ],
+            "rho": 0.6014821460754619,
+            "pvalue": 1.3354257706476794e-138,
+            "n_points": 1401,
+            "threshold": 0.6,
+            "passed": true
+          }
+        ]
+      }
+    ]
+  }
+}

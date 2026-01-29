@@ -1,0 +1,115 @@
+# EST Pre-Registration (fixture coherence test): NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11_fixture_coherence
+# Version: 0.1
+# Date: 2026-01-29
+#
+# Purpose:
+# - A slightly stronger fixture run where the coherence gate can actually execute
+#   (>= 30 daily points), still without downloading TLC data.
+#
+# How to generate compatible fixtures:
+#   python tests/generate_fixtures.py --n_rows 3000 --start 2023-01-15 --n_days 45 --name_suffix _45d
+#
+# IMPORTANT:
+# - This prereg is NOT evidence. It is a deterministic wiring + gate-execution check.
+
+meta:
+  case_id: nyc_tlc_tier2p11_fixture_coherence
+  version: "0.1"
+  date: "2026-01-29"
+  tier: 2
+  proposition: P11
+  status: fixture_coherence
+
+boundary:
+  dataset_type: ["yellow", "green", "hvfhv"]
+  time_range:
+    start: "2023-01-15"
+    end: "2023-02-28"
+  aggregation:
+    bucket: "D"
+    timezone: "America/New_York"
+  schema_version: "mixed"
+  raw_glob: "tests/fixtures/*_tripdata_sample_45d.parquet"
+
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts
+    - dropoff_zone_counts
+
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (congestion/friction proxy)"
+      enabled: true
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "Supply/demand constraint proxy"
+      enabled: true
+    C_concentration:
+      type: topk_share
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration (spatial inequality)"
+      enabled: true
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+window:
+  smoothing: 7
+  derivative: 1
+  min_periods: 3
+
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_scarcity]
+    - [C_congestion, C_concentration]
+
+regime_detection:
+  method: robust_zscore_peak
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7
+    rolling_window: 21
+    window_size: 14
+    shift_threshold: null
+
+outputs:
+  cleaned_state: "data/cleaned_fixture_45d/daily_state.parquet"
+  metrics_log: "outputs_fixture_45d/metrics_log.parquet"
+  coherence_report: "outputs_fixture_45d/coherence_report.json"
+  regime_report: "outputs_fixture_45d/regime_report.md"
+  change_points: "outputs_fixture_45d/change_points.json"
+  tradeoff_figure: "outputs_fixture_45d/tradeoff_onepage.pdf"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+

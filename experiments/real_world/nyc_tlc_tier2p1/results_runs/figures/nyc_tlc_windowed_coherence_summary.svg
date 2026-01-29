@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-label="NYC TLC Tier-2 coherence outcomes: pooled fails, windowed passes">
+  <defs>
+    <style>
+      .title { font: 700 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#111827; }
+      .sub { font: 400 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#374151; }
+      .boxTitle { font: 700 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#111827; }
+      .mono { font: 600 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:#111827; }
+      .label { font: 500 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#111827; }
+      .small { font: 400 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#6b7280; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="420" fill="#ffffff"/>
+
+  <text x="28" y="38" class="title">NYC TLC (Yellow) 2019–2023 — EST Coherence Outcomes</text>
+  <text x="28" y="62" class="sub">Tier-2 / P11: pooled coherence can fail under level shifts; preregistered windowing restores interpretability without erasing the pooled failure.</text>
+
+  <!-- Pooled -->
+  <rect x="28" y="98" width="924" height="92" rx="12" fill="#fff7ed" stroke="#fb923c" stroke-width="2"/>
+  <text x="52" y="128" class="boxTitle">Pooled (2019–2023)</text>
+  <text x="52" y="150" class="mono">ρ = 0.543 &lt; 0.6  →  FAIL</text>
+  <text x="52" y="172" class="label">Status:</text>
+  <text x="110" y="172" class="mono">ESTIMATOR_UNSTABLE</text>
+  <text x="320" y="172" class="small">Interpretation forbidden under pooled scope.</text>
+
+  <!-- v1.5 yearly -->
+  <rect x="28" y="214" width="452" height="176" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+  <text x="52" y="244" class="boxTitle">v1.5 Year Windowing</text>
+  <text x="52" y="266" class="label">All years PASS; pooled may FAIL</text>
+  <text x="52" y="292" class="label">Status:</text>
+  <text x="110" y="292" class="mono">OK_PER_YEAR</text>
+  <text x="52" y="320" class="mono">2019–2023: each year PASS</text>
+  <text x="52" y="346" class="small">Interpret within-year only.</text>
+
+  <!-- v1.6 pre/post -->
+  <rect x="500" y="214" width="452" height="176" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="524" y="244" class="boxTitle">v1.6 Preregistered Date Windows</text>
+  <text x="524" y="266" class="label">pre/post-COVID both PASS; pooled may FAIL</text>
+  <text x="524" y="292" class="label">Status:</text>
+  <text x="582" y="292" class="mono">OK_PER_WINDOW</text>
+  <text x="524" y="320" class="mono">pre_covid  ρ = 0.928  PASS</text>
+  <text x="524" y="342" class="mono">post_covid ρ = 0.601  PASS</text>
+  <text x="524" y="368" class="small">Interpret within-window only.</text>
+</svg>
+
