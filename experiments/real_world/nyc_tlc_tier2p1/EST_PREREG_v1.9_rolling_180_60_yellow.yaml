@@ -44,6 +44,10 @@ state:
     - total_distance_miles
     - total_fare
     - pickup_zone_counts
+  derived_variables:
+    fare_per_mile:
+      formula: "total_fare / total_distance_miles"
+      note: "Used only for drift-style diagnostics; primary constraint family is defined under estimators.constraint."
 
 estimators:
   information:
@@ -71,7 +75,7 @@ estimators:
       type: rolling_diff
       source: fare_per_mile
       window: 7
-      description: "Fare pressure drift"
+      description: "Fare-per-mile drift (diagnostic only)"
       enabled: true
 
     F_congestion_drift:

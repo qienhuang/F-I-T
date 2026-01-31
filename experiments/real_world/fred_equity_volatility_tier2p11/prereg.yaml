@@ -1,0 +1,152 @@
+# FIT Tier-2 preregistration (FRED Equity Market Volatility)
+# Purpose: Demonstrate FIT regime-switching analysis on financial volatility data
+#
+# This prereg is intentionally conservative:
+# - tight boundary (public FRED data only)
+# - explicit estimators (I, C families)
+# - explicit success/failure criteria
+# - results are allowed to be negative
+#
+# IMPORTANT: This is a "Tier-2 preregistered demonstration" (real-world financial data),
+# not a claim of universal laws or trading signals.
+
+preregistration:
+  id: "T2-FRED-VOL-001"
+  title: "FRED Equity Market Volatility: Regime Switching with Constraint Coherence"
+  locked_date: "2026-01-31"
+  author: "FIT Lab"
+  license: "CC BY 4.0"
+  repo: "https://github.com/qienhuang/F-I-T"
+
+scope:
+  dataset: "FRED Economic Data (Federal Reserve Bank of St. Louis)"
+  purpose: "Tier-2 demo: regime switching with EST coherence gates"
+  boundary_policy:
+    - "Public FRED series only (no proprietary data)"
+    - "Daily frequency where available"
+    - "Fixed date range (declare before running)"
+  exclusions:
+    - "Missing data days (forward-fill for up to 5 days, then mark gap)"
+    - "Weekend/holiday gaps (expected)"
+  caveats:
+    - "Financial volatility regimes are well-studied; this demo tests EST discipline, not market prediction."
+    - "If coherence gate fails, treat results as ESTIMATOR_UNSTABLE (not a theory win/lose)."
+    - "No trading signals or investment advice implied."
+
+estimator_tuple:
+  # E = (S_t, B, C_hat, F_hat, I_hat, W)
+  S_t:
+    description: "Daily aggregated market state"
+    fields:
+      - "V_emv: EMVFINCRISES (news-based equity volatility, financial crises)"
+      - "V_vix: VIXCLS (market-implied volatility)"
+      - "C_ted: TEDRATE (TED spread, credit risk proxy)"
+      - "C_hy: BAMLH0A0HYM2 (high-yield spread, constraint proxy)"
+  B:
+    description: "Boundary (must be fixed before running)"
+    fields:
+      - "date_range: [start_date, end_date]"
+      - "series_filter: [EMVFINCRISES, VIXCLS, TEDRATE, BAMLH0A0HYM2]"
+      - "time_unit: day"
+  I_hat:
+    name: "information_uncertainty"
+    primary: "V_emv (news-based volatility)"
+    secondary: "V_vix (market-implied volatility)"
+    description: "Information uncertainty / availability proxy"
+  C_hat:
+    name: "constraint_family"
+    primary: "C_ted (TED spread)"
+    secondary: "C_hy (high-yield spread)"
+    description: "Risk constraint / liquidity constraint proxy"
+  F_hat:
+    name: "force_proxy"
+    note: "Reserved for policy announcements or exogenous shocks; not used in v1 demo"
+
+regime_definition:
+  high_volatility:
+    description: "High uncertainty regime"
+    threshold: "V_emv > 75th percentile (rolling 252-day)"
+    sustained: "For at least W consecutive days"
+  low_volatility:
+    description: "Normal regime"
+    threshold: "V_emv <= 75th percentile"
+
+window:
+  W: 21  # 21 trading days (~1 month)
+  smoothing: 5
+  derivative: 1
+
+coherence:
+  metric: spearman
+  threshold: 0.4
+  min_points: 30
+  pairs:
+    - [C_ted, C_hy]  # Constraint family coherence
+    - [V_emv, V_vix]  # Information family coherence
+  windowing:
+    type: rolling
+    aggregate: all_pass
+    allow_pooled_fail: true
+    window_days: 252  # 1 year
+    step_days: 63     # 1 quarter
+
+preregistered_parameters:
+  regime_threshold_percentile: 75
+  sustained_days_min: 21
+  coherence_rho_min: 0.4
+  n_regime_events_min: 5
+
+hypotheses:
+  H1:
+    statement: "During high-volatility regimes, constraint estimators co-move positively (credit risk and liquidity constraints tighten together)."
+    operational_test:
+      event_definition: "regime(t) = HIGH if V_emv(t) > rolling_75pct AND sustained >= W days"
+      outcome: "coherence(C_ted, C_hy) within regime window"
+      support_if:
+        - "n_regime_events >= n_regime_events_min"
+        - "mean(coherence | HIGH regime) >= coherence_rho_min"
+      challenge_if:
+        - "n_regime_events >= n_regime_events_min"
+        - "mean(coherence | HIGH regime) < coherence_rho_min"
+      inconclusive_if:
+        - "n_regime_events < n_regime_events_min"
+  H2:
+    statement: "Information estimators (V_emv, V_vix) co-move during regime transitions."
+    operational_test:
+      outcome: "coherence(V_emv, V_vix) over full series"
+      support_if:
+        - "pooled coherence >= 0.6"
+
+coherence_gate:
+  description: "If constraint estimators disagree during known crisis periods, mark ESTIMATOR_UNSTABLE"
+  validation_periods:
+    - name: "GFC"
+      start: "2008-09-01"
+      end: "2009-03-31"
+    - name: "COVID"
+      start: "2020-03-01"
+      end: "2020-06-30"
+  rule:
+    - "For each validation period, compute coherence(C_ted, C_hy)"
+    - "If ANY validation period coherence < 0.4, mark ESTIMATOR_UNSTABLE"
+
+reporting:
+  must_include:
+    - "Exact boundary (dates, series)"
+    - "Regime event counts and dates"
+    - "Coherence values for each regime period"
+    - "Validation period coherence (GFC, COVID)"
+    - "All plots + metrics CSV export"
+    - "Negative results and boundary cases"
+  outputs:
+    - "metrics_daily.csv"
+    - "regime_events.json"
+    - "coherence_report.json"
+    - "overview.svg"
+    - "overview.png"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; regime analysis not interpretable"
+  OK_TO_INTERPRET: "Coherence gate passed; proceed with regime analysis"
+  INCONCLUSIVE: "Insufficient regime events for statistical power"
+  SCOPE_LIMITED: "Data boundary restricts generalization"

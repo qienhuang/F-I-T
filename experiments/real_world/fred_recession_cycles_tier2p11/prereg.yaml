@@ -1,0 +1,117 @@
+# FIT Tier-2 preregistration (FRED Recession Cycles)
+# Purpose: Demonstrate FIT regime-switching analysis on economic cycle data
+#
+# Key advantage: FRED recession probability is EXPLICITLY derived from a
+# Markov-switching model, making "phase transition" model-native.
+
+preregistration:
+  id: "T2-FRED-REC-001"
+  title: "FRED Recession Cycles: Economic Regime Switching with Constraint Coherence"
+  locked_date: "2026-01-31"
+  author: "FIT Lab"
+  license: "CC BY 4.0"
+  repo: "https://github.com/qienhuang/F-I-T"
+
+scope:
+  dataset: "FRED Economic Data (Federal Reserve Bank of St. Louis)"
+  purpose: "Tier-2 demo: economic cycle regime switching with EST coherence gates"
+  boundary_policy:
+    - "Public FRED series only"
+    - "Monthly frequency (aggregated where needed)"
+    - "Fixed date range (1990-01-01 to 2024-12-31)"
+  caveats:
+    - "Recession probability series is MODEL OUTPUT, not raw observation"
+    - "NBER recession dates are retrospectively determined"
+    - "No economic forecasting claims implied"
+
+estimator_tuple:
+  S_t:
+    description: "Monthly aggregated economic state"
+    fields:
+      - "P_rec: RECPROUSM156N (recession probability, 0-100%)"
+      - "R_nber: USREC (binary NBER recession indicator)"
+      - "L_idx: USSLIND (leading economic index)"
+      - "C_claims: ICSA (initial claims, weekly -> monthly)"
+      - "C_ff: FEDFUNDS (federal funds rate)"
+      - "I_sent: UMCSENT (consumer sentiment)"
+  B:
+    description: "Boundary"
+    fields:
+      - "date_range: [1990-01-01, 2024-12-31]"
+      - "time_unit: month"
+  I_hat:
+    name: "information_confidence"
+    primary: "I_sent (consumer sentiment)"
+    secondary: "L_idx (leading index)"
+  C_hat:
+    name: "constraint_family"
+    primary: "C_claims (initial claims)"
+    secondary: "C_ff (fed funds rate)"
+
+regime_definition:
+  recession:
+    description: "Contraction regime"
+    threshold: "P_rec > 50% OR R_nber = 1"
+  expansion:
+    description: "Expansion regime"
+    threshold: "P_rec <= 50% AND R_nber = 0"
+  transition:
+    description: "Regime transition window"
+    window: "3 months before/after regime change"
+
+coherence:
+  metric: spearman
+  threshold: 0.3
+  min_points: 12  # 1 year of monthly data
+  pairs:
+    - [C_claims, C_ff]   # Constraint family
+    - [I_sent, L_idx]    # Information family
+    - [L_idx, P_rec]     # Leading vs probability (expect negative)
+  validation_periods:
+    - name: "Dot-com"
+      start: "2001-01-01"
+      end: "2001-12-31"
+    - name: "GFC"
+      start: "2007-12-01"
+      end: "2009-12-31"
+    - name: "COVID"
+      start: "2020-01-01"
+      end: "2020-12-31"
+
+hypotheses:
+  H1:
+    statement: "Constraint estimators show elevated coherence during regime transitions"
+    operational_test:
+      event: "transition_window = 3 months around NBER recession start/end"
+      outcome: "coherence(C_claims, C_ff) within transition window"
+      support_if:
+        - "mean(coherence | transition) > mean(coherence | stable)"
+  H2:
+    statement: "Leading index and recession probability are negatively coherent"
+    operational_test:
+      outcome: "coherence(L_idx, P_rec) over full series"
+      support_if:
+        - "pooled coherence < -0.4"
+
+coherence_gate:
+  description: "Validate constraint coherence during known recessions"
+  rule:
+    - "For each NBER recession period, compute coherence(C_claims, C_ff)"
+    - "If ANY recession period coherence < 0.3, mark ESTIMATOR_UNSTABLE"
+
+reporting:
+  must_include:
+    - "Exact boundary and series"
+    - "Regime transition dates"
+    - "Coherence values per regime and transition"
+    - "Validation period results"
+  outputs:
+    - "metrics_monthly.csv"
+    - "regime_transitions.json"
+    - "coherence_report.json"
+    - "overview.svg"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed during known recessions"
+  OK_TO_INTERPRET: "Coherence gate passed"
+  INCONCLUSIVE: "Insufficient recession periods in boundary"

@@ -1,5 +1,11 @@
-# FIT Tier-2.5 preregistration (NYC 311)
+# FIT Tier-2.5 preregistration (NYC 311) - v1 (LEGACY)
 # Purpose: a narrow real-world bridge demo for tempo mismatch and backlog drift.
+#
+# STATUS / PLEASE READ FIRST
+# - This file is retained for auditability of early runs (RUN001/RUN002).
+# - For the recommended prereg + interpretation procedure, use `prereg_v3.yaml`.
+# - This v1 prereg includes a rho definition that scales with arrival volume; it is useful
+#   for comparing approaches, but decision-facing conclusions should be made under v2/v3.
 #
 # This prereg is intentionally conservative:
 # - tight boundary
@@ -112,6 +118,11 @@ hypotheses:
     operational_test:
       event_definition: "event(t) = [rho(t) > 1] for a full W-day window (sustained mismatch)"
       outcome: "drift_norm(t; H)"
+      # IMPORTANT (alignment with implementation):
+      # The outcome `drift_norm(t;H)` is undefined for the last H days in the boundary window,
+      # while the event definition needs W days of history. Therefore, event counting and effect
+      # sizes must be computed on PAIRED DAYS only: {t | event(t) is defined} ∩ {t | drift_norm(t;H) is defined}.
+      # Otherwise, you can get spurious "no overlap" failures that are purely windowing artifacts.
       effect_size:
         delta: "median(drift_norm | event) - median(drift_norm | non_event)"
         support_if:

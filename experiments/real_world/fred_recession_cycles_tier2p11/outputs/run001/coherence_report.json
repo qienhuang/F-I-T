@@ -1,0 +1,64 @@
+{
+  "boundary": {
+    "start": "1990-01-01",
+    "end": "2024-12-31"
+  },
+  "pooled": {
+    "L_idx_vs_P_rec": {
+      "rho": -0.6261786138783727,
+      "n": 362,
+      "pval": 8.218231290227999e-41,
+      "status": "PASS"
+    },
+    "C_claims_vs_C_ff": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    },
+    "I_sent_vs_L_idx": {
+      "rho": 0.4183009868959019,
+      "n": 362,
+      "pval": 9.131154766858479e-17,
+      "status": "PASS"
+    },
+    "C_yield_curve_vs_P_rec": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    }
+  },
+  "recession_periods": {
+    "Recession_1990": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    },
+    "Recession_2001": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    },
+    "Recession_2008": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    },
+    "Recession_2020": {
+      "rho": null,
+      "n": 0,
+      "status": "INSUFFICIENT_DATA"
+    }
+  },
+  "hypotheses": {
+    "H2_L_idx_vs_P_rec": {
+      "expected": "rho < -0.4",
+      "actual": -0.6261786138783727,
+      "status": "PASS"
+    }
+  },
+  "coherence_gate": {
+    "label": "OK_TO_INTERPRET",
+    "h2_pass": true,
+    "validation_pass": true
+  }
+}

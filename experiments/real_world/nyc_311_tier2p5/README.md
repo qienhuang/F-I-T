@@ -30,6 +30,7 @@ The prereg defines a mismatch ratio $ \rho $ and tests whether sustained $ \rho 
 
 ## Artifacts
 
+- Results summary (repo-safe, EST-gated): `RESULTS.md`
 - Pre-registration (v1): `prereg.yaml`
 - Pre-registration (v2): `prereg_v2.yaml`
 - Pre-registration (v3, recommended): `prereg_v3.yaml` (PRIMARY config: `W=14`, `H=14`)

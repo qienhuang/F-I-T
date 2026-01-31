@@ -94,27 +94,34 @@ def plot_decision_view(
         )
 
     # Add three light “story windows” (illustrative only, not part of prereg inference).
-    first_over_one, peak_i = _find_markers(series)
     start = series.days[0]
-    peak = series.days[peak_i]
     end = series.days[-1]
+    boundaries: list[tuple[date, date, str]] = []
 
-    if first_over_one is None:
-        # Fall back to equal thirds if rho never crosses 1.
-        n = len(series.days)
-        a = series.days[n // 3]
-        b = series.days[(2 * n) // 3]
-        boundaries = [(start, a, "early"), (a, b, "middle"), (b, end, "late")]
+    if created_end is not None and start <= created_end < end:
+        boundaries.append((start, created_end, "within created boundary (in-scope)"))
+        boundaries.append((created_end, end, "closure tail (out of scope)"))
     else:
-        cross = series.days[first_over_one]
-        boundaries = [(start, cross, "pre-mismatch"), (cross, peak, "mismatch + buildup"), (peak, end, "unwind / tail")]
+        first_over_one, peak_i = _find_markers(series)
+        peak = series.days[peak_i]
 
+        if first_over_one is None:
+            # Fall back to equal thirds if rho never crosses 1.
+            n = len(series.days)
+            a = series.days[n // 3]
+            b = series.days[(2 * n) // 3]
+            boundaries = [(start, a, "early"), (a, b, "middle"), (b, end, "late")]
+        else:
+            cross = series.days[first_over_one]
+            boundaries = [(start, cross, "pre-mismatch"), (cross, peak, "mismatch + buildup"), (peak, end, "unwind / tail")]
+
+    palette = ["#4c78a8", "#f58518", "#54a24b"]
     for ax in (ax_rho, ax_b):
         ylims = ax.get_ylim()
         ax.set_ylim(*ylims)
-        _shade(ax, boundaries[0][0], boundaries[0][1], color="#4c78a8", label=boundaries[0][2])
-        _shade(ax, boundaries[1][0], boundaries[1][1], color="#f58518", label=boundaries[1][2])
-        _shade(ax, boundaries[2][0], boundaries[2][1], color="#54a24b", label=boundaries[2][2])
+        for i, (x0, x1, label) in enumerate(boundaries):
+            color = palette[i % len(palette)]
+            _shade(ax, x0, x1, color=color, label=label)
 
     locator = mdates.AutoDateLocator(minticks=3, maxticks=6)
     ax_b.xaxis.set_major_locator(locator)
@@ -157,4 +164,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

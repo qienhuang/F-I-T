@@ -1,0 +1,39 @@
+{
+  "boundary": {
+    "start": "2005-01-01",
+    "end": "2024-12-31"
+  },
+  "pooled": {
+    "constraint_family": {
+      "rho": 0.16962396746676983,
+      "n": 4569,
+      "pval": 7.7110431009779445e-31,
+      "status": "FAIL"
+    },
+    "information_family": {
+      "rho": 0.3623154998820766,
+      "n": 1439,
+      "pval": 7.07801344206168e-46,
+      "status": "FAIL"
+    }
+  },
+  "validation_periods": {
+    "GFC": {
+      "rho": -0.14246263479264823,
+      "n": 158,
+      "pval": 0.07415955769493994,
+      "status": "FAIL"
+    },
+    "COVID": {
+      "rho": 0.8366788780166335,
+      "n": 89,
+      "pval": 1.8159114531987798e-24,
+      "status": "PASS"
+    }
+  },
+  "coherence_gate": {
+    "label": "ESTIMATOR_UNSTABLE",
+    "threshold": 0.4,
+    "rule": "All validation periods must have rho >= 0.4 or insufficient data"
+  }
+}

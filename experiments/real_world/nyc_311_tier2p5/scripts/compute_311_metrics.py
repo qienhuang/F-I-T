@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -29,6 +30,7 @@ class RunConfig:
     created_start: Optional[date]
     created_end: Optional[date]
     plot_tail_days: int
+    coherence_rho_min: float
 
 
 def _resolve_default_input() -> Path:
@@ -529,12 +531,256 @@ def write_outputs(
     plt.close(fig)
 
 
+def _longest_zero_run(values: list[int]) -> int:
+    best = 0
+    cur = 0
+    for v in values:
+        if int(v) == 0:
+            cur += 1
+            best = max(best, cur)
+        else:
+            cur = 0
+    return best
+
+
+def _first_float(rows: list[dict[str, Any]], key: str) -> Optional[float]:
+    for r in rows:
+        v = r.get(key)
+        if v is None:
+            continue
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
+def write_run_diagnostics(
+    *,
+    config: RunConfig,
+    rows: list[dict[str, Any]],
+    created_end_marker: Optional[date],
+) -> None:
+    out_dir = config.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    days = [date.fromisoformat(str(r["day"])) for r in rows]
+    created_min = min(days)
+    created_max = max(date.fromisoformat(str(r["day"])) for r in rows if r.get("arrivals") is not None)
+
+    arrivals_series = [int(r.get("arrivals") or 0) for r in rows]
+    closures_series = [int(r.get("closures") or 0) for r in rows]
+
+    created_end = created_end_marker or config.created_end
+    if created_end is None:
+        created_end = max(days)
+
+    in_window_idxs = [i for i, d in enumerate(days) if d <= created_end]
+    arrivals_in_window = [arrivals_series[i] for i in in_window_idxs]
+
+    tail_days = (max(days) - created_end).days if max(days) > created_end else 0
+
+    rho_spearman = _first_float(rows, "coherence_spearman_rho_dB_vs_drift")
+    rho_sign = None
+    raw_sign = None
+    for r in rows:
+        raw_sign = r.get("coherence_sign_dB_vs_drift")
+        if raw_sign is not None:
+            break
+    if raw_sign is not None:
+        try:
+            rho_sign = int(raw_sign)
+        except (TypeError, ValueError):
+            rho_sign = None
+
+    coherence_status = "UNKNOWN"
+    if rho_spearman is None:
+        coherence_status = "FAIL"
+    elif abs(rho_spearman) < float(config.coherence_rho_min):
+        coherence_status = "FAIL"
+    else:
+        coherence_status = "PASS"
+
+    label = "ESTIMATOR_UNSTABLE" if coherence_status == "FAIL" else "OK_TO_INTERPRET"
+
+    longest_zero_run_arrivals = _longest_zero_run(arrivals_in_window) if arrivals_in_window else 0
+    longest_zero_run_closures = _longest_zero_run(closures_series) if closures_series else 0
+
+    n_days = len(rows)
+    def _is_true(value: Any) -> bool:
+        return str(value).strip().lower() in {"true", "1", "yes", "y"}
+
+    def _is_defined(value: Any) -> bool:
+        if value is None:
+            return False
+        text = str(value).strip()
+        if text == "":
+            return False
+        return text.lower() not in {"none", "nan", "nat"}
+
+    n_event_total = sum(1 for r in rows if _is_true(r.get("event_rho_gt_1_sustainedW")))
+    n_defined_drift = sum(1 for r in rows if _is_defined(r.get("drift_norm")))
+
+    event_days = [d for r, d in zip(rows, days) if _is_true(r.get("event_rho_gt_1_sustainedW"))]
+    drift_days = [d for r, d in zip(rows, days) if _is_defined(r.get("drift_norm"))]
+    overlap_days = sorted(set(event_days).intersection(drift_days))
+    n_event_paired = int(len(overlap_days))
+    n_non_event_paired = int(len(set(drift_days) - set(event_days)))
+
+    def _range_or_none(day_list: list[date]) -> Optional[dict[str, str]]:
+        if not day_list:
+            return None
+        return {"start": min(day_list).isoformat(), "end": max(day_list).isoformat()}
+
+    drift_range = _range_or_none(drift_days)
+    event_range = _range_or_none(event_days)
+    overlap_range = _range_or_none(overlap_days)
+
+    drift_rho_values: list[float] = []
+    if drift_range is not None:
+        drift_start = date.fromisoformat(drift_range["start"])
+        drift_end = date.fromisoformat(drift_range["end"])
+        for r, d in zip(rows, days):
+            if d < drift_start or d > drift_end:
+                continue
+            if not _is_defined(r.get("rho")):
+                continue
+            try:
+                drift_rho_values.append(float(r["rho"]))
+            except (TypeError, ValueError, KeyError):
+                continue
+
+    drift_rho_summary: dict[str, Any] = {
+        "n_days": int(len(drift_rho_values)),
+        "median": None,
+        "max": None,
+        "days_gt_1": int(sum(1 for v in drift_rho_values if v > 1.0)),
+        "days_le_1": int(sum(1 for v in drift_rho_values if v <= 1.0)),
+    }
+    if drift_rho_values:
+        sorted_vals = sorted(drift_rho_values)
+        drift_rho_summary["median"] = float(sorted_vals[len(sorted_vals) // 2])
+        drift_rho_summary["max"] = float(max(drift_rho_values))
+
+    payload: dict[str, Any] = {
+        "input_csv": str(config.input_csv),
+        "out_dir": str(out_dir),
+        "agency": config.agency,
+        "top_k_types": int(config.top_k_types),
+        "window_days": int(config.window_days),
+        "horizon_days": int(config.horizon_days),
+        "rho_mode": config.rho_mode,
+        "created_start": config.created_start.isoformat() if config.created_start else None,
+        "created_end": created_end.isoformat() if created_end else None,
+        "tail_days_after_created_end": int(tail_days),
+        "n_days_total": int(n_days),
+        "n_days_drift_defined": int(n_defined_drift),
+        # Back-compat: "n_event_sustained" historically meant "total sustained event days".
+        "n_event_sustained": int(n_event_total),
+        "n_event_sustained_total": int(n_event_total),
+        # For preregistered H1-style checks, only count events on days where drift_norm is defined.
+        "n_event_sustained_paired": int(n_event_paired),
+        "n_non_event_paired": int(n_non_event_paired),
+        "domain_overlap": {
+            "note": (
+                "For H1-style checks, event days must overlap with days where drift_norm is defined. "
+                "With a created-date boundary, sustained events can appear in the tail where arrivals=0 by construction, "
+                "while drift_norm is undefined outside the created window."
+            ),
+            "event_days_total": int(len(event_days)),
+            "drift_days_total": int(len(drift_days)),
+            "overlap_days": int(len(overlap_days)),
+            "event_days_paired": int(n_event_paired),
+            "non_event_days_paired": int(n_non_event_paired),
+            "event_range": event_range,
+            "drift_range": drift_range,
+            "overlap_range": overlap_range,
+            "rho_in_drift_range": drift_rho_summary,
+        },
+        "coherence": {
+            "metric": "spearman(dB_t, drift_norm(t;H))",
+            "rho": rho_spearman,
+            "sign": rho_sign,
+            "rho_min": float(config.coherence_rho_min),
+            "status": coherence_status,
+            "label": label,
+        },
+        "integrity_hints": {
+            "longest_zero_run_arrivals_within_created_window_days": int(longest_zero_run_arrivals),
+            "longest_zero_run_closures_over_full_series_days": int(longest_zero_run_closures),
+            "note": (
+                "If you used a created-date boundary, arrivals after created_end are expected to be 0 by construction; "
+                "closures may continue (tail). Large late-time lags can be tail artifacts."
+            ),
+        },
+    }
+
+    (out_dir / "run_diagnostics.json").write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+    md_lines: list[str] = []
+    md_lines.append("# NYC 311 Tier-2.5 run diagnostics")
+    md_lines.append("")
+    md_lines.append("This file is a run-level summary to make the preregistered demo auditable.")
+    md_lines.append("For the decision procedure, see `docs/est/diagnostics.md`.")
+    md_lines.append("")
+    md_lines.append("## Run config")
+    md_lines.append(f"- input: `{config.input_csv}`")
+    md_lines.append(f"- out_dir: `{out_dir}`")
+    md_lines.append(f"- agency: `{config.agency or 'ALL'}`")
+    md_lines.append(f"- top_k_types: `{config.top_k_types}`")
+    md_lines.append(f"- W (window_days): `{config.window_days}`")
+    md_lines.append(f"- H (horizon_days): `{config.horizon_days}`")
+    md_lines.append(f"- rho_mode: `{config.rho_mode}`")
+    md_lines.append(f"- created_start: `{config.created_start.isoformat() if config.created_start else 'None'}`")
+    md_lines.append(f"- created_end: `{created_end.isoformat() if created_end else 'None'}`")
+    md_lines.append(f"- tail_days_after_created_end: `{tail_days}`")
+    md_lines.append("")
+    md_lines.append("## Counts")
+    md_lines.append(f"- days_total: `{n_days}`")
+    md_lines.append(f"- days_with_drift_norm: `{n_defined_drift}`")
+    md_lines.append(f"- sustained_event_days_total: `{n_event_total}`  (`event_rho_gt_1_sustainedW`)")
+    md_lines.append(f"- sustained_event_days_paired: `{n_event_paired}`  (event & drift intersection; use this for prereg H1 counts)")
+    md_lines.append("")
+    md_lines.append("## Domain overlap (why events may be untestable)")
+    md_lines.append(f"- event_days_total: `{len(event_days)}`")
+    md_lines.append(f"- drift_days_total: `{len(drift_days)}`  (`drift_norm` defined)")
+    md_lines.append(f"- overlap_days: `{len(overlap_days)}`  (event & drift intersection)")
+    md_lines.append(f"- non_event_days_paired: `{n_non_event_paired}`  (drift defined, not event)")
+    md_lines.append(f"- event_range: `{event_range or 'None'}`")
+    md_lines.append(f"- drift_range: `{drift_range or 'None'}`")
+    md_lines.append(f"- overlap_range: `{overlap_range or 'None'}`")
+    md_lines.append(f"- rho_in_drift_range: `{drift_rho_summary}`")
+    if created_end_marker or config.created_end:
+        md_lines.append(
+            "- note: with a created-date boundary, arrivals after `created_end` are 0 by construction; sustained events can appear in the tail while `drift_norm` is undefined."
+        )
+    md_lines.append("")
+    md_lines.append("## Coherence gate (P10-like)")
+    md_lines.append(f"- spearman_rho(dB, drift_norm): `{rho_spearman}`")
+    md_lines.append(f"- sign: `{rho_sign}`")
+    md_lines.append(f"- threshold (rho_min): `{config.coherence_rho_min}`")
+    md_lines.append(f"- status: **{coherence_status}** -> label: **{label}**")
+    md_lines.append("")
+    md_lines.append("## Integrity hints (non-conclusive)")
+    md_lines.append(
+        f"- longest_zero_run(arrivals) within created window: `{longest_zero_run_arrivals}` days (large values often indicate export/filter artifacts)"
+    )
+    md_lines.append(f"- longest_zero_run(closures) over full plotted range: `{longest_zero_run_closures}` days")
+    md_lines.append("")
+    md_lines.append("## Interpretation guardrails")
+    md_lines.append("- Do not treat this demo as 'real-world validation' of FIT; it is a preregistered monitoring-style demonstration.")
+    md_lines.append("- If coherence is FAIL (`ESTIMATOR_UNSTABLE`), do not interpret H1 as supported/challenged under this estimator setup.")
+    md_lines.append("- Use `scripts/sanity_check_311_boundary.py` to generate the boundary sanity report before narrative interpretation.")
+    md_lines.append("")
+    (out_dir / "run_diagnostics.md").write_text("\n".join(md_lines) + "\n", encoding="utf-8")
+
+
 def parse_args() -> RunConfig:
     parser = argparse.ArgumentParser(description="Compute Tier-2.5 metrics from NYC 311-style logs.")
     parser.add_argument("--input", type=str, default=str(_resolve_default_input()), help="CSV path")
     parser.add_argument("--outdir", type=str, default="", help="Output directory (default: ./outputs under demo)")
-    parser.add_argument("--window", type=int, default=7, help="Rolling window W (days)")
-    parser.add_argument("--horizon", type=int, default=7, help="Forward horizon H (days) for drift_norm")
+    parser.add_argument("--window", type=int, default=14, help="Rolling window W (days); recommended default: 14")
+    parser.add_argument("--horizon", type=int, default=14, help="Forward horizon H (days) for drift_norm; recommended default: 14")
     parser.add_argument("--agency", type=str, default="", help="Optional: agency filter (exact match)")
     parser.add_argument("--top-k-types", type=int, default=10, help="Keep top-K complaint types (0 disables)")
     parser.add_argument(
@@ -556,6 +802,12 @@ def parse_args() -> RunConfig:
         type=int,
         default=-1,
         help="If created-end is set, cap plots to (created_end + N days). Use -1 for full range.",
+    )
+    parser.add_argument(
+        "--coherence-rho-min",
+        type=float,
+        default=0.2,
+        help="Coherence gate threshold used only for labeling in run_diagnostics (see prereg for official threshold).",
     )
     args = parser.parse_args()
 
@@ -586,6 +838,7 @@ def parse_args() -> RunConfig:
         created_start=created_start,
         created_end=created_end,
         plot_tail_days=int(args.plot_tail_days),
+        coherence_rho_min=float(args.coherence_rho_min),
     )
 
 
@@ -598,10 +851,13 @@ def main() -> None:
     created_end_marker = config.created_end or max((e.created_day for e in events), default=None)
     daily = compute_daily(events, window_days=config.window_days, horizon_days=config.horizon_days, rho_mode=config.rho_mode)
     write_outputs(daily, config.out_dir, config.plot, created_end_marker=created_end_marker, plot_tail_days=config.plot_tail_days)
+    write_run_diagnostics(config=config, rows=daily, created_end_marker=created_end_marker)
     print(f"Wrote: {config.out_dir / 'metrics_daily.csv'}")
     print(f"Wrote: {config.out_dir / 'overview.svg'}")
     if (config.out_dir / 'overview.png').exists():
         print(f"Wrote: {config.out_dir / 'overview.png'}")
+    print(f"Wrote: {config.out_dir / 'run_diagnostics.json'}")
+    print(f"Wrote: {config.out_dir / 'run_diagnostics.md'}")
 
 
 if __name__ == "__main__":

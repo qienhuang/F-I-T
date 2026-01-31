@@ -7,7 +7,7 @@
 run_id: "T2p5-NYC311-RUN001"
 base_prereg: "prereg.yaml"
 locked_date: "2026-01-04"
-locked_by: "internal"
+locked_by: "locked"
 
 # === LOCKED BOUNDARY ===
 boundary:
