@@ -144,7 +144,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 |------|------|------|
 | **v2.4.1**（当前） | EST + Tier-1 验证 | [docs/v2.4.md](docs/v2.4.md) |
 | v2.3 | Tier-1 验证 | [docs/v2.3.md](docs/v2.3.md) |
-| v2.1 | 遗留讨论版 | [docs/v2.1.md](docs/v2.1.md) |
+| v2.1 | 遗留审阅版 | [docs/v2.1.md](docs/v2.1.md) |
 
 **稳定性**：2.x 核心已稳定；修订由反例驱动。见[版本策略](docs/core/Versioning_Policy.md)。
 
@@ -175,7 +175,6 @@ docs/           规范和笔记
 experiments/    可运行演示和验证产物
 papers/         草稿和特定场所的写作
 proposals/      实践者试点和模板
-skills/         CLI 技能（可选）
 tools/          可运行工具包
 ```
 

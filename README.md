@@ -147,7 +147,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 |---------|-------------|------|
 | **v2.4.1** (current) | EST + Tier-1 validation | [docs/v2.4.md](docs/v2.4.md) |
 | v2.3 | Tier-1 validation | [docs/v2.3.md](docs/v2.3.md) |
-| v2.1 | Legacy discussion edition | [docs/v2.1.md](docs/v2.1.md) |
+| v2.1 | Legacy review edition | [docs/v2.1.md](docs/v2.1.md) |
 
 **Stability**: 2.x core is stabilized; revisions are counterexample-driven. See [Versioning Policy](docs/core/Versioning_Policy.md).
 
@@ -178,7 +178,6 @@ docs/           Specifications and notes
 experiments/    Runnable demos and validation artifacts
 papers/         Drafts and venue-specific writeups
 proposals/      Practitioner pilots and templates
-skills/         CLI skills (optional)
 tools/          Runnable toolkits
 ```
 
