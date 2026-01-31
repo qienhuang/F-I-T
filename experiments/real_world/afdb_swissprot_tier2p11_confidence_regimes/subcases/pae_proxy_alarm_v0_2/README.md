@@ -45,9 +45,9 @@ The fixture is intended only to verify the pipeline + artifacts; it is not a mea
 
 ## 1) Why v0.2 exists (what v0.1 did not teach)
 
-v0.1 answered: "Can a proxy alarm operate at low FPR?"
+v0.1 answered: "Can a proxy alarm operate at low FPR"
 
-v0.2 answers: "If PAE labels are expensive, can an acquisition policy learn the alarm **faster** than random given the same label budget?"
+v0.2 answers: "If PAE labels are expensive, can an acquisition policy learn the alarm **faster** than random given the same label budget"
 
 This is the same loop archetype used in inverse-design/AL systems:
 

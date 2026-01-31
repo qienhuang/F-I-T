@@ -137,7 +137,7 @@ def propose_candidates(n: int, search_space: Dict[str, Any], boundary: Dict[str,
     return out
 
 
-# ---- Domain hooks (TODO): implement for your setting ----
+# ---- Domain hooks (IMPLEMENT): implement for your setting ----
 
 
 def evaluate_candidate_stage0(c: Candidate, config: Dict[str, Any]) -> StageResult:
@@ -327,4 +327,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

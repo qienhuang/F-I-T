@@ -39,6 +39,49 @@ Optional v1.6 (pre/post-COVID date windows; treats the macro boundary as a prere
 python run_pipeline.py --prereg EST_PREREG_v1.6.yaml
 ```
 
+Optional v1.8 (rolling windowing; diagnostic-only unless all windows pass):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.8_rolling.yaml
+```
+
+Optional v1.8 (rolling diagnostic on Green / FHVHV; may reveal finer instability even when v1.7 passes):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.8_rolling_green.yaml
+python run_pipeline.py --prereg EST_PREREG_v1.8_rolling_fhvhv.yaml --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
+```
+
+Optional v1.9 (rolling sensitivity: 180-day windows / 60-day stride):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_yellow.yaml
+python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_green.yaml
+python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_fhvhv.yaml --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
+```
+
+v1.7 cross-dataset replications (Green / FHVHV):
+
+```powershell
+# Download helper (optional). Data is local-only under data/raw/ and is gitignored.
+pwsh ./download_tripdata.ps1 -Dataset green -YearStart 2019 -YearEnd 2023
+pwsh ./download_tripdata.ps1 -Dataset fhvhv -YearStart 2019 -YearEnd 2023
+```
+
+Quick smoke (limit files; CPU-friendly):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.7_green.yaml --max_files 2 --out_root _smoke_out/green_v1.7
+python run_pipeline.py --prereg EST_PREREG_v1.7_fhvhv.yaml --max_files 2 --out_root _smoke_out/fhvhv_v1.7
+```
+
+Full runs (write into a run folder; do not commit raw data or `outputs/`):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.7_green.yaml --out_root results_runs/nyc_green_2019_2023_v1.7_precovid_postcovid
+python run_pipeline.py --prereg EST_PREREG_v1.7_fhvhv.yaml --out_root results_runs/nyc_fhvhv_2019_2023_v1.7_precovid_postcovid
+```
+
 Batching tip: override the raw glob without editing the prereg file:
 
 ```bash
@@ -97,6 +140,7 @@ This case follows strict EST (Estimator Selection Theory) discipline:
 3. **Failure labels**:
    - If coherence fails -> `ESTIMATOR_UNSTABLE` (no interpretation allowed)
    - If all yearly windows pass but pooled coherence fails under prereg windowing -> `OK_PER_YEAR` (interpret within-year only)
+   - If all preregistered date windows pass but pooled coherence fails -> `OK_PER_WINDOW` (interpret within-window only)
 
 ## Data
 
@@ -140,8 +184,7 @@ Note: `src.clean` aggregates per file and avoids loading the full trip table int
 | ID | Definition | Interpretation |
 |----|------------|----------------|
 | `C_congestion` | `log1p(minutes_per_mile)` | Travel friction proxy |
-| `C_scarcity` | `-log(trip_count)` | Supply/demand constraint |
-| `C_concentration` | Top-5 zone share | Spatial concentration (enabled in current prereg) |
+| `C_price_pressure` | `log1p(fare_per_mile)` | Fare pressure proxy |
 
 ### Force (F)
 
@@ -196,18 +239,21 @@ pytest -q
 
 ## Case Study Documents
 
-- [Case Study v1.0](nyc_tlc_tier2p11_case_study.md) - Original specification
 - [Case Study v1.1](nyc_tlc_tier2p11_case_study_v1.1.md) - Refined EST alignment
 
 ## Known Limitations
 
 - Constraint proxies are internal (no external traffic data)
-- Scarcity proxy sensitive to data sampling
 - Daily aggregation may miss intra-day patterns
 
 ## Next Steps
 
-- Prefer v1.5 for full 2019-2023 runs (year-windowed coherence): `EST_PREREG_v1.5.yaml`
+- Prefer v1.6 if you want a preregistered macro boundary (pre/post-COVID): `EST_PREREG_v1.6.yaml`
+- Prefer v1.5 if you want calendar-year windowing: `EST_PREREG_v1.5.yaml`
+- Use v1.8 as a strict rolling-window diagnostic (may fail even when v1.5/v1.6 pass): `EST_PREREG_v1.8_rolling.yaml`
+- Run v1.7 replications (Green / FHVHV) to test whether "pooled FAIL + windowed PASS" generalizes beyond Yellow:
+  - `EST_PREREG_v1.7_green.yaml`
+  - `EST_PREREG_v1.7_fhvhv.yaml`
 
 - Try a preregistered constraint-family repair (v1.3 candidate): `EST_PREREG.v1_3_price_pressure.yaml`
   - Run: `python run_pipeline.py --prereg EST_PREREG.v1_3_price_pressure.yaml`

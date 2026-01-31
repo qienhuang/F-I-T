@@ -1,0 +1,175 @@
+# EST Pre-Registration: NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11
+# Version: 1.3
+# Date: 2026-01-28
+# Primary focus: P11 (regime-change signatures in I/C)
+#
+# CHANGE LOG from v1.2:
+# - Replace C_scarcity with C_price_pressure
+#   Rationale: C_scarcity = -log(trip_count) is an activity/demand measure,
+#   not a constraint. It was negatively correlated with C_congestion (rho=-0.68)
+#   because high demand -> more trips -> more congestion.
+#   C_price_pressure = log1p(fare/mile) is a cost measure that should
+#   correlate positively with C_congestion (both are "cost of travel").
+
+meta:
+  case_id: nyc_tlc_tier2p11
+  version: "1.3"
+  date: "2026-01-28"
+  tier: 2
+  proposition: P11
+  status: active
+  prior_versions:
+    - version: "1.2"
+      coherence_status: ESTIMATOR_UNSTABLE
+      reason: "C_scarcity negatively correlated with C_congestion (rho=-0.68)"
+      artifacts: "results_runs/nyc_yellow_2019_2023_v1/"
+
+# Data boundary specification
+boundary:
+  dataset_type: ["yellow"]  # Supports: yellow, green, hvfhv
+  time_range:
+    start: "2019-01-01"
+    end: "2023-12-31"
+  aggregation:
+    bucket: "D"  # daily (D) or hourly (H)
+    timezone: "America/New_York"
+  schema_version: "2022+"  # TLC schema version
+  raw_glob: "data/raw/yellow_tripdata_*.parquet"
+
+# State definition
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts  # dict[zone_id, count]
+    - dropoff_zone_counts  # dict[zone_id, count]
+    - hourly_counts  # dict[hour, count] - for temporal entropy
+    - od_pair_counts  # dict["pu_do", count] - for OD entropy (optional)
+
+# Estimator family
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+
+    I_entropy_od:
+      type: shannon_entropy
+      source: od_pair_counts
+      description: "OD pair diversity (optional, requires OD data)"
+      enabled: false
+
+    I_temporal_entropy:
+      type: shannon_entropy
+      source: hourly_counts
+      description: "Hourly distribution entropy (intra-day diversity)"
+      enabled: false  # Enable when hourly data available
+
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (time cost / friction proxy)"
+      enabled: true
+
+    C_price_pressure:
+      type: log1p_ratio
+      formula: "log1p(total_fare / total_distance_miles)"
+      description: "Fare per mile (money cost proxy)"
+      enabled: true
+
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "Supply/demand constraint proxy - DISABLED: activity measure, not constraint"
+      enabled: false  # Disabled in v1.3 - negatively correlated with congestion
+
+    C_concentration:
+      type: topk_share  # or "gini"
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration (spatial inequality)"
+      enabled: true
+
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+# Window parameters
+window:
+  smoothing: 7  # rolling mean window (days)
+  derivative: 1  # diff lag
+  min_periods: 3
+
+# Coherence gate
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_price_pressure]  # Changed from C_scarcity
+    - [C_congestion, C_concentration]
+
+# Change-point detection
+regime_detection:
+  method: robust_zscore_peak  # or "rolling_mean_shift"
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7  # days
+    rolling_window: 21
+    # For rolling_mean_shift:
+    window_size: 14
+    shift_threshold: null  # auto from 2*std if null
+  alternative_methods:
+    - rolling_mean_shift  # For robustness comparison
+
+# Output artifacts
+outputs:
+  metrics_log: "outputs/metrics_log.parquet"
+  regime_report: "outputs/regime_report.md"
+  tradeoff_figure: "outputs/tradeoff_onepage.pdf"
+  coherence_report: "outputs/coherence_report.json"
+  change_points: "outputs/change_points.json"
+
+# Failure labels
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  SCOPE_LIMITED: "Data boundary restricts generalization"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+  SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+# Notes for practitioners
+notes:
+  v1_3_rationale: |
+    v1.2 showed C_scarcity = -log(trip_count) is negatively correlated with
+    C_congestion (rho=-0.68). This is because trip_count is an activity/demand
+    measure: high demand -> more trips -> more congestion.
+
+    v1.3 replaces C_scarcity with C_price_pressure = log1p(fare/mile).
+    Both C_congestion and C_price_pressure are "cost of travel" measures:
+    - C_congestion: time cost (minutes/mile)
+    - C_price_pressure: money cost (dollars/mile)
+
+    Hypothesis: These should correlate positively if they both reflect
+    underlying supply-demand constraints.
+
+  q_constraint_validity: |
+    This is the EST training point: use estimator family + coherence gate
+    to constrain "definition freedom". If coherence fails, the chosen C
+    family is inadequate - iterate with different proxies.

@@ -1,0 +1,12 @@
+metric,value_mean,value_std,notes
+n_runs_total,40,,Seeds 140-179
+n_runs_with_event,39,,Denominator used by tradeoff outputs
+sign_plus1_auc,0.434859,0.108401,Per-run AUC mean±std (n=39)
+sign_plus1_ap,0.065449,0.019753,Per-run AP mean±std (n=39)
+sign_plus1_n_eff_ratio,0.151667,0.003537,Effective-n ratio on negatives (mean±std)
+sign_plus1_k_eff,1.140109,0.008598,Effective sample size factor (mean±std)
+sign_plus1_tie_dom,0.036250,0.003937,Tie dominance (mean±std)
+sign_minus1_auc,0.589792,0.160588,Per-run AUC mean±std (n=39) - ranking can look better
+sign_minus1_ap,0.122599,0.105504,Per-run AP mean±std (n=39)
+sign_minus1_tie_dom,1.000000,0.000000,Pathological ties align with FPR-floor behavior
+

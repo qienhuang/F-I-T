@@ -1,0 +1,104 @@
+# GMB results (real run) v0.4 schema
+#
+# Source: grokking GMB v0.5 hold-out evaluation (seeds 140-179)
+# Date: 2026-01-30
+schema_version: "v0.4"
+meta:
+  benchmark: "GMB"
+  run_id: "run_grokking_v0_5_holdout_140_179"
+  date: "2026-01-30"
+  commit_hash: null
+  prereg_path: "docs/benchmarks/gmb_v0_4/gmb_prereg_v0.4.yaml"
+
+boundary:
+  task: "grokking_modular_addition_p97"
+  model: "2-layer-transformer"
+  seeds_eval: ["140-179"]
+
+event:
+  type: "E_jump"
+  t_event_by_seed: {}
+
+summary:
+  n_seeds: 40
+  n_events: 39
+  notes: "Hold-out evaluation. One seed had no evaluable event in the analysis outputs (denominator 39)."
+
+indicators:
+  - name: "v0_5_score_sign_plus1"
+    family: "dynamics"
+    layer_A:
+      auc: 0.434859
+      ap: 0.065449
+    layer_B:
+      targets: [0.01, 0.05, 0.10, 0.20]
+      achieved:
+        - {target: 0.01, achieved: 0.009998}
+        - {target: 0.05, achieved: 0.049991}
+        - {target: 0.10, achieved: 0.099982}
+        - {target: 0.20, achieved: 0.200009}
+      ok_targets: 4
+      fpr_min: 0.009998
+      controllability_pass: true
+      fpr_floor_detected: false
+    layer_C:
+      at_fpr:
+        - {fpr: 0.05, coverage: 0.410256, abstain_rate: 0.589744, lead_time_mean_steps: 12781.2}
+        - {fpr: 0.10, coverage: 0.564103, abstain_rate: 0.435897, lead_time_mean_steps: 11272.7}
+        - {fpr: 0.20, coverage: 0.743590, abstain_rate: 0.256410, lead_time_mean_steps: 12000.0}
+    layer_D:
+      family_size: null
+      pass_rate: null
+      label_flip_rate: null
+      sensitivity_notes: "Low-FPR coverage is the bottleneck in hold-out seeds; abstain is non-trivial at strict FPR."
+    label: "SUPPORTED_FOR_ALARM"
+    diagnostics:
+      n_eff_ratio_mean: 0.151667
+      n_eff_ratio_std: 0.003537
+      k_eff_mean: 1.140109
+      k_eff_std: 0.008598
+      tie_dom_mean: 0.036250
+      tie_dom_std: 0.003937
+      comments: "Operational under explicit FPR control, but coverage is modest at FPR=0.05."
+
+  - name: "v0_5_score_sign_minus1"
+    family: "dynamics"
+    layer_A:
+      auc: 0.589792
+      ap: 0.122599
+    layer_B:
+      targets: [0.01, 0.05, 0.10, 0.20]
+      achieved:
+        - {target: 0.01, achieved: 0.437878}
+        - {target: 0.05, achieved: 0.437878}
+        - {target: 0.10, achieved: 0.437878}
+        - {target: 0.20, achieved: 0.437878}
+      ok_targets: 0
+      fpr_min: 0.437878
+      controllability_pass: false
+      fpr_floor_detected: true
+    layer_C:
+      at_fpr:
+        - {fpr: 0.05, coverage: 1.0, abstain_rate: 0.0, lead_time_mean_steps: 18359.0}
+        - {fpr: 0.10, coverage: 1.0, abstain_rate: 0.0, lead_time_mean_steps: 18359.0}
+        - {fpr: 0.20, coverage: 1.0, abstain_rate: 0.0, lead_time_mean_steps: 18359.0}
+    layer_D:
+      family_size: null
+      pass_rate: null
+      label_flip_rate: null
+      sensitivity_notes: "Pathological: achieved FPR saturates at ~0.44 independent of target."
+    label: "RANK_ONLY"
+    diagnostics:
+      n_eff_ratio_mean: 0.151667
+      n_eff_ratio_std: 0.003537
+      k_eff_mean: 1.140109
+      k_eff_std: 0.008598
+      tie_dom_mean: 1.000000
+      tie_dom_std: 0.000000
+      comments: "Uncontrollable FPR floor (~0.44): invalid as an alarm score under any low-FPR regime."
+
+tables:
+  gate_summary_path: "tables/gate_summary.csv"
+  utility_at_fpr_path: "tables/utility_at_fpr.csv"
+  robustness_path: "tables/robustness.csv"
+

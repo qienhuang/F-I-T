@@ -1,15 +1,15 @@
-# CPU-First Local Agent on 16GB RAM (DeepSeek Distill): Verifier-First, Audit-First Design
+﻿# CPU-First Local Agent on 16GB RAM (R1-distill): Verifier-First, Audit-First Design
 
 Version: v0.2 (2026-01-11)
 Status: paper-grade draft (engineering blueprint; reproducibility + internal FIT validation focus).
 
 ## Abstract (EN)
 
-We present a CPU-first design blueprint for a local, tool-using conversational agent under a common consumer constraint: a modern CPU and 16GB RAM, with no always-on cloud inference. The central claim is that usefulness under tight compute is achieved less by maximizing raw model capability and more by constraining system degrees of freedom: structured IO, retrieval-as-evidence, verifier-first execution, and action-level gating for irreversible operations. We specify system modules, operational metrics, a minimal benchmark protocol, and a reference demo implementation. For the base model family, we recommend DeepSeek distillation-based instruct models (CN/EN capable) and a narrow adaptation surface (LoRA/DPO) focused on routing, schema adherence, and safety-critical decisions rather than general knowledge acquisition.
+We present a CPU-first design blueprint for a local, tool-using conversational agent under a common consumer constraint: a modern CPU and 16GB RAM, with no always-on cloud inference. The central claim is that usefulness under tight compute is achieved less by maximizing raw model capability and more by constraining system degrees of freedom: structured IO, retrieval-as-evidence, verifier-first execution, and action-level gating for irreversible operations. We specify system modules, operational metrics, a minimal benchmark protocol, and a reference demo implementation. For the base model family, we recommend R1 distillation-based instruct models (CN/EN capable) and a narrow adaptation surface (LoRA/DPO) focused on routing, schema adherence, and safety-critical decisions rather than general knowledge acquisition.
 
 ## 摘要（中文）
 
-本文提出一个在"CPU + 16GB 内存 + 本地离线"为约束条件下，构建可用思维对话/工具代理系统的工程化蓝图。核心观点不是追求"更聪明的模型"，而是通过结构化输入输出、证据检索（retrieval-as-evidence）、可验证执行（verifier-first）以及不可逆动作门控（action gate）来降低系统自由度，从而在小模型上获得稳定、可审计的可用性。文中给出模块化架构、可操作指标与最小评估协议，并提供可复现的参考 demo。模型选型上建议以 DeepSeek 蒸馏系指令模型为底座（中英双语），把微调面收敛到路由、schema 遵循与安全关键决策上，而非在本地重新学习通用知识。
+本文提出一个在"CPU + 16GB 内存 + 本地离线"为约束条件下，构建可用思维对话/工具代理系统的工程化蓝图。核心观点不是追求"更聪明的模型"，而是通过结构化输入输出、证据检索（retrieval-as-evidence）、可验证执行（verifier-first）以及不可逆动作门控（action gate）来降低系统自由度，从而在小模型上获得稳定、可审计的可用性。文中给出模块化架构、可操作指标与最小评估协议，并提供可复现的参考 demo。模型选型上建议以 蒸馏系指令模型为底座（中英双语），把微调面收敛到路由、schema 遵循与安全关键决策上，而非在本地重新学习通用知识。
 
 ## Contributions
 
@@ -61,32 +61,32 @@ Non-goals:
 - No mandatory cloud dependency
 - All irreversible actions must be auditable and fail-closed by default
 
-## 2. Model selection (DeepSeek distill, CN/EN)
+## 2. Model selection (R1-distill, CN/EN)
 
 ### 2.1 Primary recommendation (single-model)
 
 For a single on-device model under 16GB RAM:
 
-- Choose a **DeepSeek distill instruct** model in the **~7B–8B** range (CN/EN capable).
+- Choose a **R1-distill instruct** model in the **~7B–8B** range (CN/EN capable).
 - Quantize to **4-bit** for CPU inference (e.g., GGUF Q4_K_M variants in llama.cpp ecosystems).
 
 Rationale:
-- Distillation from DeepSeek-R1 yields stronger instruction-following and reasoning behavior at a fixed parameter budget than training a small model from scratch on limited data.
+- Distillation from arXiv:2501.12948v2 yields stronger instruction-following and reasoning behavior at a fixed parameter budget than training a small model from scratch on limited data.
 - 4-bit quantization is the practical sweet spot for CPU latency vs. quality.
 
 ### 2.2 Model comparison (7B–8B class, 2025)
 
-The following table compares candidate models in the 7B–8B parameter range. Data sources: [llm-stats.com](https://llm-stats.com/models/compare/deepseek-r1-distill-llama-8b-vs-qwen-2.5-7b-instruct), [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B), [Skywork AI](https://skywork.ai/blog/llm/top-10-open-llms-2025-november-ranking-analysis/).
+The following table compares candidate models in the 7B–8B parameter range. Data sources (links omitted in this repo-facing draft): [llm-stats.com](link omitted), [HuggingFace](link omitted), [Skywork AI](https://skywork.ai/blog/llm/top-10-open-llms-2025-november-ranking-analysis/).
 
 | Model | Params | MATH-500 | GPQA-Diamond | LiveCodeBench | Context | CN/EN | Notes |
 |---|---|---|---|---|---|---|---|
-| **DeepSeek-R1-Distill-Llama-8B** | 8B | 89.1% | 49.0% | 39.6% | 128K | ✓/✓ | Distilled from R1; strong reasoning |
-| **DeepSeek-R1-Distill-Qwen-7B** | 7B | ~90% | — | 37.6% | 128K | ✓/✓ | Qwen2.5 base; slightly better math |
+| **R1-Distill-Llama-8B** | 8B | 89.1% | 49.0% | 39.6% | 128K | ✓/✓ | Distilled from R1; strong reasoning |
+| **R1-Distill-Qwen-7B** | 7B | ~90% | — | 37.6% | 128K | ✓/✓ | Qwen2.5 base; slightly better math |
 | Qwen2.5-7B-Instruct | 7.6B | 92.8% | — | 37.6% | 128K | ✓/✓ | Strong math; general-purpose |
 | Llama-3.1-8B-Instruct | 8B | 84% | 32.8% | 39.6% | 128K | ✗/✓ | Good English; weaker Chinese |
 | Phi-4-mini-instruct | 3.8B | ~85% | — | — | 16K | ✗/✓ | Smaller; fast; English-focused |
 
-**Recommendation**: For CN/EN bilingual use cases, prefer **DeepSeek-R1-Distill-Qwen-7B** or **DeepSeek-R1-Distill-Llama-8B**. Both inherit strong reasoning from R1 distillation and support long context (128K tokens).
+**Recommendation**: For CN/EN bilingual use cases, prefer **R1-Distill-Qwen-7B** or **R1-Distill-Llama-8B**. Both inherit strong reasoning from R1 distillation and support long context (128K tokens).
 
 ### 2.3 Latency estimation (CPU inference)
 
@@ -94,13 +94,13 @@ Expected latency varies significantly by hardware. The following estimates are b
 
 | Hardware | Model | Quantization | Tokens/sec | First-token (ms) | Peak RAM |
 |---|---|---|---|---|---|
-| AMD Ryzen AI 9 HX 370 | DeepSeek-R1-Distill-8B | NexaQuant 4-bit | ~17 tok/s | ~500ms | ~5GB |
-| AMD Ryzen AI 9 HX 370 | DeepSeek-R1-Distill-8B | FP16 (unquantized) | ~5 tok/s | ~1500ms | ~15.5GB |
+| AMD Ryzen AI 9 HX 370 | R1-Distill-8B | NexaQuant 4-bit | ~17 tok/s | ~500ms | ~5GB |
+| AMD Ryzen AI 9 HX 370 | R1-Distill-8B | FP16 (unquantized) | ~5 tok/s | ~1500ms | ~15.5GB |
 | Intel i7-12700 (16 threads) | 7B Q4_K_M | Q4_K_M | ~8–12 tok/s | ~800ms | ~5GB |
 | Apple M2 (8 cores) | 7B Q4_K_M | Q4_K_M | ~15–20 tok/s | ~400ms | ~5GB |
 | Older CPU (4 cores, DDR4) | 7B Q4_K_M | Q4_K_M | ~3–5 tok/s | ~2000ms | ~5GB |
 
-Source: [AMD Blog](https://www.amd.com/en/blogs/2025/speed-up-deepseek-r1-distill-4-bit-performance-and.html), [NexaAI HuggingFace](https://huggingface.co/NexaAI/DeepSeek-R1-Distill-Llama-8B-NexaQuant).
+Source: [AMD Blog](link omitted), [NexaAI HuggingFace](link omitted).
 
 **Note**: These are estimates. Actual performance depends on context length, batch size, and system load. Always benchmark on target hardware before deployment.
 
@@ -504,7 +504,7 @@ Each audit entry is a JSON object appended to `audit_log.jsonl`:
 {
   "timestamp_utc": "2025-01-11T10:30:00Z",
   "run_id": "uuid-v4",
-  "model_id": "deepseek-r1-distill-qwen-7b-q4",
+  "model_id": "r1-distill-qwen-7b-q4",
   "model_hash": "sha256:abc123...",
   "prompt_hash": "sha256:def456...",
   "tool_name": "write_file",
@@ -520,7 +520,7 @@ Each audit entry is a JSON object appended to `audit_log.jsonl`:
 
 ## References
 
-[1] DeepSeek-AI. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2025. https://arxiv.org/abs/2501.12948
+[1] arXiv:2501.12948v2. *Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2025. https://arxiv.org/abs/2501.12948
 
 [2] Q. Huang. *Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems.* FIT Framework, 2025. https://doi.org/10.5281/zenodo.18155425
 
@@ -530,9 +530,9 @@ Each audit entry is a JSON object appended to `audit_log.jsonl`:
 
 [5] llama.cpp project. *GGUF quantization and CPU inference.* https://github.com/ggerganov/llama.cpp
 
-[6] NexaAI. *DeepSeek-R1-Distill-Llama-8B-NexaQuant.* HuggingFace, 2025. https://huggingface.co/NexaAI/DeepSeek-R1-Distill-Llama-8B-NexaQuant
+[6] NexaAI. *R1-Distill-Llama-8B-NexaQuant.* HuggingFace, 2025. (link omitted)
 
-[7] AMD. *Speed Up DeepSeek R1 Distill 4-bit Performance with NexaQuant.* AMD Blog, 2025. https://www.amd.com/en/blogs/2025/speed-up-deepseek-r1-distill-4-bit-performance-and.html
+[7] AMD. *Speed Up R1 Distill 4-bit Performance with NexaQuant.* AMD Blog, 2025. (link omitted)
 
 [8] Qwen Team. *Qwen2.5 Technical Report.* Alibaba Cloud, 2024.
 

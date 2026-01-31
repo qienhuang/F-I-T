@@ -1,11 +1,11 @@
-# 16GB 内存 CPU 优先本地智能体（DeepSeek 蒸馏）：验证优先、审计优先设计
+﻿# 16GB 内存 CPU 优先本地智能体（R1 蒸馏）：验证优先、审计优先设计
 
 版本：v0.2 (2026-01-11)
 状态：论文级草稿（工程蓝图；聚焦可复现性 + FIT 内部验证）
 
 ## 摘要
 
-本文提出一个在"CPU + 16GB 内存 + 本地离线"为约束条件下，构建可用的工具调用对话智能体系统的工程化蓝图。核心观点不是追求"更聪明的模型"，而是通过结构化输入输出、证据检索（retrieval-as-evidence）、可验证执行（verifier-first）以及不可逆动作门控（action gate）来降低系统自由度，从而在小模型上获得稳定、可审计的可用性。文中给出模块化架构、可操作指标与最小评估协议，并提供可复现的参考 demo。模型选型上建议以 DeepSeek 蒸馏系指令模型为底座（中英双语），把微调面收敛到路由、schema 遵循与安全关键决策上，而非在本地重新学习通用知识。
+本文提出一个在"CPU + 16GB 内存 + 本地离线"为约束条件下，构建可用的工具调用对话智能体系统的工程化蓝图。核心观点不是追求"更聪明的模型"，而是通过结构化输入输出、证据检索（retrieval-as-evidence）、可验证执行（verifier-first）以及不可逆动作门控（action gate）来降低系统自由度，从而在小模型上获得稳定、可审计的可用性。文中给出模块化架构、可操作指标与最小评估协议，并提供可复现的参考 demo。模型选型上建议以 R1 蒸馏系指令模型为底座（中英双语），把微调面收敛到路由、schema 遵循与安全关键决策上，而非在本地重新学习通用知识。
 
 ## 贡献
 
@@ -57,32 +57,32 @@
 - 无强制云依赖
 - 所有不可逆操作必须可审计，默认失败关闭（fail-closed）
 
-## 2. 模型选型（DeepSeek 蒸馏，中英双语）
+## 2. 模型选型（R1 蒸馏，中英双语）
 
 ### 2.1 主要推荐（单模型）
 
 在 16GB 内存下使用单个设备端模型：
 
-- 选择 **DeepSeek 蒸馏指令模型**，参数规模 **~7B–8B**（支持中英双语）。
+- 选择 **R1 蒸馏指令模型**，参数规模 **~7B–8B**（支持中英双语）。
 - 量化为 **4-bit** 进行 CPU 推理（例如 llama.cpp 生态系统中的 GGUF Q4_K_M 变体）。
 
 理由：
-- 从 DeepSeek-R1 蒸馏得到的模型，在固定参数预算下，比从有限数据从头训练小模型具有更强的指令遵循和推理能力。
+- 从 arXiv:2501.12948v2 蒸馏得到的模型，在固定参数预算下，比从有限数据从头训练小模型具有更强的指令遵循和推理能力。
 - 4-bit 量化是 CPU 延迟与质量之间的实用最佳平衡点。
 
 ### 2.2 模型对比（7B–8B 级别，2025）
 
-下表比较了 7B–8B 参数范围内的候选模型。数据来源：[llm-stats.com](https://llm-stats.com/models/compare/deepseek-r1-distill-llama-8b-vs-qwen-2.5-7b-instruct)、[HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B)、[Skywork AI](https://skywork.ai/blog/llm/top-10-open-llms-2025-november-ranking-analysis/)。
+下表比较了 7B–8B 参数范围内的候选模型。数据来源：[llm-stats.com](link omitted)、[HuggingFace](link omitted)、[Skywork AI](https://skywork.ai/blog/llm/top-10-open-llms-2025-november-ranking-analysis/)。
 
 | 模型 | 参数量 | MATH-500 | GPQA-Diamond | LiveCodeBench | 上下文 | 中/英 | 备注 |
 |---|---|---|---|---|---|---|---|
-| **DeepSeek-R1-Distill-Llama-8B** | 8B | 89.1% | 49.0% | 39.6% | 128K | ✓/✓ | 从 R1 蒸馏；推理能力强 |
-| **DeepSeek-R1-Distill-Qwen-7B** | 7B | ~90% | — | 37.6% | 128K | ✓/✓ | Qwen2.5 底座；数学略强 |
+| **R1-Distill-Llama-8B** | 8B | 89.1% | 49.0% | 39.6% | 128K | ✓/✓ | 从 R1 蒸馏；推理能力强 |
+| **R1-Distill-Qwen-7B** | 7B | ~90% | — | 37.6% | 128K | ✓/✓ | Qwen2.5 底座；数学略强 |
 | Qwen2.5-7B-Instruct | 7.6B | 92.8% | — | 37.6% | 128K | ✓/✓ | 数学强；通用型 |
 | Llama-3.1-8B-Instruct | 8B | 84% | 32.8% | 39.6% | 128K | ✗/✓ | 英文好；中文较弱 |
 | Phi-4-mini-instruct | 3.8B | ~85% | — | — | 16K | ✗/✓ | 更小；快；英文为主 |
 
-**推荐**：对于中英双语场景，优先选择 **DeepSeek-R1-Distill-Qwen-7B** 或 **DeepSeek-R1-Distill-Llama-8B**。两者都继承了 R1 蒸馏的强推理能力，并支持长上下文（128K tokens）。
+**推荐**：对于中英双语场景，优先选择 **R1-Distill-Qwen-7B** 或 **R1-Distill-Llama-8B**。两者都继承了 R1 蒸馏的强推理能力，并支持长上下文（128K tokens）。
 
 ### 2.3 延迟估算（CPU 推理）
 
@@ -90,13 +90,13 @@
 
 | 硬件 | 模型 | 量化方式 | Tokens/秒 | 首 token 延迟 (ms) | 峰值内存 |
 |---|---|---|---|---|---|
-| AMD Ryzen AI 9 HX 370 | DeepSeek-R1-Distill-8B | NexaQuant 4-bit | ~17 tok/s | ~500ms | ~5GB |
-| AMD Ryzen AI 9 HX 370 | DeepSeek-R1-Distill-8B | FP16（未量化） | ~5 tok/s | ~1500ms | ~15.5GB |
+| AMD Ryzen AI 9 HX 370 | R1-Distill-8B | NexaQuant 4-bit | ~17 tok/s | ~500ms | ~5GB |
+| AMD Ryzen AI 9 HX 370 | R1-Distill-8B | FP16（未量化） | ~5 tok/s | ~1500ms | ~15.5GB |
 | Intel i7-12700（16 线程） | 7B Q4_K_M | Q4_K_M | ~8–12 tok/s | ~800ms | ~5GB |
 | Apple M2（8 核） | 7B Q4_K_M | Q4_K_M | ~15–20 tok/s | ~400ms | ~5GB |
 | 老款 CPU（4 核，DDR4） | 7B Q4_K_M | Q4_K_M | ~3–5 tok/s | ~2000ms | ~5GB |
 
-来源：[AMD 博客](https://www.amd.com/en/blogs/2025/speed-up-deepseek-r1-distill-4-bit-performance-and.html)、[NexaAI HuggingFace](https://huggingface.co/NexaAI/DeepSeek-R1-Distill-Llama-8B-NexaQuant)。
+来源：[AMD 博客](link omitted)、[NexaAI HuggingFace](link omitted)。
 
 **注意**：以上为估算值。实际性能取决于上下文长度、批处理大小和系统负载。部署前务必在目标硬件上进行基准测试。
 
@@ -500,7 +500,7 @@ def gate_action(
 {
   "timestamp_utc": "2025-01-11T10:30:00Z",
   "run_id": "uuid-v4",
-  "model_id": "deepseek-r1-distill-qwen-7b-q4",
+  "model_id": "r1-distill-qwen-7b-q4",
   "model_hash": "sha256:abc123...",
   "prompt_hash": "sha256:def456...",
   "tool_name": "write_file",
@@ -516,7 +516,7 @@ def gate_action(
 
 ## 参考文献
 
-[1] DeepSeek-AI. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2025. https://arxiv.org/abs/2501.12948
+[1] arXiv:2501.12948v2. *Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2025. https://arxiv.org/abs/2501.12948
 
 [2] Q. Huang. *Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems.* FIT Framework, 2025. https://doi.org/10.5281/zenodo.18155425
 
@@ -526,9 +526,9 @@ def gate_action(
 
 [5] llama.cpp 项目. *GGUF 量化与 CPU 推理.* https://github.com/ggerganov/llama.cpp
 
-[6] NexaAI. *DeepSeek-R1-Distill-Llama-8B-NexaQuant.* HuggingFace, 2025. https://huggingface.co/NexaAI/DeepSeek-R1-Distill-Llama-8B-NexaQuant
+[6] NexaAI. *R1-Distill-Llama-8B-NexaQuant.* HuggingFace, 2025. (link omitted)
 
-[7] AMD. *用 NexaQuant 加速 DeepSeek R1 Distill 4-bit 性能.* AMD 博客, 2025. https://www.amd.com/en/blogs/2025/speed-up-deepseek-r1-distill-4-bit-performance-and.html
+[7] AMD. *用 NexaQuant 加速 R1 Distill 4-bit 性能.* AMD 博客, 2025. (link omitted)
 
 [8] Qwen 团队. *Qwen2.5 技术报告.* 阿里云, 2024.
 

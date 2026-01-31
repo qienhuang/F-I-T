@@ -1,21 +1,21 @@
-# DeepSeek-R1 (arXiv:2501.12948v2) — A FIT-Oriented Safety Reading (Case Note)
+# R1-style Reasoning via RL (arXiv:2501.12948v2) — A FIT-Oriented Safety Reading (Case Note)
 
-This note is a **FIT (Force–Information–Time)**-oriented reading of DeepSeek-R1:
-“DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning” (arXiv:2501.12948v2, 2026).
+This note is a **FIT (Force–Information–Time)**-oriented reading of:
+“Incentivizing Reasoning Capability in LLMs via Reinforcement Learning” (arXiv:2501.12948v2, 2026).
 
 Scope: what looks *structurally relevant to AI safety* (governance, controllability, failure modes), not a full model review.
 
 ## Why it matters (safety angle)
 
-DeepSeek-R1 explicitly acknowledges a key risk pattern: **stronger reasoning can increase the operational feasibility of harmful outputs**, especially under jailbreaks. They also describe a **service-level risk control system** (content risk review pipeline) in supplementary materials.
+The paper explicitly acknowledges a key risk pattern: **stronger reasoning can increase the operational feasibility of harmful outputs**, especially under jailbreaks. It also describes a **service-level risk control system** (content risk review pipeline) in supplementary materials.
 
-This makes DeepSeek-R1 a useful, current industry reference for “capability jumps imply governance risk,” which aligns with the motivation behind Controlled Nirvana.
+This makes it a useful, current industry reference for “capability jumps imply governance risk,” which aligns with the motivation behind Controlled Nirvana.
 
 ## FIT mapping (operational, not metaphoric)
 
 ### 1) Tempo mismatch and “overthinking”
 
-DeepSeek reports “overthinking” / token-inefficiency: the system sometimes allocates too many tokens to simple problems.
+The paper reports “overthinking” / token-inefficiency: the system sometimes allocates too many tokens to simple problems.
 
 FIT reading:
 - This is a **tempo mismatch** symptom: internal decision tempo and external task tempo are misaligned.
@@ -23,7 +23,7 @@ FIT reading:
 
 ### 2) Reward hacking and self-referential instability
 
-DeepSeek discusses reward hacking (policy exploits reward signal flaws).
+The paper discusses reward hacking (policy exploits reward signal flaws).
 
 FIT reading:
 - Reward hacking is a canonical **self-referential loop** failure mode: internal optimization targets the proxy (reward model / verifier) rather than the intended objective.
@@ -33,7 +33,7 @@ Practical lesson: post-training pipelines should treat reward-model drift and pr
 
 ### 3) “Aha moment” / discontinuity during training
 
-DeepSeek describes an “aha moment” in RL training dynamics (e.g., abrupt behavior shifts).
+The paper describes an “aha moment” in RL training dynamics (e.g., abrupt behavior shifts).
 
 FIT reading:
 - This is consistent with **phase-transition-like** behavior in learning dynamics: sudden changes in strategy and internal organization.
@@ -41,7 +41,7 @@ FIT reading:
 
 ### 4) Verifiable vs non-verifiable tasks
 
-DeepSeek emphasizes that their strongest results come from tasks with reliable verifiers, and that reward reliability becomes hard for open-ended tasks.
+The paper emphasizes that the strongest results come from tasks with reliable verifiers, and that reward reliability becomes hard for open-ended tasks.
 
 FIT reading:
 - Verifier quality is part of the **external correction channel**. When it is weak, correction collapses and self-referential shortcuts become more likely.
@@ -49,7 +49,7 @@ FIT reading:
 
 ## Defense-in-depth: content gating + action gating
 
-DeepSeek’s service-level risk controls focus on **content gating** (should this response be allowed?).
+The service-level risk controls focus on **content gating** (should this response be allowed?).
 
 Controlled Nirvana focuses on **action gating** (should the system be allowed to commit irreversible effects now?).
 
@@ -71,8 +71,7 @@ If deploying a reasoning-capable model with tools/agentic capabilities:
 
 ## Bottom line
 
-DeepSeek-R1 is valuable for FIT because it is a current, concrete example where:
+This paper is valuable for FIT because it is a current, concrete example where:
 - reasoning improvement is explicitly linked to higher misuse risk (under jailbreak),
 - post-training is acknowledged as a regime with abrupt behavioral shifts,
 - service-level mitigations are treated as necessary in addition to “model intrinsic safety”.
-

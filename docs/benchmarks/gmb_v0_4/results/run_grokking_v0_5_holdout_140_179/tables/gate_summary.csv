@@ -1,0 +1,10 @@
+configuration,fpr_target,fpr_achieved,fpr_min,floor_detected,notes
+holdout_140_179_sign_plus1,0.01,0.009998,0.009998,no,FPR controlled (achieved≈target)
+holdout_140_179_sign_plus1,0.05,0.049991,0.009998,no,FPR controlled (achieved≈target)
+holdout_140_179_sign_plus1,0.10,0.099982,0.009998,no,FPR controlled (achieved≈target)
+holdout_140_179_sign_plus1,0.20,0.200009,0.009998,no,FPR controlled (achieved≈target)
+holdout_140_179_sign_minus1,0.01,0.437878,0.437878,yes,Uncontrolled FPR floor at ~0.44 (invalid for alarms)
+holdout_140_179_sign_minus1,0.05,0.437878,0.437878,yes,Uncontrolled FPR floor at ~0.44 (invalid for alarms)
+holdout_140_179_sign_minus1,0.10,0.437878,0.437878,yes,Uncontrolled FPR floor at ~0.44 (invalid for alarms)
+holdout_140_179_sign_minus1,0.20,0.437878,0.437878,yes,Uncontrolled FPR floor at ~0.44 (invalid for alarms)
+

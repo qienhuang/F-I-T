@@ -102,7 +102,7 @@ $$
 
 ---
 
-## What is  $ t $  in this case?
+## What is  $ t $  in this case
 
 This is not a time series. We use an **ordered axis**:
 

@@ -73,6 +73,26 @@ Recommended default: $\rho_{\min} \in [0.5,0.7]$ (must be preregistered).
 - change-points within tolerance (preregistered), and optionally:
 - TDA / barcode similarity if used (preregistered)
 
+### Step 1.5 — Pooled vs windowed coherence audit (windowing is diagnostic)
+
+If your preregistration includes **temporal windowing** (e.g., yearly windows, pre/post-event windows, rolling regime blocks), treat windowing as a **diagnostic**, not a rescue patch.
+
+Compute coherence for:
+
+- the **pooled** scope (all data in the declared boundary), and
+- **each preregistered window**.
+
+Then interpret the 2×2 outcome as follows:
+
+| Pooled coherence | All windows coherence | What it means | Label guidance |
+|---|---|---|---|
+| PASS | PASS | The estimator family is coherent at both pooled and window scopes. | Proceed to Step 2. |
+| FAIL | PASS | **Phase heterogeneity / aggregation failure**: pooled claims are forbidden, but window-scoped claims may be allowed. | Report pooled as a first-class failure (do not erase it). Continue only for the window-scoped result. |
+| PASS | FAIL | **Structure mismatch**: aggregation can appear coherent while a preregistered sub-scope fails. Windowing did not "break" coherence; it revealed that pooled coherence is not a sufficient safety check. | Treat the run as `ESTIMATOR_UNSTABLE` for the intended window-scoped interpretation. |
+| FAIL | FAIL | The estimator family is not coherent at pooled scope and not coherent within at least one preregistered window. | `ESTIMATOR_UNSTABLE`. |
+
+Practical rule: If your claim depends on windows, you must publish (i) the pooled outcome and (ii) the per-window gate outcomes. Never summarize them into a single pooled number.
+
 ### Step 2 — Scope sensitivity check
 
 Run the same analysis under preregistered *scope variants* (if any), or a declared “scope family”:

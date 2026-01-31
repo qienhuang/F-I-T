@@ -59,3 +59,19 @@ Notes:
 
 - Layer A (AUC/AP) is intentionally not re-extracted in this run; treat this as a calibration/utility example.
 - If a metric is unavailable, write `null` and explain why in the YAML notes (do not backfill by hand).
+
+### run_grokking_v0_5_holdout_140_179 (2026-01-30)
+
+This run packages a v0.5 hold-out evaluation (seeds 140-179) into the same repo-safe GMB result structure.
+
+Files:
+
+- `docs/benchmarks/gmb_v0_4/results/run_grokking_v0_5_holdout_140_179/gmb_results_v0.4.run_grokking_v0_5_holdout_140_179.yaml`
+- `docs/benchmarks/gmb_v0_4/results/run_grokking_v0_5_holdout_140_179/tables/gate_summary.csv`
+- `docs/benchmarks/gmb_v0_4/results/run_grokking_v0_5_holdout_140_179/tables/utility_at_fpr.csv`
+- `docs/benchmarks/gmb_v0_4/results/run_grokking_v0_5_holdout_140_179/tables/robustness.csv`
+
+Key finding:
+
+- `score_sign = +1` remains **FPR-controllable** on hold-out seeds, but coverage is modest at strict low-FPR (e.g., 41% at FPR=0.05; 56% at FPR=0.10).
+- `score_sign = -1` exhibits an **FPR floor** at ~0.44 and is therefore **invalid for alarms**, even if its ranking metrics can look better.

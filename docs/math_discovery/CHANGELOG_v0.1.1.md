@@ -1,7 +1,7 @@
 # FIT-Math Discovery Engine v0.1.1 Patch Notes
 **Date**: 2026-01-27
 
-This patch responds to the main actionable points raised in feedback (DeepSeek + Claude):
+This patch responds to the main actionable points raised in external feedback:
 
 - Clarify **Explorer vs Verifier** interface and trust boundary.
 - Replace the oversimplified “FPR=0” phrasing with a precise statement about **kernel soundness** vs **discovery heuristics**.

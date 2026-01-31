@@ -82,6 +82,7 @@ def main() -> None:
         _run(clean_cmd)
 
         _run([python, "-m", "src.estimators", "--prereg", str(prereg_for_run), "--input", str(cleaned), "--output", str(metrics)])
+        _run([python, "-m", "src.export_fail_windows", "--coherence", str(coherence), "--output", str(outputs / "fail_windows.md")])
         _run([python, "-m", "src.regimes", "--prereg", str(prereg_for_run), "--input", str(metrics), "--coherence", str(coherence), "--output", str(regime_report)])
         _run([python, "-m", "src.plots", "--prereg", str(prereg_for_run), "--input", str(metrics), "--coherence", str(coherence), "--change-points", str(change_points), "--output", str(fig)])
     finally:

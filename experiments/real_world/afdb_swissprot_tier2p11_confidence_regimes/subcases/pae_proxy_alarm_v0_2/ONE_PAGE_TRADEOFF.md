@@ -13,7 +13,7 @@ This one‑pager makes the acquisition story **operational** (budgeted learning)
 - Y axis: TPR on holdout at the **primary FPR cap**
 - One curve per policy.
 
-Purpose: “How quickly do we get usable coverage under budget?”
+Purpose: “How quickly do we get usable coverage under budget”
 
 ---
 

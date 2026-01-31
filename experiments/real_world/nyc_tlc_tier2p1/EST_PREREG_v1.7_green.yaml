@@ -1,0 +1,145 @@
+# EST Pre-Registration: NYC TLC Trip Records (Green Taxi)
+# Case ID: nyc_tlc_green_tier2p11
+# Version: 1.7
+# Date: 2026-01-30
+# Primary focus: P11 (regime-change signatures in I/C)
+#
+# This is a boundary-only variant of v1.6:
+# - Same estimators, coherence gate, and preregistered pre/post-COVID windows.
+# - Different dataset boundary: Green taxi trip records.
+
+meta:
+  case_id: nyc_tlc_green_tier2p11
+  version: "1.7"
+  date: "2026-01-30"
+  tier: 2
+  proposition: P11
+  status: active
+  prior_versions:
+    - version: "1.6"
+      coherence_status: OK_PER_WINDOW
+      key_finding: "Yellow taxi: pooled coherence can fail under level shifts; preregistered windows can pass."
+
+boundary:
+  dataset_type: ["green"]
+  time_range:
+    start: "2019-01-01"
+    end: "2023-12-31"
+  aggregation:
+    bucket: "D"
+    timezone: "America/New_York"
+  schema_version: "2022+"
+  raw_glob: "data/raw/green_tripdata_*.parquet"
+
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts
+
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (time cost)"
+      enabled: true
+
+    C_price_pressure:
+      type: log1p_ratio
+      formula: "log1p(total_fare / total_distance_miles)"
+      description: "Fare per mile (money cost)"
+      enabled: true
+
+    C_concentration:
+      type: topk_share
+      k: 5
+      source: pickup_zone_counts
+      description: "Top-5 zone concentration - DISABLED: orthogonal to cost family"
+      enabled: false
+
+    C_scarcity:
+      type: neg_log
+      formula: "-log(trip_count)"
+      description: "DISABLED: activity measure, not constraint"
+      enabled: false
+
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+window:
+  smoothing: 7
+  derivative: 1
+  min_periods: 3
+
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_price_pressure]
+  windowing:
+    type: date_ranges
+    aggregate: all_pass
+    allow_pooled_fail: true
+    windows:
+      - name: pre_covid
+        start: "2019-01-01"
+        end: "2020-02-29"
+      - name: post_covid
+        start: "2020-03-01"
+        end: "2023-12-31"
+
+regime_detection:
+  method: robust_zscore_peak
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7
+    rolling_window: 21
+    window_size: 14
+    shift_threshold: null
+  alternative_methods:
+    - rolling_mean_shift
+
+outputs:
+  metrics_log: "outputs/metrics_log.parquet"
+  regime_report: "outputs/regime_report.md"
+  tradeoff_figure: "outputs/tradeoff_onepage.pdf"
+  coherence_report: "outputs/coherence_report.json"
+  change_points: "outputs/change_points.json"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  OK_PER_WINDOW: "Coherence passes within preregistered windows; interpret within-window only"
+  OK_PER_YEAR: "Coherence passes within yearly windows; interpret within-year only"
+  SCOPE_LIMITED: "Data boundary restricts generalization"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+  SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+notes:
+  v1_7_rationale: |
+    This is a cross-dataset replication of the same EST protocol used for Yellow taxi.
+    The goal is not to "make pooled pass", but to test whether the pooled-fail/window-pass
+    pattern generalizes under the same estimators and declared windows.
+

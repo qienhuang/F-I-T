@@ -339,7 +339,7 @@ This work is part of the broader FIT (Force–Information–Time) framework deve
 [10] W. R. Ashby. *An Introduction to Cybernetics.* Chapman & Hall, 1956.  
 [11] Y. Tian. *Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking.* arXiv:2509.21519, 2025.  
 [12] Q. Huang. *Irreversible Operations and Tempo Mismatch in AI Learning Systems: Definitions, Thresholds, and a Minimal Governance Interface.* 2026. https://doi.org/10.5281/zenodo.18142151
-[13] DeepSeek-AI. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* arXiv:2501.12948v2, 2026.
+[13] arXiv:2501.12948v2. *Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.* 2026.
 
 
 

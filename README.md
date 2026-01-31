@@ -65,7 +65,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ## Tier-2 Evidence
 - **Grokking** experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
-- A real-world Tier-2 / P11 case is now available on **NYC TLC Yellow Taxi** data. Under EST gates, pooled coherence fails while preregistered windowing yields auditable scope-limited validity (`OK_PER_YEAR`, `OK_PER_WINDOW`): [nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md) (results: [RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md); viz: [summary](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg), paper: [Phase-Conditioned Constraint Coherence in a Real-World Mobility System](papers\phase-conditioned_constraint_coherence_in_a_real-world_mobility_system.v1.md))  
+- A real-world Tier-2 / P11 case is now available on **NYC TLC (Yellow / Green / FHVHV)** data. Under EST gates, pooled coherence can fail while preregistered windowing yields auditable scope-limited validity (`OK_PER_YEAR`, `OK_PER_WINDOW`) for Yellow and FHVHV; Green provides a counterexample (pooled PASS but a preregistered window FAIL), showing windowing is diagnostic rather than a universal fix. A stricter rolling-window diagnostic (v1.8) finds localized coherence failures across all three modalities: [nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md) (results: [RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md); viz: [summary](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg), paper: [Phase-Conditioned Constraint Coherence in a Real-World Mobility System](papers/phase-conditioned_constraint_coherence_in_a_real-world_mobility_system.v1.md))  
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ---
@@ -131,7 +131,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
 | [Slow-evolving agent architecture (v0.2)](docs/agents/README.md) | FIT/EST-aligned agent specs + runnable pre-validator checklist |
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
-| [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1-style RL + risk control |
+| [R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1-style RL + risk control |
 
 ### Dr.One: Baseline vs Controlled
 
@@ -178,7 +178,7 @@ docs/           Specifications and notes
 experiments/    Runnable demos and validation artifacts
 papers/         Drafts and venue-specific writeups
 proposals/      Practitioner pilots and templates
-skills/         Codex CLI skills (optional)
+skills/         CLI skills (optional)
 tools/          Runnable toolkits
 ```
 

@@ -1,6 +1,6 @@
 # GMB v0.4 Formula Review
 
-**Reviewer**: Claude (Opus 4.5)
+**Reviewer**: Internal review
 **Date**: 2026-01-27
 **Scope**: All markdown files in `docs/benchmarks/gmb_v0_4/`
 **Status**: ✅ **ALL ISSUES FIXED** (2026-01-27)

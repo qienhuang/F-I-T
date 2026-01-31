@@ -1,0 +1,10 @@
+configuration,fpr_threshold,coverage_pct,abstain_rate,n_covered,n_total,lead_time_mean_steps,notes
+holdout_140_179_sign_plus1,0.01,0.0,1.000,0,39,,No coverage at FPR=0.01 (full abstain)
+holdout_140_179_sign_plus1,0.05,41.0,0.590,16,39,12781.2,Strict low-FPR operating point (coverage limited)
+holdout_140_179_sign_plus1,0.10,56.4,0.436,22,39,11272.7,Balanced operating point (higher coverage)
+holdout_140_179_sign_plus1,0.20,74.4,0.256,29,39,12000.0,Higher coverage at higher false-positive budget
+holdout_140_179_sign_minus1,0.01,100.0,0.000,39,39,18359.0,Uncontrolled: achieved FPR≈0.44 regardless of target
+holdout_140_179_sign_minus1,0.05,100.0,0.000,39,39,18359.0,Uncontrolled: achieved FPR≈0.44 regardless of target
+holdout_140_179_sign_minus1,0.10,100.0,0.000,39,39,18359.0,Uncontrolled: achieved FPR≈0.44 regardless of target
+holdout_140_179_sign_minus1,0.20,100.0,0.000,39,39,18359.0,Uncontrolled: achieved FPR≈0.44 regardless of target
+

@@ -10,5 +10,5 @@ This folder contains FIT-oriented safety notes and mappings.
 
 ## Case notes
 
-- DeepSeek-R1 (arXiv:2501.12948v2) case note: `deepseek_r1_fit_case_note.md`
+- R1 reasoning paper (arXiv:2501.12948v2) case note: `deepseek_r1_fit_case_note.md`
 

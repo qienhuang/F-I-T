@@ -63,7 +63,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 *图：Conway 生命游戏 Tier-1 验证（详见 [v2.4 规范](docs/v2.4.md)）。*
 
-**Tier-2 证据**：Grokking 实验可评估且可复现；基线在严格低 FPR 约束下尚未成为稳定的硬指标。见 [tier2_grokking](experiments/tier2_grokking/README.md) 和 [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md)。同时，现已提供一个真实世界的 Tier-2 / P11 案例（NYC TLC Yellow Taxi 2019–2023）：在 EST gate 下，全量池化的 coherence 失败，但在预注册窗口内可得到可审计的“范围受限有效性”（`OK_PER_YEAR`、`OK_PER_WINDOW`）：[nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md)（结果汇总：[RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md)；可视化：[摘要图](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg)，[过程图](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)）。
+**Tier-2 证据**：Grokking 实验可评估且可复现；基线在严格低 FPR 约束下尚未成为稳定的硬指标。见 [tier2_grokking](experiments/tier2_grokking/README.md) 和 [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md)。同时，现已提供一个真实世界的 Tier-2 / P11 案例（NYC TLC：Yellow / Green / FHVHV，2019–2023）：在 EST gate 下，全量池化的 coherence 可能失败，而在预注册窗口内 Yellow 与 FHVHV 可得到可审计的“范围受限有效性”（`OK_PER_YEAR`、`OK_PER_WINDOW`）；Green 提供了一个关键反例（pool PASS 但某个预注册窗口 FAIL），说明 windowing 是诊断工具而不是万能补丁。更严格的 rolling-window 诊断（v1.8）显示三种模态都存在局部 coherence 退化：[nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md)（结果汇总：[RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md)；可视化：[摘要图](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg)，[过程图](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)）。
 
 ---
 
@@ -128,7 +128,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [CPU 优先本地代理](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM 蓝图 |
 | [慢演化代理架构（v0.2）](docs/agents/README.md) | FIT/EST 对齐的 agent 架构规范 + 可运行的预验证清单 |
 | [Dr.One 演示](examples/dr_one_demo/README.md) | 自编辑循环 + 可监控性门 |
-| [DeepSeek R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1 风格 RL + 风险控制 |
+| [R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1 风格 RL + 风险控制 |
 
 ### Dr.One：基线 vs 受控
 
@@ -175,7 +175,7 @@ docs/           规范和笔记
 experiments/    可运行演示和验证产物
 papers/         草稿和特定场所的写作
 proposals/      实践者试点和模板
-skills/         Codex CLI 技能（可选）
+skills/         CLI 技能（可选）
 tools/          可运行工具包
 ```
 

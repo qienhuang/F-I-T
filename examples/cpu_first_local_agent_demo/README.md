@@ -2,7 +2,7 @@
 
 This is a **minimal, model-agnostic** demo that shows how to implement the core mechanisms described in:
 
-- `papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md`
+- Paper (v0.2): [CPU-first local agent on 16GB RAM](../../papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md)
 
 The demo focuses on:
 - structured IO (JSON-shaped router + plan + tool call)
@@ -34,4 +34,3 @@ Schemas live under `schemas/` and define the minimal fields for:
 - plan
 - tool call
 - final answer
-

@@ -161,19 +161,20 @@ def create_tradeoff_figure(
     ax_c2.tick_params(axis="y", labelcolor=color_dR)
     ax_c2.axhline(y=0, color="gray", linestyle="--", alpha=0.5)
 
-    # Mark change points with vertical lines and annotations
-    for i, cp in enumerate(cp_list):
+    n_cp = len(cp_list)
+    top_cps = sorted(cp_list, key=lambda x: abs(x.get("score", x.get("zscore", 0))), reverse=True)[:5]
+    cp_lines = top_cps if n_cp > 20 else cp_list
+
+    # Mark change points (limit lines to reduce clutter)
+    for cp in cp_lines:
         cp_date = pd.to_datetime(cp["date"])
         direction = cp.get("direction", "")
-        score = cp.get("score", cp.get("zscore", 0))
 
         # Color based on direction
         line_color = "#C62828" if direction == "positive" else "#1565C0"
 
-        ax_c.axvline(x=cp_date, color=line_color, linestyle="--", alpha=0.7, linewidth=1.2)
+        ax_c.axvline(x=cp_date, color=line_color, linestyle="--", alpha=0.35, linewidth=1.0)
 
-        # Annotate top 5 by magnitude (don't clutter with all)
-        top_cps = sorted(cp_list, key=lambda x: abs(x.get("score", x.get("zscore", 0))), reverse=True)[:5]
         if cp in top_cps:
             y_pos = 0.95 - (top_cps.index(cp) * 0.08)
             ax_c.annotate(
@@ -195,11 +196,12 @@ def create_tradeoff_figure(
     ax_c.grid(True, alpha=0.3)
 
     # Change point summary on panel
-    n_cp = len(cp_list)
     n_pos = sum(1 for cp in cp_list if cp.get("direction") == "positive")
     n_neg = n_cp - n_pos
 
     cp_text = f"{n_cp} CPs ({n_pos}+/{n_neg}-)"
+    if n_cp > 20:
+        cp_text += "\n(showing top 5 only)"
     if coherence_status != "OK":
         cp_text += "\nNOT INTERPRETABLE"
 

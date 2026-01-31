@@ -5,7 +5,7 @@ This kit targets a different need than `tools/fit_proxy_alarm_kit`:
 - **Proxy alarm kit**: monitorability under explicit low-FPR constraints.
 - **Constrained explorer kit (this)**: given **constraints** and a **large design space**, do **budgeted path exploration** and return the best feasible candidates, plus an auditable trace.
 
-It matches the three-layer discipline discussed in `discussions/reading_notes/FIT通用非LLM小模型/discussion-01.md`:
+It matches the three-layer discipline described in `docs/est/diagnostics.md`:
 
 - **Layer 0 (locked prereg)**: search space, constraints, objective/oracle, budget, and success criteria.
 - **Layer 1 (deterministic engine)**: candidate generation + constraint checks + oracle calls + surrogate training + artifacts.

@@ -1,0 +1,145 @@
+# EST Pre-Registration: NYC TLC Trip Records
+# Case ID: nyc_tlc_tier2p11
+# Version: 1.8
+# Date: 2026-01-30
+# Primary focus: P11 (regime-change signatures in I/C)
+#
+# Purpose:
+# - Extend v1.6 "date_ranges" windowing to a preregistered rolling-window diagnostic.
+# - This is intended to probe whether coherence is stable across smaller time blocks,
+#   and (optionally) to localize where level shifts begin to break pooled coherence.
+#
+# Interpretation rule:
+# - If ALL rolling windows pass but pooled coherence fails: status becomes OK_PER_WINDOW
+#   and interpretation is allowed only within windows.
+# - If any rolling window fails: status becomes ESTIMATOR_UNSTABLE (no interpretation).
+#
+# NOTE: This is a strict diagnostic. It can fail even when yearly or pre/post windowing passes.
+
+meta:
+  case_id: nyc_tlc_tier2p11
+  version: "1.8"
+  date: "2026-01-30"
+  tier: 2
+  proposition: P11
+  status: active
+  prior_versions:
+    - version: "1.6"
+      coherence_status: OK_PER_WINDOW
+      key_finding: "pre/post-COVID coherence passed; pooled coherence failed via level shifts."
+
+boundary:
+  dataset_type: ["yellow"]
+  time_range:
+    start: "2019-01-01"
+    end: "2023-12-31"
+  aggregation:
+    bucket: "D"
+    timezone: "America/New_York"
+  schema_version: "2022+"
+  raw_glob: "data/raw/yellow_tripdata_*.parquet"
+
+state:
+  variables:
+    - trip_count
+    - total_duration_sec
+    - total_distance_miles
+    - total_fare
+    - pickup_zone_counts
+
+estimators:
+  information:
+    I_entropy_pu:
+      type: shannon_entropy
+      source: pickup_zone_counts
+      description: "Pickup zone diversity (spatial entropy)"
+      enabled: true
+
+  constraint:
+    C_congestion:
+      type: log1p_ratio
+      formula: "log1p(total_duration_sec / 60 / total_distance_miles)"
+      description: "Minutes per mile (time cost)"
+      enabled: true
+
+    C_price_pressure:
+      type: log1p_ratio
+      formula: "log1p(total_fare / total_distance_miles)"
+      description: "Fare per mile (money cost)"
+      enabled: true
+
+  force:
+    F_fare_drift:
+      type: rolling_diff
+      source: fare_per_mile
+      window: 7
+      description: "Fare pressure drift"
+      enabled: true
+
+    F_congestion_drift:
+      type: rolling_diff
+      source: C_congestion
+      window: 7
+      description: "Congestion pressure drift"
+      enabled: true
+
+window:
+  smoothing: 7
+  derivative: 1
+  min_periods: 3
+
+coherence:
+  metric: spearman
+  threshold: 0.6
+  min_points: 30
+  pairs:
+    - [C_congestion, C_price_pressure]
+  windowing:
+    type: rolling
+    aggregate: all_pass
+    allow_pooled_fail: true
+    # Rolling coherence windows (preregistered):
+    # - window_days: window length
+    # - step_days: stride between windows
+    # - start/end: optional explicit range; defaults to data min/max if omitted
+    window_days: 365
+    step_days: 90
+    start: "2019-01-01"
+    end: "2023-12-31"
+
+regime_detection:
+  method: robust_zscore_peak
+  parameters:
+    zscore_threshold: 2.5
+    min_peak_distance: 7
+    rolling_window: 21
+    window_size: 14
+    shift_threshold: null
+  alternative_methods:
+    - rolling_mean_shift
+
+outputs:
+  metrics_log: "outputs/metrics_log.parquet"
+  regime_report: "outputs/regime_report.md"
+  tradeoff_figure: "outputs/tradeoff_onepage.pdf"
+  coherence_report: "outputs/coherence_report.json"
+  change_points: "outputs/change_points.json"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed; change points not interpretable"
+  OK_PER_WINDOW: "Coherence passes within preregistered windows; interpret within-window only"
+  OK_PER_YEAR: "Coherence passes within yearly windows; interpret within-year only"
+  SCOPE_LIMITED: "Data boundary restricts generalization"
+  DATA_MISSING: "Insufficient data for reliable estimation"
+  SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+notes:
+  v1_8_rationale: |
+    v1.5 and v1.6 show that coherence can be stable within preregistered windows
+    while failing under pooled aggregation (level shifts / non-stationarity).
+
+    v1.8 probes rolling-window stability as a stricter diagnostic:
+    if coherence remains OK across all rolling windows, then "windowed coherence" is
+    robust to finer time partitions; if not, the estimator family is scope-limited
+    to coarser phase partitions (e.g., yearly or pre/post-COVID).
+

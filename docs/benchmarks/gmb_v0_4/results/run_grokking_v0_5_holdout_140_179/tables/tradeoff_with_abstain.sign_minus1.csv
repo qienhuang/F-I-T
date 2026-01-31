@@ -1,0 +1,6 @@
+fpr_target,threshold,fpr_achieved,fpr_best_match,coverage,abstain_rate,covered,lead_time_mean_steps
+0.01,0,0.437878,0.437878,1,0,39/39,18359
+0.05,0,0.437878,0.437878,1,0,39/39,18359
+0.1,0,0.437878,0.437878,1,0,39/39,18359
+0.2,0,0.437878,0.437878,1,0,39/39,18359
+

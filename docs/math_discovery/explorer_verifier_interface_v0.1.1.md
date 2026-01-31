@@ -10,7 +10,7 @@
 
 ## 0. Purpose
 
-This interface makes explicit what Claude flagged as the highest-risk ambiguity:
+This interface makes explicit a high-risk ambiguity flagged in review:
 
 > **The explorer is not the prover. The prover is not the explorer.**
 
@@ -132,4 +132,3 @@ Every `SUPPORTED` entry in a leaderboard must contain:
 - sweep outcomes summary
 
 This is the “audit spine” that prevents story-driven progress claims.
-
