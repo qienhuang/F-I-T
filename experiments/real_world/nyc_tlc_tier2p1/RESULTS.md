@@ -5,6 +5,8 @@ It is a pointer-rich results page: quick conclusion first, then auditable artifa
 
 Key rule: **interpretation is gated by coherence**. Pooled failure is preserved as a first-class outcome.
 
+Note: select prereg files include v2.5 demo fields (e.g., `expected_sign`, `coherence_radius_spec`, `boundary_warmup_spec`) to illustrate prereg structure. These fields do not change any archived results or failure labels in this document.
+
 ## One-sentence result
 
 The cost-family constraint estimators are coherent **within preregistered windows** (yearly or pre/post-COVID) but not coherent when pooled across 2019-2023; therefore, P11 signatures are interpretable **only within phase-consistent windows**. This pattern replicates across Yellow, Green, and FHVHV datasets with one notable exception: Green shows a pre-COVID coherence failure, demonstrating that windowing does not universally rescue coherence. Rolling window analysis (v1.8) reveals that even pre/post-COVID windowing may be too coarse: all three datasets fail the stricter rolling coherence test, indicating localized instability periods that fixed windows miss.

@@ -8,6 +8,11 @@ This case is intentionally conservative:
 - it treats coherence failure as a first-class outcome (interpretation is gated),
 - it records pooled-vs-windowed outcomes without forcing a single narrative.
 
+## Current status (repo results)
+
+This case has a completed daily run (2023-2024) archived under `results_runs/` and summarized in `RESULTS.md`.
+The key outcome is a coherence FAIL with a stable negative rho for the preregistered constraint pair (`C_load` vs `C_concentration`), i.e., a sign-mismatch under the preregistered family semantics.
+
 ## What you get (artifacts)
 
 Running the pipeline produces:
@@ -62,7 +67,7 @@ python run_pipeline.py --prereg EST_PREREG_v0.1_hourly.yaml --raw_glob "data/raw
 python run_pipeline.py --prereg EST_PREREG_v0.1_hourly.yaml --max_files 2 --out_root _smoke_out/hourly
 ```
 
-## Hourly → Daily variant
+## Hourly -> Daily variant
 
 Once hourly is working, you can run the daily-aggregated variant (a separate prereg):
 
@@ -80,6 +85,8 @@ python run_pipeline.py --prereg EST_PREREG_v0.2_daily.yaml --out_root _smoke_out
 
 - `EST_PREREG_v0.1_hourly.yaml` (hourly; windowing supported)
 - `EST_PREREG_v0.2_daily.yaml` (daily aggregation; same estimator family)
+- `EST_PREREG_v0.3_daily_2023_2024.yaml` (daily; preregistered date ranges for 2023/2024; current archived run)
 - `run_pipeline.py` (wrapper)
 - `src/` (deterministic engine)
 - `tests/` (fixture + schema smoke test)
+- `RESULTS.md` (repo-safe results summary)

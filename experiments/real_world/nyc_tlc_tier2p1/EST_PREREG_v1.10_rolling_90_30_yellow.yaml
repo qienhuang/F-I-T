@@ -45,6 +45,10 @@ state:
     - total_distance_miles
     - total_fare
     - pickup_zone_counts
+  derived_variables:
+    fare_per_mile:
+      formula: "total_fare / total_distance_miles"
+      note: "Used only for drift-style diagnostics; primary constraint family is defined under estimators.constraint."
 
 estimators:
   information:
@@ -72,7 +76,7 @@ estimators:
       type: rolling_diff
       source: fare_per_mile
       window: 7
-      description: "Fare pressure drift"
+      description: "Fare-per-mile drift (diagnostic only)"
       enabled: true
 
     F_congestion_drift:
@@ -129,3 +133,27 @@ failure_labels:
   SCOPE_LIMITED: "Data boundary restricts generalization"
   DATA_MISSING: "Insufficient data for reliable estimation"
   SCHEMA_DRIFT: "Data schema changed; requires new preregistration"
+
+# v2.5 demo fields (do not affect this run's logic)
+est_v2_5_demo:
+  expected_sign: +1
+  coherence_radius_spec:
+    note: "Demo-only. This prereg is one cell in a rolling-window sensitivity grid."
+    grid_cells:
+      - prereg_ref: "EST_PREREG_v1.8_rolling.yaml"
+        window_days: 365
+        step_days: 90
+      - prereg_ref: "EST_PREREG_v1.9_rolling_180_60_yellow.yaml"
+        window_days: 180
+        step_days: 60
+      - prereg_ref: "EST_PREREG_v1.10_rolling_90_30_yellow.yaml"
+        window_days: 90
+        step_days: 30
+    radius_definition:
+      pass_rate_threshold: 0.9
+      radius_is: "the smallest window_days in the grid whose window PASS rate >= pass_rate_threshold (more conservative)."
+  boundary_warmup_spec:
+    applies_to_this_run: false
+    warmup_exclusion: "first 30d"
+    edge_exclusion: "last 30d"
+    undefined_metric_policy: "SCOPE_LIMITED"

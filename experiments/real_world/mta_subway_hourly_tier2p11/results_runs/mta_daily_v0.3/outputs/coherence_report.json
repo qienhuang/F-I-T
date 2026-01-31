@@ -1,0 +1,59 @@
+{
+  "status": "ESTIMATOR_UNSTABLE",
+  "pairs": [
+    {
+      "pair": [
+        "C_load",
+        "C_concentration"
+      ],
+      "rho": -0.4803030303030304,
+      "passed": false,
+      "n": 55,
+      "status": "FAIL"
+    }
+  ],
+  "windowing": {
+    "type": "date_ranges",
+    "aggregate": "all_pass",
+    "allow_pooled_fail": true,
+    "pooled_status": "ESTIMATOR_UNSTABLE",
+    "results": [
+      {
+        "id": "H1_2023",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "status": "ESTIMATOR_UNSTABLE",
+        "pairs": [
+          {
+            "pair": [
+              "C_load",
+              "C_concentration"
+            ],
+            "rho": -0.5205278592375366,
+            "passed": false,
+            "n": 32,
+            "status": "FAIL"
+          }
+        ]
+      },
+      {
+        "id": "H2_2024",
+        "start": "2024-01-01",
+        "end": "2024-07-08",
+        "status": "DATA_MISSING",
+        "pairs": [
+          {
+            "pair": [
+              "C_load",
+              "C_concentration"
+            ],
+            "rho": null,
+            "passed": null,
+            "n": 23,
+            "status": "DATA_MISSING"
+          }
+        ]
+      }
+    ]
+  }
+}
