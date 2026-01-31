@@ -60,6 +60,14 @@ python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_green.yaml
 python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_fhvhv.yaml --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
 ```
 
+Optional v1.10 (rolling sensitivity: 90-day windows / 30-day stride):
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_yellow.yaml
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_green.yaml
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_fhvhv.yaml --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
+```
+
 v1.7 cross-dataset replications (Green / FHVHV):
 
 ```powershell

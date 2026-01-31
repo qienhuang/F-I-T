@@ -39,3 +39,12 @@ This folder contains **small, repo-safe artifacts** from completed runs (reports
 
 - `nyc_fhvhv_2019_2023_v1.9_rolling_180_60/`  
   FHVHV rolling sensitivity (v1.9; 180/60): `ESTIMATOR_UNSTABLE`; failure pattern remains concentrated in the pandemic-era block (scale-stable).
+
+- `nyc_yellow_2019_2023_v1.10_rolling_90_30/`  
+  Yellow rolling sensitivity (v1.10; 90-day windows / 30-day stride): still `ESTIMATOR_UNSTABLE`, but failures remain highly localized (late 2022).
+
+- `nyc_green_2019_2023_v1.10_rolling_90_30/`  
+  Green rolling sensitivity (v1.10; 90/30): `ESTIMATOR_UNSTABLE` with persistent window failures (constraint family mismatch at this scope).
+
+- `nyc_fhvhv_2019_2023_v1.10_rolling_90_30/`  
+  FHVHV rolling sensitivity (v1.10; 90/30): `ESTIMATOR_UNSTABLE`; failure pattern remains concentrated in the pandemic-era block (scale-stable).

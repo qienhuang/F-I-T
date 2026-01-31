@@ -1,12 +1,13 @@
 # EST Pre-Registration: NYC TLC Trip Records
 # Case ID: nyc_tlc_tier2p11
-# Version: 1.9 (yellow; rolling sensitivity)
-# Date: 2026-01-30
+# Version: 1.10 (green; rolling sensitivity - finest granularity)
+# Date: 2026-01-31
 # Focus: rolling-window sensitivity for the cost-family coherence gate
 #
 # v1.8 used: window_days=365, step_days=90
-# v1.9 adds a preregistered alternative rolling granularity:
-# - window_days=180, step_days=60
+# v1.9 used: window_days=180, step_days=60
+# v1.10 adds the finest preregistered granularity:
+# - window_days=90, step_days=30
 #
 # Interpretation rule:
 # - If any rolling window fails: status is ESTIMATOR_UNSTABLE at this scope.
@@ -14,8 +15,8 @@
 
 meta:
   case_id: nyc_tlc_tier2p11
-  version: "1.9_yellow_rolling_180_60"
-  date: "2026-01-30"
+  version: "1.10_green_rolling_90_30"
+  date: "2026-01-31"
   tier: 2
   proposition: P11
   status: active
@@ -23,11 +24,11 @@ meta:
     - "This file is intended to remain stable once results are archived under results_runs/."
     - "For new window/stride settings, copy this prereg, bump version, and record the change as a new run."
   prior_versions:
-    - version: "1.8"
-      key_finding: "rolling (365/90) detected localized window failures."
+    - version: "1.9"
+      key_finding: "rolling (180/60) showed Green highly unstable (17/28 fail)."
 
 boundary:
-  dataset_type: ["yellow"]
+  dataset_type: ["green"]
   time_range:
     start: "2019-01-01"
     end: "2023-12-31"
@@ -35,7 +36,7 @@ boundary:
     bucket: "D"
     timezone: "America/New_York"
   schema_version: "2022+"
-  raw_glob: "data/raw/yellow_tripdata_*.parquet"
+  raw_glob: "data/raw/green_tripdata_*.parquet"
 
 state:
   variables:
@@ -96,8 +97,8 @@ coherence:
     type: rolling
     aggregate: all_pass
     allow_pooled_fail: true
-    window_days: 180
-    step_days: 60
+    window_days: 90
+    step_days: 30
     start: "2019-01-01"
     end: "2023-12-31"
 

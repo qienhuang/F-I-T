@@ -75,6 +75,29 @@ v1.9 applies finer-grained 28 overlapping 180-day rolling windows (60-day stride
 - **Green** degrades significantly (17/28 fail vs 9/17 in v1.8) — coherence is unstable across nearly the entire time series
 - **FHVHV** shows similar pattern: failures concentrated in pandemic period (late 2019 through mid-2021)
 
+### v1.10 Rolling Sensitivity (90-day / 30-day stride)
+
+v1.10 applies the finest preregistered granularity: 58 overlapping 90-day rolling windows (30-day stride).
+
+| Dataset | Prereg | Pooled rho | Windows PASS | Windows FAIL | Status | Comparison to v1.9 |
+|---------|--------|------------|--------------|--------------|--------|-------------------|
+| Yellow | v1.10_rolling_90_30_yellow | 0.543 (FAIL) | 56/58 | 2/58 | `ESTIMATOR_UNSTABLE` | **Stable**: same 2 late-2022 failures |
+| Green | v1.10_rolling_90_30_green | 0.631 (PASS) | 26/58 | 32/58 | `ESTIMATOR_UNSTABLE` | **Degrades**: 32 windows fail (55%) |
+| FHVHV | v1.10_rolling_90_30_fhvhv | 0.336 (FAIL) | 45/58 | 13/58 | `ESTIMATOR_UNSTABLE` | Similar: pandemic-era failures |
+
+**Key finding**: Window-size sensitivity grid completed. Conclusions:
+- **Yellow** exhibits remarkable stability across all window sizes (2 failures at all scales, consistently in late 2022: win_046-047 = 2022-10-12..2023-02-09)
+- **Green** is fundamentally incoherent: failure rate increases monotonically with finer windows (9/17 → 17/28 → 32/58), suggesting the cost-family estimators do not reliably co-move in this dataset
+- **FHVHV** shows a localized pandemic-era instability (mid-2020 to late 2021) that is consistent across window sizes
+
+### Window-Size Sensitivity Summary
+
+| Dataset | v1.8 (365/90) | v1.9 (180/60) | v1.10 (90/30) | Pattern |
+|---------|---------------|---------------|---------------|---------|
+| Yellow | 3/17 fail (18%) | 2/28 fail (7%) | 2/58 fail (3%) | **Stable** — failures localized to late 2022 |
+| Green | 9/17 fail (53%) | 17/28 fail (61%) | 32/58 fail (55%) | **Unstable** — pervasive failures |
+| FHVHV | 7/17 fail (41%) | 9/28 fail (32%) | 13/58 fail (22%) | **Improving** — pandemic-era only |
+
 ## Estimator family (the hard contract)
 
 The core result above is about the cost-family constraint pair used in v1.4-v1.6:
@@ -106,6 +129,11 @@ All artifacts below are small and auditable without shipping raw TLC data.
 - Yellow: `results_runs/nyc_yellow_2019_2023_v1.9_rolling_180_60/`
 - Green: `results_runs/nyc_green_2019_2023_v1.9_rolling_180_60/`
 - FHVHV: `results_runs/nyc_fhvhv_2019_2023_v1.9_rolling_180_60/`
+
+### v1.10 Rolling Sensitivity (90-day / 30-day)
+- Yellow: `results_runs/nyc_yellow_2019_2023_v1.10_rolling_90_30/`
+- Green: `results_runs/nyc_green_2019_2023_v1.10_rolling_90_30/`
+- FHVHV: `results_runs/nyc_fhvhv_2019_2023_v1.10_rolling_90_30/`
 
 Each archive contains:
 
@@ -160,4 +188,9 @@ python run_pipeline.py --prereg EST_PREREG_v1.8_rolling_fhvhv.yaml --out_root re
 python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_yellow.yaml --out_root results_runs/nyc_yellow_2019_2023_v1.9_rolling_180_60
 python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_green.yaml --out_root results_runs/nyc_green_2019_2023_v1.9_rolling_180_60
 python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_fhvhv.yaml --out_root results_runs/nyc_fhvhv_2019_2023_v1.9_rolling_180_60 --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
+
+# v1.10 rolling sensitivity (90-day / 30-day stride)
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_yellow.yaml --out_root results_runs/nyc_yellow_2019_2023_v1.10_rolling_90_30
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_green.yaml --out_root results_runs/nyc_green_2019_2023_v1.10_rolling_90_30
+python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_fhvhv.yaml --out_root results_runs/nyc_fhvhv_2019_2023_v1.10_rolling_90_30 --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
 ```

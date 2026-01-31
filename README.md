@@ -66,6 +66,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 ## Tier-2 Evidence
 - **Grokking** experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
 - A real-world Tier-2 / P11 case is now available on **NYC TLC (Yellow / Green / FHVHV)** data. Under EST gates, pooled coherence can fail while preregistered windowing yields auditable scope-limited validity (`OK_PER_YEAR`, `OK_PER_WINDOW`) for Yellow and FHVHV; Green provides a counterexample (pooled PASS but a preregistered window FAIL), showing windowing is diagnostic rather than a universal fix. A stricter rolling-window diagnostic (v1.8) finds localized coherence failures across all three modalities: [nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md) (results: [RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md); viz: [summary](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg), paper: [Phase-Conditioned Constraint Coherence in a Real-World Mobility System](papers/phase-conditioned_constraint_coherence_in_a_real-world_mobility_system.v1.md))  
+- A second real-world Tier-2 / P11 case is scaffolded for **MTA subway hourly ridership** (hourly-first, then daily aggregation), using the same EST gating artifacts and windowing discipline: [mta_subway_hourly_tier2p11](experiments/real_world/mta_subway_hourly_tier2p11/README.md).
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ---
@@ -93,6 +94,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 | [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
 | [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
 | [NYC TLC (Yellow) regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md) | Tier-2 P11; coherence windowing and level shifts |
+| [MTA subway hourly ridership](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | Tier-2 P11; hourly-to-daily windowed coherence scaffold |
 | [Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md) | Attention dynamics + constraint accumulation |
 | [Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md) | Feedback loops + coordination failure |
 | [Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | Infrastructure lock-in + tempo mismatch |
