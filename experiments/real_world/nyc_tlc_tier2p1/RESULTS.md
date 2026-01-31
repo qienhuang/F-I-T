@@ -87,7 +87,7 @@ v1.10 applies the finest preregistered granularity: 58 overlapping 90-day rollin
 
 **Key finding**: Window-size sensitivity grid completed. Conclusions:
 - **Yellow** exhibits remarkable stability across all window sizes (2 failures at all scales, consistently in late 2022: win_046-047 = 2022-10-12..2023-02-09)
-- **Green** is fundamentally incoherent: failure rate increases monotonically with finer windows (9/17 → 17/28 → 32/58), suggesting the cost-family estimators do not reliably co-move in this dataset
+- **Green** indicates a constraint-family mismatch at this scope: failure rates remain high across granularities (9/17 -> 17/28 -> 32/58), so increasing window granularity does not rescue coherence
 - **FHVHV** shows a localized pandemic-era instability (mid-2020 to late 2021) that is consistent across window sizes
 
 ### Window-Size Sensitivity Summary
@@ -95,7 +95,7 @@ v1.10 applies the finest preregistered granularity: 58 overlapping 90-day rollin
 | Dataset | v1.8 (365/90) | v1.9 (180/60) | v1.10 (90/30) | Pattern |
 |---------|---------------|---------------|---------------|---------|
 | Yellow | 3/17 fail (18%) | 2/28 fail (7%) | 2/58 fail (3%) | **Stable** — failures localized to late 2022 |
-| Green | 9/17 fail (53%) | 17/28 fail (61%) | 32/58 fail (55%) | **Unstable** — pervasive failures |
+| Green | 9/17 fail (53%) | 17/28 fail (61%) | 32/58 fail (55%) | **Constraint-family mismatch** — pervasive failures |
 | FHVHV | 7/17 fail (41%) | 9/28 fail (32%) | 13/58 fail (22%) | **Improving** — pandemic-era only |
 
 ## Estimator family (the hard contract)
