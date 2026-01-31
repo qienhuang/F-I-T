@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_learning_cost.png",
+      "sha256": "d2e5797b16932ee9e7689b26d8baa624211f922ec07e9e0c250613d7980f629c",
+      "bytes": 58040
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_allocation_cost.png",
+      "sha256": "9b61cbb206682cf06396b0e4c0fc16cd22b50c1d50730a1da22cb5f86e1c80ce",
+      "bytes": 54422
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_tpr_vs_fpr.png",
+      "sha256": "2f9ef607d9ca54d85788ac39b6dc51c0d0255024b59bfa1dca22284479baaef9",
+      "bytes": 41660
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_fpr_floor.png",
+      "sha256": "f0827bc056d6f79b6738c4bd90fb7de5bc0351773f5283f3e614d6c42b855f81",
+      "bytes": 48549
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_joint_cov_round.png",
+      "sha256": "2334e9abed1853049ace3a50c050d899962a41e2a132912929561dce44629ec3",
+      "bytes": 34312
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_joint_cov_cost.png",
+      "sha256": "b8e3b57a4b219b716f48a97be09ffe2f54e58084bfbf5921a9aa835a40b72f82",
+      "bytes": 38336
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_learning_cost.png",
+      "sha256": "0ef37e1670e0a4d6a5697bc70316676014c6d33e78f354bb5ff7eed4d3e949dd",
+      "bytes": 52189
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_allocation_cost.png",
+      "sha256": "94a065cd748c2b89a81f5da543b73d1d2a75c8f8c172e75d770670a3c93e3307",
+      "bytes": 39266
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_tpr_vs_fpr.png",
+      "sha256": "576d9162f4cfa7f9aada26894df9fbef584c011facc4e9cab8453cbde6a4d201",
+      "bytes": 41666
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_fpr_floor.png",
+      "sha256": "8418f209cb94d035ac7cca9fcaf63dde240c9fb1dcb0ada1bb33db5fa7abe73c",
+      "bytes": 48317
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_joint_cov_round.png",
+      "sha256": "60590bf23b3119ab9639f3910694331bc40dca11a4d48ad95ec097788075fa4b",
+      "bytes": 33528
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_joint_cov_cost.png",
+      "sha256": "24e19bf90db21f70ffe7d745015927bfad8ba4492171b8e208e65d36773d38ab",
+      "bytes": 36152
+    }
+  ]
+}

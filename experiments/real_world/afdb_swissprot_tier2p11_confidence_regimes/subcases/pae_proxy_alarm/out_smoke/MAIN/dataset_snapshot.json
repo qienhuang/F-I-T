@@ -1,0 +1,25 @@
+{
+  "subcase_id": "pae_proxy_alarm_smoke",
+  "parent_case_id": "afdb_swissprot_tier2p11_confidence_regimes",
+  "run_id": "MAIN",
+  "input_metrics_path": "data/synthetic_metrics.csv",
+  "input_metrics_sha256": "ed1c5549410b076897ac3a4d89fd9dcf6a7e74cbcb93c3088cb1f3a3e27c9cf9",
+  "prereg_sha256": "e9a08c54c0ad73ec2f6dc43c59e4ae551afe0d8e022594c98532cfe1bc010b45",
+  "n_total": 495,
+  "n_train": 362,
+  "n_val": 72,
+  "n_test": 61,
+  "tau_pae": 0.8,
+  "pos_rate_total": 0.030303030303030304,
+  "pos_rate_train": 0.03038674033149171,
+  "pos_rate_val": 0.041666666666666664,
+  "pos_rate_test": 0.01639344262295082,
+  "feature_whitelist": [
+    "length",
+    "I1_hi_conf_frac",
+    "I2_mean_plddt",
+    "I3_plddt_entropy",
+    "C1_low_conf_frac"
+  ],
+  "feature_whitelist_sha256": "e3a95a2e66e8ff1f4f2b1cc4474418ed4f48494c96b77d3d03918c290d55e12b"
+}

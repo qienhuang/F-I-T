@@ -1,0 +1,9 @@
+policy,round,pae_regime,pae_regime_reason,msa_regime,msa_regime_reason,joint_regime
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,0,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,1,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,2,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,3,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,0,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,1,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,2,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,3,UNTRAINED,model not trained,UNTRAINED,model not trained,NOT_JOINT

@@ -1,0 +1,25 @@
+{
+  "universe_mode": "union",
+  "pae": {
+    "n": 113,
+    "sha256": "58aea1b483b3277a1e7c6523e4ce27aa90a57722405ba76fe470e5a2eada09f2",
+    "examples": [
+      "SYN0000000",
+      "SYN0000004",
+      "SYN0000009",
+      "SYN0000010",
+      "SYN0000036"
+    ]
+  },
+  "msa": {
+    "n": 119,
+    "sha256": "dd50fc96b687d1d4e87666542c1ac13c9019277d9b3d7992b11c5d75dcef09f6",
+    "examples": [
+      "SYN0000018",
+      "SYN0000037",
+      "SYN0000038",
+      "SYN0000045",
+      "SYN0000050"
+    ]
+  }
+}

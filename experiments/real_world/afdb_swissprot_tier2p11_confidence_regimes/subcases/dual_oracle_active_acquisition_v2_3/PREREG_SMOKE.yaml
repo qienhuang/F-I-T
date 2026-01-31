@@ -1,0 +1,277 @@
+preregistration:
+  case_id: dual_oracle_active_acquisition_v2_3_smoke
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v2.3_repo_ready_smoke
+  date_locked: '2026-01-25'
+  intent:
+    primary_training_target: delta_lag_plus_policy_table_plus_holdout_snapshot_plus_leakage_audit_under_low_fpr_caps
+    secondary_training_targets:
+    - regime_diagnostics_and_floor_resolution_events_under_low_fpr_caps
+    - enter_exit_regime_events
+    - alpha_and_K_ablation_for_composite_batch_selection
+    - candidate_pool_basis_ablation_uK_vs_rK
+    - joint_gap_allocation_strategy
+    - explicit_fpr_floor_measurements
+    non_claims:
+    - No biological claims; protocol only
+    - Holdout labels are used only for reporting, not for policy decisions
+boundary:
+  feature_whitelist:
+  - length
+  - I1_hi_conf_frac
+  - I2_mean_plddt
+  - I3_plddt_entropy
+  - C1_low_conf_frac
+  oracle_fields:
+    pae_value: C2_pae_offdiag
+    msa_depth: msa_depth
+  thresholds:
+    tau_pae: 1.0
+    tau_msa_depth: 16
+  universe_mode: union
+  train_boundary:
+    features: B0_only
+    labels: PAE_and_MSA_oracles_revealed_on_query
+    out_of_scope:
+    - PAE_as_feature
+    - MSA_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+    - PAE
+    - MSA
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_oracles: false
+data:
+  input_metrics_path: data/synthetic_metrics.csv
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: FIT_DUAL_ORACLE_ACTIVE_V0.9
+evaluation:
+  holdout_frac: 0.2
+  holdout_role: reporting_only
+monitorability:
+  fpr_targets:
+  - 0.01
+  - 0.05
+  primary_fpr_target: 0.01
+  threshold_selection_split: labeled_val
+  rule: maximize_tpr_under_fpr_cap
+  usable_epsilon_fpr: 0.0
+  tpr_min_for_usable: 0.01
+policy_diagnostics:
+  use_split: labeled_val
+  gap_definition:
+    w_tpr: 1.0
+    w_fpr: 5.0
+model:
+  pae_classifier:
+    family: logistic_regression
+    standardize: true
+    impute_strategy: median
+    params:
+      C: 1.0
+      max_iter: 2000
+      class_weight: balanced
+      solver: lbfgs
+    min_labeled_to_train: 200
+  msa_classifier:
+    family: logistic_regression
+    standardize: true
+    impute_strategy: median
+    params:
+      C: 1.0
+      max_iter: 2000
+      class_weight: balanced
+      solver: lbfgs
+    min_labeled_to_train: 200
+  msa_regressor:
+    family: ridge_regression
+    standardize: true
+    impute_strategy: median
+    params:
+      alpha: 1.0
+    min_labeled_to_train: 200
+split_labeled:
+  train_frac: 0.8
+  val_frac: 0.2
+acquisition:
+  rounds: 3
+  oracle_budgets:
+    pae_total: 60
+    msa_total: 60
+  init_labeled:
+    pae_n: 20
+    msa_n: 20
+  batch:
+    mode: total
+    total_per_round: 20
+    fixed_split:
+      pae_per_round: 200
+      msa_per_round: 200
+  policy_specs:
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000
+  policy_specs_full_grid:
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.0__K1000
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.0__K5000
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.0__K20000
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.7__K1000
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000
+  - adaptive_joint_gap__composite_batch_ff_uK__a0.7__K20000
+  - adaptive_joint_gap__composite_batch_ff_uK__a1.0__K1000
+  - adaptive_joint_gap__composite_batch_ff_uK__a1.0__K5000
+  - adaptive_joint_gap__composite_batch_ff_uK__a1.0__K20000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.0__K1000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.0__K5000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.0__K20000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.7__K1000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000
+  - adaptive_joint_gap__composite_batch_ff_rK__a0.7__K20000
+  - adaptive_joint_gap__composite_batch_ff_rK__a1.0__K1000
+  - adaptive_joint_gap__composite_batch_ff_rK__a1.0__K5000
+  - adaptive_joint_gap__composite_batch_ff_rK__a1.0__K20000
+  - fixed_split__composite_batch_ff_uK__a0.0__K1000
+  - fixed_split__composite_batch_ff_uK__a0.0__K5000
+  - fixed_split__composite_batch_ff_uK__a0.0__K20000
+  - fixed_split__composite_batch_ff_uK__a0.7__K1000
+  - fixed_split__composite_batch_ff_uK__a0.7__K5000
+  - fixed_split__composite_batch_ff_uK__a0.7__K20000
+  - fixed_split__composite_batch_ff_uK__a1.0__K1000
+  - fixed_split__composite_batch_ff_uK__a1.0__K5000
+  - fixed_split__composite_batch_ff_uK__a1.0__K20000
+  - fixed_split__composite_batch_ff_rK__a0.0__K1000
+  - fixed_split__composite_batch_ff_rK__a0.0__K5000
+  - fixed_split__composite_batch_ff_rK__a0.0__K20000
+  - fixed_split__composite_batch_ff_rK__a0.7__K1000
+  - fixed_split__composite_batch_ff_rK__a0.7__K5000
+  - fixed_split__composite_batch_ff_rK__a0.7__K20000
+  - fixed_split__composite_batch_ff_rK__a1.0__K1000
+  - fixed_split__composite_batch_ff_rK__a1.0__K5000
+  - fixed_split__composite_batch_ff_rK__a1.0__K20000
+  - adaptive_joint_gap__uncertainty
+  - fixed_split__uncertainty
+  - random_hash__random_hash
+  ranking:
+    candidate_pool_cap_default: 5000
+    candidate_pool_cap_grid:
+    - 1000
+    - 5000
+    - 20000
+    composite_alpha_default: 0.7
+    composite_alpha_grid:
+    - 0.0
+    - 0.7
+    - 1.0
+    novelty_metric: euclidean_z
+    fallback_if_no_model: random_hash
+  tie_breaker: stable_hash
+  oracle_costs:
+    pae_unit_cost: 1.0
+    msa_unit_cost: 2.0
+event:
+  W_jump_rounds: 3
+  delta_tpr: 0.05
+  primary_events:
+  - E_joint_usable
+  - E_covjump_pae
+  - E_covjump_msa
+  - E_covjump_joint
+  delta_cov_joint: 0.05
+  availability_delay_max_rounds: 0
+  availability_delay_grid:
+  - 0
+  - 1
+  - 2
+outputs:
+  out_root: out_smoke
+  run_id_style: timestamp
+  artifacts:
+  - PREREG.locked.yaml
+  - dataset_snapshot.json
+  - boundary_snapshot.json
+  - decision_trace.csv
+  - allocation_trace.csv
+  - round_metrics.json
+  - regime_timeline.csv
+  - regime_summary.json
+  - policy_table.csv
+  - cost_summary.json
+  - jump_type_sensitivity.json
+  - frontier_table.csv
+  - claims_gate_report.json
+  - claims_templates.json
+  - Claims.md
+  - frontier_robust_table.csv
+  - policy_grid_manifest.json
+  - frontier_policy_robust_table.csv
+  - bilevel_bootstrap_summary.json
+  - frontier_bilevel_robust_table.csv
+  - policy_band.json
+  - jump_robustness.json
+  - baseline_band.json
+  - frontier_onepage.pdf
+  - holdout_snapshot.json
+  - leakage_audit.json
+  - event_summary.json
+  - eval_report.md
+  - tradeoff_onepage.pdf
+  - run_manifest.json
+  - policy_cards/assets/
+  - policy_cards/assets_manifest.json
+regime:
+  labels:
+  - UNTRAINED
+  - FPR_FLOOR
+  - UNUSABLE
+  - USABLE
+  definition:
+    UNTRAINED: model not trained (min labels or single class)
+    FPR_FLOOR: trained but fpr_floor_at_tpr_min > cap on holdout
+    UNUSABLE: trained, no floor, but not usable at cap (fails TPR or FPR)
+    USABLE: usable at cap (FPR<=cap and TPR>=tpr_min)
+robustness:
+  baseline:
+    family_policy: random_hash__random_hash
+    seeds:
+    - 1
+    - 2
+    aggregation:
+      band:
+        method: quantile
+        q_low: 0.1
+        q_high: 0.9
+      center: mean
+  bootstrap:
+    enabled: false
+    n_boot: 200
+    ci: 0.95
+  policy:
+    enabled: true
+    seeds:
+    - 11
+    - 12
+    aggregation:
+      band:
+        method: quantile
+        q_low: 0.1
+        q_high: 0.9
+      center: mean
+  bilevel_bootstrap:
+    enabled: true
+    n_boot: 800
+    ci: 0.95
+    baseline_resample_n: N_baseline_seeds
+    policy_resample_n: N_policy_seeds
+    statistic: mean_margin_over_policy_seeds
+    baseline_upper_quantile: 0.9
+    rng_seed: 7
+claims_gate:
+  require_margin_ci_positive: true
+  forbid_outperforms_if_ci_crosses_zero: true
+  mode: bilevel_bootstrap
+  preferred_table: frontier_bilevel_robust_table.csv

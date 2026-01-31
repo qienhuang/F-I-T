@@ -1,4 +1,4 @@
-# PROMPT_GUIDE — Local Codex / Claude Code for Dual‑Oracle Active Acquisition (v0.3)
+# PROMPT_GUIDE — local CLI assistant for Dual‑Oracle Active Acquisition (v0.3)
 
 ---
 

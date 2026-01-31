@@ -1,0 +1,3 @@
+policy,jump_type,cost_to_joint_usable,cost_to_covjump_joint,final_cov_joint_at_cap,auc_cov_joint_per_cost,pareto_cost_to_joint_vs_cov,pareto_cost_to_covjump_vs_cov,regret_cost_to_joint_usable,regret_cost_to_covjump_joint
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,none,140.0,,0.0,0.0,True,False,0.0,
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,none,150.0,,0.0,0.0,False,False,10.0,

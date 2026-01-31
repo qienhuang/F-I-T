@@ -1,0 +1,81 @@
+{
+  "oracle_costs": {
+    "pae_unit_cost": 1.0,
+    "msa_unit_cost": 2.0
+  },
+  "availability_delay_max_rounds": 0,
+  "by_policy": {
+    "adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000": {
+      "pae_cost_curve": [
+        20.0,
+        30.0,
+        40.0,
+        50.0
+      ],
+      "msa_cost_curve": [
+        40.0,
+        60.0,
+        80.0,
+        100.0
+      ],
+      "total_cost_curve": [
+        60.0,
+        90.0,
+        120.0,
+        150.0
+      ],
+      "cov_joint_curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "markers": {
+        "r_joint_usable": 4,
+        "r_covjump_joint": 4,
+        "covjump_found": false,
+        "jump_type": "none",
+        "jump_delay_rounds": null,
+        "cost_to_joint_usable": 150.0,
+        "cost_to_covjump_joint": null,
+        "total_cost_final": 150.0
+      }
+    },
+    "adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000": {
+      "pae_cost_curve": [
+        20.0,
+        30.0,
+        50.0,
+        60.0
+      ],
+      "msa_cost_curve": [
+        40.0,
+        60.0,
+        60.0,
+        80.0
+      ],
+      "total_cost_curve": [
+        60.0,
+        90.0,
+        110.0,
+        140.0
+      ],
+      "cov_joint_curve": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "markers": {
+        "r_joint_usable": 4,
+        "r_covjump_joint": 4,
+        "covjump_found": false,
+        "jump_type": "none",
+        "jump_delay_rounds": null,
+        "cost_to_joint_usable": 140.0,
+        "cost_to_covjump_joint": null,
+        "total_cost_final": 140.0
+      }
+    }
+  }
+}

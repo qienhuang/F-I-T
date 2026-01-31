@@ -1,0 +1,6 @@
+# Suite-generated artifacts
+**/out_smoke/
+**/out/
+**/data/synthetic_metrics.csv
+**/__pycache__/
+**/*.pyc

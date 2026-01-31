@@ -1,0 +1,25 @@
+{
+  "availability_delay_grid": [
+    0,
+    1,
+    2
+  ],
+  "by_policy": {
+    "adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000": {
+      "jump_delay_rounds": null,
+      "jump_type_by_delay": {
+        "0": "none",
+        "1": "none",
+        "2": "none"
+      }
+    },
+    "adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000": {
+      "jump_delay_rounds": null,
+      "jump_type_by_delay": {
+        "0": "none",
+        "1": "none",
+        "2": "none"
+      }
+    }
+  }
+}

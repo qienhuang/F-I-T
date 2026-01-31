@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_learning.png",
+      "sha256": "b0a0d47e7403a246dccab7ada0bca9eabe0e79fb82e31227b8f6c830a5182a88",
+      "bytes": 57816
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_allocation.png",
+      "sha256": "103a93639542205df91766a941ca9b4db4bf5fc834f42c3fc8adb9698d0698a4",
+      "bytes": 50721
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_tpr_vs_fpr.png",
+      "sha256": "2f9ef607d9ca54d85788ac39b6dc51c0d0255024b59bfa1dca22284479baaef9",
+      "bytes": 41660
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_fpr_floor.png",
+      "sha256": "f0827bc056d6f79b6738c4bd90fb7de5bc0351773f5283f3e614d6c42b855f81",
+      "bytes": 48549
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000_joint_cov.png",
+      "sha256": "d2193a6575f8ae8f63e3ad94b7db49054cb08fd2ae210b42c73118f48c40fcc5",
+      "bytes": 34659
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_learning.png",
+      "sha256": "180d66e87c964c03b58e9b249512008482c6a65660ddf8d33bdaa94d09d0bca4",
+      "bytes": 50515
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_allocation.png",
+      "sha256": "397b5f286c18d97d2acf50b6ad01f78bee9a9301353bbf2f5bafedaf268544f4",
+      "bytes": 37658
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_tpr_vs_fpr.png",
+      "sha256": "576d9162f4cfa7f9aada26894df9fbef584c011facc4e9cab8453cbde6a4d201",
+      "bytes": 41666
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_fpr_floor.png",
+      "sha256": "8418f209cb94d035ac7cca9fcaf63dde240c9fb1dcb0ada1bb33db5fa7abe73c",
+      "bytes": 48317
+    },
+    {
+      "path": "policy_cards/assets/adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000_joint_cov.png",
+      "sha256": "147c99ef10c3b66c26194d1ad637d9754393ec06d718741cac0c6a81ae5cf410",
+      "bytes": 33805
+    }
+  ]
+}

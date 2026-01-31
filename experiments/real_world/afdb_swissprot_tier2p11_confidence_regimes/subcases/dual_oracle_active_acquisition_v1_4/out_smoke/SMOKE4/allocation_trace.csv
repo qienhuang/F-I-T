@@ -1,0 +1,7 @@
+policy,round,allocation_policy,ranking_policy,ranking_base,alpha_used,K_used,candidate_pool_basis,q_total,q_pae,q_msa,gap_pae,gap_msa,tpr_val_pae,fpr_val_pae,tpr_val_msa,fpr_val_msa,u_mass_pae,u_mass_msa
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,1,adaptive_joint_gap,composite_batch_ff_uK__a0.7__K5000,composite_batch_ff_uK,0.7,5000,uncertainty,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.7999999999999997
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,2,adaptive_joint_gap,composite_batch_ff_uK__a0.7__K5000,composite_batch_ff_uK,0.7,5000,uncertainty,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.8666666666666669
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,3,adaptive_joint_gap,composite_batch_ff_uK__a0.7__K5000,composite_batch_ff_uK,0.7,5000,uncertainty,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.9000000000000002
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,1,adaptive_joint_gap,composite_batch_ff_rK__a0.7__K5000,composite_batch_ff_rK,0.7,5000,random_hash,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.7999999999999997
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,2,adaptive_joint_gap,composite_batch_ff_rK__a0.7__K5000,composite_batch_ff_rK,0.7,5000,random_hash,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.8666666666666669
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,3,adaptive_joint_gap,composite_batch_ff_rK__a0.7__K5000,composite_batch_ff_rK,0.7,5000,random_hash,20,10,10,0.01,0.01,0.0,0.0,0.0,0.0,0.0,0.7000000000000001

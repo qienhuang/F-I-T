@@ -1,0 +1,22 @@
+# AFDB Non‑LLM Small‑Models Suite — consolidated requirements (v3.1)
+#
+# This file is a convenience union of subcase requirements for a single-env install.
+# You can still install per-subcase requirements independently if preferred.
+#
+# Subcases:
+# - subcases/pae_proxy_alarm/
+# - subcases/msa_deficit_proxy/
+# - subcases/dual_oracle_active_acquisition/
+#
+# Notes:
+# - Keep versions consistent across the suite if you pin anything.
+# - For deterministic builds, consider generating a lockfile via pip-tools or uv.
+
+joblib
+matplotlib
+numpy
+pandas
+pyarrow
+pyyaml
+scikit-learn
+scipy

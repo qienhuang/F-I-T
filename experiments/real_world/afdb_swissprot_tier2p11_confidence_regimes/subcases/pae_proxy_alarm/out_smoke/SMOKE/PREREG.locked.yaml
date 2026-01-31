@@ -1,0 +1,81 @@
+preregistration:
+  case_id: pae_proxy_alarm_smoke
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v3.0_suite_smoke
+  date_locked: '2026-01-25'
+  intent:
+    primary_training_target: monitorability_gate_low_fpr
+    secondary_training_targets:
+    - EST_boundary_discipline
+    - proxy_oracle_design_pattern
+    non_claims:
+    - No biological ground-truth claims about folding
+    - PAE is treated as an oracle channel for training labels, not truth
+boundary:
+  B_train:
+    requires:
+    - PAE_label_channel
+    in_scope_features:
+    - B0_plddt_features_only
+    label_definition: C2_pae_offdiag >= tau_pae
+    notes: Training uses a parent-case run produced under boundary B1_COORD_PLUS_PAE.
+  B_deploy:
+    requires:
+    - coords_only
+    in_scope_features:
+    - B0_plddt_features_only
+    out_of_scope:
+    - PAE
+    - MSA
+  feature_whitelist:
+  - length
+  - I1_hi_conf_frac
+  - I2_mean_plddt
+  - I3_plddt_entropy
+  - C1_low_conf_frac
+  label_field: C2_pae_offdiag
+  tau_pae: 0.8
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_label: true
+data:
+  input_metrics_path: data/synthetic_metrics.csv
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: smoke
+split:
+  method: deterministic_hash
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+model:
+  family: logistic_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+    solver: lbfgs
+thresholding:
+  selection_split: val
+  rule: maximize_tpr_under_fpr_cap
+  min_fpr_cap: 0.0
+monitorability:
+  fpr_targets:
+  - 0.01
+  - 0.05
+  report_flagged_per_10k: true
+outputs:
+  out_root: out_smoke
+  run_id_style: timestamp
+  artifacts:
+  - PREREG.locked.yaml
+  - dataset_snapshot.json
+  - boundary_snapshot.json
+  - model.joblib
+  - eval_report.md
+  - tradeoff_onepage.pdf
+  - run_manifest.json

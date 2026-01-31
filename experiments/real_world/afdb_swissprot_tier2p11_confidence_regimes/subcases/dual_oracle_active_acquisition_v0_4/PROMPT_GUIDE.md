@@ -1,4 +1,4 @@
-# PROMPT_GUIDE — Local Codex / Claude Code (v0.4)
+# PROMPT_GUIDE — local CLI assistant (v0.4)
 
 ---
 

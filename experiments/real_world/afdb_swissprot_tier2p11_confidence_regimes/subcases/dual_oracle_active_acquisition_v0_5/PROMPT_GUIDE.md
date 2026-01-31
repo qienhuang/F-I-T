@@ -1,4 +1,4 @@
-# PROMPT_GUIDE — Local Codex / Claude Code (v0.5)
+# PROMPT_GUIDE — local CLI assistant (v0.5)
 
 This guide assumes you are reading a completed run directory:
 

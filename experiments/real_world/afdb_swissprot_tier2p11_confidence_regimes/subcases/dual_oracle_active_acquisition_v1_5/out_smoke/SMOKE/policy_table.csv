@@ -1,0 +1,3 @@
+policy,allocation_policy,ranking_base,alpha_used,K_used,r_floor_pae,r_floor_msa,r_floor_max,r_enter_usable_pae,r_enter_usable_msa,r_joint_usable,delta_lag,final_pae_tpr_at_cap,final_msa_tpr_at_cap,final_pae_fpr_floor_at_tpr_min,final_msa_fpr_floor_at_tpr_min,final_mae_c3_hat,leakage_pass
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,adaptive_joint_gap,composite_batch_ff_rK,0.7,5000,4,4,4,4,4,4,0,0.0,0.0,1.0,1.0,0.563566929841097,True
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,adaptive_joint_gap,composite_batch_ff_uK,0.7,5000,4,4,4,4,4,4,0,0.0,1.0,1.0,1.0,0.5545984252780843,True

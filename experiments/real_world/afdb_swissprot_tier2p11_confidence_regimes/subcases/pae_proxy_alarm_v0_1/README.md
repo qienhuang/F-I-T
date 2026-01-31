@@ -1,10 +1,10 @@
-# Subcase v0.1 — PAE Proxy Alarm (Non‑LLM Specialist Model)
+# Subcase v0.1 - PAE Proxy Alarm (Non-LLM Specialist Model)
 
 **Parent case:** `afdb_swissprot_tier2p11_confidence_regimes`  
 **Subcase ID:** `pae_proxy_alarm_v0_1`  
 **Pack version:** `v0.1`  
-**Primary training target:** **Monitorability gate** (low‑FPR alarm usability)  
-**Secondary training target:** **EST boundary discipline** (train‑boundary vs deploy‑boundary)
+**Primary training target:** **Monitorability gate** (low-FPR alarm usability)  
+**Secondary training target:** **EST boundary discipline** (train-boundary vs deploy-boundary)
 
 ---
 
@@ -13,8 +13,8 @@
 This is a FIT/EST engineering case about **measurement channels and alarm usability**, not biology.
 
 - We treat AFDB confidence outputs as a **measurement system**, not ground truth.
-- We train a **small, non‑LLM model** to predict a PAE‑defined target event using only B0‑available features (pLDDT‑derived).
-- The objective is to decide **which entries deserve expensive oracle queries** (PAE/MSA), under an explicit false‑positive budget.
+- We train a **small, non-LLM model** to predict a PAE-defined target event using only B0-available features (pLDDT-derived).
+- The objective is to decide **which entries deserve expensive oracle queries** (PAE/MSA), under an explicit false-positive budget.
 
 No causal claims about folding are made.
 
@@ -22,15 +22,15 @@ No causal claims about folding are made.
 
 ## 1) Why this subcase exists (the design pattern)
 
-This subcase operationalizes the “non‑LLM specialist model” pattern:
+This subcase operationalizes the "non-LLM specialist model" pattern:
 
-> Use a light model as a **proxy alarm** that maps cheap signals → probability of an expensive oracle event, then operate at **low FPR** to control budget.
+> Use a light model as a **proxy alarm** that maps cheap signals -> probability of an expensive oracle event, then operate at **low FPR** to control budget.
 
 In AFDB terms:
 
-- **Cheap signals (B0):** coordinate + pLDDT‑derived metrics.
+- **Cheap signals (B0):** coordinate + pLDDT-derived metrics.
 - **Expensive oracle channel (B1):** PAE.
-- **Decision:** “Flag this accession for PAE/MSA retrieval / deeper analysis” vs “Skip”.
+- **Decision:** "Flag this accession for PAE/MSA retrieval / deeper analysis" vs "Skip".
 
 ---
 
@@ -41,15 +41,15 @@ We explicitly separate **two boundaries**:
 ### 2.1 Train boundary  $ \mathcal{B}_{train} $
 
 In scope:
-- pLDDT‑derived features (cheap)
-- PAE‑derived label (oracle truth channel for training)
+- pLDDT-derived features (cheap)
+- PAE-derived label (oracle truth channel for training)
 
 This requires input metrics produced under **parent boundary** `B1_COORD_PLUS_PAE`.
 
 ### 2.2 Deploy boundary  $ \mathcal{B}_{deploy} $
 
 In scope:
-- pLDDT‑derived features only
+- pLDDT-derived features only
 
 PAE is **not available** at inference time; the model must not depend on it.
 
@@ -70,7 +70,7 @@ $$
 
 
 
-`C2_pae_offdiag` is the per‑protein off‑diagonal PAE summary computed in the parent case.
+`C2_pae_offdiag` is the per-protein off-diagonal PAE summary computed in the parent case.
 
 `tau_pae` is a preregistered threshold in `PREREG.yaml` (default 10.0).
 
@@ -92,7 +92,7 @@ Where:
 - `S_t`: the current labeled subset (B1) + model parameters + remaining query budget
 - `\mathcal{B}`: the train/deploy boundary split + feature whitelist + label definition
 - `\hat{F}`: budget / query pressure (e.g., expected flagged volume)
-- `\hat{C}`: false‑positive constraint (target FPR)
+- `\hat{C}`: false-positive constraint (target FPR)
 - `\hat{I}`: useful coverage at low FPR (TPR / recall at target FPR)
 - `W`: split seed, threshold selection rule, evaluation windows
 
@@ -100,7 +100,7 @@ Where:
 
 ## 5) What you must report (monitorability gate)
 
-For each target false‑positive rate (FPR) in `monitorability.fpr_targets`:
+For each target false-positive rate (FPR) in `monitorability.fpr_targets`:
 
 - choose a threshold on the **validation** split to satisfy  $ \text{FPR} \le \text{target} $
 - report on the **test** split:
@@ -161,7 +161,7 @@ Outputs are written under `out/<run_id>/`.
 
 ## 8) Required outputs (artifact contract)
 
-A run is “complete” only if these exist:
+A run is "complete" only if these exist:
 
 - `out/<run_id>/PREREG.locked.yaml`
 - `out/<run_id>/dataset_snapshot.json`
@@ -173,6 +173,6 @@ A run is “complete” only if these exist:
 
 ---
 
-## 9) One‑page trade‑off figure
+## 9) One-page trade-off figure
 
-See `ONE_PAGE_TRADEOFF.md` for the exact 4‑panel figure definition.
+See `ONE_PAGE_TRADEOFF.md` for the exact 4-panel figure definition.

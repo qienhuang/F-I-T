@@ -1,0 +1,79 @@
+preregistration:
+  case_id: msa_deficit_proxy
+  parent_case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v3.0_suite_canonical
+  date_locked: '2026-01-25'
+  intent:
+    primary_training_target: B0_deployable_proxy_for_B2_only_channel_C3
+    secondary_training_targets:
+    - monitorability_gate_low_fpr
+    - EST_boundary_discipline
+    non_claims:
+    - No biological claims; purely measurement/proxy engineering
+    - MSA is treated as an oracle label channel in this protocol
+boundary:
+  feature_whitelist:
+  - length
+  - I1_hi_conf_frac
+  - I2_mean_plddt
+  - I3_plddt_entropy
+  - C1_low_conf_frac
+  label_fields:
+    msa_depth: msa_depth
+    c3_deficit: C3_msa_deficit
+  targets:
+    primary_regression_target: C3_msa_deficit
+    fallback_compute_from_msa_depth: true
+  event:
+    name: E_msa_sparse
+    tau_msa_depth: 32
+  data_filters:
+    min_length: 50
+    max_length: 2500
+    drop_na_features: true
+    drop_na_label: true
+  train_boundary:
+    features: B0_only
+    labels: MSA_oracle_from_B2_parent_run
+    out_of_scope:
+    - MSA_as_feature
+    - PAE_as_feature
+  deploy_boundary:
+    features: B0_only
+    labels: none
+    out_of_scope:
+    - MSA
+    - PAE
+data:
+  input_metrics_path: ../../out/<B2_RUN_ID>/metrics_per_protein.parquet
+  input_format_fallback: csv
+  id_field: accession
+  seed_string: FIT_MSA_PROXY_V0.1
+split:
+  method: deterministic_hash
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+model:
+  family: ridge_regression
+  standardize: true
+  impute_strategy: median
+  params:
+    alpha: 1.0
+monitorability:
+  fpr_targets:
+  - 0.01
+  - 0.05
+  threshold_selection_split: val
+  rule: maximize_tpr_under_fpr_cap
+outputs:
+  out_root: out
+  run_id_style: timestamp
+  artifacts:
+  - PREREG.locked.yaml
+  - dataset_snapshot.json
+  - boundary_snapshot.json
+  - model.joblib
+  - eval_report.md
+  - tradeoff_onepage.pdf
+  - run_manifest.json

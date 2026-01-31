@@ -1,0 +1,172 @@
+{
+  "by_policy": {
+    "adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000": {
+      "firsts": {
+        "first_pae_UNTRAINED": 0,
+        "first_msa_UNTRAINED": 0,
+        "first_pae_FPR_FLOOR": 4,
+        "first_msa_FPR_FLOOR": 4,
+        "first_pae_UNUSABLE": 4,
+        "first_msa_UNUSABLE": 4,
+        "first_pae_USABLE": 4,
+        "first_msa_USABLE": 4
+      },
+      "durations": {
+        "pae_counts": {
+          "UNTRAINED": 4
+        },
+        "msa_counts": {
+          "UNTRAINED": 4
+        }
+      },
+      "events": {
+        "E_covjump_pae": {
+          "found": false,
+          "round_index": null,
+          "reason": "no jump"
+        },
+        "E_covjump_msa": {
+          "found": false,
+          "round_index": null,
+          "reason": "no jump"
+        },
+        "E_floor_resolved_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "trained and fpr_floor_at_tpr_min <= cap on holdout"
+        },
+        "E_floor_resolved_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "trained and fpr_floor_at_tpr_min <= cap on holdout"
+        },
+        "E_exit_floor_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "after training starts, floor no longer blocks cap on holdout"
+        },
+        "E_exit_floor_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "after training starts, floor no longer blocks cap on holdout"
+        },
+        "E_enter_usable_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "first round PAE alarm usable at cap on holdout"
+        },
+        "E_enter_usable_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "first round MSA alarm usable at cap on holdout"
+        },
+        "E_joint_usable": {
+          "found": false,
+          "round_index": 4,
+          "reason": "never jointly usable within budget"
+        },
+        "delta_lag": {
+          "delta_lag": 0,
+          "r_floor_pae": 4,
+          "r_floor_msa": 4,
+          "r_floor": 4,
+          "r_joint": 4,
+          "delta_should_be_nonnegative": true,
+          "note": "negative delta indicates event-definition inconsistency or a bug; treat as audit failure"
+        },
+        "consistency_checks": {
+          "floor_before_or_equal_enter_usable_pae": true,
+          "floor_before_or_equal_enter_usable_msa": true,
+          "floor_before_or_equal_joint": true,
+          "exit_floor_matches_floor_resolved_pae": true,
+          "exit_floor_matches_floor_resolved_msa": true,
+          "covjump_joint_not_before_joint_usable": true
+        }
+      }
+    },
+    "adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000": {
+      "firsts": {
+        "first_pae_UNTRAINED": 0,
+        "first_msa_UNTRAINED": 0,
+        "first_pae_FPR_FLOOR": 4,
+        "first_msa_FPR_FLOOR": 4,
+        "first_pae_UNUSABLE": 4,
+        "first_msa_UNUSABLE": 4,
+        "first_pae_USABLE": 4,
+        "first_msa_USABLE": 4
+      },
+      "durations": {
+        "pae_counts": {
+          "UNTRAINED": 4
+        },
+        "msa_counts": {
+          "UNTRAINED": 4
+        }
+      },
+      "events": {
+        "E_covjump_pae": {
+          "found": false,
+          "round_index": null,
+          "reason": "no jump"
+        },
+        "E_covjump_msa": {
+          "found": false,
+          "round_index": null,
+          "reason": "no jump"
+        },
+        "E_floor_resolved_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "trained and fpr_floor_at_tpr_min <= cap on holdout"
+        },
+        "E_floor_resolved_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "trained and fpr_floor_at_tpr_min <= cap on holdout"
+        },
+        "E_exit_floor_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "after training starts, floor no longer blocks cap on holdout"
+        },
+        "E_exit_floor_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "after training starts, floor no longer blocks cap on holdout"
+        },
+        "E_enter_usable_pae": {
+          "found": false,
+          "round_index": 4,
+          "reason": "first round PAE alarm usable at cap on holdout"
+        },
+        "E_enter_usable_msa": {
+          "found": false,
+          "round_index": 4,
+          "reason": "first round MSA alarm usable at cap on holdout"
+        },
+        "E_joint_usable": {
+          "found": false,
+          "round_index": 4,
+          "reason": "never jointly usable within budget"
+        },
+        "delta_lag": {
+          "delta_lag": 0,
+          "r_floor_pae": 4,
+          "r_floor_msa": 4,
+          "r_floor": 4,
+          "r_joint": 4,
+          "delta_should_be_nonnegative": true,
+          "note": "negative delta indicates event-definition inconsistency or a bug; treat as audit failure"
+        },
+        "consistency_checks": {
+          "floor_before_or_equal_enter_usable_pae": true,
+          "floor_before_or_equal_enter_usable_msa": true,
+          "floor_before_or_equal_joint": true,
+          "exit_floor_matches_floor_resolved_pae": true,
+          "exit_floor_matches_floor_resolved_msa": true,
+          "covjump_joint_not_before_joint_usable": true
+        }
+      }
+    }
+  }
+}

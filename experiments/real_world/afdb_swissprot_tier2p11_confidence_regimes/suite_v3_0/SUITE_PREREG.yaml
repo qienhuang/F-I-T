@@ -1,0 +1,32 @@
+suite:
+  suite_id: afdb_non_llm_small_models_suite_v3_1
+  date_locked: '2026-01-25'
+  intent: One-click smoke + canonical subcases for FIT/EST training on boundary discipline,
+    monitorability gates, and active boundary acquisition.
+  pack_version: v3.1_repo_ready_suite
+  changelog:
+  - 'v3.1: add requirements.all.txt + Makefile + suite PROMPT_GUIDE.md; no estimator/boundary
+    changes'
+  - 'v3.0: initial three-subcase suite + one-click smoke'
+subcases:
+- id: pae_proxy_alarm
+  path: ../subcases/pae_proxy_alarm
+  primary_skill: monitorability gate at low FPR
+  deploy_boundary: B0 (coord+pLDDT-derived metrics only)
+  oracle_channel: B1 PAE (label only; not a feature)
+  smoke_entrypoint: bash scripts/ci_check.sh
+- id: msa_deficit_proxy
+  path: ../subcases/msa_deficit_proxy
+  primary_skill: boundary-safe proxy for a B2-only constraint channel
+  deploy_boundary: B0 (coord+pLDDT-derived metrics only)
+  oracle_channel: B2 MSA depth (.a3m) (label/channel; not a feature)
+  smoke_entrypoint: bash scripts/ci_check.sh
+- id: dual_oracle_active_acquisition
+  path: ../subcases/dual_oracle_active_acquisition
+  primary_skill: controlled boundary switch as a learnable strategy + robust publishable
+    claims
+  deploy_boundary: B0 with optional boundary switches to B1/B2
+  oracle_channels:
+  - B1 PAE
+  - B2 MSA depth
+  smoke_entrypoint: bash scripts/ci_check.sh

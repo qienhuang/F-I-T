@@ -1,0 +1,34 @@
+{
+  "B_train": {
+    "requires": [
+      "PAE_label_channel"
+    ],
+    "in_scope_features": [
+      "B0_plddt_features_only"
+    ],
+    "label_definition": "C2_pae_offdiag >= tau_pae",
+    "notes": "Training uses a parent-case run produced under boundary B1_COORD_PLUS_PAE."
+  },
+  "B_deploy": {
+    "requires": [
+      "coords_only"
+    ],
+    "in_scope_features": [
+      "B0_plddt_features_only"
+    ],
+    "out_of_scope": [
+      "PAE",
+      "MSA"
+    ]
+  },
+  "feature_whitelist": [
+    "length",
+    "I1_hi_conf_frac",
+    "I2_mean_plddt",
+    "I3_plddt_entropy",
+    "C1_low_conf_frac"
+  ],
+  "label_field": "C2_pae_offdiag",
+  "tau_pae": 0.8,
+  "notes": "Alarm is trained with PAE labels but must be deployable with coord-only (B0) features."
+}

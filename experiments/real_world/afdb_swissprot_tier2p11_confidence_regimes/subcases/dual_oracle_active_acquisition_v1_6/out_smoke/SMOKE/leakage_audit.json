@@ -1,0 +1,40 @@
+{
+  "oracle_feature_leakage": false,
+  "by_policy": {
+    "adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000": {
+      "holdout_overlap_with_queries": {
+        "PAE": 0,
+        "MSA": 0
+      },
+      "holdout_overlap_examples": {
+        "PAE": [],
+        "MSA": []
+      },
+      "duplicate_queries": {
+        "PAE": 0,
+        "MSA": 0
+      },
+      "pass": true
+    },
+    "adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000": {
+      "holdout_overlap_with_queries": {
+        "PAE": 0,
+        "MSA": 0
+      },
+      "holdout_overlap_examples": {
+        "PAE": [],
+        "MSA": []
+      },
+      "duplicate_queries": {
+        "PAE": 0,
+        "MSA": 0
+      },
+      "pass": true
+    }
+  },
+  "overall_pass": true,
+  "holdout_sizes": {
+    "PAE": 232,
+    "MSA": 236
+  }
+}

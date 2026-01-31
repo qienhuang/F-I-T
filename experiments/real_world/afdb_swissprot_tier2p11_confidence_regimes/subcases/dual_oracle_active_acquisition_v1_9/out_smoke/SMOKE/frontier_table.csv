@@ -1,0 +1,3 @@
+policy,allocation_policy,ranking_base,jump_type,is_baseline_random_family,cost_to_joint_usable,cost_to_covjump_joint,total_cost_final,final_cov_joint_at_cap,auc_cov_joint_per_cost,envelope_cov_at_final_cost,baseline_env_cov_at_final_cost,headroom_to_envelope_at_final_cost,gain_over_baseline_env_at_final_cost,pareto_cost_to_joint_vs_cov,pareto_cost_to_covjump_vs_cov,regret_cost_to_joint_usable,regret_cost_to_covjump_joint
+adaptive_joint_gap__composite_batch_ff_rK__a0.7__K5000,adaptive_joint_gap,composite_batch_ff_rK,none,False,140.0,,140.0,0.0,0.0,0.0,,0.0,,True,False,0.0,
+adaptive_joint_gap__composite_batch_ff_uK__a0.7__K5000,adaptive_joint_gap,composite_batch_ff_uK,none,False,150.0,,150.0,0.0,0.0,0.0,,0.0,,False,False,10.0,

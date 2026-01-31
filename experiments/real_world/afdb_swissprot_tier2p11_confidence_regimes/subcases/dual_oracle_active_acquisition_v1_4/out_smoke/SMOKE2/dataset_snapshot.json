@@ -1,0 +1,23 @@
+{
+  "subcase_id": "dual_oracle_active_acquisition_v1_3_smoke",
+  "parent_case_id": "afdb_swissprot_tier2p11_confidence_regimes",
+  "run_id": "SMOKE2",
+  "input_metrics_path": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.3/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_3/data/synthetic_metrics.csv",
+  "input_metrics_sha256": "59f184808783d644267acd08e2464a3e7bdbb060302776b15b07fa61771a7554",
+  "prereg_sha256": "ee7c9250d968092c9a489ec25c0aa809fd50b9d9bf054dd2cbe8c1a118452dd7",
+  "n_total": 800,
+  "tau_pae": 1.0,
+  "tau_msa_depth": 16.0,
+  "feature_whitelist": [
+    "length",
+    "I1_hi_conf_frac",
+    "I2_mean_plddt",
+    "I3_plddt_entropy",
+    "C1_low_conf_frac"
+  ],
+  "feature_whitelist_sha256": "e3a95a2e66e8ff1f4f2b1cc4474418ed4f48494c96b77d3d03918c290d55e12b",
+  "pae_available_rate": 0.74125,
+  "msa_available_rate": 0.7475,
+  "universe_mode": "union",
+  "policy_diag_split": "labeled_val"
+}

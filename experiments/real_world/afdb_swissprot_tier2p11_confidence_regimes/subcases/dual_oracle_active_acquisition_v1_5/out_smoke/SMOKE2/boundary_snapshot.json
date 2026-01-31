@@ -1,0 +1,62 @@
+{
+  "train_boundary": {
+    "features": "B0_only",
+    "labels": "PAE_and_MSA_oracles_revealed_on_query",
+    "out_of_scope": [
+      "PAE_as_feature",
+      "MSA_as_feature"
+    ]
+  },
+  "deploy_boundary": {
+    "features": "B0_only",
+    "labels": "none",
+    "out_of_scope": [
+      "PAE",
+      "MSA"
+    ]
+  },
+  "feature_whitelist": [
+    "length",
+    "I1_hi_conf_frac",
+    "I2_mean_plddt",
+    "I3_plddt_entropy",
+    "C1_low_conf_frac"
+  ],
+  "oracle_fields": {
+    "pae_value": "C2_pae_offdiag",
+    "msa_depth": "msa_depth"
+  },
+  "thresholds": {
+    "tau_pae": 1.0,
+    "tau_msa_depth": 16
+  },
+  "holdout_role": "reporting_only",
+  "universe_mode": "union",
+  "policy_diagnostics": {
+    "use_split": "labeled_val",
+    "gap_definition": {
+      "w_tpr": 1.0,
+      "w_fpr": 5.0
+    }
+  },
+  "ranking_policy_grammar": "<base>[__a<alpha>][__K<Kcap>]",
+  "candidate_pool_basis_map": {
+    "composite_batch_ff_uK": "uncertainty_topK",
+    "composite_batch_ff_rK": "random_hash_K"
+  },
+  "regime_definition": {
+    "labels": [
+      "UNTRAINED",
+      "FPR_FLOOR",
+      "UNUSABLE",
+      "USABLE"
+    ],
+    "definition": {
+      "UNTRAINED": "model not trained (min labels or single class)",
+      "FPR_FLOOR": "trained but fpr_floor_at_tpr_min > cap on holdout",
+      "UNUSABLE": "trained, no floor, but not usable at cap (fails TPR or FPR)",
+      "USABLE": "usable at cap (FPR<=cap and TPR>=tpr_min)"
+    }
+  },
+  "delta_lag_definition": "delta = r_joint_usable - max(r_floor_resolved_pae, r_floor_resolved_msa)"
+}

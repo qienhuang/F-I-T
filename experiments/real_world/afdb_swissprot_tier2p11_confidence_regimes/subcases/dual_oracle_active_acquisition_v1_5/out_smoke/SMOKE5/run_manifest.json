@@ -1,0 +1,23 @@
+{
+  "subcase_id": "dual_oracle_active_acquisition_v1_5_smoke",
+  "run_id": "SMOKE5",
+  "timestamp_utc": "2026-01-24T23:57:32.892484Z",
+  "git_commit": "UNKNOWN",
+  "prereg_sha256": "d0dc266e69ee57e9a651efc0cab90908e8c65bee8a8a6903c5d410ef0ba3a69a",
+  "input_metrics_sha256": "e72ef8fff15bcaa218dda04ec688a556041c09ea98075df808b572cd3960da3a",
+  "artifacts": {
+    "PREREG.locked.yaml": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/PREREG.locked.yaml",
+    "dataset_snapshot.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/dataset_snapshot.json",
+    "boundary_snapshot.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/boundary_snapshot.json",
+    "decision_trace.csv": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/decision_trace.csv",
+    "allocation_trace.csv": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/allocation_trace.csv",
+    "round_metrics.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/round_metrics.json",
+    "regime_timeline.csv": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/regime_timeline.csv",
+    "regime_summary.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/regime_summary.json",
+    "leakage_audit.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/leakage_audit.json",
+    "event_summary.json": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/event_summary.json",
+    "eval_report.md": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/eval_report.md",
+    "tradeoff_onepage.pdf": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/tradeoff_onepage.pdf",
+    "models_dir": "/mnt/data/dual_oracle_active_acquisition_repo_ready_v1.5/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/subcases/dual_oracle_active_acquisition_v1_5/out_smoke/SMOKE5/models"
+  }
+}

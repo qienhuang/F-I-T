@@ -1,0 +1,17 @@
+{
+  "subcase_id": "pae_proxy_alarm_smoke",
+  "run_id": "MAIN",
+  "timestamp_utc": "2026-01-26T04:44:37.229370Z",
+  "git_commit": "UNKNOWN",
+  "prereg_sha256": "e9a08c54c0ad73ec2f6dc43c59e4ae551afe0d8e022594c98532cfe1bc010b45",
+  "input_metrics_sha256": "ed1c5549410b076897ac3a4d89fd9dcf6a7e74cbcb93c3088cb1f3a3e27c9cf9",
+  "artifacts": {
+    "PREREG.locked.yaml": "out_smoke/MAIN/PREREG.locked.yaml",
+    "dataset_snapshot.json": "out_smoke/MAIN/dataset_snapshot.json",
+    "boundary_snapshot.json": "out_smoke/MAIN/boundary_snapshot.json",
+    "model.joblib": "out_smoke/MAIN/model.joblib",
+    "eval_report.md": "out_smoke/MAIN/eval_report.md",
+    "tradeoff_onepage.pdf": "out_smoke/MAIN/tradeoff_onepage.pdf",
+    "eval_metrics.json": "out_smoke/MAIN/eval_metrics.json"
+  }
+}

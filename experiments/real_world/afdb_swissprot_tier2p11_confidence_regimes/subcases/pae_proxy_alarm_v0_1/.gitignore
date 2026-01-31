@@ -3,3 +3,9 @@ out/
 
 # any local scratch data
 data/
+
+# python
+__pycache__/
+*.py[cod]
+*.pyc.*
+.pytest_cache/
