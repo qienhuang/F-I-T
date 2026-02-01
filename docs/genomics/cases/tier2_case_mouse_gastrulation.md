@@ -59,13 +59,19 @@ Prereg:
 
 Evidence bundle (ZIP):
 
-- `experiments/real_world/scrna_commitment_tier2p11/outputs_runs/evidence_gastrulation_e75_purity.zip`
+- `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_purity.zip`
+
+Within-boundary proxy comparison (same dataset, same axis):
+
+| Estimator pair | rho | p-value | Verdict |
+|---|---:|---:|---|
+| `C_dim_collapse` × `C_label_purity` | 0.581 | 0.0145 | `OK_PER_WINDOW` |
+| `C_dim_collapse` × `C_mixing` | 0.306 | 0.232 | `OK_PER_WINDOW` |
 
 Reproduce:
 
 ```bash
 cd experiments/real_world/scrna_commitment_tier2p11
 python run_pipeline.py --prereg EST_PREREG_gastrulation_e75_purity.yaml
-python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out outputs_runs/evidence_gastrulation_e75_purity.zip
+python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out evidence_gastrulation_e75_purity.zip
 ```
-

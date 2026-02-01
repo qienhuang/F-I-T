@@ -25,6 +25,17 @@ Verdict: `OK_PER_WINDOW`
 
 This case is intentionally narrow: it is evidence that the coherence gate can pass on a real developmental system when an external axis is available, not a general biological claim about fate commitment.
 
+## Within-boundary proxy comparison (same axis, same dataset)
+
+Using the same dataset and the same explicit axis (`obs:stage`), the proxy choice changes signal strength:
+
+| Estimator pair | rho | p-value | Verdict |
+|---|---:|---:|---|
+| `C_dim_collapse` vs `C_label_purity` | 0.581 | 0.0145 | `OK_PER_WINDOW` |
+| `C_dim_collapse` vs `C_mixing` | 0.306 | 0.232 | `OK_PER_WINDOW` |
+
+Both pairs clear the threshold (`rho >= 0.2`), but `C_label_purity` yields a stronger, statistically significant association under this boundary.
+
 ## Reproduce
 
 Run:
@@ -45,6 +56,5 @@ python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out
 
 - Prereg: `experiments/real_world/scrna_commitment_tier2p11/EST_PREREG_gastrulation_e75_purity.yaml`
 - Run outputs: `experiments/real_world/scrna_commitment_tier2p11/outputs_runs/gastrulation_e75_purity/`
-- Evidence ZIP: `experiments/real_world/scrna_commitment_tier2p11/outputs_runs/evidence_gastrulation_e75_purity.zip`
+- Evidence ZIP: `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_purity.zip`
 - Portfolio summary: `experiments/real_world/scrna_commitment_tier2p11/RESULTS.md`
-

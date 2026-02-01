@@ -21,7 +21,9 @@ Design goals:
 - Runnable case + results + evidence bundles:
   - `experiments/real_world/scrna_commitment_tier2p11/README.md`
   - `experiments/real_world/scrna_commitment_tier2p11/RESULTS.md`
-  - Evidence ZIP (gastrulation, purity-vs-dim-collapse): `experiments/real_world/scrna_commitment_tier2p11/outputs_runs/evidence_gastrulation_e75_purity.zip`
+  - Evidence ZIPs (gastrulation, within-boundary proxy comparison):
+    - `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_purity.zip`
+    - `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_mixing.zip`
 
 ## Gengram (explicit motif memory + gating)
 

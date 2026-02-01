@@ -14,7 +14,8 @@ Interpretation rules:
 |---|---|---|---|---|---:|---:|---:|---:|---|---|
 | `pancreas_endocrinogenesis_day15` | `file:data/raw/pancreas_endocrinogenesis_day15.h5ad` | `pseudotime` | `obs:clusters` | `C_dim_collapse` vs `C_mixing` | `+1` | 17 | -0.154 | 0.554 | `ESTIMATOR_UNSTABLE` | `outputs_runs/evidence_pancreas_day15.zip` |
 | `pancreas_endocrinogenesis_day15_purity` | `file:data/raw/pancreas_endocrinogenesis_day15.h5ad` | `pseudotime` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.353 | 0.165 | `OK_PER_WINDOW` | `outputs_runs/evidence_pancreas_day15_purity.zip` |
-| `gastrulation_e75_purity` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.581 | 0.0145 | `OK_PER_WINDOW` | `outputs_runs/evidence_gastrulation_e75_purity.zip` |
+| `gastrulation_e75_purity` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.581 | 0.0145 | `OK_PER_WINDOW` | `evidence_gastrulation_e75_purity.zip` |
+| `gastrulation_e75_mixing` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_mixing` | `+1` | 17 | 0.306 | 0.232 | `OK_PER_WINDOW` | `evidence_gastrulation_e75_mixing.zip` |
 | `moignard15_exporder_leidenfixed_purity` | `file:data/raw/moignard15_exporder_leiden_fixed.h5ad` | `obs:exp_order` | `obs:leiden_fixed` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | -1.000 | 0.0 | `ESTIMATOR_UNSTABLE` | `outputs_runs/evidence_moignard15_exporder_leidenfixed_purity.zip` |
 | `nestorowa16_zenodo_purity` | `file:data/raw/nestorowa16_hsc_2016.h5ad` | `obsm:X_pca:0` | `obs:cell_types_broad_cleaned` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.447 | 0.0719 | `OK_PER_WINDOW` | `outputs_runs/evidence_nestorowa16_zenodo_purity.zip` |
 | `dentategyrus_age_purity` | `file:data/raw/dentategyrus_10X43_1.h5ad` | `obs:age(days)` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | 0.500 | 0.667 | `OK_PER_WINDOW` | `outputs_runs/evidence_dentategyrus_age_purity.zip` |
@@ -52,6 +53,5 @@ Evidence bundles (ZIP) are in `outputs_runs/evidence_*.zip`.
 
 ```bash
 python run_pipeline.py --prereg EST_PREREG_gastrulation_e75_purity.yaml
-python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out outputs_runs/evidence_gastrulation_e75_purity.zip
+python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out evidence_gastrulation_e75_purity.zip
 ```
-
