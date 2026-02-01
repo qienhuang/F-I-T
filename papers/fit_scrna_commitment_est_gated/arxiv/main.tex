@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
+}
+
+% Version: v0.1
+\title{From Expression States to Constraint Dynamics:\\A FIT Framework for Fate Commitment in Single-Cell RNA Sequencing}
+\author{Qien Huang\thanks{ORCID: 0009-0003-7731-4294. Repository: \url{https://github.com/qienhuang/F-I-T/}.}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\noindent\textbf{Keywords:} single-cell RNA-seq; fate commitment; irreversibility; constraint dynamics; estimator selection; coherence gates; phase transition
+
+\input{content.tex}
+
+\end{document}

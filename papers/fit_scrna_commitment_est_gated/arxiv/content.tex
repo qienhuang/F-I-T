@@ -1,0 +1,496 @@
+\section{Introduction}\label{1-introduction}
+
+Single-cell trajectory inference has transformed developmental biology, yet a persistent interpretability gap remains. Expression changes are frequently equated with fate decisions, despite extensive evidence that transcriptional states can fluctuate reversibly under noise, stress, or transient signaling.
+
+This paper proposes an alternative framing: \textbf{fate commitment is a constraint phenomenon}. Drawing on the FIT framework, we argue that irreversible commitment occurs when the space of reachable transcriptional configurations contracts and reorganizes, forming stable attractors (Figure 1).
+
+\begin{quote}
+Expression states describe where the system is. Constraints determine where it can still go.
+\end{quote}
+
+The key distinction is between \textbf{state change} (movement within a fixed dynamical landscape) and \textbf{structural change} (reconfiguration of the landscape itself). Only the latter constitutes genuine commitment.
+
+\par\medskip
+
+\section{Conceptual Framework}\label{2-conceptual-framework}
+
+\subsection{FIT Primitives in the scRNA-seq Context}\label{21-fit-primitives-in-the-scrna-seq-context}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.18\linewidth}P{0.25\linewidth}P{0.57\linewidth}@{}}
+\toprule\noalign{}
+Primitive & Definition & scRNA-seq Operationalization \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{State (S\_t)} & System configuration & Distribution of cells in latent expression space \\
+\textbf{Force (F)} & Drivers of change & Developmental programs, signaling, selection \\
+\textbf{Constraint (C)} & Restrictions on reachable configurations & Boundaries of accessible expression space \\
+\textbf{Useful information (I\_useful)} & Predictive information about future fate & Predictive gain for fate/label from current state \\
+\textbf{Time (T)} & Ordering axis & Developmental time or pseudotime \\
+\end{longtable}
+}
+
+\subsection{Phases of Development}\label{22-phases-of-development}
+
+We interpret development as transitions between constraint regimes. In \textbf{Phi1 (exploration)} the reachable expression space remains broad, and perturbations tend to be transient. In \textbf{Phi2 (constraint accumulation)} the reachable set contracts and may reorganize, as the system approaches a bifurcation. In \textbf{Phi3 (stable attractor)} commitment is robust: basin boundaries are established and escape becomes rare under comparable perturbations. In this framing, commitment corresponds to a \textbf{Phi2 -\textgreater{} Phi3} transition, not merely marker activation.
+
+\par\medskip
+
+\section{Measurement Strategy}\label{3-measurement-strategy}
+
+\subsection{Boundary and Scope}\label{31-boundary-and-scope}
+
+All claims are conditional on declared boundaries: dataset identity and preprocessing (filtering, normalization, HVG selection), batch handling strategy, latent space choice (PCA, diffusion map, VAE) and dimensionality, time axis definition (developmental time or pseudotime method), and the windowing scheme with minimum sample requirements.
+
+\textbf{Boundary mis-specification is a first-class failure mode}, not a technical detail.
+
+\subsection{Tier-2 Protocol Box}\label{32-tier-2-protocol-box}
+
+This protocol is "verifier-first": interpretation is gated by preregistered coherence checks.
+
+\begin{verbatim}
+Tier-2 protocol (EST-gated; repo-runnable)
+
+1) Declare boundary:
+   - dataset + preprocessing
+   - label key (for mixing / composition proxies)
+   - time axis (explicit time/stage if present; otherwise pseudotime)
+   - windowing scheme and minimum sample requirements
+
+2) Declare an estimator family:
+   - choose (C1, C2) constraint proxies
+   - preregister expected_sign and a coherence threshold
+
+3) Run deterministic pipeline:
+   - compute per-window estimators
+   - compute coherence across windows
+   - gate interpretation based on the preregistered rule
+
+4) Emit auditable artifacts:
+   - PREREG.locked.yaml
+   - metrics_log.parquet (per-window estimator values)
+   - coherence_report.json (gate input + verdict)
+   - fail_windows.md
+   - tradeoff_onepage.png/pdf
+
+Failure semantics (non-negotiable):
+   - OK_PER_WINDOW: gate passes under this boundary
+   - ESTIMATOR_UNSTABLE: gate fails (no regime interpretation)
+   - INCONCLUSIVE: too few valid windows / samples
+\end{verbatim}
+
+\subsection{Constraint Estimator Families}\label{33-constraint-estimator-families}
+
+Multiple independent proxies are required for coherence validation.
+
+In the repo-runnable Tier-2 runs referenced in this paper, constraint proxies are computed per window and then coherence is evaluated \emph{across windows} (a conservative gate).
+
+\textbf{Effective dimension (spectral concentration)}
+
+\[
+d_{\text{eff}}(t) = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}, \quad \hat{C}_{\text{dim-collapse}}(t) = \frac{1}{d_{\text{eff}}(t)}
+\]
+
+\textbf{Window composition (label purity)}
+
+\[
+\hat{C}_{\text{purity}}(t) = \max_k p_k(t)
+\]
+
+\textbf{Local mixing (graph-based; kNN edges)}
+
+\[
+\hat{C}_{\text{mix}}(t) = 1 - \mathrm{Pr}\left[\mathrm{label}_{src} \neq \mathrm{label}_{dst}\right]
+\]
+
+\subsection{Useful Information}\label{34-useful-information}
+
+\[
+\hat{I}_{\text{useful}}(t) = \text{PredictiveGain}(X_t \to Y_{\text{fate}})
+\]
+
+where \(Y_{\text{fate}}\) is terminal lineage identity.
+
+\par\medskip
+
+\section{Coherence-Gated Interpretation}\label{4-coherence-gated-interpretation}
+
+Constraint estimators must be coherent within declared scopes (Figure 2).
+
+\subsection{Coherence Types}\label{41-coherence-types}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.14\linewidth}P{0.34\linewidth}P{0.52\linewidth}@{}}
+\toprule\noalign{}
+Type & Definition & Failure Semantics \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Signed} & Expected correlation direction preregistered & Sign mismatch -\textgreater{} ESTIMATOR\_UNSTABLE \\
+\textbf{Local} & Valid within phase, not across phases & Pooled FAIL + window PASS -\textgreater{} SCOPE\_LIMITED \\
+\textbf{Task-typed} & Ordinal vs metric vs topological & Gate type must match task \\
+\end{longtable}
+}
+
+\subsection{Phase-Conditional Interpretation}\label{42-phase-conditional-interpretation}
+
+Pooled coherence failure across phases should be interpreted as \textbf{regime heterogeneity}, not estimator inadequacy.
+
+Example: if two constraint proxies \texttt{(C1,\ C2)} are coherent within a phase but fail when pooled across phases, the correct interpretation is not that the estimators are ``bad'', but that the constraint structure differs by regime. Claims must then be phase-qualified (or window-qualified), and pooled statements are out-of-scope for that boundary.
+
+\par\medskip
+
+\section{Detecting Commitment: Multi-Signal Registration}\label{5-detecting-commitment-multi-signal-registration}
+
+A commitment point is registered only when multiple signals co-occur within a coherent window:
+
+\subsection{PT-MSS Criteria (Phase Transition Multi-Signal Signature)}\label{51-pt-mss-criteria-phase-transition-multi-signal-signature}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.10\linewidth}P{0.28\linewidth}P{0.62\linewidth}@{}}
+\toprule\noalign{}
+Signal & Description & Operationalization \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{S3} & Constraint reconfiguration & Abrupt shift in the constraint family (e.g., a jump in \texttt{C\_dim\_collapse} together with tightening of a second proxy such as \texttt{C\_label\_purity}) \\
+\textbf{S2} & Information re-encoding & Sharp increase in predictive gain \\
+\textbf{S1} & Stability change & Increased return tendency, reduced directional variance \\
+\end{longtable}
+}
+
+\subsection{Local Efficiency}\label{52-local-efficiency}
+
+Within a window W: \[
+\Gamma_W(t) = \frac{\Delta \hat{I}_{\text{useful}}(t; W)}{\Delta \hat{C}(t; W)}
+\]
+
+A pronounced Γ peak indicates efficient information encoding per unit constraint accumulation.
+
+\par\medskip
+
+\section{Protocol Specification: Mouse Hematopoiesis}\label{6-protocol-specification-mouse-hematopoiesis}
+
+This section specifies a Tier-2 protocol for a canonical dataset. \textbf{Results are protocol-conditional and should be regenerated with current code.}
+
+\subsection{Boundary Declaration}\label{61-boundary-declaration}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.26\linewidth}P{0.74\linewidth}@{}}
+\toprule\noalign{}
+Parameter & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dataset & Paul et al., 2015 (mouse hematopoiesis) \\
+Cells & Hematopoietic stem and progenitor populations \\
+Latent space & PCA (preprocessing-dependent; typical runs use 20--30 components) \\
+Time axis & Prefer an explicit stage/day axis when available; otherwise diffusion pseudotime \\
+Windows & Preregistered windows over the chosen axis (default implementation uses 17 windows) \\
+Min samples & Preregistered per-window minimum cell count (see locked prereg per run) \\
+\end{longtable}
+}
+
+\subsection{Estimator Family Declaration}\label{62-estimator-family-declaration}
+
+The Tier-2 implementation used in this paper treats constraint measurement as an \textbf{estimator family} rather than a single metric. Constraint proxies are computed per window, then coherence is evaluated across windows under a preregistered rule.
+
+In the current repo implementation, the candidate constraint proxies include:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{C\_dim\_collapse}: inverse effective dimension within a window (\texttt{1\ /\ d\_eff})
+\item
+  \texttt{C\_mixing}: inverse label mixing across kNN edges (\texttt{1\ -\ Pr{[}label\_src\ !=\ label\_dst{]}})
+\item
+  \texttt{C\_label\_purity}: max label mass within a window (\texttt{max\_k\ p\_k})
+\item
+  \texttt{C\_label\_entropy\_inv}: inverse normalized label entropy (\texttt{1\ -\ H(labels)/log\ K})
+\end{itemize}
+
+The default expected sign for a ``coupled tightening'' hypothesis is positive (\texttt{expected\_sign=+1}), but signed coherence explicitly treats sign mismatch as a first-class failure mode rather than something to be explained away post hoc.
+
+\subsection{Tier-2 evidence (repo-runnable; Phase A -\textgreater{} Phase B)}\label{63-tier-2-evidence-repo-runnable-phase-a---phase-b}
+
+All empirical results in this paper are backed by a deterministic, repo-runnable pipeline:
+
+\begin{itemize}
+\tightlist
+\item
+  Experiment: \texttt{github/F-I-T/experiments/real\_world/scrna\_commitment\_tier2p11/}
+\item
+  Each run writes an auditable artifact set under \texttt{outputs\_runs/\textless{}run\_id\textgreater{}/...}
+\item
+  Evidence packs (ZIP) bundle the run artifacts for archiving and citation
+\end{itemize}
+
+Phase A is explicitly exploratory: we compare a small estimator family and select a candidate pair. Phase B locks the pair and evaluates it on explicit-axis datasets. Here ``explicit axis'' is interpreted narrowly: it can be an experimental stage/time label (\texttt{obs:stage}, \texttt{obs:day}, \texttt{obs:age(days)}), or a dataset-provided progression coordinate that is not computed by this pipeline (e.g., a precomputed embedding axis). In all cases, claims remain conditional on the declared boundary and axis choice.
+
+Not all ``explicit axes'' carry the same epistemic weight. For the purpose of interpreting windowed coherence and any downstream commitment narrative, the strength ordering is:
+
+\texttt{obs:stage/day} (experimental design variable; strongest) \textgreater{} \texttt{obs:age} (real time but often sparse; medium) \textgreater{} \texttt{obsm:*} axes (explicit coordinate but weakest semantics; useful mainly for sanity / portability).
+
+{\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.39\linewidth}P{0.12\linewidth}P{0.11\linewidth}P{0.14\linewidth}P{0.24\linewidth}@{}}
+\toprule\noalign{}
+Dataset & Axis & rho (across windows) & Verdict & Evidence (ZIP) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Pancreas endocrinogenesis (day15) & pseudotime & -0.154 & \texttt{ESTIMATOR\_UNSTABLE} & \path{outputs_runs/evidence_pancreas_day15.zip} \\
+Pancreas endocrinogenesis (day15) & pseudotime & +0.353 & \texttt{OK\_PER\_WINDOW} & \path{outputs_runs/evidence_pancreas_day15_purity.zip} \\
+Mouse gastrulation (E6.5-E8.5) & obs:stage & +0.581 (p=0.0145) & \texttt{OK\_PER\_WINDOW} & \path{outputs_runs/evidence_gastrulation_e75_purity.zip} \\
+Moignard15 hematopoiesis (explicit stage surrogate) & obs:exp\_order & -1.000 & \texttt{ESTIMATOR\_UNSTABLE} & \path{outputs_runs/evidence_moignard15_exporder_leidenfixed_purity.zip} \\
+Nestorowa16 hematopoiesis (Zenodo .h5ad) & obsm:X\_pca:0 & +0.447 (p=0.0719) & \texttt{OK\_PER\_WINDOW} & \path{outputs_runs/evidence_nestorowa16_zenodo_purity.zip} \\
+Dentate gyrus (age axis) & obs:age(days) & +0.500 (p=0.667) & \texttt{OK\_PER\_WINDOW} & \path{outputs_runs/evidence_dentategyrus_age_purity.zip} \\
+\end{longtable}
+}
+
+Interpretation discipline: a passing verdict supports interpretation \textbf{within the declared boundary}, not as a universal biological claim. Failures (including sign mismatch) are reported as estimator-family mismatch under the boundary, not as ``absence of commitment''.
+
+\par\medskip
+
+\section{Discussion}\label{7-discussion}
+
+\subsection{Why Expression-Centric Interpretation Fails}\label{71-why-expression-centric-interpretation-fails}
+
+Single-cell biology\textquotesingle s interpretive practice remains expression-centric: fate commitment is inferred from differential expression, marker activation, or smooth transcriptional trends. This paradigm systematically conflates \textbf{state variation} with \textbf{structural irreversibility}.
+
+\subsection{Expression Is a State Variable, Not a Structural Variable}\label{711-expression-is-a-state-variable-not-a-structural-variable}
+
+Gene expression describes instantaneous configuration---a \textbf{state variable} that can fluctuate rapidly under noise, stress, or transient signaling. Fate commitment, however, is a \textbf{structural property}: which expression configurations remain reachable.
+
+A system may traverse a wide range of expression states while remaining confined to the same attractor basin. Expression changes---even large and reproducible ones---do not imply altered controllability or fate.
+
+\textbf{Expression-centric analyses routinely mistake within-basin motion for basin reconfiguration.}
+
+\subsection{Marker Dynamics Cannot Identify Irreversibility}\label{712-marker-dynamics-cannot-identify-irreversibility}
+
+A central question is not whether a gene is upregulated, but whether a cell has crossed a point beyond which reversal is unlikely.
+
+Expression-centric methods lack a principled answer. Marker genes often increase smoothly along pseudotime, but smooth trajectories provide no criterion for \textbf{irreversible boundaries}. Statements like "commitment begins when marker X becomes highly expressed" are not operationally testable without structural assumptions.
+
+\textbf{Irreversibility is a property of constraint accumulation, not expression magnitude.}
+
+\subsection{Expression-Centric Analyses Are Blind to Non-Stationarity}\label{713-expression-centric-analyses-are-blind-to-non-stationarity}
+
+Single-cell systems are inherently non-stationary. Expression-centric analyses typically pool cells across broad pseudotime ranges. When correlations weaken or reverse under pooling, the result is attributed to noise or batch effects.
+
+However, pooled failure frequently reflects \textbf{regime heterogeneity}, not estimator inadequacy.
+
+Without explicit phase awareness, expression-centric interpretation cannot distinguish true estimator failure, phase-local validity, and structural reconfiguration across regimes.
+
+\subsection{Differential Expression Does Not Measure Predictive Information}\label{714-differential-expression-does-not-measure-predictive-information}
+
+Expression-centric workflows prioritize statistical significance and effect size, but rarely evaluate \textbf{predictive power} about future behavior.
+
+Many differentially expressed genes carry little \emph{useful information} about fate outcomes. They may correlate with trajectory position without contributing to fate predictability.
+
+\textbf{Expression-centric interpretation conflates descriptive information with useful information.}
+
+\subsection{Drivers Versus Attractor Passengers}\label{715-drivers-versus-attractor-passengers}
+
+Perhaps the most damaging limitation is the inability to distinguish \textbf{driver regulators} from \textbf{attractor passengers} (Figure 3).
+
+In a stable attractor, many genes exhibit consistent expression patterns reflecting the basin\textquotesingle s internal structure rather than causal control. These genes are reproducible markers but poor intervention targets.
+
+Expression-centric approaches elevate such genes based on state correlation, not constraint relationship. Causal leverage is overestimated, and regulatory models are saturated with passenger effects.
+
+\subsection{The Constraint-Centric Alternative: A Verifier-First Interpretation Discipline}\label{72-the-constraint-centric-alternative-a-verifier-first-interpretation-discipline}
+
+The practical distinction between expression-centric and constraint-centric analysis is not philosophical; it is \textbf{procedural}. Expression-centric workflows typically treat differential expression and smooth pseudotime trends as sufficient for mechanistic interpretation. The constraint-centric workflow proposed here treats interpretation as a \textbf{privilege granted by gates}, not a default.
+
+Under this paper\textquotesingle s Tier-2 discipline, a commitment claim is admissible only if it can be expressed as an auditable bundle: a boundary declaration (dataset, preprocessing, latent space, time axis, windowing), an estimator family declaration (at least two independent constraint proxies, optionally paired with an information proxy), a coherence report (pass/fail per window plus pooled-versus-windowed diagnosis), explicit failure labels (\texttt{ESTIMATOR\_UNSTABLE}, \texttt{SCOPE\_LIMITED}, \texttt{INCONCLUSIVE}) attached to scopes, and (when available) a registered boundary via PT-MSS (S1+S2+S3) within a coherence-passing window.
+
+This shifts the default output of single-cell trajectory analysis from "markers along pseudotime" to one of the following \textbf{auditable outcomes}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{REGISTERED COMMITMENT}: A Phi2 -\textgreater{} Phi3 boundary is registered (S1+S2+S3 co-occur) within windows that pass coherence gates.
+\item
+  \textbf{SCOPE\_LIMITED COMMITMENT}: Windowed coherence passes but pooled coherence fails, implying regime heterogeneity; any commitment claim must be phase-qualified.
+\item
+  \textbf{INCONCLUSIVE}: Signals exist but are undefined or underpowered in key windows (e.g., boundary artifacts, insufficient cell counts).
+\item
+  \textbf{ESTIMATOR\_UNSTABLE}: Coherence gates fail; interpretation is forbidden until the estimator family is repaired.
+\end{enumerate}
+
+In this view, "constraint-centric" means: \textbf{the system is described by what becomes unreachable}, and the paper\textquotesingle s primary contribution is to make that description \textbf{auditable and falsifiable under explicit scope} rather than narrative.
+
+\begin{quote}
+\textbf{Expression-centric interpretation describes what a cell looks like.} \textbf{Constraint-centric interpretation explains what a cell can no longer become.}
+\end{quote}
+
+\subsection{Externalizing structure as an audit shortcut (a genomics analogy)}\label{721-externalizing-structure-as-an-audit-shortcut-a-genomics-analogy}
+
+The verifier-first discipline is easiest to apply when the system makes its structure explicit. Recent work in genomic foundation models illustrates this point cleanly: rather than asking a transformer to implicitly rediscover motif grammar from scratch, the model can be augmented with an explicit motif memory and a gate that controls when local structure is injected. The scientific virtue of such a design is not merely improved performance; it is that \emph{where the structure lives} becomes an object one can perturb, disable, shuffle, and audit.
+
+This paper's scRNA-seq setting is different in every biological sense, but the methodological lesson transfers. A preregistered window axis (stage/day when available, age when sparse, pseudotime when necessary) plays a role analogous to an explicit window size: it is a boundary that can be declared, stress-tested, and compared across runs. Likewise, an estimator family that is computed per window and coherence-gated is a way of externalizing interpretive structure: it forces the ``commitment narrative'' to be earned by auditable artifacts rather than implied by marker smoothness. The analogy should be read as a guide to \emph{how to make claims testable}, not as evidence that a specific hyperparameter in genomics explains commitment in single-cell systems.
+
+\subsection{Implications for Experimental Design: From Markers to Reversibility Tests}\label{73-implications-for-experimental-design-from-markers-to-reversibility-tests}
+
+A constraint-centric theory becomes scientifically useful only if it changes what we consider a valid experiment. Expression-centric analysis tends to validate commitment by showing "different expression." In contrast, the operational definition of commitment implied by this paper is: \textbf{a change in reversibility}, observable as phase-structured constraint dynamics.
+
+\subsection{Minimal Perturbation Test for Commitment}\label{731-minimal-perturbation-test-for-commitment}
+
+A minimal falsifiable design is a 2×2 perturbation matrix around a candidate Phi2 -\textgreater{} Phi3 boundary:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.22\linewidth}P{0.39\linewidth}P{0.39\linewidth}@{}}
+\toprule\noalign{}
+& Early (pre-boundary) & Late (post-boundary) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Weak perturbation} & Expected: transient deviation, full recovery & Expected: minimal deviation \\
+\textbf{Strong perturbation} & Expected: possible basin escape & Expected: constrained response, no escape \\
+\end{longtable}
+}
+
+\textbf{Operational prediction}: If a boundary is truly Phi2 -\textgreater{} Phi3, then under comparable perturbation budgets, late interventions should show \textbf{reduced basin escape} and stronger return dynamics than early interventions.
+
+This can be evaluated without claiming a specific gene-level mechanism by measuring constraint proxies and return metrics, e.g. (SC-1) structural persistence of constraint proxies within tolerance after the candidate boundary and (SC-2) recovery of constraint proxies after perturbation within a declared time budget.
+
+(If perturbation data are unavailable, this section defines a testable future requirement rather than a completed validation.)
+
+\subsection{Driver Identification as "Constraint Interface" Localization}\label{732-driver-identification-as-constraint-interface-localization}
+
+In expression-centric practice, "drivers" are often selected by differential expression or association with pseudotime. Under the present framework, driver-like candidates are operationally those whose changes align with \textbf{constraint reconfiguration windows} (S3) and improve fate predictability (S2) within coherence-passing scopes.
+
+Practical implication: the candidate set is reduced by requiring co-occurrence of proximity to a registered (or candidate) boundary, alignment with S3 (constraint proxy reorganization), and contribution to S2 (predictive gain).
+
+This is more restrictive than expression correlation alone, and provides a principled filter for intervention targets.
+
+\subsection{Validation Criterion: Commitment Claims Must Survive Scope Discipline}\label{733-validation-criterion-commitment-claims-must-survive-scope-discipline}
+
+A commitment claim should be reported in one of the auditable forms defined in Section 7.2, explicitly including scope labels. If pooled coherence fails but windowed coherence passes, the correct output is \textbf{SCOPE\_LIMITED} and the claim must be written as phase-conditional. If coherence fails at all scopes, the correct output is \textbf{ESTIMATOR\_UNSTABLE} and no ``commitment'' claim is permitted.
+
+This discipline shifts validation away from "story strength" toward \textbf{scope-correctness}: the claim is only as strong as the estimator family and the declared boundary
+
+\par\medskip
+
+\section{Limitations}\label{8-limitations}
+
+Force proxies are indirect: scRNA-only data cannot directly measure forces, so force claims should be labeled ``indirect'' unless supported by perturbation experiments. Pseudotime is not physical time; all scope claims remain conditional on the preregistered ordering method. The framework is conservative by design: many transitions will remain SCOPE\_LIMITED or INCONCLUSIVE under EST discipline, and this is treated as an outcome rather than a defect. Finally, multi-proxy coherence validation carries a computational cost because multiple estimators must be computed per window.
+
+\par\medskip
+
+\section{Conclusion}\label{9-conclusion}
+
+FIT reframes single-cell fate commitment as a constraint-driven phase transition rather than a state change. The Tier-2 protocol produces auditable, scope-aware interpretations---or explicit non-interpretability labels---separating ``marker narratives'' from preregistered, coherence-gated claims.
+
+The key conceptual shift is from ``Gene X increases during differentiation, therefore X drives commitment'' to ``constraint proxies reconfigure at time T with coherent information gain; commitment is registered at T conditional on boundary B''.
+
+This reframing aligns interpretation with the dynamical nature of living systems and provides a principled basis for identifying irreversible commitment.
+
+\par\medskip
+
+\section{Data and Code Availability}\label{data-and-code-availability}
+
+Code and runnable protocol: \texttt{github/F-I-T/experiments/real\_world/scrna\_commitment\_tier2p11/} (repo path).\\
+Coherence semantics: \texttt{github/F-I-T/docs/est/coherence.md} (repo path).\\
+EST preregistration template: \texttt{github/F-I-T/docs/core/est\_prereg\_v2.5.md} (repo path).
+
+\par\medskip
+
+\section{Figures}\label{figures}
+
+\textbf{Figure 1}: Expression Space vs Reachable Space Expression levels (colored curves) vary along pseudotime, but fate commitment corresponds to contraction of the \textbf{reachable expression space} (blue funnel). Irreversibility emerges when the reachable space collapses to a stable attractor.
+
+\textbf{Figure 2}: Phase-Local Coherence Coherence (green curve) may be valid within each phase (Phi1, Phi2, Phi3) but fail when pooled across phases. This reflects regime heterogeneity, not estimator failure.
+
+\textbf{Figure 3}: Drivers vs Attractor Passengers Attractor passengers (gray curves) change expression along pseudotime but do not interface with constraints. Drivers (red curve) are associated with constraint reconfiguration at the Phi2 -\textgreater{} Phi3 boundary.
+
+\par\medskip
+
+\section{Appendix A: Glossary}\label{appendix-a-glossary}
+
+{\small
+\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}P{0.22\linewidth}P{0.78\linewidth}@{}}
+\toprule\noalign{}
+Term & Definition \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Coherence & Agreement between independent estimators within a declared scope \\
+Constraint & Restriction on reachable system configurations \\
+\texttt{ESTIMATOR\_UNSTABLE} & Coherence gate failed; interpretation forbidden \\
+Phase & Dynamical regime with distinct constraint structure \\
+PT-MSS & Phase Transition Multi-Signal Signature (S1+S2+S3 co-occurrence) \\
+\texttt{SCOPE\_LIMITED} & Pooled failure but window-level pass; interpret locally only \\
+Tier-2 & Estimator-gated protocol with auditable failure modes \\
+\end{longtable}
+}
+
+\par\medskip
+
+\section{Appendix B: Tier-2 Preregistration Template}\label{appendix-b-tier-2-preregistration-template}
+
+\begin{verbatim}
+# EST Prereg: scRNA Fate Commitment
+meta:
+  case_id: scrna_hematopoiesis_tier2
+  version: "1.0"
+  tier: 2
+  status: preregistered
+
+boundary:
+  dataset: "Paul et al., 2015"
+  preprocessing: [filtering, normalization, HVG_selection]
+  latent_space: {type: PCA, dims: 20}
+  time_axis: {type: diffusion_pseudotime}  # prefer explicit stage/time when available
+  windows: {n: 5, type: equal_width, min_cells: 50, warmup_exclude: 0}
+
+estimators:
+  constraint:
+    C_dim_collapse: {type: dim_collapse, expected_sign: +1}
+    C_label_purity: {type: label_purity, expected_sign: +1}
+  information:
+    I_pred: {type: knn_fate_accuracy}  # optional; not required for Tier-2 coherence
+
+coherence:
+  metric: spearman
+  threshold_rho: 0.2
+  expected_sign: +1
+  pairs: [[C_dim_collapse, C_label_purity]]
+  windowing: {type: preregistered_windows, aggregate: all_pass}  # OK_PER_WINDOW iff all windows pass
+
+outputs:
+  coherence_report: "outputs/coherence_report.json"
+  fail_windows: "outputs/fail_windows.md"
+  summary_figure: "outputs/tradeoff_onepage.pdf"
+
+failure_labels:
+  ESTIMATOR_UNSTABLE: "Coherence gate failed"
+  SCOPE_LIMITED: "Pooled FAIL, windows PASS"
+  INCONCLUSIVE: "Insufficient data or undefined metrics"
+\end{verbatim}
+
+\par\medskip
+
+\section{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Paul, F., et al. (2015). Transcriptional heterogeneity and lineage commitment in myeloid progenitors. \emph{Cell}, 163(7), 1663-1677.
+\item
+  Huang, Q. (2026). Force-Information-Time: A Framework for Constraint-Driven Dynamics. FIT Lab.
+\item
+  Trapnell, C. (2015). Defining cell types and states with single-cell genomics. \emph{Genome Research}, 25(10), 1491-1498.
+\end{enumerate}
