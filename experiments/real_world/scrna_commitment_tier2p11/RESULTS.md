@@ -22,8 +22,9 @@ Interpretation rules:
 
 Notes:
 
-- The coherence threshold in these runs is `rho >= 0.2` with `expected_sign = +1` (see each run’s `PREREG.locked.yaml` and `coherence_report.json`).
-- The **strongest “explicit-axis” anchor** in this portfolio is `gastrulation_e75_purity` (windowing axis = `obs:stage`).
+- The coherence threshold in these runs is `rho >= 0.2` with `expected_sign = +1` (see each run's `PREREG.locked.yaml` and `coherence_report.json`).
+- The **strongest "explicit-axis" anchor** in this portfolio is `gastrulation_e75_purity` (windowing axis = `obs:stage`).
+- **Same-boundary contrast** (gastrulation): Under the same axis (`obs:stage`) and boundary, `C_mixing` achieves marginal pass (rho=0.306, p=0.232, not significant) while `C_label_purity` is stronger and significant (rho=0.581, p=0.0145). This demonstrates that estimator family selection affects coherence strength, not just pass/fail.
 
 ## Axis strength (for Tier-2 claims)
 

@@ -68,6 +68,22 @@ Within-boundary proxy comparison (same dataset, same axis):
 | `C_dim_collapse` × `C_label_purity` | 0.581 | 0.0145 | `OK_PER_WINDOW` |
 | `C_dim_collapse` × `C_mixing` | 0.306 | 0.232 | `OK_PER_WINDOW` |
 
+### 6.1) Same-boundary contrast: estimator family matters
+
+Both proxy pairs pass the coherence threshold (rho > 0.2), but the **strength difference** is significant:
+
+- `C_label_purity`: rho = 0.581, **p = 0.0145 (significant)**
+- `C_mixing`: rho = 0.306, p = 0.232 (not significant)
+
+**Interpretation**: The external time anchor (`obs:stage`) improves coherence for both proxies compared to pseudotime-based windowing (where `C_mixing` fails entirely). However, the global-scale proxy (`C_label_purity`) captures gastrulation's large-scale reorganization dynamics better than the local-scale proxy (`C_mixing`).
+
+This demonstrates that **estimator family selection affects coherence strength, not just pass/fail**. The design rule is: proxy measurement scale should match the dynamics scale.
+
+Evidence bundles:
+
+- `evidence_gastrulation_e75_purity.zip` (stronger)
+- `evidence_gastrulation_e75_mixing.zip` (marginal)
+
 Reproduce:
 
 ```bash
