@@ -126,7 +126,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ## Tier-3（可选）：研究笔记
 
-- [基因组：Gengram × FIT](docs/genomics/README.md) — 将“显式 motif 记忆”作为可审计的约束测试床（协议模板 + 映射笔记）
+- [基因组：Tier-2 单细胞命运承诺（小鼠原肠胚形成）+ Tier-3 Gengram](docs/genomics/README.md) — 一个可审计的“发育阶段锚点”外加“结构外显化”的协议模板
 
 ---
 

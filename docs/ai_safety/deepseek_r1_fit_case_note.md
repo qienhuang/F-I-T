@@ -1,4 +1,4 @@
-# R1-style Reasoning via RL (arXiv:2501.12948v2) — A FIT-Oriented Safety Reading (Case Note)
+# DeepSeek R1-style Reasoning via RL (arXiv:2501.12948v2) — A FIT-Oriented Safety Reading (Case Note)
 
 This note is a **FIT (Force–Information–Time)**-oriented reading of:
 “Incentivizing Reasoning Capability in LLMs via Reinforcement Learning” (arXiv:2501.12948v2, 2026).

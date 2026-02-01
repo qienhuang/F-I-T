@@ -1,0 +1,85 @@
+# FIT Tier-3 Preregistration: Gengram Genomics (protocol template)
+
+meta:
+  study_id: "FIT-GEN-GENGRAM-T3"
+  framework_version: "FIT v2.4.x"
+  status: "preregistered-protocol"
+  scope: "genomic sequence modeling"
+
+boundary:
+  model:
+    base_model: "Transformer baseline vs Gengram-augmented"
+    layers_of_interest: [3, 6, 10]
+  tasks:
+    - promoter_detection
+    - enhancer_activity
+    - splice_site_detection
+  data:
+    source: "public genomic benchmarks"
+    splits: "author-recommended"
+  exclusions:
+    - tasks dominated by long-range 3D chromatin effects
+
+estimators:
+  constraint_proxies:
+    - name: "C_window"
+      definition: "effective window size W and k-mer admissibility"
+    - name: "C_gate"
+      definition: "aggregate gated activation magnitude per layer"
+  information_proxies:
+    - name: "I_pred"
+      definition: "predictive information gain (AUC or log-loss delta)"
+  auxiliary_probes:
+    - name: "RC_symmetry"
+      definition: "reverse-complement invariance score"
+    - name: "LogitLens"
+      definition: "layer-wise prediction readiness"
+
+coherence:
+  requirement:
+    - "C_window and C_gate must be directionally coherent within tasks"
+  metric: "spearman"
+  rho_min: 0.6
+  scope: "task-local"
+
+hypotheses:
+  - id: "P16-GEN"
+    statement: "Higher-layer constraint perturbations propagate to lower layers with longer latency"
+    test:
+      perturb:
+        target: "motif memory"
+        layer: 10
+        magnitude: 0.1
+      observe:
+        - propagation_time_L10_to_L6
+        - propagation_time_L10_to_L3
+      prediction: "tau_10_to_3 > tau_10_to_6"
+
+  - id: "IC-EFF"
+    statement: "Gengram improves I/C efficiency in motif-dominated tasks"
+    test:
+      compare: ["baseline", "gengram"]
+      measure:
+        - I_pred
+        - C_gate
+      prediction: "Gamma_gengram > Gamma_baseline"
+
+controls:
+  negative:
+    - "perturb non-inserted layers"
+    - "shuffle k-mer memory indices"
+  stability:
+    - "multiple random seeds"
+
+outcomes:
+  labels:
+    - SUPPORTED
+    - CHALLENGED
+    - INCONCLUSIVE
+    - ESTIMATOR_UNSTABLE
+    - SCOPE_LIMITED
+
+notes:
+  preregistration_discipline: "No post-hoc scope expansion"
+  reporting: "All failures must be labeled and reported"
+

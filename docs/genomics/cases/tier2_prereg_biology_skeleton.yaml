@@ -1,0 +1,41 @@
+# FIT Tier-2 preregistration skeleton (biology cases)
+# Use this template to lock boundary + estimator families before running each case.
+
+meta:
+  framework: "FIT v2.4.x / EST v2.5 coherence semantics"
+  tier: "Tier-2"
+  status: "skeleton"
+  license: "CC BY 4.0"
+
+common:
+  coherence_gate:
+    metric: "spearman"
+    expected_sign: +1
+    rho_min: 0.2
+    output_labels:
+      - "OK_PER_WINDOW"
+      - "SCOPE_LIMITED"
+      - "ESTIMATOR_UNSTABLE"
+      - "INCONCLUSIVE"
+
+  estimators:
+    constraint_pairs:
+      - name: "C_dim_collapse × C_label_purity"
+        notes: "geometric + global"
+      - name: "C_dim_collapse × C_mixing"
+        notes: "geometric + local (kNN)"
+
+  artifacts_required:
+    - evidence_pack.zip
+    - coherence_report.json
+    - tradeoff_onepage.png
+    - scope_labels.md
+
+case_overrides:
+  tcell_exhaustion:
+    window_axis_primary: "obs:timepoint"
+    boundary: "CD8 T cells"
+  tumor_therapy_response:
+    window_axis_primary: "obs:stage (pre/on/post/relapse)"
+    boundary: "tumor-only (or tumor+immune if extended)"
+

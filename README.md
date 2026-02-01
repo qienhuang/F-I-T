@@ -131,7 +131,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 
 ## Tier-3 (optional): Research notes
 
-- [Genomics: Gengram × FIT](docs/genomics/README.md) — explicit motif memory as an auditable constraint testbed (protocol templates + mapping notes)
+- [Genomics: Tier-2 scRNA commitment (mouse gastrulation) + Tier-3 Gengram](docs/genomics/README.md) — an auditable developmental-stage anchor plus structure-externalized protocol templates
 
 ---
 
@@ -145,7 +145,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
 | [Slow-evolving agent architecture (v0.2)](docs/agents/README.md) | FIT/EST-aligned agent specs + runnable pre-validator checklist |
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
-| [R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | R1-style RL + risk control |
+| [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1-style RL + risk control |
 
 ### Dr.One: Baseline vs Controlled
 

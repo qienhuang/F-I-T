@@ -1,0 +1,47 @@
+version: 0.1
+case_id: scrna_commitment_tier2p11_gastrulation_e75_mixing
+title: "scRNA commitment (mouse gastrulation E6.5-E8.5): coherence check (mixing vs dim-collapse)"
+
+boundary:
+  dataset: "file:data/raw/gastrulation_e75.h5ad"
+  n_hvg: 2000
+  n_pcs: 30
+  n_neighbors: 15
+  leiden_resolution: 1.0
+  mixing_label_key: "obs:celltype"
+
+windowing:
+  scheme: rolling_quantile
+  axis: "obs:stage"
+  window_q: 0.20
+  stride_q: 0.05
+  min_cells_per_window: 500
+
+estimators:
+  family_id: "C_dimCollapse__C_mixing_v0.1"
+  expected_sign: +1
+  coherence_threshold_rho: 0.20
+  c1_name: C_dim_collapse
+  c2_name: C_mixing
+  boundary_warmup_spec:
+    exclude_left_q: 0.00
+    exclude_right_q: 0.00
+
+outputs:
+  processed_cells_parquet: "data/processed/gastrulation_e75.cells.parquet"
+  metrics_log_parquet: "outputs_runs/gastrulation_e75_mixing/metrics_log.parquet"
+  prereg_locked_yaml: "outputs_runs/gastrulation_e75_mixing/PREREG.locked.yaml"
+  coherence_report_json: "outputs_runs/gastrulation_e75_mixing/coherence_report.json"
+  fail_windows_md: "outputs_runs/gastrulation_e75_mixing/fail_windows.md"
+  regime_report_md: "outputs_runs/gastrulation_e75_mixing/regime_report.md"
+  tradeoff_onepage_png: "outputs_runs/gastrulation_e75_mixing/tradeoff_onepage.png"
+  tradeoff_onepage_pdf: "outputs_runs/gastrulation_e75_mixing/tradeoff_onepage.pdf"
+
+failure_semantics:
+  ESTIMATOR_UNSTABLE:
+    description: "Coherence gate fails for the chosen estimator pair under this boundary."
+  SCOPE_LIMITED:
+    description: "Only a subset of windows passes; interpretation limited to passing windows."
+  INCONCLUSIVE:
+    description: "Too few valid windows to evaluate."
+
