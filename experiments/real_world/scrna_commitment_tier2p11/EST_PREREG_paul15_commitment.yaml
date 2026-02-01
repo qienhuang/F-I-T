@@ -1,0 +1,52 @@
+version: 0.1
+case_id: scrna_commitment_tier2p11_paul15_commitment
+title: "scRNA commitment (Paul15 hematopoiesis): EST-gated constraint coherence under windowing"
+
+boundary:
+  # Paul et al. (2015) hematopoiesis dataset (Scanpy builtin).
+  dataset: "scanpy:paul15"
+
+  n_hvg: 2000
+  n_pcs: 30
+  n_neighbors: 15
+  leiden_resolution: 1.0
+
+  # Use the dataset-provided lineage cluster labels as the mixing label (more fate-like than Leiden).
+  mixing_label_key: "obs:paul15_clusters"
+
+windowing:
+  scheme: rolling_quantile
+  # No explicit timepoints in the builtin dataset; use pseudotime (computed via DPT).
+  axis: pseudotime
+  window_q: 0.20
+  stride_q: 0.05
+  min_cells_per_window: 120
+
+estimators:
+  family_id: "C_dimCollapse__C_mixing_v0.1"
+  expected_sign: +1
+  coherence_threshold_rho: 0.20
+  c1_name: C_dim_collapse
+  c2_name: C_mixing
+
+  boundary_warmup_spec:
+    exclude_left_q: 0.00
+    exclude_right_q: 0.00
+
+outputs:
+  processed_cells_parquet: "data/processed/cells.parquet"
+  metrics_log_parquet: "outputs/metrics_log.parquet"
+  prereg_locked_yaml: "outputs/PREREG.locked.yaml"
+  coherence_report_json: "outputs/coherence_report.json"
+  fail_windows_md: "outputs/fail_windows.md"
+  regime_report_md: "outputs/regime_report.md"
+  tradeoff_onepage_png: "outputs/tradeoff_onepage.png"
+  tradeoff_onepage_pdf: "outputs/tradeoff_onepage.pdf"
+
+failure_semantics:
+  ESTIMATOR_UNSTABLE:
+    description: "Estimator family coherence gate fails (sign flip / rho below threshold)."
+  SCOPE_LIMITED:
+    description: "Only a subset of windows passes; interpretation limited to passing windows."
+  INCONCLUSIVE:
+    description: "Event/windowing not evaluable (too few cells per window, or too few valid windows)."

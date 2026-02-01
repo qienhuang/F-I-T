@@ -1,0 +1,69 @@
+version: 0.1
+case_id: scrna_commitment_tier2p11
+title: "scRNA commitment: EST-gated constraint coherence under windowing"
+
+boundary:
+  # Data source.
+  # Supported forms:
+  # - "scanpy:paul15" (default; small built-in dataset)
+  # - "file:data/raw/<your_dataset>.h5ad" (recommended for fate-commitment cases)
+  dataset: "scanpy:paul15"
+
+  # Preprocessing boundary (freeze for evaluation).
+  n_hvg: 2000
+  n_pcs: 30
+  n_neighbors: 15
+
+  # Clustering used only for mixing proxy (cluster ID is treated as an observable partition).
+  leiden_resolution: 1.0
+
+  # Mixing label source used by the C_mixing proxy.
+  # - "leiden" uses the clustering computed by this pipeline.
+  # - "obs:<key>" uses `adata.obs[<key>]` from the input dataset.
+  mixing_label_key: "leiden"
+
+windowing:
+  # Windowing along pseudotime (DPT), in quantile space.
+  # For sensitivity runs, change these and compare pass rates.
+  scheme: rolling_quantile
+  # Which per-cell axis to window on:
+  # - "pseudotime" (default; computed via DPT)
+  # - "obs:<key>" (e.g., "obs:day" or "obs:timepoint" if your dataset provides it)
+  axis: pseudotime
+  window_q: 0.20
+  stride_q: 0.05
+  min_cells_per_window: 120
+
+estimators:
+  # Constraint estimator family (C-hat); should be >=2 independent proxies.
+  family_id: "C_dimCollapse__C_mixing_v0.1"
+  expected_sign: +1
+  coherence_threshold_rho: 0.20
+
+  # Proxy definitions (for audit; code implements these names).
+  c1_name: C_dim_collapse
+  c2_name: C_mixing
+
+  # Optional warmup/edge exclusion: omit extreme pseudotime tails if desired.
+  # This is a demo field; leaving null does not change any existing logic.
+  boundary_warmup_spec:
+    exclude_left_q: 0.00
+    exclude_right_q: 0.00
+
+outputs:
+  processed_cells_parquet: "data/processed/cells.parquet"
+  metrics_log_parquet: "outputs/metrics_log.parquet"
+  prereg_locked_yaml: "outputs/PREREG.locked.yaml"
+  coherence_report_json: "outputs/coherence_report.json"
+  fail_windows_md: "outputs/fail_windows.md"
+  regime_report_md: "outputs/regime_report.md"
+  tradeoff_onepage_png: "outputs/tradeoff_onepage.png"
+  tradeoff_onepage_pdf: "outputs/tradeoff_onepage.pdf"
+
+failure_semantics:
+  ESTIMATOR_UNSTABLE:
+    description: "Estimator family coherence gate fails (sign flip / rho below threshold)."
+  SCOPE_LIMITED:
+    description: "Only a subset of windows passes; interpretation limited to passing windows."
+  INCONCLUSIVE:
+    description: "Event/windowing not evaluable (too few cells per window, or too few valid windows)."

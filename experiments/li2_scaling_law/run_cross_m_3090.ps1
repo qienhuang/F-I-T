@@ -38,7 +38,12 @@ Log ""
 #   $env:FIT_PYTHON_EXE = ".venv\\Scripts\\python.exe"
 $PythonExe = $env:FIT_PYTHON_EXE
 if (-not $PythonExe) {
-  $PythonExe = "python"
+  $venvCandidate = ".venv\\Scripts\\python.exe"
+  if (Test-Path $venvCandidate) {
+    $PythonExe = $venvCandidate
+  } else {
+    $PythonExe = "python"
+  }
 }
 
 Log "Preflight: torch.cuda availability"
@@ -55,26 +60,27 @@ foreach ($m in $mList) {
   $outDir = Join-Path $OutputRoot ("M" + $m)
   New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
-  $cmd = @(
-    "& `"$PythonExe`" run_fit_validation.py",
+  $args = @(
+    "run_fit_validation.py",
     "--M", $m,
-    "--ratios", "`"$Ratios`"",
-    "--seeds", "`"$Seeds`"",
-    "--output_dir", "`"$outDir`"",
+    "--ratios", $Ratios,
+    "--seeds", $Seeds,
+    "--output_dir", $outDir,
     "--beta_min_prob", $BetaMinProb,
     "--beta_min_points", $BetaMinPoints,
     "--speed_min_prob", $SpeedMinProb,
     "--speed_min_points", $SpeedMinPoints,
     "--speed_max_delta_r", $SpeedMaxDeltaR,
     "--phase_plots", $PhasePlots
-  ) -join " "
+  )
 
-  Log ("> " + $cmd)
-  & powershell -NoProfile -Command $cmd 2>&1 | Out-File -FilePath $logPath -Append -Encoding utf8
-  Log ("exit_code=" + $LASTEXITCODE)
+  Log ("> " + ($PythonExe + " " + ($args -join ' ')))
+  & $PythonExe @args 2>&1 | Out-File -FilePath $logPath -Append -Encoding utf8
+  $exit = $LASTEXITCODE
+  Log ("exit_code=" + $exit)
   Log ""
 
-  if ($LASTEXITCODE -ne 0) {
+  if ($exit -ne 0) {
     throw "Command failed for M=$m. See log: $logPath"
   }
 }

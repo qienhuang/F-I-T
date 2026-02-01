@@ -78,6 +78,8 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | **马尔可夫沙箱 (math.PR)** | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
 | **超越道德宪章** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
 | **为什么公司转型太晚** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
+| **真实世界出行系统中的相位条件化约束相干性** | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
+| **从表达状态到约束动力学：单细胞 RNA 测序命运承诺的 FIT 框架** | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
 
 ---
 
@@ -119,6 +121,12 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [World-Evolution 探索（v0.1）](docs/world_evolution/README.md) | 玩具演化世界 + 有效变量/告警方法搜索 demo |
 | [Math-Discovery 引擎（v0.1）](docs/math_discovery/README.md) | 对表征/引理/策略的可审计探索（以规范为先） |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking 警报可接受性基准 |
+
+---
+
+## Tier-3（可选）：研究笔记
+
+- [基因组：Gengram × FIT](docs/genomics/README.md) — 将“显式 motif 记忆”作为可审计的约束测试床（协议模板 + 映射笔记）
 
 ---
 

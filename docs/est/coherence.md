@@ -92,3 +92,7 @@ not a statistical convenience.
 ## 6. Related prereg template
 
 See `docs/core/est_prereg_v2.5.md` for a copy/paste preregistration template that makes expected sign, window grids, and boundary exclusions explicit.
+
+## 7. Related interface (multi-scale stability grid)
+
+See `docs/est/multi_scale_stability_grid_interface.md` for a concrete interface/spec for multi-scale window grids and coherence radius reporting.

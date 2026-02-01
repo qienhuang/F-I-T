@@ -1,0 +1,57 @@
+# Results (scRNA Commitment, Tier-2 / P11-style, EST-gated)
+
+This file summarizes **completed, auditable runs** under `outputs_runs/`.
+
+Interpretation rules:
+
+- `OK_PER_WINDOW` means the preregistered estimator pair passes the coherence gate **within the chosen windowing**.
+- `ESTIMATOR_UNSTABLE` means the coherence gate fails (including **sign mismatch** against `expected_sign`).
+- For Tier-2 reporting, prefer axes with explicit semantics (see “Axis strength” below).
+
+## Summary table (current portfolio)
+
+| Run ID | Dataset | Axis | Mixing label | Estimators (C1 vs C2) | expected_sign | n_windows | rho | p | Verdict | Evidence |
+|---|---|---|---|---|---:|---:|---:|---:|---|---|
+| `pancreas_endocrinogenesis_day15` | `file:data/raw/pancreas_endocrinogenesis_day15.h5ad` | `pseudotime` | `obs:clusters` | `C_dim_collapse` vs `C_mixing` | `+1` | 17 | -0.154 | 0.554 | `ESTIMATOR_UNSTABLE` | `outputs_runs/evidence_pancreas_day15.zip` |
+| `pancreas_endocrinogenesis_day15_purity` | `file:data/raw/pancreas_endocrinogenesis_day15.h5ad` | `pseudotime` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.353 | 0.165 | `OK_PER_WINDOW` | `outputs_runs/evidence_pancreas_day15_purity.zip` |
+| `gastrulation_e75_purity` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.581 | 0.0145 | `OK_PER_WINDOW` | `outputs_runs/evidence_gastrulation_e75_purity.zip` |
+| `moignard15_exporder_leidenfixed_purity` | `file:data/raw/moignard15_exporder_leiden_fixed.h5ad` | `obs:exp_order` | `obs:leiden_fixed` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | -1.000 | 0.0 | `ESTIMATOR_UNSTABLE` | `outputs_runs/evidence_moignard15_exporder_leidenfixed_purity.zip` |
+| `nestorowa16_zenodo_purity` | `file:data/raw/nestorowa16_hsc_2016.h5ad` | `obsm:X_pca:0` | `obs:cell_types_broad_cleaned` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.447 | 0.0719 | `OK_PER_WINDOW` | `outputs_runs/evidence_nestorowa16_zenodo_purity.zip` |
+| `dentategyrus_age_purity` | `file:data/raw/dentategyrus_10X43_1.h5ad` | `obs:age(days)` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | 0.500 | 0.667 | `OK_PER_WINDOW` | `outputs_runs/evidence_dentategyrus_age_purity.zip` |
+
+Notes:
+
+- The coherence threshold in these runs is `rho >= 0.2` with `expected_sign = +1` (see each run’s `PREREG.locked.yaml` and `coherence_report.json`).
+- The **strongest “explicit-axis” anchor** in this portfolio is `gastrulation_e75_purity` (windowing axis = `obs:stage`).
+
+## Axis strength (for Tier-2 claims)
+
+Windowing axes are not equally “hard”:
+
+1. **Strong**: `obs:stage` / `obs:day` / `obs:timepoint` (externally meaningful experimental axis)
+2. **Medium**: `obs:age` (meaningful, but often sparse / coarse)
+3. **Weak (coordinate-only)**: `obsm:*` axes (explicit coordinates, but not “time” without extra semantics)
+4. **Weakest**: `pseudotime` (inferred; useful for exploration and internal consistency checks)
+
+Rule of thumb: if a finding only exists under `pseudotime`, treat it as **suggestive** rather than a Tier-2 anchor.
+
+## Where artifacts live (per run)
+
+Each run directory under `outputs_runs/<run_id>/` contains:
+
+- `PREREG.locked.yaml`
+- `metrics_log.parquet`
+- `coherence_report.json`
+- `regime_report.md`
+- `tradeoff_onepage.png` and `tradeoff_onepage.pdf`
+- `fail_windows.md`
+
+Evidence bundles (ZIP) are in `outputs_runs/evidence_*.zip`.
+
+## Reproduction (single run)
+
+```bash
+python run_pipeline.py --prereg EST_PREREG_gastrulation_e75_purity.yaml
+python package_evidence.py --main_dir outputs_runs/gastrulation_e75_purity --out outputs_runs/evidence_gastrulation_e75_purity.zip
+```
+

@@ -1,0 +1,54 @@
+version: 0.1
+case_id: scrna_commitment_tier2p11_moignard15_exporder_leidenfixed_purity
+title: "scRNA commitment (Moignard15 hematopoiesis): explicit-stage surrogate axis (exp_groups) with purity vs dim-collapse"
+
+boundary:
+  dataset: "file:data/raw/moignard15_exporder_leiden_fixed.h5ad"
+  # This dataset is not raw-count space; avoid re-normalizing/log1p.
+  input_space: log
+  min_counts: 0
+  n_hvg: 200
+  n_pcs: 15
+  n_neighbors: 15
+  leiden_resolution: 1.0
+
+  # Use the deterministic label written into the prepared h5ad.
+  mixing_label_key: "obs:leiden_fixed"
+
+windowing:
+  scheme: rolling_quantile
+
+  # Explicit-time surrogate axis preregistered via `scripts/prepare_moignard15_exporder_h5ad.py`.
+  axis: "obs:exp_order"
+  window_q: 0.60
+  stride_q: 0.20
+  min_cells_per_window: 120
+
+estimators:
+  family_id: "C_dimCollapse__C_labelPurity_v0.1"
+  expected_sign: +1
+  coherence_threshold_rho: 0.20
+  c1_name: C_dim_collapse
+  c2_name: C_label_purity
+
+  boundary_warmup_spec:
+    exclude_left_q: 0.00
+    exclude_right_q: 0.00
+
+outputs:
+  processed_cells_parquet: "data/processed/moignard15_exporder.cells.parquet"
+  metrics_log_parquet: "outputs_runs/moignard15_exporder_leidenfixed_purity/metrics_log.parquet"
+  prereg_locked_yaml: "outputs_runs/moignard15_exporder_leidenfixed_purity/PREREG.locked.yaml"
+  coherence_report_json: "outputs_runs/moignard15_exporder_leidenfixed_purity/coherence_report.json"
+  fail_windows_md: "outputs_runs/moignard15_exporder_leidenfixed_purity/fail_windows.md"
+  regime_report_md: "outputs_runs/moignard15_exporder_leidenfixed_purity/regime_report.md"
+  tradeoff_onepage_png: "outputs_runs/moignard15_exporder_leidenfixed_purity/tradeoff_onepage.png"
+  tradeoff_onepage_pdf: "outputs_runs/moignard15_exporder_leidenfixed_purity/tradeoff_onepage.pdf"
+
+failure_semantics:
+  ESTIMATOR_UNSTABLE:
+    description: "Coherence gate fails for the chosen estimator pair under this boundary."
+  SCOPE_LIMITED:
+    description: "Only a subset of windows passes; interpretation limited to passing windows."
+  INCONCLUSIVE:
+    description: "Too few valid windows to evaluate."

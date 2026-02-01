@@ -140,7 +140,7 @@ This is a **preregistered demonstration** (not a "real-world validation" claim).
 
 Reproducibility + guardrails: [prereg_v3.yaml](experiments/real_world/nyc_311_tier2p5/prereg_v3.yaml) and [experiment README](experiments/real_world/nyc_311_tier2p5/README.md).
 
-### Dr.One (policy gating) â€” baseline vs controlled
+### Dr.One (policy gating) — baseline vs controlled
 
 This figure is a compact â€œexistence proofâ€ that the **Controlled Nirvana** idea is executable: if a low-FPR alarm is feasible, a controller can *withhold execution authority* for unsafe tool-actions without stopping computation.
 

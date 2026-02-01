@@ -14,3 +14,4 @@ If you want runnable engines, start from `tools/README.md`.
 - **GMB v0.4 — Grokking Monitorability Benchmark**: `docs/benchmarks/gmb_v0_4/README.md`
   - Companion note (why AUC can mislead under low-FPR): `docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md`
 
+- **Li² scaling-law cross‑M spot check (v4)**: `docs/benchmarks/li2_scaling_law_cross_m_v4/README.md`

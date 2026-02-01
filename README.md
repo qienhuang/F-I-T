@@ -85,6 +85,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | **Beyond Moral Charters** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
 | **Why Companies Turn Too Late** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
 | **Phase-Conditioned Constraint Coherence in a Real-World Mobility System** | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
+| **From Expression States to Constraint Dynamics: A FIT Framework for Fate Commitment in Single-Cell RNA Sequencing** | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
 ---
 
 ## Case Studies
@@ -125,6 +126,12 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [World-Evolution Explorer (v0.1)](docs/world_evolution/README.md) | Toy evolving worlds + effective-variable / alarm search demo |
 | [Math-Discovery Engine (v0.1)](docs/math_discovery/README.md) | Auditable search over representations/lemmas/strategies (spec-first) |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking alarm admissibility benchmark |
+
+---
+
+## Tier-3 (optional): Research notes
+
+- [Genomics: Gengram × FIT](docs/genomics/README.md) — explicit motif memory as an auditable constraint testbed (protocol templates + mapping notes)
 
 ---
 

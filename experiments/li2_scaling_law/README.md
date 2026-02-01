@@ -78,6 +78,15 @@ python multiseed_fill.py --spec \"30:0.515,0.535,0.555,0.575;45:0.461,0.501,0.52
 python analyze_beta_transition.py --results_dir results/beta_multiseed --output_dir results/beta_multiseed/analysis_p0666 --min_prob 0.666 --min_points 3
 ```
 
+## Cross‑M spot check (M=97 vs M=127; 3090 run)
+
+This repo includes a small cross‑M slice produced on a single GPU (resumable), to check whether
+the beta/r_crit story remains consistent across `M`.
+
+- Runbook: `RUNBOOK_3090_CROSS_M.md`
+- Results root: `results/beta_multiseed_v4/`
+- Summary note: `results/beta_multiseed_v4/_cross_m_summary.md`
+
 ## FIT validation protocol (one-command)
 
 Protocol doc: `FIT_VALIDATION_README.md`
