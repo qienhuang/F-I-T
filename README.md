@@ -257,7 +257,7 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 | Title | Description | Audience |
 |-------|-------------|----------|
-| [Human Learning & Insight (series)](essays/human-learning/00_orientation.md) | Insight as temporal phase transition | Educators, learners, researchers |
+| [Human Learning & Insight (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/human-learning) | Insight as temporal phase transition | Educators, learners, researchers |
 
 ### AI Safety & Governance
 
@@ -269,7 +269,7 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 | Title | Description | Audience |
 |-------|-------------|----------|
-| [Learning Systems (series)](essays/learning-systems/README.md) | Grokking as temporal phase transition | ML researchers |
+| [Learning Systems (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/learning-systems) | Grokking as temporal phase transition | ML researchers |
 
 ### Domain Essays
 
