@@ -4,7 +4,7 @@
 
 ### A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
 
-[[中文/Chinese]](README.zh_cn.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md) | [[中文/Chinese]](README.zh_cn.md) | 
 
 ---
 
@@ -63,46 +63,80 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 *Figure: Conway's Game of Life Tier-1 validation (details in [v2.4 spec](docs/v2.4.md)).*
 
-## Tier-2 Evidence
-- **Grokking** experiments are evaluable and reproducible; baseline not yet a stable hard indicator under strict low-FPR constraints. See [tier2_grokking](experiments/tier2_grokking/README.md) and [grokking_hard_indicators_v0.2](experiments/grokking_hard_indicators_v0_2/README.md).
-- A real-world Tier-2 / P11 case is now available on **NYC TLC (Yellow / Green / FHVHV)** data. Under EST gates, pooled coherence can fail while preregistered windowing yields auditable scope-limited validity (`OK_PER_YEAR`, `OK_PER_WINDOW`) for Yellow and FHVHV; Green provides a counterexample (pooled PASS but a preregistered window FAIL), showing windowing is diagnostic rather than a universal fix. A stricter rolling-window diagnostic (v1.8) finds localized coherence failures across all three modalities: [nyc_tlc_tier2p1](experiments/real_world/nyc_tlc_tier2p1/README.md) (results: [RESULTS.md](experiments/real_world/nyc_tlc_tier2p1/RESULTS.md); viz: [summary](experiments/real_world/nyc_tlc_tier2p1/results_runs/figures/nyc_tlc_windowed_coherence_summary.svg), paper: [Phase-Conditioned Constraint Coherence in a Real-World Mobility System](papers/phase-conditioned_constraint_coherence_in_a_real-world_mobility_system.v1.md))  
-- A second real-world Tier-2 / P11 case is available on **MTA subway hourly ridership** (hourly-first, then daily aggregation). The preregistered constraint pair (`C_load`, `C_concentration`) shows a stable negative rho (sign-mismatch under the preregistered family semantics) and is therefore treated as an EST-gated negative result at this scope: [mta_subway_hourly_tier2p11](experiments/real_world/mta_subway_hourly_tier2p11/README.md) (results: [RESULTS.md](experiments/real_world/mta_subway_hourly_tier2p11/RESULTS.md)).
-- A biology Tier-2 case is available on **scRNA-seq fate commitment**: under an explicit developmental-stage axis (`obs:stage`) in mouse gastrulation, preregistered coherence passes and an auditable within-boundary proxy comparison shows purity is a stronger signal than mixing: [scrna_commitment_tier2p11](experiments/real_world/scrna_commitment_tier2p11/README.md) (results: [RESULTS.md](experiments/real_world/scrna_commitment_tier2p11/RESULTS.md); note: [mouse gastrulation](docs/genomics/tier2_mouse_gastrulation_case.md)).
-- Two finance/macro Tier-2 / P11 cases are included on **FRED**: an equity-volatility case that demonstrates a crisis-dependent constraint-family mismatch (treated as `ESTIMATOR_UNSTABLE` under the preregistered family), and a recession-cycles case where the preregistered hypotheses pass and the regime signal is interpretable: [fred_equity_volatility_tier2p11](experiments/real_world/fred_equity_volatility_tier2p11/README.md), [fred_recession_cycles_tier2p11](experiments/real_world/fred_recession_cycles_tier2p11/README.md).
-- A Tier-2.5 / P5 real-world case is available on **NYC 311 (HPD)** data: the coherence gate passes, but the primary H1 test is **INCONCLUSIVE** due to a preregistered boundary artifact (events occur only in the tail where the forward drift estimator is undefined). This is treated as a first-class EST outcome: [nyc_311_tier2p5](experiments/real_world/nyc_311_tier2p5/README.md) (results: [RESULTS.md](experiments/real_world/nyc_311_tier2p5/RESULTS.md)).
+---
+
+## Tier-2 Evidence (real-world systems)
+
+| Domain | Case | Verdict | Key finding |
+|--------|------|---------|-------------|
+| **ML / Grokking** | [Grokking hard indicators](experiments/grokking_hard_indicators_v0_2/README.md) | Evaluable | Baseline not yet stable under strict low-FPR |
+| **Mobility** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | Windowing diagnostic; Green counterexample |
+| **Transit** | [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Stable negative rho (sign-mismatch) |
+| **Biology** | [scRNA mouse gastrulation](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | Explicit stage anchor; purity > mixing |
+| **Finance** | [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Crisis-dependent family mismatch |
+| **Finance** | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | Preregistered hypotheses pass |
+| **Urban** | [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
+
+**Interpretation**: Negative results (`ESTIMATOR_UNSTABLE`, `INCONCLUSIVE`) are first-class EST outcomes, not failures. They identify scope boundaries.
+
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ---
 
 ## Papers
 
-| Topic | Link |
+### Core Framework
+
+| Title | Link |
 |-------|------|
-| **FIT Origin & Design Goals** (start here) | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
-| **AI Safety: Irreversible Operations & Tempo Mismatch** | [Zenodo](https://doi.org/10.5281/zenodo.18142151) |
-| **AI Safety (grokking): Controlled Nirvana** | [Zenodo](https://doi.org/10.5281/zenodo.18155425) / [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634) |
-| **AI Safety (grokking): Hard Indicators Protocol** | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
-| **Markov Sandbox (math.PR)** | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
-| **Beyond Moral Charters** | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
-| **Why Companies Turn Too Late** | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
-| **Phase-Conditioned Constraint Coherence in a Real-World Mobility System** | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
-| **From Expression States to Constraint Dynamics: A FIT Framework for Fate Commitment in Single-Cell RNA Sequencing** | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
+| FIT Origin & Design Goals | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
+| Markov Sandbox (math.PR) | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
+
+### AI Safety
+
+| Title | Link |
+|-------|------|
+| Irreversible Operations & Tempo Mismatch | [Zenodo](https://doi.org/10.5281/zenodo.18142151) |
+| Controlled Nirvana (grokking) | [Zenodo](https://doi.org/10.5281/zenodo.18155425) / [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634) |
+| Hard Indicators Protocol (grokking) | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
+| Beyond Moral Charters | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
+
+### Applications
+
+| Title | Link |
+|-------|------|
+| Phase-Conditioned Constraint Coherence (NYC TLC) | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
+| Fate Commitment in scRNA-seq | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
+| Why Companies Turn Too Late | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
+
 ---
 
 ## Case Studies
 
 Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries and observable signals.
 
+### Tier-2 Validated
+
 | Case | Focus |
 |------|-------|
 | [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
+| [NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md) | Coherence windowing and level shifts |
+| [scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md) | Explicit `obs:stage` boundary anchor |
+| [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | Preregistered recession signal |
 | [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
-| [NYC TLC (Yellow) regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md) | Tier-2 P11; coherence windowing and level shifts |
-| [NYC 311 (HPD) boundary artifact](experiments/real_world/nyc_311_tier2p5/README.md) | Tier-2.5 P5; coherence passes, H1 inconclusive under created-date boundary |
-| [MTA subway hourly ridership](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | Tier-2 P11; stable negative coupling (sign-mismatch) under preregistered constraint family |
-| [scRNA fate commitment (mouse gastrulation)](experiments/real_world/scrna_commitment_tier2p11/README.md) | Tier-2 P11; explicit `obs:stage` boundary anchor; within-boundary proxy comparison (purity > mixing) |
-| [FRED equity-volatility crises](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | Tier-2 P11; estimator-family mismatch across crisis regimes (negative result) |
-| [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | Tier-2 P11; preregistered recession signal passes coherence + H2 |
+
+### Tier-2 Negative / Boundary Cases
+
+| Case | Focus |
+|------|-------|
+| [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | Stable negative coupling (sign-mismatch) |
+| [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | Estimator-family mismatch across crises |
+| [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | Coherence passes, H1 inconclusive |
+
+### Conceptual Cases
+
+| Case | Focus |
+|------|-------|
 | [Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md) | Attention dynamics + constraint accumulation |
 | [Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md) | Feedback loops + coordination failure |
 | [Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | Infrastructure lock-in + tempo mismatch |
@@ -191,6 +225,7 @@ docs/           Specifications and notes
   ai_safety/    Self-referential IO and governance
   benchmarks/   Specs + prereg templates (e.g., GMB v0.4)
   explorers/    Budgeted method search (FIT-Explorer)
+essays/         Public writing and accessible introductions
 experiments/    Runnable demos and validation artifacts
 papers/         Drafts and venue-specific writeups
 proposals/      Practitioner pilots and templates
@@ -199,10 +234,58 @@ tools/          Runnable toolkits
 
 ---
 
+## Essays & Public Writing
+
+Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
+
+### Methodology & Philosophy
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [A Simple Framework to Understand How Everything Evolves](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) | General introduction to FIT | General readers |
+| [Why FIT](essays/00-why-fit.md) | When power and intelligence are no longer the problem | Curious newcomers |
+| [Universal Essays (series)](essays/universal/README.md) | Systems as temporal objects, tempo as structure | Researchers, philosophers |
+
+### Human & Psychology
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [Why Helping Often Hurts — Part 1](essays/human-psychology/why_helping_hurts_part1.md) | Structural perspective on depression and addiction | Helpers, family, frontline workers |
+| [Why Helping Often Hurts — Part 2](essays/human-psychology/why_helping_hurts_part2.md) | A practical toolbox for depression and addiction | Helpers, family |
+
+### Human Learning
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [Human Learning & Insight (series)](essays/human-learning/00_orientation.md) | Insight as temporal phase transition | Educators, learners, researchers |
+
+### AI Safety & Governance
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [The Emptiness Window](essays/ai/emptiness-window.md) | Structural intervention for tempo-dominated systems | AI safety researchers, system designers |
+
+### Learning Systems (ML/AI)
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [Learning Systems (series)](essays/learning-systems/README.md) | Grokking as temporal phase transition | ML researchers |
+
+### Domain Essays
+
+| Title | Description | Audience |
+|-------|-------------|----------|
+| [Learning](essays/10-learning.md) | Grokking and late-stage lock-in | Educators, ML practitioners |
+| [Economics](essays/20-economics.md) | Markets, stability, and false equilibria | Economists, strategists |
+| [Governance](essays/30-governance.md) | Institutions, irreversibility, and reform | Policy researchers |
+| [Technology](essays/40-technology.md) | Systems, architecture, and constraint design | Engineers, architects |
+
+---
+
 ## Citation
 
-**Zenodo (all versions)**: https://doi.org/10.5281/zenodo.18012401  
-**Latest (v2.4.1)**: https://doi.org/10.5281/zenodo.18112020  
+**Zenodo (all versions)**: https://doi.org/10.5281/zenodo.18012401
+**Latest (v2.4.1)**: https://doi.org/10.5281/zenodo.18112020
 
 See [CITATION.cff](CITATION.cff) for copy/paste formats.
 
