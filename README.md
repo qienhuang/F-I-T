@@ -4,11 +4,13 @@
 
 ### A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md) | [[中文/Chinese]](README.zh_cn.md) | 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md) | [[中文/Chinese]](README.zh_cn.md) |
 
 ---
 
 ## Start Here (choose your path)
+
+<div align="center">
 
 | If you are... | Start with |
 |---------------|------------|
@@ -17,6 +19,8 @@
 | **Working on AI safety** | [AI Safety Index](docs/ai_safety/README.md) → [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) |
 | **Running experiments** | [Toolkits](#toolkits) → [Li² replication](experiments/li2_scaling_law/README.md) |
 | **Reading the full spec** | [v2.4 spec (English)](docs/v2.4.md)  / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
+
+</div>
 
 ---
 
@@ -28,6 +32,8 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 **Five primitives**:
 
+<div align="center">
+
 | Primitive | What it captures |
 |-----------|------------------|
 | **State (S)** | System configuration |
@@ -36,11 +42,15 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | **Constraint (C)** | Reachable state space reduction |
 | **Time (T)** | Characteristic scales emergent from F–I interaction |
 
+</div>
+
 **The discipline**: All claims must be bound to an explicit estimator tuple. No estimator → no claim.
 
 ---
 
 ## What FIT Claims (and Does Not Claim)
+
+<div align="center">
 
 | FIT does NOT claim | FIT DOES claim |
 |--------------------|----------------|
@@ -49,15 +59,21 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | ❌ Ability to predict exact trajectories | ✅ Initial Tier-1 validation shows promising results |
 | ❌ All propositions validated everywhere | ✅ AI safety applications are tractable |
 
+</div>
+
 ---
 
 ## Tier-1 Evidence (toy systems)
+
+<div align="center">
 
 | System | Result | Proposition |
 |--------|--------|-------------|
 | **Langton's Ant** | 97.5% theory–observation match | Phase transition / nirvana predictions |
 | **Conway's GoL** | 0% violations | P7 information bounds |
 | **Conway's GoL** | ρ = 0.775 | P10 estimator coherence |
+
+</div>
 
 ![Conway's Game of Life: Tier-1 validation snapshot](experiments/figures/conway_status_overview.png)
 
@@ -66,6 +82,8 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 ---
 
 ## Tier-2 Evidence (real-world systems)
+
+<div align="center">
 
 | Domain | Case | Verdict | Key finding |
 |--------|------|---------|-------------|
@@ -77,6 +95,8 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | **Finance** | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | Preregistered hypotheses pass |
 | **Urban** | [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
 
+</div>
+
 **Interpretation**: Negative results (`ESTIMATOR_UNSTABLE`, `INCONCLUSIVE`) are first-class EST outcomes, not failures. They identify scope boundaries.
 
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
@@ -87,12 +107,18 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ### Core Framework
 
+<div align="center">
+
 | Title | Link |
 |-------|------|
 | FIT Origin & Design Goals | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
 | Markov Sandbox (math.PR) | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
 
+</div>
+
 ### AI Safety
+
+<div align="center">
 
 | Title | Link |
 |-------|------|
@@ -101,13 +127,19 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | Hard Indicators Protocol (grokking) | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
 | Beyond Moral Charters | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
 
+</div>
+
 ### Applications
+
+<div align="center">
 
 | Title | Link |
 |-------|------|
 | Phase-Conditioned Constraint Coherence (NYC TLC) | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
 | Fate Commitment in scRNA-seq | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
 | Why Companies Turn Too Late | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
+
+</div>
 
 ---
 
@@ -117,6 +149,8 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 
 ### Tier-2 Validated
 
+<div align="center">
+
 | Case | Focus |
 |------|-------|
 | [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
@@ -125,7 +159,11 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | Preregistered recession signal |
 | [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
 
+</div>
+
 ### Tier-2 Negative / Boundary Cases
+
+<div align="center">
 
 | Case | Focus |
 |------|-------|
@@ -133,7 +171,11 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 | [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | Estimator-family mismatch across crises |
 | [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | Coherence passes, H1 inconclusive |
 
+</div>
+
 ### Conceptual Cases
+
+<div align="center">
 
 | Case | Focus |
 |------|-------|
@@ -145,11 +187,15 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 | [BioArc Architecture Search](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md) | Budgeted exploration under constraints |
 | [Motor-imagery BCI](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md) | Monitorability under low-FPR budgets |
 
+</div>
+
 ---
 
 ## Toolkits
 
 Runnable, CPU-first building blocks. Each produces auditable artifacts.
+
+<div align="center">
 
 | Toolkit | Purpose |
 |---------|---------|
@@ -163,6 +209,8 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [Math-Discovery Engine (v0.1)](docs/math_discovery/README.md) | Auditable search over representations/lemmas/strategies (spec-first) |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking alarm admissibility benchmark |
 
+</div>
+
 ---
 
 ## Tier-3 (optional): Research notes
@@ -172,6 +220,8 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 ---
 
 ## AI Safety Track
+
+<div align="center">
 
 | Resource | Description |
 |----------|-------------|
@@ -183,6 +233,8 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
 | [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1-style RL + risk control |
 
+</div>
+
 ### Dr.One: Baseline vs Controlled
 
 ![Dr.One policy-eval: baseline vs controlled](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
@@ -193,17 +245,23 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 
 ## Spec Versions
 
+<div align="center">
+
 | Version | Description | Link |
 |---------|-------------|------|
 | **v2.4.1** (current) | EST + Tier-1 validation | [docs/v2.4.md](docs/v2.4.md) |
 | v2.3 | Tier-1 validation | [docs/v2.3.md](docs/v2.3.md) |
 | v2.1 | Legacy review edition | [docs/v2.1.md](docs/v2.1.md) |
 
+</div>
+
 **Stability**: 2.x core is stabilized; revisions are counterexample-driven. See [Versioning Policy](docs/core/Versioning_Policy.md).
 
 ---
 
 ## Roadmap
+
+<div align="center">
 
 | Milestone | Goal |
 |-----------|------|
@@ -213,6 +271,8 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | **M3** | Quantum FIT (Lindbladian layer) |
 | **M4** | Unified v3.0 (discrete / continuous / quantum) |
 | **M5** | Applications: AI safety, complexity science, institutional design |
+
+</div>
 
 **Full roadmap**: [docs/roadmap.v2.4.md](docs/roadmap.v2.4.md)
 
@@ -240,38 +300,60 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 ### Methodology & Philosophy
 
+<div align="center">
+
 | Title | Description | Audience |
 |-------|-------------|----------|
 | [A Simple Framework to Understand How Everything Evolves](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) | General introduction to FIT | General readers |
 | [Why FIT](essays/00-why-fit.md) | When power and intelligence are no longer the problem | Curious newcomers |
 | [Universal Essays (series)](essays/universal/README.md) | Systems as temporal objects, tempo as structure | Researchers, philosophers |
 
+</div>
+
 ### Human & Psychology
+
+<div align="center">
 
 | Title | Description | Audience |
 |-------|-------------|----------|
 | [Why Helping Often Hurts — Part 1](essays/human-psychology/why_helping_hurts_part1.md) | Structural perspective on depression and addiction | Helpers, family, frontline workers |
 | [Why Helping Often Hurts — Part 2](essays/human-psychology/why_helping_hurts_part2.md) | A practical toolbox for depression and addiction | Helpers, family |
 
+</div>
+
 ### Human Learning
+
+<div align="center">
 
 | Title | Description | Audience |
 |-------|-------------|----------|
 | [Human Learning & Insight (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/human-learning) | Insight as temporal phase transition | Educators, learners, researchers |
 
+</div>
+
 ### AI Safety & Governance
+
+<div align="center">
 
 | Title | Description | Audience |
 |-------|-------------|----------|
 | [The Emptiness Window](essays/ai/emptiness-window.md) | Structural intervention for tempo-dominated systems | AI safety researchers, system designers |
 
+</div>
+
 ### Learning Systems (ML/AI)
+
+<div align="center">
 
 | Title | Description | Audience |
 |-------|-------------|----------|
 | [Learning Systems (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/learning-systems) | Grokking as temporal phase transition | ML researchers |
 
+</div>
+
 ### Domain Essays
+
+<div align="center">
 
 | Title | Description | Audience |
 |-------|-------------|----------|
@@ -279,6 +361,8 @@ Accessible introductions and applied perspectives. These use everyday language; 
 | [Economics](essays/20-economics.md) | Markets, stability, and false equilibria | Economists, strategists |
 | [Governance](essays/30-governance.md) | Institutions, irreversibility, and reform | Policy researchers |
 | [Technology](essays/40-technology.md) | Systems, architecture, and constraint design | Engineers, architects |
+
+</div>
 
 ---
 
@@ -293,11 +377,11 @@ See [CITATION.cff](CITATION.cff) for copy/paste formats.
 
 ## Metadata
 
-**Author**: Qien Huang (Independent Researcher)  
-**Email**: qienhuang@hotmail.com  
-**License**: CC BY 4.0  
-**Repository**: https://github.com/qienhuang/F-I-T  
-**ORCID**: https://orcid.org/0009-0003-7731-4294  
+**Author**: Qien Huang (Independent Researcher)
+**Email**: qienhuang@hotmail.com
+**License**: CC BY 4.0
+**Repository**: https://github.com/qienhuang/F-I-T
+**ORCID**: https://orcid.org/0009-0003-7731-4294
 
 **AI-assisted drafting disclosure**: Portions of drafting were assisted by large language models. The author takes full responsibility for all content.
 

@@ -195,7 +195,7 @@ Human suffering is often a question of *where someone is*, not what they deserve
 
 ---
 
-> **Framework note (optional)**
+> **Framework note**
 >
 > This essay uses a structural lens inspired by **FIT (Force–Information–Time) dynamics framework**, a phase-based way to describe how systems can become stable yet hard to change.
 >
