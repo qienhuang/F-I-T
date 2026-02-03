@@ -239,46 +239,28 @@ tools/          Runnable toolkits
 Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
 
 ### Methodology & Philosophy
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [A Simple Framework to Understand How Everything Evolves](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) | General introduction to FIT | General readers |
-| [Why FIT](essays/00-why-fit.md) | When power and intelligence are no longer the problem | Curious newcomers |
-| [Universal Essays (series)](essays/universal/README.md) | Systems as temporal objects, tempo as structure | Researchers, philosophers |
+- [**A Simple Framework to Understand How Everything Evolves**](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) — General introduction to FIT `General readers`
+- [**Why FIT**](https://github.com/qienhuang/F-I-T/blob/main/essays/00-why-fit.md) — When power and intelligence are no longer the problem `Curious newcomers`
+- [**Universal Essays (series)**](essays/universal/README.md) — Systems as temporal objects, tempo as structure `Researchers, philosophers`
 
 ### Human & Psychology
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [Why Helping Often Hurts — Part 1](essays/human-psychology/why_helping_hurts_part1.md) | Structural perspective on depression and addiction | Helpers, family, frontline workers |
-| [Why Helping Often Hurts — Part 2](essays/human-psychology/why_helping_hurts_part2.md) | A practical toolbox for depression and addiction | Helpers, family |
+- [**Why Helping Often Hurts**](essays/human-psychology/why_helping_hurts_part1.md) — Structural perspective on depression and addiction `Helpers, family, frontline workers`
+- [**How to Help Without Hurting**](essays/human-psychology/why_helping_hurts_part2.md) — A practical toolbox for depression and addiction `Helpers, family`
 
 ### Human Learning
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [Human Learning & Insight (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/human-learning) | Insight as temporal phase transition | Educators, learners, researchers |
+- [**Human Learning & Insight (series)**](https://github.com/qienhuang/F-I-T/tree/main/essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
 
 ### AI Safety & Governance
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [The Emptiness Window](essays/ai/emptiness-window.md) | Structural intervention for tempo-dominated systems | AI safety researchers, system designers |
+- [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 
 ### Learning Systems (ML/AI)
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [Learning Systems (series)](https://github.com/qienhuang/F-I-T/tree/main/essays/learning-systems) | Grokking as temporal phase transition | ML researchers |
+- [**Learning Systems (series)**](https://github.com/qienhuang/F-I-T/tree/main/essays/learning-systems) — Grokking as temporal phase transition `ML researchers`
 
 ### Domain Essays
-
-| Title | Description | Audience |
-|-------|-------------|----------|
-| [Learning](essays/10-learning.md) | Grokking and late-stage lock-in | Educators, ML practitioners |
-| [Economics](essays/20-economics.md) | Markets, stability, and false equilibria | Economists, strategists |
-| [Governance](essays/30-governance.md) | Institutions, irreversibility, and reform | Policy researchers |
-| [Technology](essays/40-technology.md) | Systems, architecture, and constraint design | Engineers, architects |
+- [**Learning**](essays/10-learning.md) — Grokking and late-stage lock-in `Educators, ML practitioners`
+- [**Economics**](essays/20-economics.md) — Markets, stability, and false equilibria `Economists, strategists`
+- [**Governance**](essays/30-governance.md) — Institutions, irreversibility, and reform `Policy researchers`
+- [**Technology**](essays/40-technology.md) — Systems, architecture, and constraint design `Engineers, architects`
 
 ---
 
