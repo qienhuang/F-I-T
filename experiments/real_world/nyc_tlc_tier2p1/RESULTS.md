@@ -92,13 +92,28 @@ v1.10 applies the finest preregistered granularity: 58 overlapping 90-day rollin
 - **Green** indicates a constraint-family mismatch at this scope: failure rates remain high across granularities (9/17 -> 17/28 -> 32/58), so increasing window granularity does not rescue coherence
 - **FHVHV** shows a localized pandemic-era instability (mid-2020 to late 2021) that is consistent across window sizes
 
+### v1.11 Rolling Sensitivity (120-day / 30-day stride)
+
+v1.11 tests an intermediate window size (120-day) with fine stride (30-day) to explore the granularity trade-off between v1.9 and v1.10.
+
+| Dataset | Prereg | Pooled rho | Windows PASS | Windows FAIL | Status | Comparison to v1.10 |
+|---------|--------|------------|--------------|--------------|--------|-------------------|
+| Yellow | v1.11_rolling_120_30_yellow | 0.543 (FAIL) | 54/57 | 3/57 | `ESTIMATOR_UNSTABLE` | **Similar**: 3 late-2022 failures (win_045-047: 2022-09-12..2023-03-11) |
+| Green | v1.11_rolling_120_30_green | 0.631 (PASS) | 27/57 | 30/57 | `ESTIMATOR_UNSTABLE` | **Similar**: 30 windows fail (53%), scattered early + late |
+| FHVHV | v1.11_rolling_120_30_fhvhv | 0.336 (FAIL) | 40/57 | 17/57 | `ESTIMATOR_UNSTABLE` | **Similar**: pandemic-era failures (2020-01..2022-01) |
+
+**Key finding**: The 120-day window confirms the patterns observed in v1.8–v1.10:
+- **Yellow** remains remarkably stable (3/57 fail = 5%), with failures highly localized to late 2022
+- **Green** shows persistent constraint-family mismatch (30/57 = 53% fail), scattered across 2019 early + 2020 pandemic + 2022-2023 late period
+- **FHVHV** confirms pandemic-era instability (17/57 = 30% fail), concentrated in 2020-01 through 2021-12
+
 ### Window-Size Sensitivity Summary
 
-| Dataset | v1.8 (365/90) | v1.9 (180/60) | v1.10 (90/30) | Pattern |
-|---------|---------------|---------------|---------------|---------|
-| Yellow | 3/17 fail (18%) | 2/28 fail (7%) | 2/58 fail (3%) | **Stable** — failures localized to late 2022 |
-| Green | 9/17 fail (53%) | 17/28 fail (61%) | 32/58 fail (55%) | **Constraint-family mismatch** — pervasive failures |
-| FHVHV | 7/17 fail (41%) | 9/28 fail (32%) | 13/58 fail (22%) | **Improving** — pandemic-era only |
+| Dataset | v1.8 (365/90) | v1.9 (180/60) | v1.10 (90/30) | v1.11 (120/30) | Pattern |
+|---------|---------------|---------------|---------------|----------------|---------|
+| Yellow | 3/17 fail (18%) | 2/28 fail (7%) | 2/58 fail (3%) | 3/57 fail (5%) | **Stable** — failures localized to late 2022 |
+| Green | 9/17 fail (53%) | 17/28 fail (61%) | 32/58 fail (55%) | 30/57 fail (53%) | **Constraint-family mismatch** — pervasive failures |
+| FHVHV | 7/17 fail (41%) | 9/28 fail (32%) | 13/58 fail (22%) | 17/57 fail (30%) | **Improving** — pandemic-era only |
 
 ## Estimator family (the hard contract)
 
@@ -136,6 +151,11 @@ All artifacts below are small and auditable without shipping raw TLC data.
 - Yellow: `results_runs/nyc_yellow_2019_2023_v1.10_rolling_90_30/`
 - Green: `results_runs/nyc_green_2019_2023_v1.10_rolling_90_30/`
 - FHVHV: `results_runs/nyc_fhvhv_2019_2023_v1.10_rolling_90_30/`
+
+### v1.11 Rolling Sensitivity (120-day / 30-day)
+- Yellow: `results_runs/nyc_yellow_2019_2023_v1.11_rolling_120_30/`
+- Green: `results_runs/nyc_green_2019_2023_v1.11_rolling_120_30/`
+- FHVHV: `results_runs/nyc_fhvhv_2019_2023_v1.11_rolling_120_30/`
 
 Each archive contains:
 
@@ -195,4 +215,9 @@ python run_pipeline.py --prereg EST_PREREG_v1.9_rolling_180_60_fhvhv.yaml --out_
 python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_yellow.yaml --out_root results_runs/nyc_yellow_2019_2023_v1.10_rolling_90_30
 python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_green.yaml --out_root results_runs/nyc_green_2019_2023_v1.10_rolling_90_30
 python run_pipeline.py --prereg EST_PREREG_v1.10_rolling_90_30_fhvhv.yaml --out_root results_runs/nyc_fhvhv_2019_2023_v1.10_rolling_90_30 --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
+
+# v1.11 rolling sensitivity (120-day / 30-day stride)
+python run_pipeline.py --prereg EST_PREREG_v1.11_rolling_120_30_yellow.yaml --out_root results_runs/nyc_yellow_2019_2023_v1.11_rolling_120_30
+python run_pipeline.py --prereg EST_PREREG_v1.11_rolling_120_30_green.yaml --out_root results_runs/nyc_green_2019_2023_v1.11_rolling_120_30
+python run_pipeline.py --prereg EST_PREREG_v1.11_rolling_120_30_fhvhv.yaml --out_root results_runs/nyc_fhvhv_2019_2023_v1.11_rolling_120_30 --raw_glob "data/raw/fhvhv_tripdata_*.parquet"
 ```

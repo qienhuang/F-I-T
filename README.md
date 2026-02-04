@@ -234,13 +234,13 @@ tools/          Runnable toolkits
 
 ---
 
-## Essays & Public Writing
+## 📰 [Essays & Public Writing](essays)
 
 Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
 
 ### Methodology & Philosophy
 - [**A Simple Framework to Understand How Everything Evolves**](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) — General introduction to FIT `General readers`
-- [**Why FIT**](https://github.com/qienhuang/F-I-T/blob/main/essays/00-why-fit.md) — When power and intelligence are no longer the problem `Curious newcomers`
+- [**Why FIT**](essays/00-why-fit.md) — When power and intelligence are no longer the problem `Curious newcomers`
 - [**Universal Essays (series)**](essays/universal/README.md) — Systems as temporal objects, tempo as structure `Researchers, philosophers`
 
 ### Human & Psychology
@@ -248,13 +248,13 @@ Accessible introductions and applied perspectives. These use everyday language; 
 - [**How to Help Without Hurting**](essays/human-psychology/why_helping_hurts_part2.md) — A practical toolbox for depression and addiction `Helpers, family`
 
 ### Human Learning
-- [**Human Learning & Insight (series)**](https://github.com/qienhuang/F-I-T/tree/main/essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
+- [**Human Learning & Insight (series)**](essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
 
 ### AI Safety & Governance
 - [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 
 ### Learning Systems (ML/AI)
-- [**Learning Systems (series)**](https://github.com/qienhuang/F-I-T/tree/main/essays/learning-systems) — Grokking as temporal phase transition `ML researchers`
+- [**Learning Systems (series)**](essays/learning-systems) — Grokking as temporal phase transition `ML researchers`
 
 ### Domain Essays
 - [**Learning**](essays/10-learning.md) — Grokking and late-stage lock-in `Educators, ML practitioners`
@@ -275,11 +275,11 @@ See [CITATION.cff](CITATION.cff) for copy/paste formats.
 
 ## Metadata
 
-**Author**: Qien Huang (Independent Researcher)
-**Email**: qienhuang@hotmail.com
-**License**: CC BY 4.0
-**Repository**: https://github.com/qienhuang/F-I-T
-**ORCID**: https://orcid.org/0009-0003-7731-4294
+**Author**: Qien Huang (Independent Researcher)  
+**Email**: qienhuang@hotmail.com  
+**License**: CC BY 4.0  
+**Repository**: https://github.com/qienhuang/F-I-T  
+**ORCID**: https://orcid.org/0009-0003-7731-4294  
 
 **AI-assisted drafting disclosure**: Portions of drafting were assisted by large language models. The author takes full responsibility for all content.
 

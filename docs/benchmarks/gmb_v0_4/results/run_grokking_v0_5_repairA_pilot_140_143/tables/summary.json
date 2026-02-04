@@ -1,0 +1,21 @@
+{
+  "fprs": [
+    0.01,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "n_runs": 4,
+  "neg": {
+    "k_eff_mean": 1.1368031764149105,
+    "k_eff_std": 0.0,
+    "n_eff_ratio_mean": 0.15487662885976483,
+    "n_eff_ratio_std": 0.003163430942608224,
+    "tie_dom_mean": 0.03571428571428571,
+    "tie_dom_std": 0.0
+  },
+  "notes": "Diagnostics are computed on negative-window score series; ESS uses positive-lag truncation at first non-positive autocorrelation.",
+  "runs_dir": "runs_v0_5_repairs\\\\eval",
+  "score_sign": 1.0
+}
+
