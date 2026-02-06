@@ -81,69 +81,50 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
----
+***
+## 📰Papers
+- ### Core Framework:
+    - **[Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals](https://doi.org/10.5281/zenodo.18142211)**
+    - **[Constraint Accumulation via Laziness in Finite Markov Chains - A Provable Specialization of the FIT Framework](https://doi.org/10.5281/zenodo.18264166)** 
 
-## Papers
+- ### AI Safety
+    - **[Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634)** 
+    - **[Irreversible Operations and Tempo Mismatch in AI Learning Systems](https://doi.org/10.5281/zenodo.18142151)** 
+    - **[Grokking Hard Indicators: A Preregistered Evaluation Protocol and a Weak Baseline](https://doi.org/10.5281/zenodo.18380476)** 
+    - **[Beyond Moral Charters: Technical Options for AI Safety - Claude's Constitution, Self-Reference, and the FIT / Controlled-Nirvana Lens](https://doi.org/10.5281/zenodo.18341340)**
 
-### Core Framework
+- ### Applications
+  - **[Fate Commitment in scRNA-seq](https://doi.org/10.5281/zenodo.18450637)** 
+  - **[Why Companies Turn Too Late: Strategic Inertia from Startup to Scale-Up](https://doi.org/10.5281/zenodo.18287053)**
+  - **[Phase-Conditioned Constraint Coherence in a Real-World Mobility System: An EST-Compliant Tier-2 Evaluation on NYC TLC (2019–2023)](https://doi.org/10.5281/zenodo.18420569)**
 
-| Title | Link |
-|-------|------|
-| FIT Origin & Design Goals | [Zenodo](https://doi.org/10.5281/zenodo.18142211) |
-| Markov Sandbox (math.PR) | [Zenodo](https://doi.org/10.5281/zenodo.18264166) |
-
-### AI Safety
-
-| Title | Link |
-|-------|------|
-| Irreversible Operations & Tempo Mismatch | [Zenodo](https://doi.org/10.5281/zenodo.18142151) |
-| Controlled Nirvana (grokking) | [Zenodo](https://doi.org/10.5281/zenodo.18155425) / [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634) |
-| Hard Indicators Protocol (grokking) | [Zenodo](https://doi.org/10.5281/zenodo.18380476) |
-| Beyond Moral Charters | [Zenodo](https://doi.org/10.5281/zenodo.18341340) |
-
-### Applications
-
-| Title | Link |
-|-------|------|
-| Phase-Conditioned Constraint Coherence (NYC TLC) | [Zenodo](https://doi.org/10.5281/zenodo.18420569) |
-| Fate Commitment in scRNA-seq | [Zenodo](https://doi.org/10.5281/zenodo.18450637) |
-| Why Companies Turn Too Late | [Zenodo](https://doi.org/10.5281/zenodo.18287053) |
 
 ---
 
-## Case Studies
+## 📂 Case Studies
 
 Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries and observable signals.
 
-### Tier-2 Validated
+- ### Tier-2 Validated
+  - **[Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md)** — ML phase transition
+  - **[NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence windowing and level shifts
+  - **[scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md)** — Explicit `obs:stage` boundary anchor
+  - **[FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — Preregistered recession signal
+  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries
 
-| Case | Focus |
-|------|-------|
-| [Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md) | ML phase transition |
-| [NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md) | Coherence windowing and level shifts |
-| [scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md) | Explicit `obs:stage` boundary anchor |
-| [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | Preregistered recession signal |
-| [AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | Real-world instrumentation boundaries |
+- ### Tier-2 Negative / Boundary Cases
+  - **[MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — Stable negative coupling (sign-mismatch)
+  - **[FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md)** — Estimator-family mismatch across crises
+  - **[NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md)** — Coherence passes, H1 inconclusive
 
-### Tier-2 Negative / Boundary Cases
-
-| Case | Focus |
-|------|-------|
-| [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | Stable negative coupling (sign-mismatch) |
-| [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | Estimator-family mismatch across crises |
-| [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | Coherence passes, H1 inconclusive |
-
-### Conceptual Cases
-
-| Case | Focus |
-|------|-------|
-| [Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md) | Attention dynamics + constraint accumulation |
-| [Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md) | Feedback loops + coordination failure |
-| [Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md) | Infrastructure lock-in + tempo mismatch |
-| [Learning: Memory to Understanding](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md) | Grokking as phase transition |
-| [Bicontinuous Multiscale Design](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md) | Boundary-identical microstructure library |
-| [BioArc Architecture Search](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md) | Budgeted exploration under constraints |
-| [Motor-imagery BCI](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md) | Monitorability under low-FPR budgets |
+- ### Conceptual Cases
+  - **[Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md)** — Attention dynamics + constraint accumulation
+  - **[Content Platform Involution](docs/cases/CASE_02_Content_Platform_Involution.md)** — Feedback loops + coordination failure
+  - **[Enterprise IT Evolution](docs/cases/CASE_03_Enterprise_IT_Evolution.md)** — Infrastructure lock-in + tempo mismatch
+  - **[Learning: Memory to Understanding](docs/cases/CASE_04_Learning_From_Memory_to_Understanding.md)** — Grokking as phase transition
+  - **[Bicontinuous Multiscale Design](docs/cases/CASE_05_Data_Driven_Inverse_Design_Bicontinuous_Multiscale.md)** — Boundary-identical microstructure library
+  - **[BioArc Architecture Search](docs/cases/CASE_06_BioArc_Constrained_Architecture_Search.md)** — Budgeted exploration under constraints
+  - **[Motor-imagery BCI](docs/cases/CASE_07_Motor_Imagery_BCI_Monitorability.md)** — Monitorability under low-FPR budgets
 
 ---
 
@@ -234,7 +215,7 @@ tools/          Runnable toolkits
 
 ---
 
-## 📰 [Essays & Public Writing](essays)
+## 📝 [Essays & Public Writing](essays)
 
 Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
 
@@ -249,7 +230,7 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 ### Human Learning
 - [**Human Learning & Insight (series)**](essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
-
+- ✨ [**Human–LLM Coupled Theory Discovery**](essays/human-learning/learing-to-think-with-llm.md)  — On Iterative Theory Discovery Through Human–LLM Collaboration `learners, researchers` 
 ### AI Safety & Governance
 - [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 
