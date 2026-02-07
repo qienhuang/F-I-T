@@ -81,6 +81,32 @@ We define three mutually exclusive boundary modes:
 
 ---
 
+## Pilot status (repo-safe summary)
+
+This repo includes preregistered **pilot** configs intended to be runnable on a small sample before any larger sweep:
+
+- `EST_PREREG.pilot_B0_coords_only.yaml`
+- `EST_PREREG.pilot_B1_coords_pae.yaml`
+
+Local pilot outcome (B1, coords + PAE):
+
+- **Coherence gate:** `COHERENT`
+- **Event detection:** regime shift detected (bin-level), with both constraint estimators pointing to the same event location.
+
+These pilots are designed to validate **pipeline executability + EST semantics** under the declared boundary, not to support a biology claim.
+
+Note: `data/` and `out/` are local-only caches and should not be pushed.
+
+## Expanded B1 run (CPU)
+
+To scale beyond the pilot, two preregistered B1 sizes are provided:
+
+- **Quick** (N=100): `EST_PREREG.B1_taxon9606_N100.yaml`
+- **Expanded** (N=1000): `EST_PREREG.B1_taxon9606_N1000.yaml`
+- `RUNBOOK_B1_EXPANDED_CPU.md`
+
+Both stage a deterministic accession set (reviewed UniProt subset) into `data/runs/...` and run B1 (coords + PAE) under the same auditable gate semantics.
+
 ## Estimator tuple (explicit)
 
 All claims are conditional on:
@@ -160,6 +186,16 @@ Put files into:
 - `data/coords/` : AFDB coordinate files (`.cif` or `.pdb`)
 - `data/pae/`    : PAE JSON files (optional; boundary-dependent)
 - `data/msa/`    : MSA `.a3m` files (optional; boundary-dependent)
+
+If you do not already have a local cache, you can download AFDB artifacts for a preregistered accession list:
+
+```bash
+python scripts/download_coords_for_accessions.py --accessions out/<run_id>/accessions_selected.txt --out_coords_dir data/coords
+python scripts/download_pae_msa_for_accessions.py --accessions out/<run_id>/accessions_selected.txt --out_pae_dir data/pae --out_msa_dir data/msa
+```
+
+For a small pilot run (coords-only, no full cache required), start from:
+- `EST_PREREG.pilot_B0_coords_only.yaml`
 
 ### 1) Create / lock prereg
 

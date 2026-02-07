@@ -5,7 +5,7 @@ from pathlib import Path
 import time
 import requests
 
-AFDB_ENTRY_URL = "https://alphafold.ebi.ac.uk/entry/{acc}"
+AFDB_PREDICTION_API = "https://alphafold.ebi.ac.uk/api/prediction/{acc}"
 
 def download(url: str, out_path: Path, sleep_s: float = 0.2) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -13,6 +13,21 @@ def download(url: str, out_path: Path, sleep_s: float = 0.2) -> None:
     r.raise_for_status()
     out_path.write_bytes(r.content)
     time.sleep(sleep_s)
+
+def _resolve_urls_from_api(acc: str) -> tuple[str | None, str | None]:
+    r = requests.get(AFDB_PREDICTION_API.format(acc=acc), timeout=60)
+    r.raise_for_status()
+    data = r.json()
+    if not isinstance(data, list) or not data:
+        return None, None
+    item = data[0]
+    pae_url = item.get("paeDocUrl")
+    msa_url = item.get("msaUrl")
+    if not isinstance(pae_url, str):
+        pae_url = None
+    if not isinstance(msa_url, str):
+        msa_url = None
+    return pae_url, msa_url
 
 def main():
     ap = argparse.ArgumentParser()
@@ -27,27 +42,24 @@ def main():
     out_pae = Path(args.out_pae_dir)
     out_msa = Path(args.out_msa_dir)
 
-    # NOTE: AFDB provides download links on the entry page; this script uses common file endpoints.
-    # If endpoints change, treat it as a boundary change; update the script and rerun under new prereg.
-
     for acc in accs:
-        # These endpoints may change; validate against AFDB entry page.
-        pae_url = f"https://alphafold.ebi.ac.uk/files/AF-{acc}-F1-predicted_aligned_error_v4.json"
-        msa_url = f"https://alphafold.ebi.ac.uk/files/AF-{acc}-F1-a3m_v4.a3m"
+        pae_url, msa_url = _resolve_urls_from_api(acc)
 
         pae_path = out_pae / f"{acc}.json"
         msa_path = out_msa / f"{acc}.a3m"
 
         if not pae_path.exists():
             try:
-                download(pae_url, pae_path, sleep_s=args.sleep_s)
+                if pae_url:
+                    download(pae_url, pae_path, sleep_s=args.sleep_s)
             except Exception:
                 # leave missing; run pipeline will count missing artifacts
                 pass
 
         if not msa_path.exists():
             try:
-                download(msa_url, msa_path, sleep_s=args.sleep_s)
+                if msa_url:
+                    download(msa_url, msa_path, sleep_s=args.sleep_s)
             except Exception:
                 pass
 

@@ -24,6 +24,7 @@ Design goals:
   - Evidence ZIPs (gastrulation, within-boundary proxy comparison):
     - `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_purity.zip`
     - `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_mixing.zip`
+    - `experiments/real_world/scrna_commitment_tier2p11/evidence_gastrulation_e75_purity_mixing.zip`
 
 ## Gengram (explicit motif memory + gating)
 

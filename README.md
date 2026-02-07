@@ -65,7 +65,32 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ---
 
+## 🎯 Featured Benchmarks (paper-ready)
+
+### Li² Grokking Phase Transition — Four-point r_crit(M) benchmark
+
+**Result:** Critical training ratio decreases monotonically with modulus: M=71 (0.415) → M=97 (0.385) → M=127 (0.350) → M=159 (0.335)
+
+- 📊 [Four-point summary + visualization](docs/benchmarks/li2_cross_m_summary.md)
+- 🖼️ [Figure (PNG/PDF)](docs/benchmarks/li2_rcrit_vs_M_benchmark.png)
+- 📂 [Raw data](experiments/li2_scaling_law/results/)
+
+### GMB v0.5 Decision Rule Repairs — Why parameter tuning fails
+
+**Result:** Tested 3 repairs (A/B/C). Monotonic changes (A/B) preserve ranking → no improvement. Non-monotonic reordering (C) degrades performance (-50% coverage @FPR=0.05).
+
+- 📋 [Unified summary (all repairs)](docs/benchmarks/gmb_repairs_unified_summary.md)
+- 📊 [Repair C detailed analysis](docs/benchmarks/gmb_v0_5_repairC_results.md)
+- 🎓 **Lesson:** Simple parameter tuning cannot improve alarm performance; need adaptive learning approaches.
+
+---
+
 ## Tier-2 Evidence (real-world systems)
+
+Abbreviations (first use):
+
+- **NYC 311 (HPD)**: New York City 311 service requests, filtered to the **Housing Preservation & Development** department.
+- **NYC TLC / FHVHV**: New York City Taxi & Limousine Commission; **for-hire vehicles (high volume)**.
 
 | Domain | Case | Verdict | Key finding |
 |--------|------|---------|-------------|
@@ -73,16 +98,17 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 | **Mobility** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | Windowing diagnostic; Green counterexample |
 | **Transit** | [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Stable negative rho (sign-mismatch) |
 | **Biology** | [scRNA mouse gastrulation](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | Explicit stage anchor; purity > mixing |
+| **Protein** | [AlphaFold DB Swiss-Prot confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT` (B1 quick) | PAE-based proxies align and produce testable coherence + event detection at small N; scalable via prereg + [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md) |
 | **Finance** | [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Crisis-dependent family mismatch |
 | **Finance** | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | Preregistered hypotheses pass |
-| **Urban** | [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
+| **Urban** | [NYC 311 service requests (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
 
 **Interpretation**: Negative results (`ESTIMATOR_UNSTABLE`, `INCONCLUSIVE`) are first-class EST outcomes, not failures. They identify scope boundaries.
 
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ***
-## 📰Papers
+## 📰 Papers
 - ### Core Framework:
     - **[Start here – FIT (Force-Information-Time) Dynamics: Origin and Design Goals](https://doi.org/10.5281/zenodo.18142211)**
     - **[Constraint Accumulation via Laziness in Finite Markov Chains - A Provable Specialization of the FIT Framework](https://doi.org/10.5281/zenodo.18264166)** 
@@ -110,12 +136,12 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
   - **[NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence windowing and level shifts
   - **[scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md)** — Explicit `obs:stage` boundary anchor
   - **[FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — Preregistered recession signal
-  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries
+  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries (B1 quick + scalable [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md))
 
 - ### Tier-2 Negative / Boundary Cases
   - **[MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — Stable negative coupling (sign-mismatch)
   - **[FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md)** — Estimator-family mismatch across crises
-  - **[NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md)** — Coherence passes, H1 inconclusive
+  - **[NYC 311 service requests (HPD)](experiments/real_world/nyc_311_tier2p5/README.md)** — Coherence passes, H1 inconclusive
 
 - ### Conceptual Cases
   - **[Smartphones & Attention](docs/cases/CASE_01_Phone_Attention_System.md)** — Attention dynamics + constraint accumulation
@@ -142,7 +168,10 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [Explorers Index (FIT-Explorer + extensions)](docs/explorers/README.md) | Budgeted method search specs + extension docs |
 | [World-Evolution Explorer (v0.1)](docs/world_evolution/README.md) | Toy evolving worlds + effective-variable / alarm search demo |
 | [Math-Discovery Engine (v0.1)](docs/math_discovery/README.md) | Auditable search over representations/lemmas/strategies (spec-first) |
+| [Benchmarks Index](docs/benchmarks/README.md) | Benchmark specs + paper-ready summaries |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking alarm admissibility benchmark |
+| [GMB v0.5 repairs (A/B/C)](docs/benchmarks/gmb_repairs_unified_summary.md) | Why “parameter tuning” repairs fail under low-FPR constraints |
+| [Li² r_crit(M) benchmark (4-point)](docs/benchmarks/li2_cross_m_summary.md) | Cross‑M phase boundary summary + visualization |
 
 ---
 
@@ -168,7 +197,11 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 
 ![Dr.One policy-eval: baseline vs controlled](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
 
-*If a low-FPR alarm is feasible, a controller can withhold execution authority for unsafe actions without stopping computation. Reproducibility: [MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md)*
+*If a low-FPR alarm is feasible, a controller can withhold execution authority for unsafe actions without stopping computation.*
+
+**Reproducibility**: [MATRIX_PROTOCOL_v0_2.md](examples/dr_one_demo/results/MATRIX_PROTOCOL_v0_2.md) — paper-grade matrix (4 models × 2 prompt sets × 2 FPRs × 5 seeds × 100 samples)
+
+Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "python"`
 
 ---
 
@@ -230,7 +263,7 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 ### Human Learning
 - [**Human Learning & Insight (series)**](essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
-- ✨ [**Human–LLM Coupled Theory Discovery**](essays/human-learning/learing-to-think-with-llm.md)  — On Iterative Theory Discovery Through Human–LLM Collaboration `learners, researchers` 
+- ✨ [**Human–LLM Coupled Theory Discovery**](essays/human-learning/learning-to-think-with-llm.md)  — On Iterative Theory Discovery Through Human–LLM Collaboration `learners, researchers` 
 ### AI Safety & Governance
 - [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 

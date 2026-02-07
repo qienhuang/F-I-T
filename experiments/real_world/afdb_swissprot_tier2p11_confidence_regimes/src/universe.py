@@ -22,5 +22,14 @@ def scan_accessions(coords_dir: str | Path) -> List[str]:
     return sorted(acc)
 
 def is_fragment_name(coords_filename: str) -> bool:
-    # Heuristic: treat AFDB fragment naming as fragment if contains '-F' segment.
-    return "-F" in coords_filename
+    # Heuristic: AFDB filenames include an "-F<n>-" segment.
+    #
+    # Treat entries with F2/F3/... as fragments (multi-fragment entries), but do not treat
+    # the common F1 form as a fragment.
+    m = re.search(r"-F(\d+)-", coords_filename)
+    if not m:
+        return False
+    try:
+        return int(m.group(1)) >= 2
+    except Exception:
+        return False

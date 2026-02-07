@@ -2,6 +2,7 @@
 data/coords/
 data/pae/
 data/msa/
+data/runs/
 
 # outputs
 out/

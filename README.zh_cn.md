@@ -67,6 +67,11 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ## Tier-2 证据（真实世界系统）
 
+缩写说明（首次出现）：
+
+- **NYC 311 (HPD)**：纽约市 311 服务请求数据，筛选 **Housing Preservation & Development（住房保护与发展部门）** 的相关工单。
+- **NYC TLC / FHVHV**：纽约市出租车与豪华轿车管理委员会；**高频网约车（for-hire vehicles, high volume）**。
+
 | 领域 | 案例 | 判定 | 关键发现 |
 |------|------|------|----------|
 | **ML / Grokking** | [Grokking 硬指标](experiments/grokking_hard_indicators_v0_2/README.md) | 可评估 | 基线在严格低 FPR 下尚不稳定 |
@@ -75,14 +80,14 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | **生物** | [scRNA 小鼠原肠胚形成](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | 显式阶段锚点；purity > mixing |
 | **金融** | [FRED 权益波动](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | 危机依赖的家族不匹配 |
 | **金融** | [FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | 预注册假设通过 |
-| **城市** | [NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence 通过，H1 边界工件 |
+| **城市** | [NYC 311 服务请求（HPD）](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence 通过，H1 边界工件 |
 
 **解读**：负结果（`ESTIMATOR_UNSTABLE`、`INCONCLUSIVE`）是 EST 的一等产出，而非失败。它们识别范围边界。
 
 ![过程图](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
 ***
-## 📰论文
+## 📰 论文
 
 - ### 核心框架：
     - **[从这里开始 – FIT（力-信息-时间）动力学：起源与设计目标](https://doi.org/10.5281/zenodo.18142211)**
@@ -111,12 +116,12 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
   - **[NYC TLC 体制跃迁](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence 窗口化与水平位移
   - **[scRNA 命运承诺](experiments/real_world/scrna_commitment_tier2p11/README.md)** — 显式 `obs:stage` 边界锚点
   - **[FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — 预注册衰退信号
-  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界
+  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界（B1 quick 已可测；可扩展 runbook： [RUNBOOK_B1_EXPANDED_CPU.md](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md)）
 
 - ### Tier-2 负结果 / 边界案例
   - **[MTA 地铁小时级](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — 稳定负耦合（符号不匹配）
   - **[FRED 权益波动](experiments/real_world/fred_equity_volatility_tier2p11/README.md)** — 跨危机的估计器家族不匹配
-  - **[NYC 311 (HPD)](experiments/real_world/nyc_311_tier2p5/README.md)** — Coherence 通过，H1 不确定
+  - **[NYC 311 服务请求（HPD）](experiments/real_world/nyc_311_tier2p5/README.md)** — Coherence 通过，H1 不确定
 
 - ### 概念性案例
   - **[智能手机与注意力](docs/cases/CASE_01_Phone_Attention_System.md)** — 注意力动力学 + 约束累积
@@ -143,7 +148,10 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [探索器索引（FIT-Explorer + 扩展）](docs/explorers/README.md) | 预算方法搜索规范 + 扩展入口 |
 | [World-Evolution 探索器（v0.1）](docs/world_evolution/README.md) | 玩具演化世界 + 有效变量/告警方法搜索 demo |
 | [Math-Discovery 引擎（v0.1）](docs/math_discovery/README.md) | 对表征/引理/策略的可审计探索（以规范为先） |
+| [Benchmarks 索引](docs/benchmarks/README.md) | 基准规范 + 可引用的汇总报告 |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking 警报可接受性基准 |
+| [GMB v0.5 修复（A/B/C）](docs/benchmarks/gmb_repairs_unified_summary.md) | 为什么“调参式修复”在低 FPR 约束下会失败 |
+| [Li² r_crit(M) 基准（四点）](docs/benchmarks/li2_cross_m_summary.md) | 跨 M 的相变边界汇总 + 可视化 |
 
 ---
 
@@ -231,7 +239,7 @@ tools/          可运行工具包
 
 ### 人类学习
 - [**人类学习与顿悟（系列）**](essays/human-learning) — 顿悟作为时间相变 `教育者、学习者、研究者`
-- ✨ [**人机耦合理论发现：通过人-LLM协作的迭代理论发现**](essays/human-learning/learing-to-think-with-llm.md) `学习者、研究者`
+- ✨ [**人机耦合理论发现：通过人-LLM协作的迭代理论发现**](essays/human-learning/learning-to-think-with-llm.md) `学习者、研究者`
 
 ### AI 安全与治理
 - [**空性窗口**](essays/ai/emptiness-window.md) — 节奏主导系统的结构性干预 `AI 安全研究者、系统设计者`

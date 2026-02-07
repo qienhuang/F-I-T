@@ -97,6 +97,22 @@ cd github/F-I-T/examples/dr_one_demo
 powershell -ExecutionPolicy Bypass -File .\run_policy_eval_matrix.ps1 -Model "qwen3:4b" -Samples 50 -Temperature 0.9
 ```
 
+### Paper-grade matrix (v0.2)
+
+For a reproducible paper-ready benchmark (4 models × 2 prompt sets × 2 FPRs × 5 seeds × 100 samples):
+
+```powershell
+.\run_policy_eval_matrix.ps1 -PaperMatrix -PythonExe "python"
+```
+
+Or use the one-liner:
+
+```powershell
+.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "python"
+```
+
+See [MATRIX_PROTOCOL_v0_2.md](results/MATRIX_PROTOCOL_v0_2.md) for the exact specification.
+
 Tip: use `-OutRoot out_matrix_v0_1 -CleanOutRoot` to keep a paper-ready run directory separate from ad-hoc experiments.
 
 ## Summarize results

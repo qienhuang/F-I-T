@@ -11,9 +11,16 @@ If you want runnable engines, start from `tools/README.md`.
 
 ## Index
 
-- **GMB v0.4 — Grokking Monitorability Benchmark**: `docs/benchmarks/gmb_v0_4/README.md`
-  - Companion note (why AUC can mislead under low-FPR): `docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md`
+- **GMB v0.4 — Grokking Monitorability Benchmark**: [docs/benchmarks/gmb_v0_4/README.md](gmb_v0_4/README.md)
+  - Companion note (why AUC can mislead under low-FPR): [docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md](gmb_v0_4/monitorability_boundary_toy_theorem.md)
+  - v0.5 repairs (notes + comparisons):
+    - **Unified summary (all repairs A/B/C):** [gmb_repairs_unified_summary.md](gmb_repairs_unified_summary.md) ⭐
+    - Repair A/B comparison: [gmb_v0_5_repairs_comparison.md](gmb_v0_5_repairs_comparison.md)
+    - Repair C analysis: [gmb_v0_5_repairC_results.md](gmb_v0_5_repairC_results.md)
+    - Diagnostic note: [gmb_v0_5_repairs_note.md](gmb_v0_5_repairs_note.md)
 
-- **Li² scaling-law cross‑M spot check (v4)**: `docs/benchmarks/li2_scaling_law_cross_m_v4/README.md`
+- **Li² scaling-law cross‑M spot check (v4)**: [docs/benchmarks/li2_scaling_law_cross_m_v4/README.md](li2_scaling_law_cross_m_v4/README.md)
 
-- **Li² scaling-law cross‑M spot check (v5)**: `docs/benchmarks/li2_scaling_law_cross_m_v5/README.md`
+- **Li² scaling-law cross‑M spot check (v5)**: [docs/benchmarks/li2_scaling_law_cross_m_v5/README.md](li2_scaling_law_cross_m_v5/README.md)
+  - **Cross‑M r_crit benchmark (paper-ready, four-point with visualization):** [li2_cross_m_summary.md](li2_cross_m_summary.md) ⭐
+  - Visualization: [li2_rcrit_vs_M_benchmark.png](li2_rcrit_vs_M_benchmark.png) / [.pdf](li2_rcrit_vs_M_benchmark.pdf)

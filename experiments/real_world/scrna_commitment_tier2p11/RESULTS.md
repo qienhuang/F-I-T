@@ -16,6 +16,7 @@ Interpretation rules:
 | `pancreas_endocrinogenesis_day15_purity` | `file:data/raw/pancreas_endocrinogenesis_day15.h5ad` | `pseudotime` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.353 | 0.165 | `OK_PER_WINDOW` | `outputs_runs/evidence_pancreas_day15_purity.zip` |
 | `gastrulation_e75_purity` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.581 | 0.0145 | `OK_PER_WINDOW` | `evidence_gastrulation_e75_purity.zip` |
 | `gastrulation_e75_mixing` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_dim_collapse` vs `C_mixing` | `+1` | 17 | 0.306 | 0.232 | `OK_PER_WINDOW` | `evidence_gastrulation_e75_mixing.zip` |
+| `gastrulation_e75_purity_mixing` | `file:data/raw/gastrulation_e75.h5ad` | `obs:stage` | `obs:celltype` | `C_label_purity` vs `C_mixing` | `+1` | 17 | 0.502 | 0.0398 | `OK_PER_WINDOW` | `evidence_gastrulation_e75_purity_mixing.zip` |
 | `moignard15_exporder_leidenfixed_purity` | `file:data/raw/moignard15_exporder_leiden_fixed.h5ad` | `obs:exp_order` | `obs:leiden_fixed` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | -1.000 | 0.0 | `ESTIMATOR_UNSTABLE` | `outputs_runs/evidence_moignard15_exporder_leidenfixed_purity.zip` |
 | `nestorowa16_zenodo_purity` | `file:data/raw/nestorowa16_hsc_2016.h5ad` | `obsm:X_pca:0` | `obs:cell_types_broad_cleaned` | `C_dim_collapse` vs `C_label_purity` | `+1` | 17 | 0.447 | 0.0719 | `OK_PER_WINDOW` | `outputs_runs/evidence_nestorowa16_zenodo_purity.zip` |
 | `dentategyrus_age_purity` | `file:data/raw/dentategyrus_10X43_1.h5ad` | `obs:age(days)` | `obs:clusters` | `C_dim_collapse` vs `C_label_purity` | `+1` | 3 | 0.500 | 0.667 | `OK_PER_WINDOW` | `outputs_runs/evidence_dentategyrus_age_purity.zip` |
@@ -25,6 +26,26 @@ Notes:
 - The coherence threshold in these runs is `rho >= 0.2` with `expected_sign = +1` (see each run's `PREREG.locked.yaml` and `coherence_report.json`).
 - The **strongest "explicit-axis" anchor** in this portfolio is `gastrulation_e75_purity` (windowing axis = `obs:stage`).
 - **Same-boundary contrast** (gastrulation): Under the same axis (`obs:stage`) and boundary, `C_mixing` achieves marginal pass (rho=0.306, p=0.232, not significant) while `C_label_purity` is stronger and significant (rho=0.581, p=0.0145). This demonstrates that estimator family selection affects coherence strength, not just pass/fail.
+
+## Estimator Family Grid (gastrulation_e75)
+
+**Fixed boundary**: `obs:stage` × `obs:celltype` (window_q=0.20, stride_q=0.05, min_cells=500)
+
+This grid tests all 3 pairs from 3 estimators under identical windowing:
+
+| Pair | C1 | C2 | ρ | p-value | Verdict |
+|------|----|----|---|---------|---------|
+| 1 | C_dim_collapse | C_label_purity | **0.581** | 0.0145 | PASS (significant) |
+| 2 | C_dim_collapse | C_mixing | 0.306 | 0.232 | PASS (marginal) |
+| 3 | C_label_purity | C_mixing | **0.502** | 0.0398 | PASS (significant) |
+
+**Findings**:
+
+1. **All pairs PASS** the coherence gate (threshold ρ ≥ 0.20), confirming the gastrulation dataset is suitable for FIT analysis under this boundary.
+2. **Pair 1** (dim_collapse × label_purity) shows strongest coherence (ρ=0.58), significant at p<0.05.
+3. **Pair 3** (label_purity × mixing) is the second-strongest (ρ=0.50), also significant.
+4. **Pair 2** (dim_collapse × mixing) passes but is weakest (ρ=0.31) and not statistically significant.
+5. **Interpretation**: When both C_label_purity and C_mixing are available, prefer C_label_purity for tighter coherence. The fact that all three pairs pass suggests robust estimator family coverage for this biological system.
 
 ## Axis strength (for Tier-2 claims)
 

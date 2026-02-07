@@ -31,11 +31,18 @@ Configuration (conceptually):
 
 To make the “gating useful vs gating redundant” distinction explicit, we also keep a small matrix writeup:
 
-- `MATRIX_SUMMARY.md`
-- `MATRIX_PROTOCOL.md`
-- `policy_eval_runs_matrix.md` (paper-ready; all runs in the matrix)
-- `policy_eval_agg_matrix.md` (paper-ready; grouped mean±std)
-- `policy_eval_runs.md` / `policy_eval_agg.md` (older exploratory scans)
+### Paper-grade reproducibility protocols
+
+- **[MATRIX_PROTOCOL_v0_2.md](MATRIX_PROTOCOL_v0_2.md)** ⭐ — Current paper-grade preset (4 models × 2 prompt sets × 2 FPRs × 5 seeds × 100 samples)
+- **[MATRIX_PROTOCOL.md](MATRIX_PROTOCOL.md)** — Earlier version (2 models × 1 prompt set)
+- **[MATRIX_SUMMARY.md](MATRIX_SUMMARY.md)** — Conceptual overview
+- **[run_matrix_v0_2_and_summarize.ps1](run_matrix_v0_2_and_summarize.ps1)** — One-click runner for v0.2
+
+### Generated tables (paper-ready)
+
+- `policy_eval_runs_matrix.md` — All runs in the matrix (one row per run)
+- `policy_eval_agg_matrix.md` — Grouped mean±std by (model, prompt_set, target_fpr)
+- `policy_eval_runs.md` / `policy_eval_agg.md` — Older exploratory scans
 
 Paper-ready headline (read/write prompt suite; 20/20 runs; 2 models × 2 target FPR × 5 seeds; std=0):
 

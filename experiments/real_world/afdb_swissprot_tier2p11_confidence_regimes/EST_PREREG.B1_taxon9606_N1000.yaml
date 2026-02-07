@@ -1,0 +1,114 @@
+preregistration:
+  case_id: afdb_swissprot_tier2p11_confidence_regimes
+  pack_version: v1.2_repo_ready
+  date_locked: '2026-02-07'
+  task:
+    tier: tier2p11
+    type: topological_event
+    proposition: P11
+    description: >
+      Expanded B1 run (coords + PAE) on a deterministic, reviewed UniProt subset
+      (taxon=9606). This prereg is designed to produce a larger, auditable
+      coherence-gate evaluation under explicit boundary discipline.
+  success_criteria:
+  - Pipeline runs end-to-end producing required artifacts.
+  - Coherence gate is evaluated (PASS/FAIL) and written to regime_report.md.
+  - Output explicitly reports either (a) >=1 detected event or (b) none detected.
+  failure_labels:
+    estimator_unstable: ESTIMATOR_UNSTABLE
+    scope_limited: SCOPE_LIMITED
+    boundary_dependent: BOUNDARY_DEPENDENT
+
+boundary:
+  afdb_release_version: v6
+  dataset_scope: uniprot_reviewed_taxon_9606
+  boundary_mode: B1_COORD_PLUS_PAE
+  formats:
+    coords: [cif]
+    pae: [json]
+    msa: [a3m]
+  paths:
+    coords_dir: data/runs/B1_taxon9606_N1000/coords
+    pae_dir: data/runs/B1_taxon9606_N1000/pae
+    msa_dir: data/runs/B1_taxon9606_N1000/msa
+  selection:
+    universe_source:
+      type: scan_coords_dir
+      pattern: AF-<ACCESSION>-*.{cif}
+    sampler:
+      type: deterministic_hash
+      hash_fn: sha256
+      seed_string: FIT_AFDB_B1_taxon9606_N1000_v1
+      target_n_valid: 1000
+      max_draw_multiplier: 5
+    filters:
+      exclude_fragments_by_name: true
+      min_length: 50
+      max_length: 2500
+  artifact_availability:
+    pae_available: true
+    msa_available: false
+
+axis:
+  type: length_bins
+  bin_width_aa: 200
+  min_items_per_bin: 10
+  binning_rule: inclusive_lower_exclusive_upper
+
+windows:
+  smoothing_bins: 3
+  event_jump_bins: 2
+  event_persist_bins: 2
+
+estimators:
+  composites:
+    epsilon: 1.0e-06
+    norm:
+      method: robust_quantile_scale
+      lower_q: 0.05
+      upper_q: 0.95
+      clip_0_1: true
+    C_rule_by_boundary:
+      B1_COORD_PLUS_PAE:
+        type: geometric_mean
+        C_ids: [C1_low_conf_frac, C2_pae_offdiag]
+        normalize: [C2_pae_offdiag]
+
+p11_event:
+  event_id: E_regime
+  delta_R: 0.12
+  cooccurrence_required: 2
+  signals:
+  - id: drop_I1
+    delta: 0.08
+    metric: I1_hi_conf_frac
+    direction: down
+  - id: rise_C1
+    delta: 0.06
+    metric: C1_low_conf_frac
+    direction: up
+  - id: rise_C2
+    delta: 2.0
+    metric: C2_pae_offdiag
+    direction: up
+    requires: [PAE]
+
+coherence_gate:
+  metric: event_alignment
+  tolerance_bins: 1
+  if_available_compare: [C1_low_conf_frac, C2_pae_offdiag]
+  fail_label: ESTIMATOR_UNSTABLE
+
+outputs:
+  out_root: out
+  run_id_style: manual
+  artifacts:
+  - accessions_selected.txt
+  - accessions_selected.sha256
+  - metrics_per_protein.parquet
+  - metrics_per_bin.parquet
+  - regime_report.md
+  - tradeoff_onepage.pdf
+  - boundary_snapshot.json
+  - run_manifest.json
+  - EST_PREREG.locked.yaml
