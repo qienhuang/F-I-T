@@ -191,6 +191,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
 | [Slow-evolving agent architecture (v0.2)](docs/agents/README.md) | FIT/EST-aligned agent specs + runnable pre-validator checklist |
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
+| [NanoBot FIT-Sec fork](https://github.com/qienhuang/nanobot-fitsec) | Production-oriented agent runtime safety layer (monitorability gate + emptiness window + audited irreversible actions). External repo; maintained separately. |
 | [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1-style RL + risk control |
 
 ### Dr.One: Baseline vs Controlled

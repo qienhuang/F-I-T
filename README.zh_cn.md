@@ -171,6 +171,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [CPU 优先本地代理](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM 蓝图 |
 | [慢演化代理架构（v0.2）](docs/agents/README.md) | FIT/EST 对齐的 agent 架构规范 + 可运行的预验证清单 |
 | [Dr.One 演示](examples/dr_one_demo/README.md) | 自编辑循环 + 可监控性门 |
+| [NanoBot FIT-Sec 安全 fork](https://github.com/qienhuang/nanobot-fitsec) | 面向生产的 agent 运行时安全层：可监控性门 + emptiness window + 不可逆操作审计。独立仓库，单独维护。 |
 | [DeepSeek R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1 风格 RL + 风险控制 |
 
 ### Dr.One：基线 vs 受控
