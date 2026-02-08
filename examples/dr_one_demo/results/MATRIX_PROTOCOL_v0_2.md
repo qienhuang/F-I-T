@@ -64,7 +64,7 @@ From `examples/dr_one_demo/`:
 If you need an explicit Python path:
 
 ```powershell
-.\run_policy_eval_matrix.ps1 -PaperMatrix -PythonExe "C:\Path\To\python.exe"
+.\run_policy_eval_matrix.ps1 -PaperMatrix -PythonExe "$(Get-Command python).Source"
 ```
 
 Outputs go to `out_matrix_v0_2/` by default (one folder per run). A run is complete when it contains `policy_eval_summary.json`.

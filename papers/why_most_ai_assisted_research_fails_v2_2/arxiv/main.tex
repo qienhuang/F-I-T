@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Unicode punctuation (for pdfLaTeX on arXiv).
+\DeclareUnicodeCharacter{2013}{--}   % en dash
+\DeclareUnicodeCharacter{2014}{---}  % em dash
+\DeclareUnicodeCharacter{2019}{'}    % right single quote
+\DeclareUnicodeCharacter{201C}{``}   % left double quote
+\DeclareUnicodeCharacter{201D}{''}   % right double quote
+
+\usepackage[margin=1.25in]{geometry}
+\usepackage{microtype}
+\usepackage[numbers]{natbib}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{url}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\title{Why Most AI-Assisted Research Fails (and How to Fix It)\\
+\large A Structural Account of Fluent Stagnation and the Conditions for Cumulative Discovery}
+
+\author{Qien Huang\thanks{Version: v2.2 (final preprint). Status: methodological essay / research-process paper (non-peer-reviewed). License: CC BY 4.0.}}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\paragraph{Keywords.}\ \input{keywords}
+
+\input{content}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

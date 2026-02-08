@@ -97,7 +97,8 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
     - **[受控涅槃：作为后 Grokking AI 系统结构性安全机制的空性窗口](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634)**
     - **[AI 学习系统中的不可逆操作与节奏错配](https://doi.org/10.5281/zenodo.18142151)**
     - **[Grokking 硬指标：一个预注册评估协议和弱基线](https://doi.org/10.5281/zenodo.18380476)**
-    - **[超越道德宪章：AI 安全的技术选项 - Claude 宪法、自指与 FIT/受控涅槃视角](https://doi.org/10.5281/zenodo.18341340)**
+    - **[超越道德宪章：AI 安全的技术选项（宪章式治理、自指与 FIT/受控涅槃视角）](https://doi.org/10.5281/zenodo.18341340)**
+    - **[Why Most AI-Assisted Research Fails (and How to Fix It)](https://doi.org/10.5281/zenodo.18528536)**
 
 - ### 应用
   - **[scRNA-seq 中的命运承诺](https://doi.org/10.5281/zenodo.18450637)**
@@ -171,7 +172,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [CPU 优先本地代理](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM 蓝图 |
 | [慢演化代理架构（v0.2）](docs/agents/README.md) | FIT/EST 对齐的 agent 架构规范 + 可运行的预验证清单 |
 | [Dr.One 演示](examples/dr_one_demo/README.md) | 自编辑循环 + 可监控性门 |
-| [NanoBot FIT-Sec 安全 fork](https://github.com/qienhuang/nanobot-fitsec) | 面向生产的 agent 运行时安全层：可监控性门 + emptiness window + 不可逆操作审计。独立仓库，单独维护。 |
+| [⭐NanoBot FIT-Sec 安全 fork](https://github.com/qienhuang/nanobot-fitsec) | 面向生产的 agent 运行时安全层：可监控性门 + emptiness window + 不可逆操作审计。独立仓库，单独维护。 |
 | [DeepSeek R1 案例笔记](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1 风格 RL + 风险控制 |
 
 ### Dr.One：基线 vs 受控

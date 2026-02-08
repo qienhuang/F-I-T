@@ -117,7 +117,8 @@ Abbreviations (first use):
     - **[Controlled Nirvana: Emptiness Windows as a Structural Safety Mechanism for Post-Grokking AI Systems](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6023634)** 
     - **[Irreversible Operations and Tempo Mismatch in AI Learning Systems](https://doi.org/10.5281/zenodo.18142151)** 
     - **[Grokking Hard Indicators: A Preregistered Evaluation Protocol and a Weak Baseline](https://doi.org/10.5281/zenodo.18380476)** 
-    - **[Beyond Moral Charters: Technical Options for AI Safety - Claude's Constitution, Self-Reference, and the FIT / Controlled-Nirvana Lens](https://doi.org/10.5281/zenodo.18341340)**
+    - **[Beyond Moral Charters: Technical Options for AI Safety (constitutional governance, self-reference, and the FIT/Controlled-Nirvana lens)](https://doi.org/10.5281/zenodo.18341340)**
+    - **[Why Most AI-Assisted Research Fails (and How to Fix It)](https://doi.org/10.5281/zenodo.18528536)**
 
 - ### Applications
   - **[Fate Commitment in scRNA-seq](https://doi.org/10.5281/zenodo.18450637)** 
@@ -191,7 +192,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 | [CPU-first local agent](papers/cpu-first-local-agent-on-16gb-deepseek-distill.v0.2.md) | 16GB RAM blueprint |
 | [Slow-evolving agent architecture (v0.2)](docs/agents/README.md) | FIT/EST-aligned agent specs + runnable pre-validator checklist |
 | [Dr.One demo](examples/dr_one_demo/README.md) | Self-edit loop + monitorability gate |
-| [NanoBot FIT-Sec fork](https://github.com/qienhuang/nanobot-fitsec) | Production-oriented agent runtime safety layer (monitorability gate + emptiness window + audited irreversible actions). External repo; maintained separately. |
+| [⭐NanoBot FIT-Sec fork](https://github.com/qienhuang/nanobot-fitsec) | Production-oriented agent runtime safety layer (monitorability gate + emptiness window + audited irreversible actions). External repo; maintained separately. |
 | [DeepSeek R1 case note](docs/ai_safety/deepseek_r1_fit_case_note.md) | DeepSeek R1-style RL + risk control |
 
 ### Dr.One: Baseline vs Controlled
