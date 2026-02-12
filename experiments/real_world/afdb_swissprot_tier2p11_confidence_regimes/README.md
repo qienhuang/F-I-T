@@ -125,11 +125,38 @@ Both stage a deterministic accession set (reviewed UniProt subset) into `data/ru
 Optional: a B2 quick prereg is provided to audit the same accession set under a boundary that includes MSA:
 
 - **Quick** (N=100, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N100.yaml`
+- **Expanded** (N=1000, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N1000.yaml` (requires downloading the MSA channel for the staged accession set)
 
 Repo-safe evidence zips (exclude local caches; include locked prereg + required artifacts):
 
 - `evidence_B1_taxon9606_N100.zip`
 - `evidence_B1_taxon9606_N1000.zip`
+- `evidence_B2_taxon9606_N100.zip`
+- `evidence_B2_taxon9606_N1000.zip`
+
+### B1 vs B2 comparison (repo-safe summary)
+
+| Run | Boundary | N | Coherence Gate | Event? | C1 bin | C2 bin | C3 bin |
+|-----|----------|---|----------------|--------|--------|--------|--------|
+| B1_taxon9606_N100 | B1 (coords+PAE) | 96 | COHERENCE_NOT_TESTABLE | No | - | - | n/a |
+| B1_taxon9606_N1000 | B1 (coords+PAE) | 988 | **COHERENT** | Yes (bin 2) | 2 | 2 | n/a |
+| B2_taxon9606_N100 | B2 (coords+PAE+MSA) | 96 | **ESTIMATOR_UNSTABLE** | Yes (bin 5) | 3 | 3 | 8 |
+| B2_taxon9606_N1000 | B2 (coords+PAE+MSA) | 988 | **ESTIMATOR_UNSTABLE** | Yes (bin 2) | 2 | 2 | 8 |
+
+**Key finding (confirmed at N=1000):** The MSA deficit channel (C3) fires at **bin 8** regardless of sample size (N=100 or N=1000), while the pLDDT/PAE channels (C1, C2) consistently fire at **bin 2** at scale. This is not a noise artifact -- it is a **structural disagreement** between measurement channels.
+
+**Interpretation:**
+
+- Under B1 (coords + PAE), the estimator tuple is coherent at N=1000: all channels agree on bin 2.
+- Under B2 (coords + PAE + MSA), adding the MSA channel breaks coherence. The MSA deficit estimator detects a regime transition at a much later length scale (bin 8) than pLDDT/PAE (bin 2).
+- The coherence gate correctly labels B2 as ESTIMATOR_UNSTABLE, preventing conflation of structurally different signals into a single regime claim.
+- This demonstrates a core FIT/EST principle: **changing the boundary (B1 -> B2) is a different experiment**, and the gate enforces that discipline.
+
+### Key methodological finding
+
+> **MSA channel is boundary-dependent and not coherence-equivalent to pLDDT/PAE along the length axis.**
+>
+> B2 N=1000 confirms structural disagreement (not noise): the coherence gate remains ESTIMATOR_UNSTABLE with C3_msa_deficit event at bin 8 vs C1/C2 at bin 2. This persistent offset across sample sizes (N=100, N=1000) establishes that the MSA deficit estimator measures a fundamentally different regime transition than pLDDT/PAE-derived estimators. The gate correctly prevents a single unified regime claim under the B2 boundary.
 
 ## Estimator tuple (explicit)
 

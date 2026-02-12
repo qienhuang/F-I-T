@@ -98,7 +98,7 @@ Abbreviations (first use):
 | **Mobility** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | Windowing diagnostic; Green counterexample |
 | **Transit** | [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Stable negative rho (sign-mismatch) |
 | **Biology** | [scRNA mouse gastrulation](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | Explicit stage anchor; purity > mixing |
-| **Protein** | [AlphaFold DB Swiss-Prot confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT` (B1 quick) | PAE-based proxies align and produce testable coherence + event detection at small N; suite v3.0 smoke is runnable (PAE Proxy Alarm, MSA Deficit Proxy, Dual-Oracle Active Acquisition); scalable via prereg + [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md) |
+| **Protein** | [AlphaFold DB Swiss-Prot confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT` (B1, N~1000); `ESTIMATOR_UNSTABLE` (B2, N~1000) | Coords+pLDDT+PAE are coherent at N~1000 (B1). Under B2, the MSA deficit channel remains structurally misaligned with pLDDT/PAE even at N~1000, and the coherence gate blocks interpretation; suite v3.0 smoke is runnable (PAE Proxy Alarm, MSA Deficit Proxy, Dual-Oracle Active Acquisition); scalable via prereg + [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md) |
 | **Finance** | [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Crisis-dependent family mismatch |
 | **Finance** | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | Preregistered hypotheses pass |
 | **Urban** | [NYC 311 service requests (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
@@ -137,7 +137,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
   - **[NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence windowing and level shifts
   - **[scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md)** — Explicit `obs:stage` boundary anchor
   - **[FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — Preregistered recession signal
-  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries (B1 quick; suite v3.0 smoke runnable; scalable [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md))
+  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries (B1 N~1000 coherent; B2 remains unstable at N~1000 due to structural MSA/PAE disagreement -> coherence gate blocks; suite v3.0 smoke runnable; scalable [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md))
 
 - ### Tier-2 Negative / Boundary Cases
   - **[MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — Stable negative coupling (sign-mismatch)

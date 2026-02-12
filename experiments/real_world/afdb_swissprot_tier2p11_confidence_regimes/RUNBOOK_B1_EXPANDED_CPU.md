@@ -82,6 +82,32 @@ Outputs:
 - `out/B1_taxon9606_N1000/boundary_snapshot.json`
 - `out/B1_taxon9606_N1000/metrics_per_bin.parquet`
 
+## 2b) Optional: run the same accession set under B2 (adds MSA)
+
+This is the minimal "boundary switch" test:
+
+- B1: coords + PAE
+- B2: coords + PAE + MSA
+
+First, ensure the MSA channel is available for the staged accession set:
+
+```bash
+cd github/F-I-T/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes
+
+python scripts/download_pae_msa_for_accessions.py \
+  --accessions out/B1_taxon9606_N1000/accessions_selected.txt \
+  --out_pae_dir data/runs/B1_taxon9606_N1000/pae \
+  --out_msa_dir data/runs/B1_taxon9606_N1000/msa
+```
+
+Then run B2:
+
+```bash
+cd github/F-I-T/experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes
+
+python run_case.py --prereg EST_PREREG.B2_taxon9606_N1000.yaml --run_id B2_taxon9606_N1000
+```
+
 ## 3) Package a repo-safe evidence zip (optional)
 
 ```bash

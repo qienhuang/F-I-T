@@ -24,3 +24,9 @@ If you want runnable engines, start from `tools/README.md`.
 - **Li² scaling-law cross‑M spot check (v5)**: [docs/benchmarks/li2_scaling_law_cross_m_v5/README.md](li2_scaling_law_cross_m_v5/README.md)
   - **Cross‑M r_crit benchmark (paper-ready, four-point with visualization):** [li2_cross_m_summary.md](li2_cross_m_summary.md) ⭐
   - Visualization: [li2_rcrit_vs_M_benchmark.png](li2_rcrit_vs_M_benchmark.png) / [.pdf](li2_rcrit_vs_M_benchmark.pdf)
+
+- **AlphaFold DB confidence regimes (AFDB Tier-2/P11)**: [experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md](../../experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)
+  - B1 (`coords+PAE`, N~1000): `COHERENT`
+  - B2 (`coords+PAE+MSA`, N~1000): `ESTIMATOR_UNSTABLE` due to persistent MSA/PAE event-bin disagreement (structural, not noise)
+
+- **Execution queue (current CPU/GPU run order)**: [EXECUTION_CHECKLIST_2026-02-12.md](EXECUTION_CHECKLIST_2026-02-12.md)

@@ -6,7 +6,8 @@
   - M=71: `experiments/li2_scaling_law/results/beta_multiseed_v5/M71/beta_analysis/beta_transition_analysis.json`
   - M=97: `experiments/li2_scaling_law/results/beta_multiseed_v4/M97/beta_analysis/beta_transition_analysis.json`
   - M=127: `experiments/li2_scaling_law/results/beta_multiseed_v4/M127/beta_analysis/beta_transition_analysis.json`
-  - M=159: `experiments/li2_scaling_law/results/beta_multiseed_v5_extra/M159/beta_analysis/beta_transition_analysis.json`
+  - M=159 (boundary): `experiments/li2_scaling_law/results/beta_multiseed_v5_extra/M159/beta_analysis/beta_transition_analysis.json`
+  - M=159 (speed-fit): `experiments/li2_scaling_law/results/beta_multiseed_v5_M159_speedfit/M159/experiments/` (18 runs: 3 seeds × 6 ratios 0.34–0.44)
 
 - **Results table:**
 
@@ -15,11 +16,9 @@
 | 71  | 0.415  | ✓         | 3          | 0.40        | 0.44        | Exp fit: β=29.59, R²=0.996 |
 | 97  | 0.385  | ✓         | 5          | 0.36        | 0.40        | Exp fit: β=45.11, R²=0.974 |
 | 127 | 0.350  | ✓         | 7          | 0.34        | 0.36        | Exp fit: β (see json), R²>0.97 |
-| 159 | 0.335  | ✗         | 0          | 0.32        | 0.34        | Low-ratio grid: p_grok=0 @≤0.32, >0 @0.34 |
+| 159 | 0.335  | ✓         | 6          | 0.32        | 0.34        | Exp fit: β=47.14, R²=0.934 (speed-fit补点) |
 
-- **Interpretation:** `r_crit` decreases monotonically with M (0.415 → 0.385 → 0.350 → 0.335). The trend is consistent across four moduli spanning 71–159. M71/M97/M127 have validated exponential fits for grok speed vs (r − r_crit); M159's r_crit is bounded by the dense low-ratio grid.
-
-- **Interpretation:** `r_crit` decreases monotonically with M (0.415 → 0.385 → 0.350 → 0.335). The trend is consistent across four moduli spanning 71–159. M71/M97/M127 have validated exponential fits for grok speed vs (r − r_crit); M159's r_crit is bounded by the dense low-ratio grid.
+- **Interpretation:** `r_crit` decreases monotonically with M (0.415 → 0.385 → 0.350 → 0.335). The trend is consistent across four moduli spanning 71–159. All four Ms now have validated exponential fits for grok speed vs (r − r_crit).
 
 - **Files to inspect / reproduce:**
   - Beta transition analyses: see "Data sources" above for each M's `beta_transition_analysis.json`

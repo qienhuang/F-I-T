@@ -78,6 +78,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | **出行** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | 窗口化诊断；Green 反例 |
 | **公交** | [MTA 地铁小时级](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | 稳定负 rho（符号不匹配） |
 | **生物** | [scRNA 小鼠原肠胚形成](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | 显式阶段锚点；purity > mixing |
+| **蛋白** | [AlphaFold DB Swiss-Prot 置信度分区](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT`（B1, N≈1000）；`ESTIMATOR_UNSTABLE`（B2, N≈1000） | B1 下 coords+pLDDT+PAE 相干；B2 下 MSA deficit 与 pLDDT/PAE 出现结构性分歧，门控阻止解释 |
 | **金融** | [FRED 权益波动](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | 危机依赖的家族不匹配 |
 | **金融** | [FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | 预注册假设通过 |
 | **城市** | [NYC 311 服务请求（HPD）](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence 通过，H1 边界工件 |
@@ -117,7 +118,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
   - **[NYC TLC 体制跃迁](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence 窗口化与水平位移
   - **[scRNA 命运承诺](experiments/real_world/scrna_commitment_tier2p11/README.md)** — 显式 `obs:stage` 边界锚点
   - **[FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — 预注册衰退信号
-  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界（B1 quick 已可测；suite v3.0 smoke 可跑；可扩展 runbook： [RUNBOOK_B1_EXPANDED_CPU.md](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md)）
+  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界（B1 N≈1000 时相干门控通过；B2 在 N≈1000 仍出现 MSA/PAE 结构性分歧 -> 相干门控阻止解释；suite v3.0 smoke 可跑；可扩展 runbook： [RUNBOOK_B1_EXPANDED_CPU.md](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md)）
 
 - ### Tier-2 负结果 / 边界案例
   - **[MTA 地铁小时级](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — 稳定负耦合（符号不匹配）
