@@ -98,7 +98,7 @@ Abbreviations (first use):
 | **Mobility** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | Windowing diagnostic; Green counterexample |
 | **Transit** | [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Stable negative rho (sign-mismatch) |
 | **Biology** | [scRNA mouse gastrulation](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | Explicit stage anchor; purity > mixing |
-| **Protein** | [AlphaFold DB Swiss-Prot confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT` (B1 quick) | PAE-based proxies align and produce testable coherence + event detection at small N; scalable via prereg + [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md) |
+| **Protein** | [AlphaFold DB Swiss-Prot confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md) | `COHERENT` (B1 quick) | PAE-based proxies align and produce testable coherence + event detection at small N; suite v3.0 smoke is runnable (PAE Proxy Alarm, MSA Deficit Proxy, Dual-Oracle Active Acquisition); scalable via prereg + [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md) |
 | **Finance** | [FRED equity-volatility](experiments/real_world/fred_equity_volatility_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Crisis-dependent family mismatch |
 | **Finance** | [FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md) | `OK` | Preregistered hypotheses pass |
 | **Urban** | [NYC 311 service requests (HPD)](experiments/real_world/nyc_311_tier2p5/README.md) | `INCONCLUSIVE` | Coherence passes, H1 boundary artifact |
@@ -137,7 +137,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
   - **[NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence windowing and level shifts
   - **[scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md)** — Explicit `obs:stage` boundary anchor
   - **[FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — Preregistered recession signal
-  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries (B1 quick + scalable [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md))
+  - **[AlphaFold DB confidence regimes](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — Real-world instrumentation boundaries (B1 quick; suite v3.0 smoke runnable; scalable [runbook](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md))
 
 - ### Tier-2 Negative / Boundary Cases
   - **[MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — Stable negative coupling (sign-mismatch)
@@ -202,6 +202,8 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 *If a low-FPR alarm is feasible, a controller can withhold execution authority for unsafe actions without stopping computation.*
 
 **Reproducibility**: [MATRIX_PROTOCOL_v0_2.md](examples/dr_one_demo/results/MATRIX_PROTOCOL_v0_2.md) — paper-grade matrix (4 models × 2 prompt sets × 2 FPRs × 5 seeds × 100 samples)
+
+**Paper-ready tables**: [policy_eval_agg_matrix.md](examples/dr_one_demo/results/policy_eval_agg_matrix.md) (grouped) · [policy_eval_runs_matrix.md](examples/dr_one_demo/results/policy_eval_runs_matrix.md) (all runs) · [MATRIX_SUMMARY.md](examples/dr_one_demo/results/MATRIX_SUMMARY.md)
 
 Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "python"`
 

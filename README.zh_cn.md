@@ -117,7 +117,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
   - **[NYC TLC 体制跃迁](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence 窗口化与水平位移
   - **[scRNA 命运承诺](experiments/real_world/scrna_commitment_tier2p11/README.md)** — 显式 `obs:stage` 边界锚点
   - **[FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — 预注册衰退信号
-  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界（B1 quick 已可测；可扩展 runbook： [RUNBOOK_B1_EXPANDED_CPU.md](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md)）
+  - **[AlphaFold DB 置信度区间](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/README.md)** — 真实世界仪器边界（B1 quick 已可测；suite v3.0 smoke 可跑；可扩展 runbook： [RUNBOOK_B1_EXPANDED_CPU.md](experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/RUNBOOK_B1_EXPANDED_CPU.md)）
 
 - ### Tier-2 负结果 / 边界案例
   - **[MTA 地铁小时级](experiments/real_world/mta_subway_hourly_tier2p11/README.md)** — 稳定负耦合（符号不匹配）
@@ -179,7 +179,9 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ![Dr.One 策略评估：基线 vs 受控](examples/dr_one_demo/results/figures/dr_one_gating_readwrite_v1.svg)
 
-*如果低 FPR 警报可行，控制器可以在不停止计算的情况下扣留不安全操作的执行权限。可复现性：[MATRIX_PROTOCOL.md](examples/dr_one_demo/results/MATRIX_PROTOCOL.md)*
+*如果低 FPR 警报可行，控制器可以在不停止计算的情况下扣留不安全操作的执行权限。可复现性：[MATRIX_PROTOCOL_v0_2.md](examples/dr_one_demo/results/MATRIX_PROTOCOL_v0_2.md)*
+
+**论文级矩阵结果表**：[policy_eval_agg_matrix.md](examples/dr_one_demo/results/policy_eval_agg_matrix.md)（聚合） · [policy_eval_runs_matrix.md](examples/dr_one_demo/results/policy_eval_runs_matrix.md)（全部运行） · [MATRIX_SUMMARY.md](examples/dr_one_demo/results/MATRIX_SUMMARY.md)
 
 ---
 

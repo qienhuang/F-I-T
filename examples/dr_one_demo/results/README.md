@@ -1,6 +1,6 @@
 # Results (example artifacts)
 
-This folder stores **small, repo-safe example outputs** from `policy-eval` runs to make the “baseline vs controlled gating” story concrete.
+This folder stores **small, repo-safe example outputs** from `policy-eval` runs to make the "baseline vs controlled gating" story concrete.
 
 These artifacts are **not** used as evidence for any general claim. They are a reproducibility aid and a sanity check that:
 
@@ -29,29 +29,34 @@ Configuration (conceptually):
 
 ## Matrix summary (Windows 11 + RTX 3090)
 
-To make the “gating useful vs gating redundant” distinction explicit, we also keep a small matrix writeup:
+To make the "gating useful vs gating redundant" distinction explicit, we also keep a small matrix writeup:
 
 ### Paper-grade reproducibility protocols
 
-- **[MATRIX_PROTOCOL_v0_2.md](MATRIX_PROTOCOL_v0_2.md)** ⭐ — Current paper-grade preset (4 models × 2 prompt sets × 2 FPRs × 5 seeds × 100 samples)
-- **[MATRIX_PROTOCOL.md](MATRIX_PROTOCOL.md)** — Earlier version (2 models × 1 prompt set)
-- **[MATRIX_SUMMARY.md](MATRIX_SUMMARY.md)** — Conceptual overview
-- **[run_matrix_v0_2_and_summarize.ps1](run_matrix_v0_2_and_summarize.ps1)** — One-click runner for v0.2
+- **[MATRIX_PROTOCOL_v0_2.md](MATRIX_PROTOCOL_v0_2.md)** - Current paper-grade preset (4 models x 2 prompt sets x 2 FPRs x 5 seeds x 100 samples)
+- **[MATRIX_PROTOCOL.md](MATRIX_PROTOCOL.md)** - Earlier version (2 models x 1 prompt set)
+- **[MATRIX_SUMMARY.md](MATRIX_SUMMARY.md)** - Conceptual overview
+- **[run_matrix_v0_2_and_summarize.ps1](run_matrix_v0_2_and_summarize.ps1)** - One-click runner for v0.2
 
 ### Generated tables (paper-ready)
 
-- `policy_eval_runs_matrix.md` — All runs in the matrix (one row per run)
-- `policy_eval_agg_matrix.md` — Grouped mean±std by (model, prompt_set, target_fpr)
-- `policy_eval_runs.md` / `policy_eval_agg.md` — Older exploratory scans
+- `policy_eval_runs_matrix.md` - All runs in the matrix (one row per run)
+- `policy_eval_agg_matrix.md` - Grouped mean+/-std by (model, prompt_set, target_fpr)
+- `policy_eval_runs.md` / `policy_eval_agg.md` - Older exploratory scans
 
-Paper-ready headline (read/write prompt suite; 20/20 runs; 2 models × 2 target FPR × 5 seeds; std=0):
+Headline (read/write prompt suite; 20/20 runs; 2 models x 2 target FPR x 5 seeds; std=0):
 
-| Model | Target FPR | n_runs | Baseline adv tool rate | Controlled adv tool rate | Δ |
+| Model | Target FPR | n_runs | Baseline adv tool rate | Controlled adv tool rate | Delta |
 |---|---:|---:|---:|---:|---:|
-| qwen3:4b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
-| qwen3:4b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
-| qwen3:8b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
-| qwen3:8b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 | -100% |
+| qwen3:4b | 0.05 | 5 | 1.0+/-0.0 | 0.0+/-0.0 | -100% |
+| qwen3:4b | 0.10 | 5 | 1.0+/-0.0 | 0.0+/-0.0 | -100% |
+| qwen3:8b | 0.05 | 5 | 1.0+/-0.0 | 0.0+/-0.0 | -100% |
+| qwen3:8b | 0.10 | 5 | 1.0+/-0.0 | 0.0+/-0.0 | -100% |
+
+Full matrix (80/80 runs) is summarized in:
+
+- `policy_eval_runs_matrix.md` (all runs)
+- `policy_eval_agg_matrix.md` (grouped aggregates)
 
 Reproduce:
 

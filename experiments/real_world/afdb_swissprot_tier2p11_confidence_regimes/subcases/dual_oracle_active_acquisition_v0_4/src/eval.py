@@ -68,7 +68,7 @@ def evaluate_binary_classifier(
 
 def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, float]:
     mae = float(mean_absolute_error(y_true, y_pred))
-    rmse = float(mean_squared_error(y_true, y_pred, squared=False))
+    rmse = float(np.sqrt(mean_squared_error(y_true, y_pred)))
     r2 = float(r2_score(y_true, y_pred)) if len(y_true) > 1 else float("nan")
     rho, _ = spearmanr(y_true, y_pred) if len(y_true) > 1 else (float("nan"), None)
     return {"mae": mae, "rmse": rmse, "r2": r2, "spearman": float(rho)}

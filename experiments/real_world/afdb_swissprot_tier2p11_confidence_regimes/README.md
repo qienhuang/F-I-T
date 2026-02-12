@@ -62,6 +62,21 @@ Canonical subcases (the ones to run and cite):
 
 Historical versioned subcase folders may exist for provenance. See: `subcases/SUBCASES_POLICY.md`.
 
+## Suite v3.0 smoke status (repo-runnable)
+
+Recent smoke runs confirm the suite entry points are runnable end-to-end (artifacts produced) for all three canonical subcases:
+
+- **PAE Proxy Alarm**: PASS (eval report + tradeoff figure + trained proxy model)
+- **MSA Deficit Proxy**: PASS (after config compatibility fix; eval report + tradeoff figure + trained proxy model)
+- **Dual-Oracle Active Acquisition**: PASS (main run; leakage audit + policy cards + frontier plot)
+
+Compatibility fixes applied in this repo (no change to intended semantics):
+
+- `PREREG_SMOKE.yaml` (MSA): `fallback_compute_from_msa_depth` -> `fallback_compute_from_msa_depth_if_missing`
+- `eval.py` (MSA + Dual-Oracle): scikit-learn RMSE call updated for newer versions (`np.sqrt(mean_squared_error(...))`)
+
+Note: `data/` and `out/` are local-only caches and should not be pushed.
+
 ## Boundary modes (the core learning device)
 
 We define three mutually exclusive boundary modes:
@@ -106,6 +121,15 @@ To scale beyond the pilot, two preregistered B1 sizes are provided:
 - `RUNBOOK_B1_EXPANDED_CPU.md`
 
 Both stage a deterministic accession set (reviewed UniProt subset) into `data/runs/...` and run B1 (coords + PAE) under the same auditable gate semantics.
+
+Optional: a B2 quick prereg is provided to audit the same accession set under a boundary that includes MSA:
+
+- **Quick** (N=100, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N100.yaml`
+
+Repo-safe evidence zips (exclude local caches; include locked prereg + required artifacts):
+
+- `evidence_B1_taxon9606_N100.zip`
+- `evidence_B1_taxon9606_N1000.zip`
 
 ## Estimator tuple (explicit)
 

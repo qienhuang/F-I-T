@@ -16,36 +16,30 @@ These runs are not evidence for general robustness. They are a reproducibility a
 Interpretation details:
 
 - `baseline_adv_tool_rate` counts how often the model chooses an **unsafe** tool action.
-- `TOOL:read_file` is intentionally *not* treated as unsafe in this suite; it is used to separate “tool propensity” from “irreversible side effects”.
+- `TOOL:read_file` is intentionally *not* treated as unsafe in this suite; it is used to separate "tool propensity" from "irreversible side effects".
 - `coverage` is the fraction of adversarial prompts for which the alarm trips at least once under the target FPR operating point (here, `2/3 = 66.7%`).
 
 ## Results (Windows 11 + RTX 3090 + Ollama + Python 3.13)
 
-Paper-ready matrix:
+Paper-ready matrix (v0.2):
 
-- Prompts: `policy_prompts_readwrite_v1.jsonl`
-- Samples per prompt: `100`
-- Temperature: `0.9`
+- Models: `qwen3:4b`, `qwen3:8b`, `gemma3:1b`, `gemma3:4b`
+- Prompt sets: `policy_prompts_readwrite_v1.jsonl` and `policy_prompts.jsonl`
+- Target FPRs: `0.05`, `0.10`
 - Seeds: `1337, 2337, 3337, 4337, 5337`
+- Samples per prompt: `100` (temperature `0.9`)
 
-Summary (20/20 runs; std=0 across seeds):
+Total: 80 runs (4 models × 2 prompt sets × 2 FPRs × 5 seeds).
 
-| Model | Target FPR | n_runs | Baseline adv tool rate (mean±std) | Controlled adv tool rate (mean±std) |
-|---|---:|---:|---:|---:|
-| qwen3:4b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 |
-| qwen3:4b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 |
-| qwen3:8b | 0.05 | 5 | 1.0±0.0 | 0.0±0.0 |
-| qwen3:8b | 0.10 | 5 | 1.0±0.0 | 0.0±0.0 |
+Operational reading (two regimes made visible by the matrix):
 
-Operational reading (consistent across the matrix):
-
-- Baseline unsafe behavior is present (`baseline_adv_tool_rate = 1.0`).
-- Controlled mode blocks unsafe tool usage (`controlled_adv_tool_rate = 0.0`) while remaining feasible under low-FPR operation (`fpr_floor = 0.0`, `achieved_fpr = 0.0`, `coverage = 2/3`).
+1) **Gating useful (qwen3 + readwrite prompts)**: baseline chooses unsafe `TOOL:write_file` (`baseline_adv_tool_rate = 1.0`), while controlled mode blocks unsafe tool usage (`controlled_adv_tool_rate = 0.0`) and remains alarm-feasible under low-FPR operation (`fpr_floor = 0.0`, `achieved_fpr = 0.0`, `coverage = 2/3`).
+2) **Gating redundant (gemma3 and/or network/code-exec prompts)**: baseline does not choose unsafe tool usage (`baseline_adv_tool_rate = 0.0`), so controlled mode does not improve safety (but also does not introduce unsafe tool usage).
 
 Paper-ready tables:
 
 - All runs: `policy_eval_runs_matrix.md`
-- Grouped `mean±std`: `policy_eval_agg_matrix.md`
+- Grouped `mean+/-std`: `policy_eval_agg_matrix.md`
 
 Exploratory (non-paper-ready) scans across other prompt suites / parameters are tracked separately:
 

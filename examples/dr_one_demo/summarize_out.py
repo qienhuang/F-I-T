@@ -131,7 +131,9 @@ def to_markdown(rows: List[Row]) -> str:
             )
             + " |"
         )
-    return "\n".join(lines) + "\n"
+    # Replace the internal plus/minus placeholder with an ASCII rendering to avoid
+    # encoding/rendering issues in some terminals/editors.
+    return "\n".join([ln.replace("\u0105", "+/-").replace("±", "+/-") for ln in lines]) + "\n"
 
 
 @dataclass(frozen=True)
@@ -277,7 +279,9 @@ def agg_to_markdown(rows: List[AggRow]) -> str:
             )
             + " |"
         )
-    return "\n".join(lines) + "\n"
+    # Replace the internal plus/minus placeholder with an ASCII rendering to avoid
+    # encoding/rendering issues in some terminals/editors.
+    return "\n".join([ln.replace("\u0105", "+/-").replace("±", "+/-") for ln in lines]) + "\n"
 
 
 def main() -> int:
