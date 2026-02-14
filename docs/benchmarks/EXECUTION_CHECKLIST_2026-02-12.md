@@ -6,6 +6,7 @@ This file tracks the minimum next actions for benchmark progression without dupl
 
 - `AFDB B1 (N~1000)`: `COHERENT`
 - `AFDB B2 (N~100 and N~1000)`: `ESTIMATOR_UNSTABLE` with persistent `C3_msa_deficit` event-bin disagreement vs `C1/C2`
+- `AFDB B2 split-stability (3 splits, N~1000)`: offset `[6, 6, 6]` confirmed structural channel mismatch
 - `Dr.One v0.2 matrix`: 80/80 runs complete, "gating useful" and "gating redundant" regimes both demonstrated
 - `GMB v0.5 holdout`: low-FPR utility tradeoff established (`0.05 -> 41%`, `0.10 -> 56%`, `0.20 -> 74%`)
 
@@ -44,10 +45,11 @@ Goal: test whether B2 disagreement is structural sign/phase mismatch rather than
 - Pass criterion for "structural mismatch" label:
   - stable nonzero offset across sample sizes and splits
 
-### 2.2 AFDB split-stability check
+### 2.2 ~~AFDB split-stability check~~ DONE
 
-- Re-run B2 with 2-3 deterministic accession splits at same `N`
-- Compare event-bin offsets and verdict consistency
+- ~~Re-run B2 with 2-3 deterministic accession splits at same `N`~~
+- ~~Compare event-bin offsets and verdict consistency~~
+- Result: offset `[6, 6, 6]` across splits a/b/c. Structural mismatch confirmed.
 
 ### 2.3 Optional: scRNA estimator-family extension
 
@@ -57,7 +59,7 @@ Goal: test whether B2 disagreement is structural sign/phase mismatch rather than
 ## 3. Decision Gates
 
 - Promote Li2 benchmark only after `M=199` produces stable `r_crit` band and valid fit statistics
-- Promote AFDB B2 claim only after split-stability confirms persistent event-bin offset
+- ~~Promote AFDB B2 claim only after split-stability confirms persistent event-bin offset~~ GATE PASSED: offset stable at 6 across 3 splits
 - Do not run new repair sweeps for GMB until a non-monotonic score-family change is specified
 
 ## 4. Quick Status Commands

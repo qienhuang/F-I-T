@@ -126,6 +126,7 @@ Optional: a B2 quick prereg is provided to audit the same accession set under a 
 
 - **Quick** (N=100, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N100.yaml`
 - **Expanded** (N=1000, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N1000.yaml` (requires downloading the MSA channel for the staged accession set)
+- **Split-stability** (N=1000, B2 coords + PAE + MSA): `EST_PREREG.B2_taxon9606_N1000_split_a.yaml`, `EST_PREREG.B2_taxon9606_N1000_split_b.yaml`, `EST_PREREG.B2_taxon9606_N1000_split_c.yaml`
 
 Repo-safe evidence zips (exclude local caches; include locked prereg + required artifacts):
 
@@ -152,11 +153,44 @@ Repo-safe evidence zips (exclude local caches; include locked prereg + required 
 - The coherence gate correctly labels B2 as ESTIMATOR_UNSTABLE, preventing conflation of structurally different signals into a single regime claim.
 - This demonstrates a core FIT/EST principle: **changing the boundary (B1 -> B2) is a different experiment**, and the gate enforces that discipline.
 
+### B2 split-stability follow-up (CPU)
+
+Run three deterministic B2 splits at `N~1000`:
+
+```bash
+python run_case.py --prereg EST_PREREG.B2_taxon9606_N1000_split_a.yaml --run_id B2_taxon9606_N1000_split_a
+python run_case.py --prereg EST_PREREG.B2_taxon9606_N1000_split_b.yaml --run_id B2_taxon9606_N1000_split_b
+python run_case.py --prereg EST_PREREG.B2_taxon9606_N1000_split_c.yaml --run_id B2_taxon9606_N1000_split_c
+```
+
+Summarize event-bin offsets and coherence outcomes:
+
+```bash
+python scripts/compare_b2_split_stability.py \
+  --runs B2_taxon9606_N1000_split_a B2_taxon9606_N1000_split_b B2_taxon9606_N1000_split_c \
+  --out_csv out/B2_split_stability.csv \
+  --out_md out/B2_split_stability.md
+```
+
+Decision rule:
+- if `offset(C3 - C2)` is stable across splits, treat B2 disagreement as structural channel mismatch;
+- if offsets are unstable, treat as sampling-sensitive and keep verdict at `ESTIMATOR_UNSTABLE` without stronger structural claims.
+
+#### Split-stability results (2026-02-11)
+
+| Run | Status | N | C_primary | C1 | C2 | C3 | C3-C2 offset |
+|-----|--------|---:|---:|---:|---:|---:|---:|
+| B2_taxon9606_N1000_split_a | ESTIMATOR_UNSTABLE | 988 | 2 | 2 | 2 | 8 | 6 |
+| B2_taxon9606_N1000_split_b | ESTIMATOR_UNSTABLE | 988 | 2 | 2 | 2 | 8 | 6 |
+| B2_taxon9606_N1000_split_c | ESTIMATOR_UNSTABLE | 988 | 2 | 2 | 2 | 8 | 6 |
+
+**Verdict:** Offset `[6, 6, 6]` is perfectly stable across all three deterministic splits. Per the decision rule, the B2 disagreement is confirmed as **structural channel mismatch**, not sampling noise.
+
 ### Key methodological finding
 
 > **MSA channel is boundary-dependent and not coherence-equivalent to pLDDT/PAE along the length axis.**
 >
-> B2 N=1000 confirms structural disagreement (not noise): the coherence gate remains ESTIMATOR_UNSTABLE with C3_msa_deficit event at bin 8 vs C1/C2 at bin 2. This persistent offset across sample sizes (N=100, N=1000) establishes that the MSA deficit estimator measures a fundamentally different regime transition than pLDDT/PAE-derived estimators. The gate correctly prevents a single unified regime claim under the B2 boundary.
+> B2 N=1000 confirms structural disagreement (not noise): the coherence gate remains ESTIMATOR_UNSTABLE with C3_msa_deficit event at bin 8 vs C1/C2 at bin 2. This persistent offset across sample sizes (N=100, N=1000) and across three independent accession splits (offset=6 in all splits) establishes that the MSA deficit estimator measures a fundamentally different regime transition than pLDDT/PAE-derived estimators. The gate correctly prevents a single unified regime claim under the B2 boundary.
 
 ## Estimator tuple (explicit)
 
