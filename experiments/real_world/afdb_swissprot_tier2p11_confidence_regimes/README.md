@@ -172,6 +172,10 @@ python scripts/compare_b2_split_stability.py \
   --out_md out/B2_split_stability.md
 ```
 
+Publish-safe locked copies:
+- `results_locked/B2_split_stability.csv`
+- `results_locked/B2_split_stability.md`
+
 Decision rule:
 - if `offset(C3 - C2)` is stable across splits, treat B2 disagreement as structural channel mismatch;
 - if offsets are unstable, treat as sampling-sensitive and keep verdict at `ESTIMATOR_UNSTABLE` without stronger structural claims.

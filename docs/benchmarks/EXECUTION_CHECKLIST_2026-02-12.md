@@ -12,19 +12,16 @@ This file tracks the minimum next actions for benchmark progression without dupl
 
 ## 1. GPU Queue (priority)
 
-### 1.1 Finish `M=199` pilot (currently running)
+### 1.1 ~~Finish `M=199` pilot~~ DONE
 
 - Output root: `experiments/li2_scaling_law/results/beta_multiseed_v5_M199_pilot/`
-- Completion condition:
-  - all pilot runs produce JSON in `M199/experiments/`
-  - beta analysis produces `M199/beta_analysis/beta_transition_analysis.json`
+- Result: `r_crit` localized to `(0.30, 0.32]` with pilot outcome `0/2@0.30`, `2/2@0.32`
 
-### 1.2 Decide expansion from pilot
+### 1.2 Next decision: `M=199` full-grid expansion
 
-- If transition is observed in pilot ratios:
-  - expand `M=199` to full grid (same ratio density as M=159 speed-fit step)
-- If no transition:
-  - shift ratio window downward and rerun pilot only
+- Optional if publication needs a fully fitted fifth point:
+  - expand to full ratio grid and 3+ seeds to compute stable beta/R^2 fit
+- Otherwise keep current pilot as boundary-localization evidence and stop here
 
 ### 1.3 Documentation after completion
 
@@ -58,7 +55,7 @@ Goal: test whether B2 disagreement is structural sign/phase mismatch rather than
 
 ## 3. Decision Gates
 
-- Promote Li2 benchmark only after `M=199` produces stable `r_crit` band and valid fit statistics
+- Li2 benchmark is promotable now for `r_crit(M)` monotonicity; full `M=199` beta fit remains optional
 - ~~Promote AFDB B2 claim only after split-stability confirms persistent event-bin offset~~ GATE PASSED: offset stable at 6 across 3 splits
 - Do not run new repair sweeps for GMB until a non-monotonic score-family change is specified
 

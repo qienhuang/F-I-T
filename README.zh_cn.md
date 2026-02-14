@@ -153,7 +153,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | [Benchmarks 索引](docs/benchmarks/README.md) | 基准规范 + 可引用的汇总报告 |
 | [GMB v0.4](docs/benchmarks/gmb_v0_4/README.md) | Grokking 警报可接受性基准 |
 | [GMB v0.5 修复（A/B/C）](docs/benchmarks/gmb_repairs_unified_summary.md) | 为什么“调参式修复”在低 FPR 约束下会失败 |
-| [Li² r_crit(M) 基准（四点）](docs/benchmarks/li2_cross_m_summary.md) | 跨 M 的相变边界汇总 + 可视化 |
+| [Li² r_crit(M) 基准（五点，含 M199 pilot）](docs/benchmarks/li2_cross_m_summary.md) | 跨 M 的相变边界汇总 + 可视化 |
 
 ---
 
