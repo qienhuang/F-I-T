@@ -108,13 +108,30 @@ They are versioned independently from the FIT public layer.
 5. `40-technology.md` — Systems, architecture, and constraint design
 
 ---
+
+## Renormalization & Scale Essays
+
+These essays explore FIT's relationship to Renormalization Group (RG) theory —
+how treating scale as an explicit operator (rather than a metaphor) upgrades
+FIT claims from level-aware language to scale-auditable structure.
+
+Unlike the introductory essays above, these contain mathematical notation
+and reference experimental results from `discussions/reading_notes/renormalization/`.
+
+1. [`Scale_Is_an_Operator_RG_to_FIT_v0.2.md`](renormalization/Scale_Is_an_Operator_RG_to_FIT_v0.2.md) — The central argument: scale is not commentary, it is an operator. Defines pushforward, semigroup closure, saturation gates.
+2. [`Constraint_as_Surviving_Structure_v0.1.md`](renormalization/Constraint_as_Surviving_Structure_v0.1.md) — Constraint reinterpreted as structure that survives coarse-graining, with parallels to evolution, learning, and thermodynamics.
+3. [`Why_Phase_Transitions_Disappear_When_You_Zoom_Out_v0.1.md`](renormalization/Why_Phase_Transitions_Disappear_When_You_Zoom_Out_v0.1.md) — The FIT/RG Visibility Law: structural reality and observational visibility are not identical.
+
+Companion technical document: [`docs/core/renormalization_lens.md`](../docs/core/renormalization_lens.md)
+
+---
 ## Long-Form Explorations
 
 Some topics are explored in depth across multiple chapters:
 
-- `essays/learning-systems/`
-- `essays/governance-longform/`
-- `essays/technology-longform/`
+- `learning-systems/`
+- `governance-longform/`
+- `technology-longform/`
 
 These materials are exploratory and philosophical in nature.
 

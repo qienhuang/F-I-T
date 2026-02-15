@@ -279,6 +279,11 @@ Accessible introductions and applied perspectives. These use everyday language; 
 ### Learning Systems (ML/AI)
 - [**Learning Systems (series)**](essays/learning-systems) — Grokking as temporal phase transition `ML researchers`
 
+### Renormalization & Scale
+- [**Scale Is an Operator**](essays/renormalization/Scale_Is_an_Operator_RG_to_FIT_v0.2.md) — How FIT becomes RG-grade without becoming physics `Physicists, complex systems researchers`
+- [**Constraint as Surviving Structure**](essays/renormalization/Constraint_as_Surviving_Structure_v0.1.md) — Constraint reinterpreted through the lens of coarse-graining `Theorists, biologists`
+- [**Why Phase Transitions Disappear When You Zoom Out**](essays/renormalization/Why_Phase_Transitions_Disappear_When_You_Zoom_Out_v0.1.md) — The FIT/RG Visibility Law `Complex systems, ML researchers`
+
 ### Domain Essays
 - [**Learning**](essays/10-learning.md) — Grokking and late-stage lock-in `Educators, ML practitioners`
 - [**Economics**](essays/20-economics.md) — Markets, stability, and false equilibria `Economists, strategists`
