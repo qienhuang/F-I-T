@@ -63,6 +63,11 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 *图：Conway 生命游戏 Tier-1 验证（详见 [v2.4 规范](docs/v2.4.md)）。*
 
+### Core-adjacent 透镜更新（v0.2）
+
+- [重整化透镜（RG 兼容，gate-aware）](docs/core/renormalization_lens.md) —— 将“尺度”视为显式算子，并通过 semigroup + saturation gate 审计跨尺度主张。
+- 当前状态：在非饱和配置上支持 closure；饱和受限配置会被显式标注，而不是计为 PASS。
+
 ---
 
 ## Tier-2 证据（真实世界系统）

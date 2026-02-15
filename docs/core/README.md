@@ -28,6 +28,7 @@ Notation: phases are written as `Phi1/Phi2/Phi3` in filenames/code.
 - [`FIT_Core_Extension_Post_Phi3.md`](./FIT_Core_Extension_Post_Phi3.md) - post-Phi3 bifurcation (two structurally viable paths)
 - [`FIT_Misuse_Guard_and_FAQ.md`](./FIT_Misuse_Guard_and_FAQ.md) - misuse guard and FAQ (red lines and boundary conditions)
 - [`how_to_falsify_fit.md`](./how_to_falsify_fit.md) - how to falsify FIT (short guide; anti-ToE guardrail)
+- [`renormalization_lens.md`](./renormalization_lens.md) - core-adjacent scale-transformation lens (RG-compatible, gate-aware)
 
 ### Applications
 - [`grokking_phase_mapping.md`](./grokking_phase_mapping.md) - Grokking as FIT phase transition (Phi1->Phi2->Phi3 mapping for ML)

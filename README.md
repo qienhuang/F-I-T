@@ -63,6 +63,11 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 *Figure: Conway's Game of Life Tier-1 validation (details in [v2.4 spec](docs/v2.4.md)).*
 
+### Core-adjacent lens update (v0.2)
+
+- [Renormalization Lens (RG-compatible, gate-aware)](docs/core/renormalization_lens.md) — treats scale as an explicit operator and evaluates cross-scale claims with semigroup + saturation gates.
+- Current status: closure is supported on non-saturated configurations; saturation-limited cells are explicitly labeled rather than counted as PASS.
+
 ---
 
 ## 🎯 Featured Benchmarks (paper-ready)
