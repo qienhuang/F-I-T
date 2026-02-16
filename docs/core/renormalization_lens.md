@@ -1,4 +1,4 @@
-# Renormalization Lens for FIT (RG-Compatible, v2.x)
+﻿# Renormalization Lens for FIT (RG-Compatible, v2.x)
 
 Status: core-adjacent lens (non-breaking)
 
@@ -6,7 +6,7 @@ Scope: multiscale evolving systems with explicit estimator tuples (EST)
 
 Primitives used: F / I / T / C / Phase (Phi) only
 
-Goal: treat “scale” as an explicit transformation, so that cross-scale claims become auditable (and falsifiable), not metaphorical.
+Goal: treat â€œscaleâ€ as an explicit transformation, so that cross-scale claims become auditable (and falsifiable), not metaphorical.
 
 ---
 
@@ -46,7 +46,7 @@ $$
 $$
 
 
-But “level-aware” can still be read as a reminder (“don’t confuse levels”), while leaving a structural gap:
+But â€œlevel-awareâ€ can still be read as a reminder (â€œdonâ€™t confuse levelsâ€), while leaving a structural gap:
 
 - What is the relationship between levels?
 - When two levels disagree, is it a real multiscale phenomenon, or an estimator artifact?
@@ -55,7 +55,7 @@ Renormalization theory upgrades the stance:
 
 - a change of level is an operator on the description,
 - invariants are what survive an admissible set of such operators,
-- “universality” is the stable structure that persists under repeated coarse-graining.
+- â€œuniversalityâ€ is the stable structure that persists under repeated coarse-graining.
 
 FIT already contains the slots for this:
 
@@ -69,7 +69,7 @@ This lens turns those into **scale-consistency tests**.
 
 ## 2. Two axes: time evolution vs scale transformation
 
-A recurring confusion (and a source of over-claiming) is to treat “RG scale” as if it were “time”.
+A recurring confusion (and a source of over-claiming) is to treat â€œRG scaleâ€ as if it were â€œtimeâ€.
 
 This lens enforces a strict separation:
 
@@ -155,7 +155,7 @@ Examples:
 
 - plateau entry time,
 - critical threshold crossing,
-- “time-to-lock-in” tasks.
+- â€œtime-to-lock-inâ€ tasks.
 
 Metric equivalence is stronger than ordinal equivalence.
 
@@ -186,7 +186,7 @@ The lens therefore elevates **scheme audit** to a first-class requirement.
 
 ### 5.1 Admissibility for coarse-graining families
 
-To prevent “scale hacking”, treat coarse-graining operators as part of admissibility.
+To prevent â€œscale hackingâ€, treat coarse-graining operators as part of admissibility.
 
 A coarse-graining family $\{\mathcal{G}_b\}$ is admissible if:
 
@@ -196,11 +196,11 @@ A coarse-graining family $\{\mathcal{G}_b\}$ is admissible if:
 4) **Monotone information loss:** coarse states do not increase micro distinguishability
 5) **Pre-registered:** the set of $b$ values is locked before evaluation
 
-### 5.2 What counts as “universal” in this lens
+### 5.2 What counts as â€œuniversalâ€ in this lens
 
 Within FIT v2.x, use an operational definition:
 
-> A quantity is “universal” (in the lens sense) if it remains stable across an admissible estimator family **and** an admissible coarse-graining family.
+> A quantity is â€œuniversalâ€ (in the lens sense) if it remains stable across an admissible estimator family **and** an admissible coarse-graining family.
 
 This is an audit statement, not a metaphysical one.
 
@@ -214,7 +214,7 @@ Many FIT estimators are scalar time series. For such estimators, the lens encour
 
 ### 6.1 Empirical RG map (terminology)
 
-When such a mapping is observed, call it an **empirical scale map** (or “empirical RG map”):
+When such a mapping is observed, call it an **empirical scale map** (or â€œempirical RG mapâ€):
 
 
 $$
@@ -222,9 +222,9 @@ $$
 $$
 
 
-Avoid calling polynomial coefficients “beta functions” unless you also establish a semigroup property (next section).
+Avoid calling polynomial coefficients â€œbeta functionsâ€ unless you also establish a semigroup property (next section).
 
-A cautious “beta-like” object can be defined as:
+A cautious â€œbeta-likeâ€ object can be defined as:
 
 
 $$
@@ -244,13 +244,13 @@ In this regime:
 - while rank information collapses (low Spearman),
 - and transition visibility can disappear.
 
-Saturation must be detected and labeled (not celebrated as “more universal”).
+Saturation must be detected and labeled (not celebrated as â€œmore universalâ€).
 
 ---
 
 ## 7. Semigroup / composition test (RG-hard gate)
 
-A defining structural feature of RG is composability. In the scalar-map setting, the lens uses this as a “harder” test.
+A defining structural feature of RG is composability. In the scalar-map setting, the lens uses this as a â€œharderâ€ test.
 
 ### 7.1 Semigroup criterion
 
@@ -284,7 +284,7 @@ A minimal preregisterable decision rule:
   - $\mathrm{MAE}(f_{1\to 4}(x),\; f_{2\to 4}(f_{1\to 2}(x))) \le \tau$
   - plus monotonicity and dynamic-range gates
 
-Where $\tau$ is pre-registered (typical starting point: 0.02–0.03 for $\hat{C}\in[0,1]$, but must be tuned to the estimator noise floor).
+Where $\tau$ is pre-registered (typical starting point: 0.02â€“0.03 for $\hat{C}\in[0,1]$, but must be tuned to the estimator noise floor).
 
 ### 7.4 Multi-estimator and multi-scheme validation (2026-02-14)
 
@@ -298,7 +298,7 @@ Tested semigroup closure across:
 
 **Results** (RMSE of composed vs direct maps, threshold $\tau = 0.05$; gate-aware):
 
-| Scheme | Estimator | 1→2→4 | 2→4→8 | Verdict |
+| Scheme | Estimator | 1â†’2â†’4 | 2â†’4â†’8 | Verdict |
 |--------|-----------|--------|--------|---------|
 | majority | $C_{\text{frozen}}$ | RMSE = 0.00196 (PASS) | SKIPPED (b=8 saturated) | SUCCESS |
 | majority | $C_{\text{activity}}$ | RMSE = 0.00196 (PASS) | SKIPPED (b=8 saturated) | SUCCESS |
@@ -329,11 +329,16 @@ def check_saturation(C_values: np.ndarray, threshold: float = 0.1) -> bool:
 - Require at least 2 non-saturated scale pairs for PASS verdict
 - Report saturation status in all scale-map analyses
 
-**Rationale**: At high saturation (e.g., 4→8 in some GoL runs), $R^2$ can remain high while Spearman $\rho$ collapses, indicating rank information loss. This does not invalidate the RG lens, but requires explicit documentation.
+**Rationale**: At high saturation (e.g., 4â†’8 in some GoL runs), $R^2$ can remain high while Spearman $\rho$ collapses, indicating rank information loss. This does not invalidate the RG lens, but requires explicit documentation.
 
 ### 7.6 Comprehensive scheme-estimator matrix (2026-02-14, extended)
 
-**Full validation matrix** with 4 coarse-graining schemes × 3 estimators (10 seeds, 2000 steps, $b\in\{1,2,4,8\}$):
+Locked artifacts (repo):
+- `experiments/renormalization/gol_rg_lens_v0_1/repro/route_b_v0.1/artifacts/scheme_matrix_v0_1.md`
+- `experiments/renormalization/gol_rg_lens_v0_1/repro/route_b_v0.1/artifacts/route_b_hard_gate_summary.md`
+
+
+**Full validation matrix** with 4 coarse-graining schemes Ã— 3 estimators (10 seeds, 2000 steps, $b\in\{1,2,4,8\}$):
 
 **Coarse-graining schemes**:
 - `majority`: $\lceil b^2/2 \rceil$ (original)
@@ -343,14 +348,14 @@ def check_saturation(C_values: np.ndarray, threshold: float = 0.1) -> bool:
 
 **Estimators**: $C_{\text{frozen}}$, $C_{\text{activity}}$, $H$ (entropy_2x2)
 
-**Results** (semigroup closure 1→2→4):
+**Results** (semigroup closure 1â†’2â†’4):
 
 | Scheme | $C_{\text{frozen}}$ | $C_{\text{activity}}$ | $H$ |
 |--------|----------|------------|---|
-| average | ✓ 0.00196 | ✓ 0.00196 | SATURATED |
-| majority | ✓ 0.00196 | ✓ 0.00196 | SATURATED |
-| threshold_high | SATURATED | SATURATED | ✓ 0.00560 |
-| threshold_low | ✓ 0.00246 | ✓ 0.00246 | SATURATED |
+| average | âœ“ 0.00196 | âœ“ 0.00196 | SATURATED |
+| majority | âœ“ 0.00196 | âœ“ 0.00196 | SATURATED |
+| threshold_high | SATURATED | SATURATED | âœ“ 0.00560 |
+| threshold_low | âœ“ 0.00246 | âœ“ 0.00246 | SATURATED |
 
 **Summary**: 7/12 configurations were testable (non-saturated), and 7/7 of those passed semigroup closure.
 
@@ -358,7 +363,7 @@ def check_saturation(C_values: np.ndarray, threshold: float = 0.1) -> bool:
 
 1. **Complementary saturation patterns**: Constraint estimators (C) and entropy (H) saturate under opposite scheme pressures. At strict thresholds (threshold_high), C saturates (all cells die); at lenient thresholds (average, majority, threshold_low), H saturates (all cells become ordered).
 
-2. **C_frozen/C_activity are operationally robust in this matrix**: they pass under 3/4 schemes with RMSE ∈ [0.00196, 0.00246], all ≪ 0.05 threshold.  
+2. **C_frozen/C_activity are operationally robust in this matrix**: they pass under 3/4 schemes with RMSE âˆˆ [0.00196, 0.00246], all â‰ª 0.05 threshold.  
    Note: $C_{\text{activity}} = 1 - C_{\text{frozen}}$ by construction, so this pair is a strong implementation-consistency check but not fully independent estimator evidence.
 
 3. **H requires scheme tuning**: Only passes under threshold_high (RMSE = 0.00560). Still well below threshold, but narrower regime than C.
@@ -372,7 +377,7 @@ Different estimators have different "sweet spots" in scheme space; all testable 
 
 ## 8. Failure modes and labels
 
-This lens treats “failure” as a productive outcome. Common outcomes:
+This lens treats â€œfailureâ€ as a productive outcome. Common outcomes:
 
 - **ESTIMATOR_UNSTABLE:** mapping / event detection flips under small changes within the admissible family
 - **SCHEME_DEPENDENT:** mapping holds under one $\{\mathcal{G}_b\}$ but not another admissible scheme
@@ -385,9 +390,9 @@ These labels are documentation aids. They do not modify FIT core primitives.
 
 ---
 
-## 9. Universality (P15) as “surviving directions”
+## 9. Universality (P15) as â€œsurviving directionsâ€
 
-RG’s hardest and most transferable insight is not “self-similar shapes”, but:
+RGâ€™s hardest and most transferable insight is not â€œself-similar shapesâ€, but:
 
 > most microscopic degrees of freedom become irrelevant under coarse-graining; only a few directions survive and control macroscopic outcomes.
 
@@ -395,7 +400,7 @@ In FIT language, these are the **reconfiguration channels**: directions in which
 
 ### 9.1 Practical proxies (v2.x compatible)
 
-Without importing field theory, you can still estimate “how many directions survive” using estimator-friendly proxies:
+Without importing field theory, you can still estimate â€œhow many directions surviveâ€ using estimator-friendly proxies:
 
 - effective rank of a covariance spectrum (collapse diagnostics),
 - participation-ratio-like measures that are explicitly **scale-normalized**,
@@ -403,16 +408,16 @@ Without importing field theory, you can still estimate “how many directions su
 
 Lens stance:
 
-- do not call a proxy “universal” unless it passes scheme audit,
+- do not call a proxy â€œuniversalâ€ unless it passes scheme audit,
 - prefer proxies that remain meaningful when the representation dimension changes.
 
 ---
 
 ## 10. Worked example (illustrative): GoL multi-scale constraint mapping
 
-This section is illustrative: it demonstrates how the lens is used, not what FIT “always implies”.
+This section is illustrative: it demonstrates how the lens is used, not what FIT â€œalways impliesâ€.
 
-In a GoL multi-scale experiment (128×128, 30 seeds, 3000 steps; $b\in\{1,2,4,8\}$), a constraint estimator $\hat{C}$ showed a strong empirical scale map:
+In a GoL multi-scale experiment (128Ã—128, 30 seeds, 3000 steps; $b\in\{1,2,4,8\}$), a constraint estimator $\hat{C}$ showed a strong empirical scale map:
 
 - $b=1\to 2$: poly2 $R^2 \approx 0.9998$, Spearman $\rho \approx 0.9999$
 - $b=2\to 4$: poly2 $R^2 \approx 0.9797$, Spearman $\rho \approx 0.9965$
@@ -420,7 +425,7 @@ In a GoL multi-scale experiment (128×128, 30 seeds, 3000 steps; $b\in\{1,2,4,8\
 
 This illustrates two lens points:
 
-1) **Scale-linked structure exists** for some estimator choices (supporting “level-linked” analysis).
+1) **Scale-linked structure exists** for some estimator choices (supporting â€œlevel-linkedâ€ analysis).
 2) **Saturation can mimic strength:** very high $R^2$ can coexist with low rank information, and transition visibility can become scope-limited.
 
 The same experiment also illustrates estimator fragility:
@@ -428,11 +433,210 @@ The same experiment also illustrates estimator fragility:
 - some alternative constraint estimators (e.g., activity-based) can also show strong scale maps,
 - while other candidates (e.g., an effective-dimension proxy) can fail cross-scale consistency.
 
-The correct lens conclusion is not “GoL proves RG”. It is:
+The correct lens conclusion is not â€œGoL proves RGâ€. It is:
 
 - scale maps are measurable and auditable,
 - some observables saturate at coarse scales,
 - admissibility and scheme audit are not optional.
+
+---
+
+# 11. Scale-Invariant Structure vs. Scale-Dependent Values
+
+## 11.1 Motivation
+
+A recurring objection to any information- or constraint-based ontology is:
+
+> Information measures require a pre-declared state space.
+> Therefore information cannot be first-order or fundamental.
+
+Within FIT/EST, this objection is correct at the level of **absolute scalar values**.
+
+For any estimator tuple
+
+$$
+\mathcal{E} = (S_t, \mathcal{B}, {\hat{F},\hat{C},\hat{I}}, W),
+$$
+
+the scalar value of $ \hat{C}(t) $ depends on:
+
+* the chosen state representation $S_t$,
+* the boundary $ \mathcal{B} $,
+* and the coarse-graining operator $ \mathcal{G}_b $.
+
+Absolute constraint magnitude is therefore **scheme-dependent**.
+
+However, multiscale experiments (e.g., Game of Life block coarse-graining) reveal a more subtle phenomenon:
+
+> While $ \hat{C}^{(b)} $ depends on the description scale,
+> the *relationship* between scales may exhibit reproducible structure.
+
+Empirically, for admissible and non-saturated regimes, mappings of the form
+
+$$
+\hat{C}^{(2b)}(t) \approx f_{b\to 2b}(\hat{C}^{(b)}(t))
+$$
+
+can emerge with high cross-seed stability.
+
+This shifts the epistemic focus:
+
+* Not from “what is the true value of $C$?”
+* But to “what structures survive description change?”
+
+---
+
+## 11.2 Absolute Measures vs. Transform Structure
+
+We distinguish two layers:
+
+| Layer                             | Status                | Dependence                       |
+| --------------------------------- | --------------------- | -------------------------------- |
+| Scalar value $ \hat{C}^{(b)}(t) $ | Description-dependent | Depends on $(S_t,\mathcal{G}_b)$ |
+| Scale transform $ f_{b\to 2b} $   | Candidate invariant   | Must pass scheme audit           |
+
+The scalar quantity is an estimator artifact.
+The transform structure is a system-level candidate.
+
+This parallels renormalization practice:
+
+* Coupling constants are scheme-dependent.
+* Universality-class structure is scheme-robust.
+
+In FIT terms:
+
+> A property becomes a candidate structural invariant
+> only if it survives an admissible coarse-graining family
+> under EST discipline.
+
+---
+
+## 11.3 Necessary Conditions for Treating a Scale Map as Structural
+
+The existence of an empirical mapping $f$ is insufficient by itself.
+
+To qualify as structurally meaningful, it must satisfy:
+
+### (1) Non-saturation regime
+
+Dynamic range must remain sufficient:
+
+* If $ \hat{C}^{(b)} $ saturates near 0 or 1,
+* Rank information collapses,
+* High $R^2$ becomes meaningless.
+
+Saturation must be explicitly detected and labeled.
+
+### (2) Scheme audit
+
+The mapping must be tested across:
+
+* Multiple admissible coarse-graining schemes
+* Multiple admissible estimator families
+
+If mapping holds only under one specific scheme, classify as:
+
+```
+SCHEME_DEPENDENT
+```
+
+### (3) Semigroup consistency (closure test)
+
+For scales $1 \to 2 \to 4$:
+
+$$
+f_{1\to 4} \approx f_{2\to 4} \circ f_{1\to 2}
+$$
+
+Failure implies:
+
+* The scalar estimator is not closed under scale
+* A higher-dimensional coordinate may be required
+
+Pass implies:
+
+* The chosen coordinate behaves approximately Markov in scale
+* The mapping approximates RG-like flow
+
+### (4) Cross-seed stability
+
+Mapping must generalize across independent trajectories.
+
+Otherwise label:
+
+```
+ESTIMATOR_UNSTABLE
+```
+
+---
+
+## 11.4 Epistemic Implication
+
+This lens does **not** prove:
+
+* that information is ontologically fundamental,
+* nor that constraint replaces matter or energy.
+
+Instead, it supports a narrower but testable claim:
+
+> Even if information measures are description-dependent,
+> certain transformation laws relating those measures across descriptions
+> may be description-robust.
+
+If such transformation laws persist under:
+
+* estimator admissibility,
+* scheme audit,
+* semigroup closure,
+* and saturation gating,
+
+then the *transform structure* is more portable than the scalar values.
+
+In FIT language:
+
+* Absolute $C$ is a coordinate.
+* Scale-transform structure is a candidate invariant.
+
+---
+
+## 11.5 Relation to the “First Principle” Question
+
+The question
+
+> “Can information be defined without presupposing a state space?”
+
+remains unresolved.
+
+However, the multiscale findings suggest a reframing:
+
+> Perhaps what is closer to “fundamental” is not the information value,
+> but the structural stability of its cross-scale transformation.
+
+This reframing moves the discussion from ontology to invariance.
+
+It does not claim that information is first-order.
+It claims that:
+
+> Cross-description invariants are the appropriate candidates for basic structure.
+
+---
+
+## 11.6 Guardrail
+
+Empirical scale-consistency supports only:
+
+* Correlated structural alignment between information compression and time direction.
+
+It does **not** support the ontological claim:
+
+> “Time is generated by information compression.”
+
+At most, current evidence supports:
+
+> Information compression and macroscopic time direction
+> share a common structural orientation under constraint accumulation.
+
+Any stronger claim would exceed EST-backed scope.
 
 ---
 
@@ -469,4 +673,5 @@ If used:
 - Scale-consistency thresholds (Spearman / MAE / event tolerances)
 - Saturation gate (dynamic range threshold)
 - Scheme audit plan (at least 2 admissible coarse-graining schemes)
-- Semigroup test plan (direct vs composed map), if claiming “scale flow” structure
+- Semigroup test plan (direct vs composed map), if claiming â€œscale flowâ€ structure
+

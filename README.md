@@ -66,6 +66,8 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 ### Core-adjacent lens update (v0.2)
 
 - [Renormalization Lens (RG-compatible, gate-aware)](docs/core/renormalization_lens.md) — treats scale as an explicit operator and evaluates cross-scale claims with semigroup + saturation gates.
+- [Route-B Matrix (paper-ready)](experiments/renormalization/gol_rg_lens_v0_1/repro/route_b_v0.1/artifacts/scheme_matrix_v0_1.md) — 4 schemes × 3 estimators with gate labels.
+- [Route-B Hard-Gate Summary](experiments/renormalization/gol_rg_lens_v0_1/repro/route_b_v0.1/artifacts/route_b_hard_gate_summary.md) — final closure verdict with N / N_eval / N_sat and thresholds.
 - Current status: closure is supported on non-saturated configurations; saturation-limited cells are explicitly labeled rather than counted as PASS.
 
 ---

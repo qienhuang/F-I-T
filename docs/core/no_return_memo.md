@@ -1,251 +1,218 @@
 # No-Return Memo (NRM)
 ## A Time-Gated Judgment Instrument for Evolutionary Systems
 
-> Status: Core Artifact  
-> Framework: F-I-T (Force–Information–Time)  
-> Version: 1.0  
-> Author: Qien Huang  
-> License: CC BY 4.0
+Status: core artifact  
+Framework: FIT (Force-Information-Time)  
+Version: 1.1 (cleaned, v2.x compatible)  
+License: CC BY 4.0
 
 ---
 
 ## Purpose
 
-The **No-Return Memo (NRM)** is a structured instrument for issuing a **time-sensitive, non-normative judgment** on whether a system remains within a **reversible correction window**, or has entered a **No-Return regime**.
+The No-Return Memo (NRM) is a structured instrument for issuing a time-sensitive, non-normative judgment on whether a system remains within a reversible correction window, or has entered a no-return regime.
 
-It is designed for systems where:
-- irreversible effects accumulate,
-- correction channels exist but are latency-bound,
-- and failure is driven primarily by **tempo mismatch**, not local optimality.
+The NRM answers one operational question:
 
-The NRM does **not** prescribe goals, policies, or values.  
-It answers only one question:
+Can meaningful correction still arrive before irreversible commitment accumulates?
 
-> **Can meaningful correction still arrive before irreversible commitment accumulates?**
+It does not prescribe values, goals, or coercive action.
 
 ---
 
-## Core Idea (One Sentence)
+## Core idea
 
-A system enters a **No-Return regime** when the **tempo of irreversible commitments** exceeds the **fastest effective correction channel** that can block them.
-
----
-
-## 0. Metadata
-
-- **System name**:
-- **Scope boundary**:
-- **Observation window**:
-- **Author**:
-- **Date / Version**:
+A system enters a no-return regime when the tempo of irreversible commitments exceeds the fastest effective correction channel that can block them.
 
 ---
 
-## 1. System Definition
+## 0) Metadata
 
-### 1.1 State (S)
+- System name:
+- Scope boundary:
+- Observation window:
+- Author:
+- Date / Version:
 
-Define the **minimal operational state variables** required to describe system behavior.
+---
+
+## 1) System definition
+
+### 1.1 State `S`
+
+Define the minimal operational state variables required for this judgment.
 
 - Included variables:
-  - S₁:
-  - S₂:
+  - `S1`:
+  - `S2`:
 - Explicit exclusions:
-  - (Variables intentionally not modeled)
+  - (variables intentionally not modeled)
 
-> Rule: if a variable is not listed here, it must not be invoked later in the memo.
+Rule: if a variable is not listed here, it must not be used later in the memo.
 
----
+### 1.2 Boundary `B`
 
-### 1.2 Boundary (B)
-
-Define what is **inside** the system and what is **outside**.
+Define what is inside vs outside the judged system.
 
 - In-boundary components / actors:
 - Out-of-boundary components / actors:
-- Interfaces capable of producing irreversible effects:
+- Interfaces capable of irreversible effects:
 
-> Boundary clarity is mandatory.  
-> Ambiguous boundaries invalidate tempo judgments.
-
----
-
-## 2. Correction Channels (K)
-
-A **correction channel** is any mechanism that can **reliably alter or block system behavior** before irreversible effects accumulate.
-
-List all relevant channels:
-
-### K₁, K₂, …, Kₙ
-
-For each channel Ki, specify:
-
-- **Latency (L_Ki)**:  
-  Time from error emergence to effective behavioral change.
-- **Bandwidth (BW_Ki)**:  
-  How much behavior can be corrected per unit time.
-- **Authority (A_Ki)**:  
-  Can it *block* irreversible actions, or only recommend?
-
-> Only channels with **blocking authority** count toward effective correction.
+Ambiguous boundaries invalidate tempo judgments.
 
 ---
 
-## 3. Commitment Surface (Ω)
+## 2) Correction channels `K`
 
-The **commitment surface Ω** is the set of actions that generate **irreversible or high-cost-to-reverse effects**.
+A correction channel is any mechanism that can reliably alter or block behavior before irreversible effects accumulate.
 
-List each Ω_j:
+List channels `K1 ... Kn`. For each `Ki`, specify:
 
-### Ω₁, Ω₂, …, Ωₘ
+- Latency `L_Ki`: time from error emergence to effective behavior change
+- Bandwidth `BW_Ki`: correction capacity per unit time
+- Authority `A_Ki`: can it block irreversible actions, or only recommend
 
-For each Ω_j:
-
-- **Commit rate (R_Ω_j)**:
-- **Blast radius (BR_Ω_j)**:
-- **Reversibility cost (C_rev_Ω_j)**:
-
-> Reversibility must be evaluated in *practice*, not in principle.
+Only channels with blocking authority count toward effective correction latency.
 
 ---
 
-## 4. Tempo Inequality (NR-1 Gate)
+## 3) Commitment surface `Omega`
 
-Define two quantities:
+`Omega` is the set of actions that generate irreversible (or high-cost-to-reverse) effects.
 
-- **External correction latency**  
-```
+List commitments `Omega_1 ... Omega_m`. For each `Omega_j`, report:
 
-L_ext = min(L_Ki) over correction channels with blocking authority
+- Commit rate `R_Omega_j`
+- Blast radius `BR_Omega_j`
+- Reversibility cost `C_rev_Omega_j`
 
-```
+Reversibility must be evaluated in practice, not only in principle.
 
-- **Effective commitment tempo**  
-```
+---
 
-Let w_j be a dimensionless irreversibility weight increasing in BR_Ω_j and C_rev_Ω_j.
-One simple choice is:
+## 4) Tempo inequality (NR-1 gate)
 
-w_j = (BR_Ω_j / BR_ref) · (C_rev_Ω_j / C_rev_ref)
-R_eff = Σ_j w_j R_Ω_j
-T_commit ≈ 1 / R_eff
+Define:
 
-```
+- External correction latency:
+  - `L_ext = min(L_Ki)` over channels with blocking authority
+- Effective commitment tempo:
+  - `w_j`: irreversibility weight increasing in `BR_Omega_j` and `C_rev_Omega_j`
+  - Example: `w_j = (BR_Omega_j / BR_ref) * (C_rev_Omega_j / C_rev_ref)`
+  - `R_eff = sum_j (w_j * R_Omega_j)`
+  - `T_commit ~= 1 / R_eff`
 
-Here `BR_ref` and `C_rev_ref` are domain reference scales chosen so that `w_j ≈ 1` for a “typical” commitment.
+NR-1 condition:
 
-### NR-1 Gate Condition
-
-```
-
-If   L_ext > T_commit
-then the system is in a No-Return regime.
-
-```
+- If `L_ext > T_commit`, the system is tempo-gated no-return under declared scope.
 
 Record:
 
-- Estimated L_ext:
-- Estimated T_commit:
-- **NR-1 result**: PASS / FAIL
+- Estimated `L_ext`
+- Estimated `T_commit`
+- `NR-1` result: PASS / FAIL
 
 ---
 
-## 5. Constraint Dynamics (Ĉ)
+## 5) Constraint dynamics `C_hat`
 
-Constraints represent **structural lock-in** that reduces future maneuverability.
+Constraints represent structural lock-in that reduces future maneuverability.
 
-Select **1–3 proxy measures** Ĉ₁…Ĉₖ that capture constraint accumulation.
+Select 1-3 proxies `C_hat_1 ... C_hat_k` and report:
 
-For each Ĉᵢ:
+- Proxy definition
+- Trend direction (up / down / flat)
+- Evidence source
 
-- Proxy definition:
-- Directional trend: ↑ / ↓ / flat
-- Evidence source:
+NR-2 lock-in clause (supporting diagnostic):
 
-### NR-2 Condition (Lock-In)
-
-If:
-- Ĉ trends upward, **and**
-- correction channels do not strengthen (L_ext not decreasing),
-
-then **structural lock-in is increasing**, reinforcing No-Return dynamics.
+- If `C_hat` trends upward and correction channels are not strengthening (`L_ext` not decreasing), structural lock-in is increasing.
 
 ---
 
-## 6. Primary Failure Mode
+## 6) Primary failure mode
 
-Select **one dominant failure mode**:
+Choose one dominant failure mode:
 
-- **F1 – Lock-in**: corrections arrive but cannot change behavior
-- **F2 – Drift**: behavior changes faster than monitoring can track
-- **F3 – Estimator instability**: metrics lose decision relevance
-- **F4 – Tempo inversion**: commitment accelerates under uncertainty
+- `F1` lock-in: correction arrives but cannot change behavior
+- `F2` drift: behavior changes faster than monitoring tracks
+- `F3` estimator instability: metrics lose decision relevance
+- `F4` tempo inversion: commitment accelerates under uncertainty
 
-Secondary modes may be noted, but only one primary mode is allowed.
-
----
-
-## 7. Judgment
-
-- **Judgment**: Reversible / No-Return
-- **Confidence level**: Low / Medium / High
-
-### Falsifiability Clause
-
-Specify the **minimum evidence** that would overturn this judgment.
-
-> If no falsification condition can be stated, the memo is invalid.
+Secondary modes may be noted, but one primary mode must be declared.
 
 ---
 
-## 8. Minimal Intervention (Optional, Strictly Bounded)
+## 7) Judgment
 
-Interventions may be listed **only if** they:
+- Judgment: Reversible / No-Return
+- Confidence: Low / Medium / High
 
-- reduce Ω (commitment surface), or
-- reduce L_ext (correction latency),
+### Falsifiability clause
 
-**without expanding system scope**.
+Specify minimum evidence that would overturn this judgment.
+
+If no falsification condition can be stated, the memo is invalid.
+
+---
+
+## 8) Minimal intervention (optional, bounded)
+
+Interventions may be listed only if they:
+
+- reduce `Omega` (commitment surface), or
+- reduce `L_ext` (correction latency),
+
+without expanding system scope.
 
 For each intervention:
 
-- Which Ω is reduced:
-- Which K is strengthened:
-- Residual risks:
+- Which `Omega` component is reduced
+- Which `K` channel is strengthened
+- Residual risks
 
 ---
 
-## 9. Non-Authority Clause
+## 9) Non-authority clause
 
-This memo is advisory.
+The NRM is advisory. It must not be used as an autonomous basis for coercive action.
 
-It must not be used as an autonomous decision basis for coercive actions, enforcement, or harm.
-
-Its sole function is **structural time judgment**.
+Its function is structural time judgment under declared scope.
 
 ---
 
-## Interpretation Note
+## 10) Interpretation note
 
-A **No-Return judgment** does **not** imply:
-- moral failure,
-- inevitability of collapse,
-- or absence of alternative systems.
+A no-return judgment does not imply:
 
-It indicates only that **local correction within the defined boundary is no longer temporally viable**.
+- moral failure
+- inevitable collapse
+- absence of alternative systems
+
+It implies only that local correction within declared boundary is no longer temporally viable.
+
+---
+
+## 11) Position in FIT
+
+NRM operationalizes:
+
+- `T` as a gate (not background time)
+- `C_hat` as directional accumulation
+- failure as tempo mismatch under constraints
+
+It is a selection-relevant diagnostic instrument, not a total theory.
 
 ---
 
-## Position in FIT Framework
+## 12) Optional extension (NR-R)
 
-The No-Return Memo operationalizes:
+Use recoverability gate when needed:
 
-- **Time (T)** as a *gate*, not a background variable
-- **Constraints (Ĉ)** as accumulative and directional
-- **Failure** as a tempo mismatch, not an error
+- Extension document: `docs/core/no_return_memo_recoverability_extension.md`
+- Companion lens: `docs/core/recoverability.md`
 
-It marks the transition of FIT from an explanatory framework to a **selection-relevant instrument**.
+NR-R answers a distinct question:
 
----
+Even if correction can arrive in time, is target structure still recoverable under bounded budget?
 

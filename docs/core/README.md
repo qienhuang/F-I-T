@@ -29,6 +29,9 @@ Notation: phases are written as `Phi1/Phi2/Phi3` in filenames/code.
 - [`FIT_Misuse_Guard_and_FAQ.md`](./FIT_Misuse_Guard_and_FAQ.md) - misuse guard and FAQ (red lines and boundary conditions)
 - [`how_to_falsify_fit.md`](./how_to_falsify_fit.md) - how to falsify FIT (short guide; anti-ToE guardrail)
 - [`renormalization_lens.md`](./renormalization_lens.md) - core-adjacent scale-transformation lens (RG-compatible, gate-aware)
+- [`recoverability.md`](./recoverability.md) - core-adjacent lens for bounded recoverability and practical irreversibility
+- [`no_return_memo.md`](./no_return_memo.md) - time-gated no-return judgment instrument (`NR-1`)
+- [`no_return_memo_recoverability_extension.md`](./no_return_memo_recoverability_extension.md) - dual-gate NRM extension (`NR-1` tempo + `NR-R` recoverability)
 - [`../../experiments/renormalization/gol_rg_lens_v0_1/README.md`](../../experiments/renormalization/gol_rg_lens_v0_1/README.md) - minimal reproducibility pack for the renormalization lens claims (script-first, saturation-gated)
 
 ### Applications
