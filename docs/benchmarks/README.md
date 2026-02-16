@@ -33,3 +33,13 @@ If you want runnable engines, start from `tools/README.md`.
 
 - **Execution queue (current CPU/GPU run order)**: [EXECUTION_CHECKLIST_2026-02-12.md](EXECUTION_CHECKLIST_2026-02-12.md)
 
+- **Path-4 cross-system scale-consistency report (GoL/Langton/Ising)**:
+  [path4_cross_system_report.md](path4_cross_system_report.md)
+  - Includes required-triple (`1->2->4`) comparatives, Ising full two-temperature control (`T=2.10` vs `T=2.269`), and two-block seed consistency audit
+  - Ising block-consistency table:
+    [../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/temperature_compare_blocks_summary.md](../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/temperature_compare_blocks_summary.md)
+  - Ising `T=2.10` fixed-point/slope A/B CI audit:
+    [path4_invariant_candidates_ising_t210_block_ab.md](path4_invariant_candidates_ising_t210_block_ab.md)
+  - Invariant candidates (`x*`, `|slope|`) add-on:
+    [path4_invariant_candidates_langton_vs_ising_t210.md](path4_invariant_candidates_langton_vs_ising_t210.md)
+
