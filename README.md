@@ -278,6 +278,11 @@ Accessible introductions and applied perspectives. These use everyday language; 
 ### AI Safety & Governance
 - [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 
+### AGI Engineering
+- [**AGI Essays (series index)**](essays/agi/README.md) — World models, loop stability, and auditable progress `AGI researchers, systems engineers`
+- [**AGI Without and With FIT**](essays/agi/00_agi_without_and_with_fit.md) — Why capability growth can outpace diagnosability without structural discipline `AGI researchers, strategic leads`
+- [**AGI Engineering Path**](essays/agi/01_agi_engineering_path.md) — Loop metrics, constraint engineering, and structured failure audits `AGI engineers, safety teams`
+
 ### Learning Systems (ML/AI)
 - [**Learning Systems (series)**](essays/learning-systems) — Grokking as temporal phase transition `ML researchers`
 

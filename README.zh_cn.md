@@ -254,6 +254,11 @@ tools/          可运行工具包
 ### AI 安全与治理
 - [**空性窗口**](essays/ai/emptiness-window.md) — 节奏主导系统的结构性干预 `AI 安全研究者、系统设计者`
 
+### AGI 工程
+- [**AGI 系列索引**](essays/agi/README.md) — 世界模型、闭环稳定性与可审计进展 `AGI 研究者、系统工程师`
+- [**没有 FIT 与有 FIT 的 AGI**](essays/agi/00_agi_without_and_with_fit.md) — 世界模型、空间智能与缺失的系统纪律 `AGI 研究者、战略负责人`
+- [**AGI 工程路径**](essays/agi/01_agi_engineering_path.md) — 回路指标、约束工程与结构化失效审计 `AGI 工程师、安全团队`
+
 ### 学习系统（ML/AI）
 - [**学习系统（系列）**](essays/learning-systems) — Grokking 作为时间相变 `ML 研究者`
 

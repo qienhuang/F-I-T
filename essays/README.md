@@ -125,10 +125,21 @@ and reference experimental results from `discussions/reading_notes/renormalizati
 Companion technical document: [`docs/core/renormalization_lens.md`](../docs/core/renormalization_lens.md)
 
 ---
+## AGI Essays
+
+This subseries focuses on AGI development as a closed-loop engineering problem:
+what progress looks like without structural discipline, and how to make progress auditable.
+
+1. [`agi/00_agi_without_and_with_fit.md`](agi/00_agi_without_and_with_fit.md) - World models, spatial intelligence, and the missing system discipline.
+2. [`agi/01_agi_engineering_path.md`](agi/01_agi_engineering_path.md) - Loop metrics, constraint engineering, and auditable AGI progress.
+3. [`agi/README.md`](agi/README.md) - Series index and reading order.
+
+---
 ## Long-Form Explorations
 
 Some topics are explored in depth across multiple chapters:
 
+- `agi/`
 - `learning-systems/`
 - `governance-longform/`
 - `technology-longform/`
