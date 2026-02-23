@@ -1,0 +1,4 @@
+system,cells_total,pass_cells,scope_limited_cells,unstable_cells,groups_total,groups_saturated,groups_non_saturated,req124_pass,req124_scope_limited,req124_unstable,req124_testable,req124_pass_rate_testable,req124_rmse_median_testable,opt248_pass,opt248_scope_limited,opt248_unstable,opt248_testable,opt248_pass_rate_testable,opt248_rmse_median_testable
+GoL,12,9,3,0,48,15,33,9,3,0,9,1.0,0.0028909251977881395,0,12,0,0,,
+Langton,12,11,1,0,48,4,44,11,1,0,11,1.0,0.0017667758262329024,9,3,0,9,1.0,0.0032578698481086437
+Ising,12,1,8,3,48,24,24,1,8,3,4,0.25,0.07555117384311902,4,8,0,4,1.0,0.01625686754880151

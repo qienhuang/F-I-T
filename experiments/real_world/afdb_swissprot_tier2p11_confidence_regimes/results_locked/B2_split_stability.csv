@@ -1,0 +1,4 @@
+run_id,status,selected_n,C_primary,C1_low_conf_frac,C2_pae_offdiag,C3_msa_deficit,offset_C3_minus_C2
+B2_taxon9606_N1000_split_a,ESTIMATOR_UNSTABLE,988,2,2,2,8,6
+B2_taxon9606_N1000_split_b,ESTIMATOR_UNSTABLE,988,2,2,2,8,6
+B2_taxon9606_N1000_split_c,ESTIMATOR_UNSTABLE,988,2,2,2,8,6

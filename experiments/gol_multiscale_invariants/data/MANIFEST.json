@@ -1,0 +1,42 @@
+{
+  "id": "gol_multiscale_invariants_manifest_v0_1",
+  "created_at_utc": "2026-02-16T18:28:05.075217+00:00",
+  "git_commit": "f7111461cf9a021069a326f9b93a2bf5bdb3ebc4",
+  "params": {
+    "input_csv": "d:\\FIT Lab\\github\\F-I-T\\experiments\\renormalization\\gol_rg_lens_v0_1\\out\\multiscale_scheme_audit.csv",
+    "entropy_normalization": "H_2x2 = clip(H/4, 0, 1)",
+    "schema": [
+      "seed",
+      "t",
+      "scheme",
+      "b",
+      "estimator",
+      "value"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "d:\\FIT Lab\\github\\F-I-T\\experiments\\renormalization\\gol_rg_lens_v0_1\\out\\multiscale_scheme_audit.csv",
+      "sha256": "84f366ee8de4835f3119146000556f8ce895e19ee66df1355e6477dfa5dd02ff",
+      "kind": "source_csv"
+    },
+    {
+      "path": "data\\multiscale_long.csv",
+      "sha256": "a0d215fd6828bfb4ec7aea161c6579e872eba97e16dcf6efd6cefc1a2ed1aedf",
+      "kind": "derived_long_csv"
+    },
+    {
+      "path": "d:\\FIT Lab\\github\\F-I-T\\experiments\\renormalization\\gol_rg_lens_v0_1\\out\\run_summary.json",
+      "sha256": "a16378585623bc15b329fab5aac79ca29739ff236ab2f6ab7f81e83bab5cfb68",
+      "kind": "source_summary"
+    },
+    {
+      "path": "data\\multiscale_long.parquet",
+      "sha256": "bc5e01f76d5a00a5bb9597ba92b70c552a4e89e846d206557b67dda17627401f",
+      "kind": "derived_long_parquet"
+    }
+  ],
+  "parquet_written": true,
+  "parquet_error": null,
+  "rows_long": 91680
+}

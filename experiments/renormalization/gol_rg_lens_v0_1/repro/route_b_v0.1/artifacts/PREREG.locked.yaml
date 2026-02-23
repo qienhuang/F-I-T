@@ -1,0 +1,43 @@
+preregistration:
+  case_id: gol_rg_lens_v0_1
+  date_locked: 2026-02-15
+  status: reproducibility_pack
+  claim_scope: >
+    Semigroup closure and scale-consistency are interpreted only under
+    non-saturated regimes and declared coarse-graining families.
+
+system:
+  name: conway_game_of_life
+  boundary: periodic_toroidal
+
+experiment:
+  grid_size: 128
+  seeds: 10
+  steps: 2000
+  burn_in: 100
+  measure_interval: 10
+  window: 50
+  scales: [1, 2, 4, 8]
+  schemes: [majority, threshold_low, threshold_high, average]
+
+estimators:
+  primary: [C_frozen, C_activity]
+  secondary: [H]
+  note: "C_activity is derived from C_frozen in this implementation."
+
+semigroup_gate:
+  rmse_threshold: 0.05
+  holdout_test_fraction: 0.33
+  random_state: 0
+
+saturation_gate:
+  near_bound_threshold: 0.1
+  saturation_fraction_gate: 0.9
+  min_non_saturated_adjacent_pairs: 2
+  failure_label: SCOPE_LIMITED_SATURATION
+
+matrix_labels:
+  supported: SUPPORTED
+  scope_limited_saturation: SCOPE_LIMITED_SATURATION
+  challenged: CHALLENGED
+  missing: MISSING

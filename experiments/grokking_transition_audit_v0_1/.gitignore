@@ -1,0 +1,6 @@
+data/smoke/*.csv
+outputs/main/
+outputs/smoke/
+!outputs/schema.json
+!outputs/summary_template.md
+

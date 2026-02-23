@@ -1,0 +1,55 @@
+{
+  "id": "ising_multiscale_invariants_manifest_v0_1",
+  "created_at_utc": "2026-02-16T20:10:26.968390+00:00",
+  "git_commit": "f7111461cf9a021069a326f9b93a2bf5bdb3ebc4",
+  "params": {
+    "rows": 15264,
+    "seeds": 3,
+    "seed_start": 14200,
+    "steps": 2500,
+    "burn_in": 400,
+    "measure_interval": 20,
+    "window": 30,
+    "grid_size": 128,
+    "temperature": 2.4,
+    "scales": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "schemes": [
+      "majority",
+      "threshold_low",
+      "threshold_high",
+      "average"
+    ],
+    "estimators": [
+      "C_frozen",
+      "C_activity",
+      "H_2x2"
+    ],
+    "out_parquet": "data/temp_sweep/T2p40/multiscale_long.parquet",
+    "out_csv": "data/temp_sweep/T2p40/multiscale_long.csv"
+  },
+  "artifacts": [
+    {
+      "path": "data\\temp_sweep\\T2p40\\multiscale_long.csv",
+      "sha256": "25f86878c7935fc3088ca10a7fa57fe1ce6cfe51f1207ce4977f1204aebc8758",
+      "kind": "derived_long_csv"
+    },
+    {
+      "path": "data\\temp_sweep\\T2p40\\run_summary.json",
+      "sha256": "95ea397d8436a6ecf14be25c3db007a640adb33e2c119965840f39aac0813441",
+      "kind": "run_summary"
+    },
+    {
+      "path": "data\\temp_sweep\\T2p40\\multiscale_long.parquet",
+      "sha256": "69b5b60da1e61f3f41814a7afeae3dd3ebd124cd9f66dfa5a87917942ea3e373",
+      "kind": "derived_long_parquet"
+    }
+  ],
+  "parquet_written": true,
+  "parquet_error": null,
+  "rows_long": 15264
+}

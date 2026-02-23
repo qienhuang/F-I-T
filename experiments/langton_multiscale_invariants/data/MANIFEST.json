@@ -1,0 +1,54 @@
+{
+  "id": "langton_multiscale_invariants_manifest_v0_1",
+  "created_at_utc": "2026-02-16T19:21:25.555739+00:00",
+  "git_commit": "f7111461cf9a021069a326f9b93a2bf5bdb3ebc4",
+  "params": {
+    "rows": 161568,
+    "seeds": 6,
+    "seed_start": 7000,
+    "steps": 12000,
+    "burn_in": 800,
+    "measure_interval": 20,
+    "window": 40,
+    "view_size": 128,
+    "scales": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "schemes": [
+      "majority",
+      "threshold_low",
+      "threshold_high",
+      "average"
+    ],
+    "estimators": [
+      "C_frozen",
+      "C_activity",
+      "H_2x2"
+    ],
+    "out_parquet": "data/multiscale_long.parquet",
+    "out_csv": "data/multiscale_long.csv"
+  },
+  "artifacts": [
+    {
+      "path": "data\\multiscale_long.csv",
+      "sha256": "d1d233a34ad089cace34858332385bddfb527f2ac4e143f505d4bbb7b333997e",
+      "kind": "derived_long_csv"
+    },
+    {
+      "path": "data\\run_summary.json",
+      "sha256": "645e18b8324b57c517dfbea684211f5e913f3edf49747234d0408e5847d12f5d",
+      "kind": "run_summary"
+    },
+    {
+      "path": "data\\multiscale_long.parquet",
+      "sha256": "e1763e7181091acb083feebb17cc1b894c212cbf5fb4275442aff4413255fd57",
+      "kind": "derived_long_parquet"
+    }
+  ],
+  "parquet_written": true,
+  "parquet_error": null,
+  "rows_long": 161568
+}

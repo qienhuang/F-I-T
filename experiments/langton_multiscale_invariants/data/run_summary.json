@@ -1,0 +1,29 @@
+{
+  "rows": 161568,
+  "seeds": 6,
+  "seed_start": 7000,
+  "steps": 12000,
+  "burn_in": 800,
+  "measure_interval": 20,
+  "window": 40,
+  "view_size": 128,
+  "scales": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "schemes": [
+    "majority",
+    "threshold_low",
+    "threshold_high",
+    "average"
+  ],
+  "estimators": [
+    "C_frozen",
+    "C_activity",
+    "H_2x2"
+  ],
+  "out_parquet": "data/multiscale_long.parquet",
+  "out_csv": "data/multiscale_long.csv"
+}

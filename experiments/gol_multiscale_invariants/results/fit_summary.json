@@ -1,0 +1,18 @@
+{
+  "input": "d:\\FIT Lab\\github\\F-I-T\\experiments\\gol_multiscale_invariants\\data\\multiscale_long.parquet",
+  "saturation_csv": "d:\\FIT Lab\\github\\F-I-T\\experiments\\gol_multiscale_invariants\\results\\saturation_matrix.csv",
+  "n_scale_maps": 36,
+  "n_invariant_rows": 12,
+  "schemes": [
+    "average",
+    "majority",
+    "threshold_high",
+    "threshold_low"
+  ],
+  "estimators": [
+    "C_activity",
+    "C_frozen",
+    "H_2x2"
+  ],
+  "closure_rmse_tau": 0.05
+}

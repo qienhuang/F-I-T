@@ -1,0 +1,13 @@
+{
+  "input": "data/multiscale_long.parquet",
+  "eps": 0.1,
+  "ratio_threshold": 0.9,
+  "groups_total": 48,
+  "groups_saturated": 24,
+  "groups_non_saturated": 24,
+  "non_saturated_by_estimator": {
+    "C_activity": 4,
+    "C_frozen": 4,
+    "H_2x2": 16
+  }
+}

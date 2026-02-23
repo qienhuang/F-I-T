@@ -1,0 +1,13 @@
+scheme,estimator,status,label,reason,best_rmse_composed_vs_direct,saturation_gate_pass,n_non_saturated_adjacent_pairs,n_evaluated_semigroup_triples,path
+majority,C_frozen,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.0023945380825885947,True,2,1,out/scheme_audit_full/majority_C_frozen/semigroup_summary.json
+majority,C_activity,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.0023945380825885943,True,2,1,out/scheme_audit_full/majority_C_activity/semigroup_summary.json
+majority,H,OK,SCOPE_LIMITED_SATURATION,no non-saturated evaluated semigroup triple,,False,0,0,out/scheme_audit_full/majority_H/semigroup_summary.json
+threshold_low,C_frozen,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.002820503724151045,True,2,1,out/scheme_audit_full/threshold_low_C_frozen/semigroup_summary.json
+threshold_low,C_activity,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.002820503724151041,True,2,1,out/scheme_audit_full/threshold_low_C_activity/semigroup_summary.json
+threshold_low,H,OK,SCOPE_LIMITED_SATURATION,no non-saturated evaluated semigroup triple,,False,1,0,out/scheme_audit_full/threshold_low_H/semigroup_summary.json
+threshold_high,C_frozen,OK,SCOPE_LIMITED_SATURATION,no non-saturated evaluated semigroup triple,,False,1,0,out/scheme_audit_full/threshold_high_C_frozen/semigroup_summary.json
+threshold_high,C_activity,OK,SCOPE_LIMITED_SATURATION,no non-saturated evaluated semigroup triple,,False,1,0,out/scheme_audit_full/threshold_high_C_activity/semigroup_summary.json
+threshold_high,H,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.0042887868113335795,True,2,1,out/scheme_audit_full/threshold_high_H/semigroup_summary.json
+average,C_frozen,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.0023945380825885947,True,2,1,out/scheme_audit_full/average_C_frozen/semigroup_summary.json
+average,C_activity,OK,SUPPORTED,all evaluated triples pass rmse threshold,0.0023945380825885943,True,2,1,out/scheme_audit_full/average_C_activity/semigroup_summary.json
+average,H,OK,SCOPE_LIMITED_SATURATION,no non-saturated evaluated semigroup triple,,False,0,0,out/scheme_audit_full/average_H/semigroup_summary.json

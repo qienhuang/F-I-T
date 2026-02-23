@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "required": [
+    "run_id",
+    "prereg_id",
+    "seed",
+    "input_file",
+    "thresholds",
+    "signal_lock",
+    "event_density",
+    "event_counts",
+    "ptmss",
+    "events",
+    "gate",
+    "baseline",
+    "label"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "prereg_id": {
+      "type": "string"
+    },
+    "seed": {
+      "type": "string"
+    },
+    "input_file": {
+      "type": "string"
+    },
+    "thresholds": {
+      "type": "object"
+    },
+    "signal_lock": {
+      "type": "object"
+    },
+    "event_density": {
+      "type": "object"
+    },
+    "event_counts": {
+      "type": "object"
+    },
+    "ptmss": {
+      "type": "object"
+    },
+    "events": {
+      "type": "object"
+    },
+    "gate": {
+      "type": "object"
+    },
+    "baseline": {
+      "type": "object"
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "REGISTERED_TRANSITION",
+        "NO_TRANSITION",
+        "ESTIMATOR_UNSTABLE",
+        "INCONCLUSIVE"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

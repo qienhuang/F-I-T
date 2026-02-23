@@ -1,0 +1,69 @@
+id: GROKKING_TRANSITION_AUDIT_PHASE_II_V0_1
+version: "0.1"
+status: draft_locked_for_eval
+
+goal:
+  claim: "Synchronous locking corresponds to a more stable/recoverable dynamical regime."
+  source_phase_i: "../outputs/main/summary.json"
+  boundary_note: "This is an estimator-scoped claim under modular-addition + tiny-transformer boundary."
+
+inputs:
+  diagnostics_csv: "../outputs/main/diagnostics.csv"
+  phase_i_summary: "../outputs/main/summary.json"
+  per_seed_json_dir: "../outputs/main/per_seed"
+  run_manifest_json: "./results/seed_manifest.json"
+
+groups:
+  registered_label: "REGISTERED_TRANSITION"
+  control_label: "NO_TRANSITION"
+  unstable_label: "ESTIMATOR_UNSTABLE"
+  control_sample_size: 8
+  include_unstable_as_optional: true
+
+upstream_grokking:
+  root: "../../../../../grokking"
+  base_spec: "../../../../../grokking/protocol/estimator_spec.v0_5_holdout.yaml"
+  checkpoint_runs_out: "../../../../../grokking/runs_v0_6_structural_phase2"
+  phase: "eval"
+  set_save_checkpoints: true
+  checkpoint_every_steps_override: 500
+  max_steps_override: null
+
+tests:
+  weight_noise:
+    enabled: true
+    epsilons: [1.0e-4, 3.0e-4, 1.0e-3]
+    repeats: 3
+
+  perturb_recover:
+    enabled: true
+    epsilon: 3.0e-4
+    recover_steps: 2000
+    eval_every_steps: 100
+    recover_target_fraction_of_baseline_acc: 0.99
+
+  representation_plateau:
+    enabled: true
+    metric: "H_spec(unembed.weight)"
+    anchor_rule: "fit_transition_t if available else baseline_transition_t"
+    post_window_steps: 3000
+
+decision_rule:
+  criterion_1:
+    definition: "median(REGISTERED drop@eps=3e-4) < q25(NO_TRANSITION drop@eps=3e-4)"
+  criterion_2:
+    definition: "all(REGISTERED t_recover) < median(NO_TRANSITION t_recover)"
+  criterion_3:
+    definition: "median(REGISTERED plateau_var) < median(NO_TRANSITION plateau_var)"
+  verdict:
+    pass_if_at_least_k_of_3: 2
+    pass_label: "ATTRACTOR_SUPPORTED"
+    fail_label: "ATTRACTOR_NOT_SUPPORTED"
+    otherwise_label: "INCONCLUSIVE"
+
+outputs:
+  out_dir: "./results/main"
+  per_seed_csv: "./results/main/per_seed_metrics.csv"
+  summary_json: "./results/main/summary.json"
+  report_md: "./results/main/report.md"
+  run_commands_ps1: "./results/run_phase2_gpu.ps1"

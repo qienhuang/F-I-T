@@ -1,0 +1,13 @@
+scheme,estimator,closure_tested_triples,closure_pass_triples,closure_scope_limited,closure_unstable,overall_label
+average,C_activity,0,0,2,0,SCOPE_LIMITED_SATURATION
+average,C_frozen,0,0,2,0,SCOPE_LIMITED_SATURATION
+average,H_2x2,2,2,0,0,PASS
+majority,C_activity,0,0,2,0,SCOPE_LIMITED_SATURATION
+majority,C_frozen,0,0,2,0,SCOPE_LIMITED_SATURATION
+majority,H_2x2,2,2,0,0,PASS
+threshold_high,C_activity,0,0,2,0,SCOPE_LIMITED_SATURATION
+threshold_high,C_frozen,0,0,2,0,SCOPE_LIMITED_SATURATION
+threshold_high,H_2x2,2,2,0,0,PASS
+threshold_low,C_activity,0,0,2,0,SCOPE_LIMITED_SATURATION
+threshold_low,C_frozen,0,0,2,0,SCOPE_LIMITED_SATURATION
+threshold_low,H_2x2,2,2,0,0,PASS

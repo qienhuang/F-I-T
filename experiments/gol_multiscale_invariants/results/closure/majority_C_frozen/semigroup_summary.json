@@ -1,0 +1,142 @@
+{
+  "input": "D:\\FIT Lab\\github\\F-I-T\\experiments\\renormalization\\gol_rg_lens_v0_1\\out\\multiscale_scheme_audit.csv",
+  "scheme": "majority",
+  "estimator": "C_frozen",
+  "scales": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "n_rows_total": 1910,
+  "train_seeds": [
+    1000,
+    1001,
+    1003,
+    1004,
+    1005,
+    1007,
+    1009
+  ],
+  "test_seeds": [
+    1002,
+    1006,
+    1008
+  ],
+  "n_rows_train": 1337,
+  "n_rows_test": 573,
+  "saturation_settings": {
+    "near_bound_threshold": 0.1,
+    "saturation_fraction_gate": 0.9,
+    "min_non_saturated_pairs": 2
+  },
+  "saturation_checks": {
+    "b=1": {
+      "is_saturated": false,
+      "saturation_fraction": 0.32460732984293195,
+      "near_zero_fraction": 0.25654450261780104,
+      "near_one_fraction": 0.06806282722513089,
+      "near_bound_threshold": 0.1,
+      "saturation_fraction_gate": 0.9
+    },
+    "b=2": {
+      "is_saturated": false,
+      "saturation_fraction": 0.3238593866866118,
+      "near_zero_fraction": 0.25654450261780104,
+      "near_one_fraction": 0.06731488406881077,
+      "near_bound_threshold": 0.1,
+      "saturation_fraction_gate": 0.9
+    },
+    "b=4": {
+      "is_saturated": false,
+      "saturation_fraction": 0.3335826477187734,
+      "near_zero_fraction": 0.25654450261780104,
+      "near_one_fraction": 0.07703814510097233,
+      "near_bound_threshold": 0.1,
+      "saturation_fraction_gate": 0.9
+    },
+    "b=8": {
+      "is_saturated": true,
+      "saturation_fraction": 1.0,
+      "near_zero_fraction": 0.25654450261780104,
+      "near_one_fraction": 0.743455497382199,
+      "near_bound_threshold": 0.1,
+      "saturation_fraction_gate": 0.9
+    }
+  },
+  "pair_fits": {
+    "1->2": {
+      "model": "isotonic",
+      "r2_test": 0.9998800319216129,
+      "spearman_rho_test": 0.9999408773625704,
+      "spearman_p_test": 0.0,
+      "mean_bin_std_test": 0.02082603079283481,
+      "max_bin_std_test": 0.08534714776577795,
+      "bins_used": 15,
+      "y_dynamic_range_test": 0.9171875,
+      "y_std_test": 0.3237976318520584,
+      "n_train": 1337,
+      "n_test": 573
+    },
+    "2->4": {
+      "model": "isotonic",
+      "r2_test": 0.9978321583072013,
+      "spearman_rho_test": 0.9947705488200063,
+      "spearman_p_test": 0.0,
+      "mean_bin_std_test": 0.029783703137740092,
+      "max_bin_std_test": 0.22317356232844046,
+      "bins_used": 15,
+      "y_dynamic_range_test": 0.965234375,
+      "y_std_test": 0.37069061059789465,
+      "n_train": 1337,
+      "n_test": 573
+    },
+    "4->8": {
+      "model": "isotonic",
+      "r2_test": 0.9999595655934514,
+      "spearman_rho_test": 0.7428216701302932,
+      "spearman_p_test": 1.4176351918126097e-101,
+      "mean_bin_std_test": 0.024816745557748196,
+      "max_bin_std_test": 0.3455525993711378,
+      "bins_used": 15,
+      "y_dynamic_range_test": 1.0,
+      "y_std_test": 0.4360784108849932,
+      "n_train": 1337,
+      "n_test": 573
+    }
+  },
+  "semigroup_tests": {
+    "1->2->4": {
+      "skipped_due_to_saturation": false,
+      "n_test": 573,
+      "mae_composed_vs_direct": 0.0010823435604722209,
+      "rmse_composed_vs_direct": 0.0020456227453783792,
+      "r2_truth_composed": 0.9982810239464791,
+      "r2_truth_direct": 0.99828153314324,
+      "dynamic_range_truth_q95_q05": 0.965234375
+    },
+    "2->4->8": {
+      "skipped_due_to_saturation": true,
+      "saturated_scales": [
+        8
+      ]
+    }
+  },
+  "notes": [
+    "R2 can be misleading under saturation; interpret with Spearman and dynamic range.",
+    "Saturation gate skips semigroup tests with saturated scales."
+  ],
+  "saturation_gate": {
+    "non_saturated_adjacent_pairs": [
+      "1->2",
+      "2->4"
+    ],
+    "n_non_saturated_adjacent_pairs": 2,
+    "evaluated_semigroup_triples": [
+      "1->2->4"
+    ],
+    "n_evaluated_semigroup_triples": 1,
+    "required_min_pairs": 2,
+    "pass": true
+  }
+}

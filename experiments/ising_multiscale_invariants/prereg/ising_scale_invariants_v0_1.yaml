@@ -1,0 +1,47 @@
+# Preregistration - Ising Scale-Invariant Extraction (Path-4)
+# Version: v0.1
+
+preregistration:
+  id: ising_scale_invariants_v0_1
+  date_locked: 2026-02-16
+  scope: "2D Ising multiscale f invariants (fixed point, slope, semigroup closure)"
+  status: locked
+
+data_spec:
+  format: parquet
+  required_columns: [seed, t, scheme, b, estimator, value]
+  scales_b: [1, 2, 4, 8]
+  schemes_required: [majority, threshold_low]
+  estimators_required: [C_frozen, H_2x2]
+  split:
+    unit: seed
+    train_ratio: 0.7
+    test_ratio: 0.3
+    random_seed_for_split: 20260216
+
+saturation_gate:
+  eps: 0.10
+  saturated_ratio_threshold: 0.90
+  label: SCOPE_LIMITED_SATURATION
+
+fit_models:
+  primary: isotonic_regression
+  secondary:
+    type: polynomial
+    degree_candidates: [2, 3]
+    selection_rule: "choose lowest degree with test_RMSE within 1% of best"
+
+fixed_point:
+  search_domain: [0.0, 1.0]
+  grid_points: 2001
+  bootstrap_resamples: 200
+  boundary_exclusion_eps: 0.10
+
+slope:
+  isotonic_delta: 0.01
+  stability_cut: 1.0
+
+semigroup_closure:
+  required: [1_to_2_to_4]
+  optional: [2_to_4_to_8]
+  rmse_threshold_tau: 0.05

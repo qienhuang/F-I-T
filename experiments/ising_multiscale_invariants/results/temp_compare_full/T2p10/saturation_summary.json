@@ -1,0 +1,13 @@
+{
+  "input": "data/temp_compare_full/T2p10/multiscale_long.parquet",
+  "eps": 0.1,
+  "ratio_threshold": 0.9,
+  "groups_total": 48,
+  "groups_saturated": 8,
+  "groups_non_saturated": 40,
+  "non_saturated_by_estimator": {
+    "C_activity": 12,
+    "C_frozen": 12,
+    "H_2x2": 16
+  }
+}

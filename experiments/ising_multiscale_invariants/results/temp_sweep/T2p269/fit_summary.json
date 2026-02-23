@@ -1,0 +1,18 @@
+{
+  "input": "data\\temp_sweep\\T2p269\\multiscale_long.parquet",
+  "saturation_csv": "results\\temp_sweep\\T2p269\\saturation_matrix.csv",
+  "n_scale_maps": 36,
+  "n_invariant_rows": 12,
+  "schemes": [
+    "average",
+    "majority",
+    "threshold_high",
+    "threshold_low"
+  ],
+  "estimators": [
+    "C_activity",
+    "C_frozen",
+    "H_2x2"
+  ],
+  "closure_rmse_tau": 0.05
+}

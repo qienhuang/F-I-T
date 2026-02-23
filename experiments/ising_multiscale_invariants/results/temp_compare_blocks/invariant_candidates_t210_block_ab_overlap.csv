@@ -1,0 +1,17 @@
+scheme,estimator,pair,both_testable,x_star_ci_overlap,slope_abs_ci_overlap,candidate_consistent_ab
+average,C_frozen,1->2,False,True,True,False
+average,C_frozen,2->4,True,True,True,True
+average,H_2x2,1->2,True,True,True,True
+average,H_2x2,2->4,True,True,True,True
+majority,C_frozen,1->2,False,True,True,False
+majority,C_frozen,2->4,True,True,True,True
+majority,H_2x2,1->2,True,True,True,True
+majority,H_2x2,2->4,True,True,True,True
+threshold_low,C_frozen,1->2,False,True,True,False
+threshold_low,C_frozen,2->4,True,True,True,True
+threshold_low,H_2x2,1->2,True,True,True,True
+threshold_low,H_2x2,2->4,True,True,True,True
+threshold_high,C_frozen,1->2,False,True,True,False
+threshold_high,C_frozen,2->4,True,True,True,True
+threshold_high,H_2x2,1->2,True,True,True,True
+threshold_high,H_2x2,2->4,True,True,True,True

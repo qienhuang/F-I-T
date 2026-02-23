@@ -1,0 +1,79 @@
+id: GROKKING_TRANSITION_AUDIT_V0_1_SMOKE
+version: "0.1-smoke"
+status: smoke
+
+boundary:
+  task: synthetic_smoke
+  model_family: n/a
+  notes: "Synthetic inputs for pipeline validation."
+
+inputs:
+  timeseries_glob: "data/smoke/*.csv"
+  required_columns:
+    - step
+    - d_force
+    - d_info
+    - d_constraint
+  optional_columns:
+    - acc_test
+    - d_force_alt
+    - d_info_alt
+    - d_constraint_alt
+
+signals:
+  mode: fixed
+  quantiles:
+    force: 0.99
+    info: 0.99
+    constraint: 0.99
+  fixed_thresholds:
+    force: 0.6
+    info: 0.6
+    constraint: 0.6
+  density_gate:
+    min_rate: 0.0
+    max_rate: 0.2
+
+ptmss:
+  window_radius_steps: 6
+  choose_transition: earliest
+
+families:
+  - name: primary
+    cols:
+      force: d_force
+      info: d_info
+      constraint: d_constraint
+  - name: alt
+    cols:
+      force: d_force_alt
+      info: d_info_alt
+      constraint: d_constraint_alt
+    optional: true
+
+coherence_gate:
+  alignment_tolerance_steps: 4
+  require_order_consistency: true
+
+baseline:
+  use_acc_jump: true
+  acc_col: acc_test
+  jump_window: 4
+  jump_min: 0.05
+
+claim:
+  c1_min_divergence_rate: 0.15
+  c1_min_replay_count: 1
+
+replay:
+  enabled: false
+  manifest: outputs/smoke/replay_manifest.json
+  seeds: []
+
+outputs:
+  out_dir: outputs/smoke
+  per_seed_json_dir: outputs/smoke/per_seed
+  summary_json: outputs/smoke/summary.json
+  diagnostics_csv: outputs/smoke/diagnostics.csv
+  report_md: outputs/smoke/report.md
+  audit_cards_dir: outputs/smoke/audit_cards

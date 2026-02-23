@@ -1,0 +1,67 @@
+﻿preregistration:
+  case_id: self_reference_recoverability_v0_1_smoke
+  status: smoke
+
+boundary:
+  system: synthetic_llm_like_agent_loop
+
+groups:
+  - id: G0
+    name: baseline
+    self_writeback: true
+    control_enabled: false
+  - id: G1
+    name: no_self_writeback
+    self_writeback: false
+    control_enabled: false
+  - id: G2
+    name: controlled_nirvana_window
+    self_writeback: true
+    control_enabled: true
+
+simulation:
+  n_episodes: 30
+  n_steps: 90
+  perturb_step: 15
+  perturb_amplitude: 0.45
+  seed_start: 2000
+
+state_dynamics:
+  init_memory_bias_mean: 0.20
+  init_memory_bias_std: 0.04
+  writeback_beta: 0.12
+  correction_gamma: 0.08
+  decay_eta: 0.02
+  noise_sigma: 0.015
+  action_gain: 6.0
+  action_bias: -2.0
+
+lockin_detector:
+  score_threshold: 0.05
+  memory_threshold: 0.45
+  consecutive_steps: 5
+  rolling_window: 5
+
+controller:
+  emptiness_window_steps: 8
+  block_unsafe_actions: true
+  block_self_writeback: true
+
+recoverability:
+  recovery_window: 10
+  success_ratio_threshold: 0.80
+  memory_threshold: 0.30
+  drift_memory_threshold: 0.55
+  lambda_time: 0.02
+  mu_drift: 0.03
+
+monitorability:
+  fpr_targets: [0.05, 0.10, 0.20]
+  positive_label: non_recovered
+
+outputs:
+  episodes_csv: outputs/smoke_episodes.csv
+  episode_summary_csv: outputs/smoke_episode_summary.csv
+  recoverability_json: outputs/smoke_recoverability_summary.json
+  monitorability_csv: outputs/smoke_monitorability_tradeoff.csv
+  report_md: outputs/smoke_report.md

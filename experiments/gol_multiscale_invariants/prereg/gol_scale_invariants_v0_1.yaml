@@ -1,0 +1,112 @@
+# Preregistration — GoL Scale-Invariant Extraction (Path 4)
+# Version: v0.1
+# Purpose: lock analysis choices for extracting scheme-robust invariants of scale maps.
+
+preregistration:
+  id: gol_scale_invariants_v0_1
+  date_locked: 2026-02-16
+  owner: Qien Huang
+  scope: "GoL multiscale f invariants (fixed point, slope, semigroup closure)"
+  status: locked
+
+data_spec:
+  format: parquet
+  required_columns: [seed, t, scheme, b, estimator, value]
+  scales_b: [1, 2, 4, 8]
+  schemes_min_required: 2
+  estimators_required:
+    - C_frozen
+    - H_2x2
+  estimators_optional:
+    - C_activity
+    - dim_proxy
+  split:
+    unit: seed
+    train_ratio: 0.7
+    test_ratio: 0.3
+    random_seed_for_split: 20260216
+
+saturation_gate:
+  eps: 0.10
+  saturated_ratio_threshold: 0.90
+  rule: "SATURATED if >=90% of samples within [0,eps] or [1-eps,1]"
+  handling:
+    exclude_from_fit: false          # allow fit, but exclude from invariant claims
+    exclude_from_invariants: true    # fixed point / slope / closure not claimed if saturated
+    label: SCOPE_LIMITED_SATURATION
+
+fit_models:
+  primary:
+    name: isotonic_regression
+    monotone: true
+  secondary:
+    name: polynomial
+    degree_candidates: [2, 3]
+    selection_rule: "choose lowest degree with test_RMSE within 1% of best"
+
+metrics:
+  per_pair_outputs:
+    - rmse_test
+    - mae_test
+    - spearman_rho_test
+  rho_compute_rule: "compute Spearman only on non-saturated subset"
+  monotonicity_violations: true
+
+fixed_point:
+  search_domain: [0.0, 1.0]
+  grid_points: 2001
+  refine_method: "brentq_on_bracketed_roots"
+  boundary_exclusion_eps: 0.10
+  bootstrap:
+    resamples: 200
+    unit: seed
+  outputs: [x_star_mean, x_star_ci_low, x_star_ci_high, label]
+
+slope_at_fixed_point:
+  isotonic_method:
+    delta: 0.01
+    rule: "finite difference around x_star"
+  polynomial_method:
+    rule: "analytic derivative at x_star"
+  bootstrap:
+    resamples: 200
+    unit: seed
+  stability_classification:
+    stable_if: "abs(slope) < 1 and CI_high < 1"
+    unstable_if: "abs(slope) > 1 and CI_low > 1"
+    unknown_if: "CI crosses 1"
+
+semigroup_closure:
+  required_tests:
+    - name: closure_1_2_4
+      direct: "f_1_to_4"
+      composed: "f_2_to_4 o f_1_to_2"
+  optional_tests:
+    - name: closure_2_4_8
+      direct: "f_2_to_8"
+      composed: "f_4_to_8 o f_2_to_4"
+  overlap_domain_rule: "evaluate only on x where both direct and composed have >=N points density"
+  overlap_min_points: 500
+  rmse_threshold_tau: 0.05
+  verdicts: [PASS, SCOPE_LIMITED_SATURATION, ESTIMATOR_UNSTABLE, SCHEME_DEPENDENT]
+
+reporting:
+  required_artifacts:
+    - results/saturation_matrix.csv
+    - results/invariant_matrix.csv
+    - results/scale_maps.json
+    - results/fixed_points.json
+    - results/closure_tests.json
+    - results/summary.md
+  plots_required:
+    - "scatter+fit per (scheme,estimator,b→2b) on TEST seeds"
+    - "closure heatmap (schemes×estimators)"
+  labels_policy:
+    estimator_instability: ESTIMATOR_UNSTABLE
+    saturation: SCOPE_LIMITED_SATURATION
+    scheme_only_success: SCHEME_DEPENDENT
+
+non_claims:
+  - "Do not claim global scheme-independence; only within tested admissible family."
+  - "Do not interpret saturation as success; saturation limits task validity."
+  - "Do not treat C_activity as independent evidence from C_frozen."

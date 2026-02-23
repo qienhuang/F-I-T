@@ -1,0 +1,178 @@
+{
+  "average": {
+    "C_activity": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.020381977061363743,
+        "mae_composed_vs_direct": 0.017575880752998794,
+        "n_test": 352
+      }
+    },
+    "C_frozen": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.02038197706136394,
+        "mae_composed_vs_direct": 0.01757588075299896,
+        "n_test": 352
+      }
+    },
+    "H_2x2": {
+      "1->2->4": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.019823123816552875,
+        "mae_composed_vs_direct": 0.01566026157259216,
+        "n_test": 352
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.0065364386017605774,
+        "mae_composed_vs_direct": 0.0028669903443876723,
+        "n_test": 352
+      }
+    }
+  },
+  "majority": {
+    "C_activity": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.020381977061363743,
+        "mae_composed_vs_direct": 0.017575880752998794,
+        "n_test": 352
+      }
+    },
+    "C_frozen": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.02038197706136394,
+        "mae_composed_vs_direct": 0.01757588075299896,
+        "n_test": 352
+      }
+    },
+    "H_2x2": {
+      "1->2->4": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.019823123816552875,
+        "mae_composed_vs_direct": 0.01566026157259216,
+        "n_test": 352
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.0065364386017605774,
+        "mae_composed_vs_direct": 0.0028669903443876723,
+        "n_test": 352
+      }
+    }
+  },
+  "threshold_high": {
+    "C_activity": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "ESTIMATOR_UNSTABLE",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.05395072193020471,
+        "mae_composed_vs_direct": 0.024676724609744603,
+        "n_test": 352
+      }
+    },
+    "C_frozen": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "ESTIMATOR_UNSTABLE",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.053950721930204684,
+        "mae_composed_vs_direct": 0.024676724609744596,
+        "n_test": 352
+      }
+    },
+    "H_2x2": {
+      "1->2->4": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.03569531473210358,
+        "mae_composed_vs_direct": 0.02948625825104869,
+        "n_test": 352
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.008112784933653203,
+        "mae_composed_vs_direct": 0.00412909702500428,
+        "n_test": 352
+      }
+    }
+  },
+  "threshold_low": {
+    "C_activity": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.04959343628080589,
+        "mae_composed_vs_direct": 0.03974724054303589,
+        "n_test": 352
+      }
+    },
+    "C_frozen": {
+      "1->2->4": {
+        "label": "SCOPE_LIMITED_SATURATION",
+        "skipped": true
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.0495934362808059,
+        "mae_composed_vs_direct": 0.039747240543035904,
+        "n_test": 352
+      }
+    },
+    "H_2x2": {
+      "1->2->4": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.019183627283746688,
+        "mae_composed_vs_direct": 0.01526317067803723,
+        "n_test": 352
+      },
+      "2->4->8": {
+        "label": "PASS",
+        "skipped": false,
+        "rmse_composed_vs_direct": 0.00790480531289308,
+        "mae_composed_vs_direct": 0.005308828120681674,
+        "n_test": 352
+      }
+    }
+  }
+}

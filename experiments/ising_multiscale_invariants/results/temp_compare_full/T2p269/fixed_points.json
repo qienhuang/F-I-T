@@ -1,0 +1,2174 @@
+{
+  "average": {
+    "C_activity": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.965087890625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            797.7251392043643,
+            -1577.902770825671,
+            781.1770556604669
+          ],
+          "x_star": 0.9792218818802189,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946755956737
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9767085905972166,
+            "ci_low": 0.9644775390625,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9936879852511089,
+            "ci_low": 0.9792218818879402,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213258,
+            "ci_low": 0.0,
+            "ci_high": 3.552246093749997,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -11.31482054859961,
+            "ci_low": -29.205711844959616,
+            "ci_high": 17.998696339420462,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213258,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.552246093749997
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.584717371137504,
+            "abs_ci_low": 3.6172503346546363,
+            "abs_ci_high": 29.205711844959616
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.92822265625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -10.07773927468746,
+            21.6814787244764,
+            -10.607863542052463
+          ],
+          "x_star": 1.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 1.5260001751014798
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9540574091372283,
+            "ci_low": 0.92822265625,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9681367197280116,
+            "ci_low": 0.5063788290686206,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.7003972723535294,
+            "ci_low": 0.0,
+            "ci_high": 2.451171875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.4278169103634957,
+            "ci_low": -0.01484660966639324,
+            "ci_high": 1.9891412941303501,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.7003972723535294,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 2.451171875
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.4341610414436448,
+            "abs_ci_low": 0.013330579260410175,
+            "abs_ci_high": 1.9891412941303501
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 1.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.55208333333333
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            1726.0291470156612,
+            -4992.580912986414,
+            4814.858001093269,
+            -1547.3096747438356
+          ],
+          "x_star": 1.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.783616167425862
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9976523701884511,
+            "ci_low": 0.9995564358045325,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 6.591249142289471,
+            "ci_low": 3.312500000000004,
+            "ci_high": 8.544921874999993,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 7.472835091041735,
+            "ci_low": 4.421976129130915,
+            "ci_high": 11.159017034747421,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unstable",
+            "abs_mean": 6.591249142289471,
+            "abs_ci_low": 3.312500000000004,
+            "abs_ci_high": 8.544921874999993
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 7.678160953871113,
+            "abs_ci_low": 4.435167908882866,
+            "abs_ci_high": 11.159017034747421
+          }
+        }
+      }
+    },
+    "C_frozen": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.034912109375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -797.7251410597623,
+            17.547507585031134,
+            0.0005759608455395323
+          ],
+          "x_star": 0.02077811807434318,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946758592488
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.02329140940278325,
+            "ci_low": 0.0,
+            "ci_high": 0.0355224609375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.005700309686172258,
+            "ci_low": 0.0,
+            "ci_high": 0.020778118074343255,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213265,
+            "ci_low": 0.0,
+            "ci_high": 3.55224609375,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -8.36761600377381,
+            "ci_low": -29.20571184099927,
+            "ci_high": 21.78995562430792,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213265,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.55224609375
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.724717366841507,
+            "abs_ci_low": 3.617250330012183,
+            "abs_ci_high": 29.20571184099927
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.07177734375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            10.077739274747422,
+            1.526000175099846,
+            0.004124092263555136
+          ],
+          "x_star": 0.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 1.526000175099846
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.045367590862771735,
+            "ci_low": 0.0,
+            "ci_high": 0.07177734375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.008161308439131293,
+            "ci_low": 0.0,
+            "ci_high": 0.03175248235310252,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.6437800527025508,
+            "ci_low": 0.0,
+            "ci_high": 2.451171875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5537602360683465,
+            "ci_low": 0.29076364517210096,
+            "ci_high": 2.014846609666567,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.6437800527025508,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 2.451171875
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.5537602360683465,
+            "abs_ci_low": 0.29076364517210096,
+            "abs_ci_high": 2.014846609666567
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.552083333333333
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            1726.0291470651546,
+            -185.50652806681086,
+            7.783616167680194,
+            0.0034396213027563767
+          ],
+          "x_star": 0.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.783616167680194
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.0007556531687471803,
+            "ci_low": 0.0,
+            "ci_high": 0.0004423669550390924,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 6.591249142289474,
+            "ci_low": 3.3125,
+            "ci_high": 8.544921875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 7.541582131220688,
+            "ci_low": 4.421976129122551,
+            "ci_high": 11.159017034558024,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unstable",
+            "abs_mean": 6.591249142289474,
+            "abs_ci_low": 3.3125,
+            "abs_ci_high": 8.544921875
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 7.68531035506631,
+            "abs_ci_low": 4.435167908869935,
+            "abs_ci_high": 11.159017034558024
+          }
+        }
+      }
+    },
+    "H_2x2": {
+      "1->2": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.2602697690769805,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            31.66947890012462,
+            -54.617263484311856,
+            32.522539508366755,
+            -6.148996845565404
+          ],
+          "x_star": 0.6885493503322817,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 2.352696516753234
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.29733401122447395,
+            "ci_low": 0.2602697690769805,
+            "ci_high": 0.48568847105689544,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.5369013575303898,
+            "ci_low": 0.15074341182780368,
+            "ci_high": 0.713068776163499,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.03258880754859969,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 0.9484396679967111,
+            "ci_low": -2.379102678585724,
+            "ci_high": 2.5959798620691217,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.03258880754859969,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.9076356381459716,
+            "abs_ci_low": 0.30107693453703144,
+            "abs_ci_high": 2.790905938771317
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.19364551514923375,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            13.58724781252397,
+            -21.17966550520271,
+            11.547806663377383,
+            -1.6996085108499865
+          ],
+          "x_star": 0.3974604072146308,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.1509769711602367
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.22729626670094305,
+            "ci_low": 0.19364551514923375,
+            "ci_high": 0.427,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.4656467445033815,
+            "ci_low": 0.08551790889633491,
+            "ci_high": 0.7412281046053537,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.07098322840023688,
+            "ci_low": 0.0,
+            "ci_high": 1.4196645680047375,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5493424832790752,
+            "ci_low": 0.23501713186510267,
+            "ci_high": 3.488641961241857,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.07098322840023688,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 1.4196645680047375
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.5493424832790752,
+            "abs_ci_low": 0.23501713186510267,
+            "abs_ci_high": 3.488641961241857
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.02902876882619171,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            0.7085845902281886,
+            0.6806356282178021,
+            -0.08723592813153422
+          ],
+          "x_star": 0.642363619414879,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.5909735522989785
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.043087387489736104,
+            "ci_low": 0.02902876882619171,
+            "ci_high": 0.15998311042248303,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.6408546514340674,
+            "ci_low": 0.6168877182391649,
+            "ci_high": 0.6951884678950937,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5613450966800477,
+            "ci_low": 1.3639722564957935,
+            "ci_high": 1.8141996924604409,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.0,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 1.5613450966800477,
+            "abs_ci_low": 1.3639722564957935,
+            "abs_ci_high": 1.8141996924604409
+          }
+        }
+      }
+    }
+  },
+  "majority": {
+    "C_activity": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.965087890625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            797.7251392043643,
+            -1577.902770825671,
+            781.1770556604669
+          ],
+          "x_star": 0.9792218818802189,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946755956737
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9767085905972166,
+            "ci_low": 0.9644775390625,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9936879852511089,
+            "ci_low": 0.9792218818879402,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213258,
+            "ci_low": 0.0,
+            "ci_high": 3.552246093749997,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -11.31482054859961,
+            "ci_low": -29.205711844959616,
+            "ci_high": 17.998696339420462,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213258,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.552246093749997
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.584717371137504,
+            "abs_ci_low": 3.6172503346546363,
+            "abs_ci_high": 29.205711844959616
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.92822265625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -10.07773927468746,
+            21.6814787244764,
+            -10.607863542052463
+          ],
+          "x_star": 1.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 1.5260001751014798
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9540574091372283,
+            "ci_low": 0.92822265625,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9681367197280116,
+            "ci_low": 0.5063788290686206,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.7003972723535294,
+            "ci_low": 0.0,
+            "ci_high": 2.451171875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.4278169103634957,
+            "ci_low": -0.01484660966639324,
+            "ci_high": 1.9891412941303501,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.7003972723535294,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 2.451171875
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.4341610414436448,
+            "abs_ci_low": 0.013330579260410175,
+            "abs_ci_high": 1.9891412941303501
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 1.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.55208333333333
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            1726.0291470156612,
+            -4992.580912986414,
+            4814.858001093269,
+            -1547.3096747438356
+          ],
+          "x_star": 1.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.783616167425862
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9976523701884511,
+            "ci_low": 0.9995564358045325,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 6.591249142289471,
+            "ci_low": 3.312500000000004,
+            "ci_high": 8.544921874999993,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 7.472835091041735,
+            "ci_low": 4.421976129130915,
+            "ci_high": 11.159017034747421,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unstable",
+            "abs_mean": 6.591249142289471,
+            "abs_ci_low": 3.312500000000004,
+            "abs_ci_high": 8.544921874999993
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 7.678160953871113,
+            "abs_ci_low": 4.435167908882866,
+            "abs_ci_high": 11.159017034747421
+          }
+        }
+      }
+    },
+    "C_frozen": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.034912109375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -797.7251410597623,
+            17.547507585031134,
+            0.0005759608455395323
+          ],
+          "x_star": 0.02077811807434318,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946758592488
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.02329140940278325,
+            "ci_low": 0.0,
+            "ci_high": 0.0355224609375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.005700309686172258,
+            "ci_low": 0.0,
+            "ci_high": 0.020778118074343255,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213265,
+            "ci_low": 0.0,
+            "ci_high": 3.55224609375,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -8.36761600377381,
+            "ci_low": -29.20571184099927,
+            "ci_high": 21.78995562430792,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213265,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.55224609375
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.724717366841507,
+            "abs_ci_low": 3.617250330012183,
+            "abs_ci_high": 29.20571184099927
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.07177734375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            10.077739274747422,
+            1.526000175099846,
+            0.004124092263555136
+          ],
+          "x_star": 0.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 1.526000175099846
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.045367590862771735,
+            "ci_low": 0.0,
+            "ci_high": 0.07177734375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.008161308439131293,
+            "ci_low": 0.0,
+            "ci_high": 0.03175248235310252,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.6437800527025508,
+            "ci_low": 0.0,
+            "ci_high": 2.451171875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5537602360683465,
+            "ci_low": 0.29076364517210096,
+            "ci_high": 2.014846609666567,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.6437800527025508,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 2.451171875
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.5537602360683465,
+            "abs_ci_low": 0.29076364517210096,
+            "abs_ci_high": 2.014846609666567
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.552083333333333
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            1726.0291470651546,
+            -185.50652806681086,
+            7.783616167680194,
+            0.0034396213027563767
+          ],
+          "x_star": 0.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 7.783616167680194
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.0007556531687471803,
+            "ci_low": 0.0,
+            "ci_high": 0.0004423669550390924,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 6.591249142289474,
+            "ci_low": 3.3125,
+            "ci_high": 8.544921875,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 7.541582131220688,
+            "ci_low": 4.421976129122551,
+            "ci_high": 11.159017034558024,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unstable",
+            "abs_mean": 6.591249142289474,
+            "abs_ci_low": 3.3125,
+            "abs_ci_high": 8.544921875
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 7.68531035506631,
+            "abs_ci_low": 4.435167908869935,
+            "abs_ci_high": 11.159017034558024
+          }
+        }
+      }
+    },
+    "H_2x2": {
+      "1->2": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.2602697690769805,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            31.66947890012462,
+            -54.617263484311856,
+            32.522539508366755,
+            -6.148996845565404
+          ],
+          "x_star": 0.6885493503322817,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 2.352696516753234
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.29733401122447395,
+            "ci_low": 0.2602697690769805,
+            "ci_high": 0.48568847105689544,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.5369013575303898,
+            "ci_low": 0.15074341182780368,
+            "ci_high": 0.713068776163499,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.03258880754859969,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 0.9484396679967111,
+            "ci_low": -2.379102678585724,
+            "ci_high": 2.5959798620691217,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.03258880754859969,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.9076356381459716,
+            "abs_ci_low": 0.30107693453703144,
+            "abs_ci_high": 2.790905938771317
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.19364551514923375,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            13.58724781252397,
+            -21.17966550520271,
+            11.547806663377383,
+            -1.6996085108499865
+          ],
+          "x_star": 0.3974604072146308,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.1509769711602367
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.22729626670094305,
+            "ci_low": 0.19364551514923375,
+            "ci_high": 0.427,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.4656467445033815,
+            "ci_low": 0.08551790889633491,
+            "ci_high": 0.7412281046053537,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.07098322840023688,
+            "ci_low": 0.0,
+            "ci_high": 1.4196645680047375,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5493424832790752,
+            "ci_low": 0.23501713186510267,
+            "ci_high": 3.488641961241857,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.07098322840023688,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 1.4196645680047375
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.5493424832790752,
+            "abs_ci_low": 0.23501713186510267,
+            "abs_ci_high": 3.488641961241857
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.02902876882619171,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            0.7085845902281886,
+            0.6806356282178021,
+            -0.08723592813153422
+          ],
+          "x_star": 0.642363619414879,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.5909735522989785
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.043087387489736104,
+            "ci_low": 0.02902876882619171,
+            "ci_high": 0.15998311042248303,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.6408546514340674,
+            "ci_low": 0.6168877182391649,
+            "ci_high": 0.6951884678950937,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.5613450966800477,
+            "ci_low": 1.3639722564957935,
+            "ci_high": 1.8141996924604409,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.0,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 1.5613450966800477,
+            "abs_ci_low": 1.3639722564957935,
+            "abs_ci_high": 1.8141996924604409
+          }
+        }
+      }
+    }
+  },
+  "threshold_high": {
+    "C_activity": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 1.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.5287014708227007
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            5042574.254761589,
+            -15106874.093596064,
+            15086046.624666255,
+            -5021745.785441105
+          ],
+          "x_star": 0.9973877561659701,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 15.506960591301322
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9965995053635776,
+            "ci_low": 0.9895494035000658,
+            "ci_high": 0.9983637862930765,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.6256483897011097,
+            "ci_low": 0.08544921874999993,
+            "ci_high": 3.320312499999997,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 12.522879438351374,
+            "ci_low": -76.83572847396135,
+            "ci_high": 148.1183011403773,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.6256483897011097,
+            "abs_ci_low": 0.08544921874999993,
+            "abs_ci_high": 3.320312499999997
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 23.138746130482758,
+            "abs_ci_low": 2.806484380834445,
+            "abs_ci_high": 148.1186301241396
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.9140625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            33.88801131265902,
+            -64.27587119347463,
+            31.38488893300442
+          ],
+          "x_star": 0.925053369056678,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -1.579433122662543
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9371174370021447,
+            "ci_low": 0.9140625,
+            "ci_high": 0.992109375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9460157072031188,
+            "ci_low": 0.9176281854153123,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.08574720243791001,
+            "ci_low": 0.0,
+            "ci_high": 0.42599117771565237,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -3.360925350830316,
+            "ci_low": -12.92265716511729,
+            "ci_high": 4.410258412632629,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.08574720243791001,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.42599117771565237
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 3.7149225676140047,
+            "abs_ci_low": 1.4385547355078927,
+            "abs_ci_high": 12.92265716511729
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.6171875,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            1.4092866230860563,
+            1.7289103518006914,
+            -2.1416247427085526
+          ],
+          "x_star": 1.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 4.547483597972804
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.8378874007936509,
+            "ci_low": 0.6171875,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.7552828786495815,
+            "ci_low": 0.015317010944066069,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.3116228663066616,
+            "ci_low": 0.0,
+            "ci_high": 4.088312728937723,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -0.6520898432848076,
+            "ci_low": -3.813139036853727,
+            "ci_high": 4.66873467366112,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.3116228663066616,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 4.088312728937723
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 3.5807341563085924,
+            "abs_ci_low": 2.7110357389534405,
+            "abs_ci_high": 4.66873467366112
+          }
+        }
+      }
+    },
+    "C_frozen": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.0,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.528701470822704
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            5042582.599557457,
+            -20848.69919762833,
+            21.201784566588483,
+            -0.00039070128227673825
+          ],
+          "x_star": 1.974017184352203e-05,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 20.3845656526493
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.00048607226066090415,
+            "ci_low": 1.9259922129858376e-05,
+            "ci_high": 0.001490123863075015,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.6256483897011118,
+            "ci_low": 0.08544921875,
+            "ci_high": 3.3203125,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 7.7294496601570835,
+            "ci_low": -13.001867621853101,
+            "ci_high": 30.533497107459205,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.6256483897011118,
+            "abs_ci_low": 0.08544921875,
+            "abs_ci_high": 3.3203125
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 12.263554484528797,
+            "abs_ci_low": 0.4693027246304746,
+            "abs_ci_high": 30.533497107459205
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.0859375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -33.8880113124716,
+            3.5001514318403077,
+            0.0029709478110026
+          ],
+          "x_star": 0.07494663094356654,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -1.5794331226541263
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.06288256299785538,
+            "ci_low": 0.007890625,
+            "ci_high": 0.0859375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.05398429279860083,
+            "ci_low": 0.0,
+            "ci_high": 0.08237181458486482,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.08574720243791009,
+            "ci_low": 0.0,
+            "ci_high": 0.42599117771565415,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -3.3609253499054863,
+            "ci_low": -12.922657175414788,
+            "ci_high": 4.410258424823169,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.08574720243791009,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.42599117771565415
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 3.714922566520595,
+            "abs_ci_low": 1.4385547355037342,
+            "abs_ci_high": 12.922657175414788
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.3828125,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -1.4092866230930594,
+            4.547483597973243,
+            0.0034277678217983546
+          ],
+          "x_star": 0.0,
+          "exact_root": false,
+          "boundary_limited": true,
+          "slope_at_x_star": 4.547483597973243
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.16211259920634918,
+            "ci_low": 0.0,
+            "ci_high": 0.3828125,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.24471712135042048,
+            "ci_low": 0.0,
+            "ci_high": 0.9846829890557167,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.3116228663066618,
+            "ci_low": 0.0,
+            "ci_high": 4.088312728937729,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -0.652089843280893,
+            "ci_low": -3.8131390369031575,
+            "ci_high": 4.668734673660913,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.3116228663066618,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 4.088312728937729
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 3.580734156304609,
+            "abs_ci_low": 2.711035738953516,
+            "abs_ci_high": 4.668734673660913
+          }
+        }
+      }
+    },
+    "H_2x2": {
+      "1->2": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.3798038392153458,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            -34.306369523604104,
+            59.209335384358646,
+            -32.42445107776373,
+            6.174084170892974
+          ],
+          "x_star": 0.5605,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.6161210097187748
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.473766739593777,
+            "ci_low": 0.299831866632408,
+            "ci_high": 0.7396105522643296,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.4731865425669268,
+            "ci_low": 0.09895951992093367,
+            "ci_high": 0.711036989648687,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 0.48091398455276363,
+            "ci_low": -2.641442876151315,
+            "ci_high": 3.301095097849341,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.0,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.3033462134036873,
+            "abs_ci_low": 0.004590311245764278,
+            "abs_ci_high": 3.301095097849341
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.21663093065055697,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            11.295506793195218,
+            -16.164285463475977,
+            8.449915431539823,
+            -1.1703641857759615
+          ],
+          "x_star": 0.7010920403075783,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 2.440854702163886
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.24611912841761271,
+            "ci_low": 0.21663093065055694,
+            "ci_high": 0.3661678173576932,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.5944503093466877,
+            "ci_low": 0.2776107909020643,
+            "ci_high": 0.7123469679995592,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.2683534211646703,
+            "ci_low": -1.615163992286809,
+            "ci_high": 2.7601949903627254,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.0,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 2.048358287553277,
+            "abs_ci_low": 1.0770892732334572,
+            "abs_ci_high": 2.7601949903627254
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.054,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            0.5501510090596003,
+            0.8220204106679724,
+            -0.13330240895634504
+          ],
+          "x_star": 0.679892493031057,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.570107492854139
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.13057801694175125,
+            "ci_low": 0.054,
+            "ci_high": 0.6525,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.6753481852798209,
+            "ci_low": 0.6658880848961164,
+            "ci_high": 0.6830463625533192,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.07316365798441464,
+            "ci_low": 0.0,
+            "ci_high": 1.219394299740244,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.55068384287478,
+            "ci_low": 1.4042673926987084,
+            "ci_high": 1.7137844552231127,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 0.07316365798441464,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 1.219394299740244
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 1.55068384287478,
+            "abs_ci_low": 1.4042673926987084,
+            "abs_ci_high": 1.7137844552231127
+          }
+        }
+      }
+    }
+  },
+  "threshold_low": {
+    "C_activity": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.965087890625,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            797.7251392043643,
+            -1577.902770825671,
+            781.1770556604669
+          ],
+          "x_star": 0.9792218818802189,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946755956737
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9767085905972166,
+            "ci_low": 0.9644775390625,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9936879852511089,
+            "ci_low": 0.9792218818879402,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213258,
+            "ci_low": 0.0,
+            "ci_high": 3.552246093749997,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -11.31482054859961,
+            "ci_low": -29.205711844959616,
+            "ci_high": 17.998696339420462,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213258,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.552246093749997
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.584717371137504,
+            "abs_ci_low": 3.6172503346546363,
+            "abs_ci_high": 29.205711844959616
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.88427734375,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            -1180.6504263137033,
+            3495.6761729331206,
+            -3446.592609568796,
+            1132.5657253197683
+          ],
+          "x_star": 0.9364599570747468,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -5.610949344700202
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.9291425238715277,
+            "ci_low": 0.88427734375,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.9401544505505349,
+            "ci_low": 0.9024634493667437,
+            "ci_high": 0.977253785430837,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0436848958333313,
+            "ci_low": 0.0,
+            "ci_high": 3.6914062499999925,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -5.60268174742062,
+            "ci_low": -7.638761282033374,
+            "ci_high": -3.95652591120529,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0436848958333313,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.6914062499999925
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 5.60268174742062,
+            "abs_ci_low": 3.95652591120529,
+            "abs_ci_high": 7.638761282033374
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.60546875,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            10.70134249326551,
+            -16.965129224152246,
+            7.260096231967203
+          ],
+          "x_star": 0.6777033915476741,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": -2.4604570205536866
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.7562890625,
+            "ci_low": 0.60546875,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.6849438924029253,
+            "ci_low": 0.07826636855524655,
+            "ci_high": 1.0,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.8411515069879831,
+            "ci_low": 0.0,
+            "ci_high": 5.403645833333332,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -1.306471411556008,
+            "ci_low": -2.552589199136264,
+            "ci_high": 3.9697392297220158,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.8411515069879831,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 5.403645833333332
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 2.655323981733703,
+            "abs_ci_low": 2.0539049814679307,
+            "abs_ci_high": 3.9697392297220158
+          }
+        }
+      }
+    },
+    "C_frozen": {
+      "1->2": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.034912109375,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -797.7251410597623,
+            17.547507585031134,
+            0.0005759608455395323
+          ],
+          "x_star": 0.02077811807434318,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -15.602946758592488
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.02329140940278325,
+            "ci_low": 0.0,
+            "ci_high": 0.0355224609375,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.005700309686172258,
+            "ci_low": 0.0,
+            "ci_high": 0.020778118074343255,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0464280655213265,
+            "ci_low": 0.0,
+            "ci_high": 3.55224609375,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -8.36761600377381,
+            "ci_low": -29.20571184099927,
+            "ci_high": 21.78995562430792,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0464280655213265,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.55224609375
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 17.724717366841507,
+            "abs_ci_low": 3.617250330012183,
+            "abs_ci_high": 29.20571184099927
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.11572265625,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            -1180.6504249116074,
+            46.275105937122454,
+            2.8084573573088836,
+            0.001137629591494603
+          ],
+          "x_star": 0.06354004294287097,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": -5.610949342049308
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.07085747612847222,
+            "ci_low": 0.0,
+            "ci_high": 0.11572265625,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.0418206850748892,
+            "ci_low": 4.470370034649984e-06,
+            "ci_high": 0.0975365504822381,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.0436848958333331,
+            "ci_low": 0.0,
+            "ci_high": 3.6914062499999996,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -3.258504173976182,
+            "ci_low": -7.63876127413815,
+            "ci_high": 3.155500466003375,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.0436848958333331,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 3.6914062499999996
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 4.95017351251371,
+            "abs_ci_low": 2.9333158633590024,
+            "abs_ci_high": 7.63876127413815
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "SCOPE_LIMITED_SATURATION",
+        "isotonic": {
+          "x_star": 0.39453125,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            -10.701342493265324,
+            4.437555762378758,
+            0.003690498919542157
+          ],
+          "x_star": 0.32229660845233266,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": -2.4604570205537293
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.2437109375,
+            "ci_low": 0.0,
+            "ci_high": 0.39453125,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.3005427044316129,
+            "ci_low": 0.0,
+            "ci_high": 0.9217336314445446,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 1.8411515069879831,
+            "ci_low": 0.0,
+            "ci_high": 5.403645833333333,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": -1.0331345902507232,
+            "ci_low": -2.552589199136194,
+            "ci_high": 4.376694633296629,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "unknown",
+            "abs_mean": 1.8411515069879831,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 5.403645833333333
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 2.7353239817335497,
+            "abs_ci_low": 2.0539049814679773,
+            "abs_ci_high": 4.376694633296629
+          }
+        }
+      }
+    },
+    "H_2x2": {
+      "1->2": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.2602697690769805,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            31.66947890012462,
+            -54.617263484311856,
+            32.522539508366755,
+            -6.148996845565404
+          ],
+          "x_star": 0.6885493503322817,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 2.352696516753234
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.29733401122447395,
+            "ci_low": 0.2602697690769805,
+            "ci_high": 0.48568847105689544,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.5369013575303898,
+            "ci_low": 0.15074341182780368,
+            "ci_high": 0.713068776163499,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.03258880754859969,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 0.9484396679967111,
+            "ci_low": -2.379102678585724,
+            "ci_high": 2.5959798620691217,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.03258880754859969,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.9076356381459716,
+            "abs_ci_low": 0.30107693453703144,
+            "abs_ci_high": 2.790905938771317
+          }
+        }
+      },
+      "2->4": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.16379734505337512,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 3,
+          "coefficients": [
+            5.536906725733668,
+            -8.630085052796215,
+            5.483644287128946,
+            -0.8202326097907405
+          ],
+          "x_star": 0.7188022002232975,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.6593665143021545
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.19049911755137855,
+            "ci_low": 0.16379734505337512,
+            "ci_high": 0.2757934803002404,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.5693667908404673,
+            "ci_low": 0.017566340502704177,
+            "ci_high": 0.741390564762809,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.017190170333551535,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.3779269034760915,
+            "ci_low": -0.18304773628986165,
+            "ci_high": 2.2009889176284236,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.017190170333551535,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unknown",
+            "abs_mean": 1.400086495063202,
+            "abs_ci_low": 0.009177614868666464,
+            "abs_ci_high": 2.2009889176284236
+          }
+        }
+      },
+      "4->8": {
+        "saturation_label": "TESTABLE",
+        "isotonic": {
+          "x_star": 0.02902876882619171,
+          "exact_root": true,
+          "boundary_limited": true,
+          "slope_at_x_star": 0.0
+        },
+        "poly": {
+          "degree_selected": 2,
+          "coefficients": [
+            0.3110323686255046,
+            1.0113783375733838,
+            -0.15615929052076993
+          ],
+          "x_star": 0.6905121284084446,
+          "exact_root": true,
+          "boundary_limited": false,
+          "slope_at_x_star": 1.440921583300418
+        },
+        "bootstrap": {
+          "x_star_iso": {
+            "mean": 0.03581881486908088,
+            "ci_low": 0.02902876882619171,
+            "ci_high": 0.1524841514241767,
+            "n": 200
+          },
+          "x_star_poly": {
+            "mean": 0.691974730853826,
+            "ci_low": 0.6721310090478457,
+            "ci_high": 0.7077203285798043,
+            "n": 200
+          },
+          "slope_iso": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 200
+          },
+          "slope_poly": {
+            "mean": 1.4293754825378255,
+            "ci_low": 1.3040287903880665,
+            "ci_high": 1.5158715182730953,
+            "n": 200
+          },
+          "slope_iso_stability": {
+            "label": "stable",
+            "abs_mean": 0.0,
+            "abs_ci_low": 0.0,
+            "abs_ci_high": 0.0
+          },
+          "slope_poly_stability": {
+            "label": "unstable",
+            "abs_mean": 1.4293754825378255,
+            "abs_ci_low": 1.3040287903880665,
+            "abs_ci_high": 1.5158715182730953
+          }
+        }
+      }
+    }
+  }
+}

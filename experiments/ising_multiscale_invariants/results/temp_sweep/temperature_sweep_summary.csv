@@ -1,0 +1,4 @@
+temperature,tag,pass_cells,scope_limited_cells,unstable_cells,groups_saturated,groups_non_saturated,req124_pass,req124_scope_limited,req124_unstable,req124_testable,req124_pass_rate_testable,req124_rmse_median_testable
+2.1,T2p10,8,0,4,0,48,8,0,4,12,0.6666666666666666,0.03004670744967861
+2.269,T2p269,4,8,0,22,26,4,8,0,4,1.0,0.026629802282171433
+2.4,T2p40,4,8,0,32,16,4,8,0,4,1.0,0.007420500784954669

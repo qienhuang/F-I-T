@@ -1,0 +1,32 @@
+{
+  "input": "data\\temp_compare_full_block_b\\T2p10\\multiscale_long.parquet",
+  "rows": 50688,
+  "required_columns": [
+    "seed",
+    "t",
+    "scheme",
+    "b",
+    "estimator",
+    "value"
+  ],
+  "present_columns": [
+    "b",
+    "estimator",
+    "scheme",
+    "seed",
+    "t",
+    "value"
+  ],
+  "scales_expected": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "required_estimators": [
+    "C_frozen",
+    "H_2x2"
+  ],
+  "issues": [],
+  "pass": true
+}

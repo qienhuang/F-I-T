@@ -1,0 +1,30 @@
+{
+  "rows": 15264,
+  "seeds": 3,
+  "seed_start": 14100,
+  "steps": 2500,
+  "burn_in": 400,
+  "measure_interval": 20,
+  "window": 30,
+  "grid_size": 128,
+  "temperature": 2.269,
+  "scales": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "schemes": [
+    "majority",
+    "threshold_low",
+    "threshold_high",
+    "average"
+  ],
+  "estimators": [
+    "C_frozen",
+    "C_activity",
+    "H_2x2"
+  ],
+  "out_parquet": "data/temp_sweep/T2p269/multiscale_long.parquet",
+  "out_csv": "data/temp_sweep/T2p269/multiscale_long.csv"
+}

@@ -1,0 +1,5 @@
+{
+  "n_scatter_figures": 36,
+  "scatter_dir": "results/figures/scatter_fits",
+  "closure_heatmap": "results/figures/closure_heatmap.png"
+}
