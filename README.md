@@ -102,6 +102,7 @@ Abbreviations (first use):
 | Domain | Case | Verdict | Key finding |
 |--------|------|---------|-------------|
 | **ML / Grokking** | [Grokking hard indicators](experiments/grokking_hard_indicators_v0_2/README.md) | Evaluable | Baseline not yet stable under strict low-FPR |
+| **ML / Grokking** | [Grokking transition audit v0.1](experiments/grokking_transition_audit_v0_1/README.md) | `SUPPORTED_FOR_INCREMENTAL_DISTINGUISHABILITY` | PT-MSS separates synchronized structural locking from permissive accuracy jumps (40 seeds, replay label-stable) |
 | **Mobility** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | Windowing diagnostic; Green counterexample |
 | **Transit** | [MTA subway hourly](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | Stable negative rho (sign-mismatch) |
 | **Biology** | [scRNA mouse gastrulation](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | Explicit stage anchor; purity > mixing |
@@ -141,6 +142,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 
 - ### Tier-2 Validated
   - **[Grokking scaling-law (Li²)](experiments/li2_scaling_law/README.md)** — ML phase transition
+  - **[Grokking transition audit v0.1](experiments/grokking_transition_audit_v0_1/README.md)** — structural gating of transition registration (synchronous locking vs asynchronous reorganization)
   - **[NYC TLC regime shifts](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence windowing and level shifts
   - **[scRNA fate commitment](experiments/real_world/scrna_commitment_tier2p11/README.md)** — Explicit `obs:stage` boundary anchor
   - **[FRED recession cycles](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — Preregistered recession signal

@@ -1,4 +1,4 @@
-![Logo](imgs/banner_v2.png)
+﻿![Logo](imgs/banner_v2.png)
 
 # F-I-T（力–信息–时间）动力学框架
 
@@ -80,6 +80,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 | 领域 | 案例 | 判定 | 关键发现 |
 |------|------|------|----------|
 | **ML / Grokking** | [Grokking 硬指标](experiments/grokking_hard_indicators_v0_2/README.md) | 可评估 | 基线在严格低 FPR 下尚不稳定 |
+| **ML / Grokking** | [Grokking transition audit v0.1](experiments/grokking_transition_audit_v0_1/README.md) | `SUPPORTED_FOR_INCREMENTAL_DISTINGUISHABILITY` | 在 40 seeds 上区分“同步结构锁定”与“宽松精度跃升”，replay 标签稳定 |
 | **出行** | [NYC TLC (Yellow/Green/FHVHV)](experiments/real_world/nyc_tlc_tier2p1/README.md) | `OK_PER_WINDOW` | 窗口化诊断；Green 反例 |
 | **公交** | [MTA 地铁小时级](experiments/real_world/mta_subway_hourly_tier2p11/README.md) | `ESTIMATOR_UNSTABLE` | 稳定负 rho（符号不匹配） |
 | **生物** | [scRNA 小鼠原肠胚形成](experiments/real_world/scrna_commitment_tier2p11/README.md) | `OK_PER_WINDOW` | 显式阶段锚点；purity > mixing |
@@ -120,6 +121,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 - ### Tier-2 已验证
   - **[Grokking 缩放律 (Li²)](experiments/li2_scaling_law/README.md)** — ML 相变
+  - **[Grokking transition audit v0.1](experiments/grokking_transition_audit_v0_1/README.md)** — 结构化跃迁门控（同步锁定 vs 异步重组）
   - **[NYC TLC 体制跃迁](experiments/real_world/nyc_tlc_tier2p1/README.md)** — Coherence 窗口化与水平位移
   - **[scRNA 命运承诺](experiments/real_world/scrna_commitment_tier2p11/README.md)** — 显式 `obs:stage` 边界锚点
   - **[FRED 衰退周期](experiments/real_world/fred_recession_cycles_tier2p11/README.md)** — 预注册衰退信号
