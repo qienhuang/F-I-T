@@ -90,6 +90,14 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 - 📊 [Repair C detailed analysis](docs/benchmarks/gmb_v0_5_repairC_results.md)
 - 🎓 **Lesson:** Simple parameter tuning cannot improve alarm performance; need adaptive learning approaches.
 
+### Path-4 Cross-System Scale-Consistency — Ising temperature-controlled audit
+
+**Result:** Under fixed gates, Ising shows a regime-conditioned transition from mixed/scope-limited (`T=2.269`) to stable closure zone (`T=2.10`) with two independent seed blocks (A/B) agreeing on required-triple quality.
+
+- 📋 [CPU audit sign-off (2026-02-23)](experiments/ising_multiscale_invariants/results/CPU_AUDIT_SIGNOFF_2026-02-23.md)
+- 📊 [Block A/B temperature compare table](experiments/ising_multiscale_invariants/results/temp_compare_blocks/temperature_compare_blocks_summary.md)
+- 🔗 [Cross-system Path-4 report (GoL/Langton/Ising)](docs/benchmarks/path4_cross_system_report.md)
+
 ---
 
 ## Tier-2 Evidence (real-world systems)
