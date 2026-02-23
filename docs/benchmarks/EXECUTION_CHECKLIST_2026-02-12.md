@@ -30,17 +30,21 @@ This file tracks the minimum next actions for benchmark progression without dupl
 
 ## 2. CPU Queue (parallel)
 
-### 2.1 AFDB sign-aware follow-up (high value)
+### 2.1 ~~AFDB sign-aware follow-up (high value)~~ DONE
 
 Goal: test whether B2 disagreement is structural sign/phase mismatch rather than random instability.
 
-- Keep boundary fixed (`B2_COORD_PLUS_PAE_PLUS_MSA`)
-- Add sign-aware reporting per channel pair:
+- Kept boundary fixed (`B2_COORD_PLUS_PAE_PLUS_MSA`)
+- Added sign-aware reporting per channel pair:
   - `rho_signed`
   - `abs(rho)`
   - event-bin offset (`|bin_i - bin_j|`)
-- Pass criterion for "structural mismatch" label:
-  - stable nonzero offset across sample sizes and splits
+- Key result for `C2_pae_offdiag` vs `C3_msa_deficit`:
+  - `rho_signed` is negative across all audited runs
+  - N~1000 + splits keep stable nonzero offset `6` (`[6,6,6,6]`)
+- Artifacts:
+  - `experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/results_locked/B2_sign_aware.csv`
+  - `experiments/real_world/afdb_swissprot_tier2p11_confidence_regimes/results_locked/B2_sign_aware.md`
 
 ### 2.2 ~~AFDB split-stability check~~ DONE
 

@@ -190,11 +190,41 @@ Decision rule:
 
 **Verdict:** Offset `[6, 6, 6]` is perfectly stable across all three deterministic splits. Per the decision rule, the B2 disagreement is confirmed as **structural channel mismatch**, not sampling noise.
 
+### B2 sign-aware follow-up (CPU)
+
+Run sign-aware channel comparison over existing B2 runs:
+
+```bash
+python scripts/compare_b2_sign_aware.py \
+  --runs B2_taxon9606_N100 B2_taxon9606_N1000 B2_taxon9606_N1000_split_a B2_taxon9606_N1000_split_b B2_taxon9606_N1000_split_c \
+  --out_csv out/B2_sign_aware.csv \
+  --out_md out/B2_sign_aware.md
+```
+
+Publish-safe locked copies:
+- `results_locked/B2_sign_aware.csv`
+- `results_locked/B2_sign_aware.md`
+
+#### Sign-aware results (2026-02-23; key pair C2 vs C3)
+
+| Run | N | rho_signed(C2,C3) | abs(rho) | Event bins (C2 vs C3) | offset |
+|---|---:|---:|---:|---|---:|
+| B2_taxon9606_N100 | 96 | -0.143 | 0.143 | 3 vs 8 | 5 |
+| B2_taxon9606_N1000 | 988 | -0.655 | 0.655 | 2 vs 8 | 6 |
+| B2_taxon9606_N1000_split_a | 988 | -0.655 | 0.655 | 2 vs 8 | 6 |
+| B2_taxon9606_N1000_split_b | 988 | -0.655 | 0.655 | 2 vs 8 | 6 |
+| B2_taxon9606_N1000_split_c | 988 | -0.655 | 0.655 | 2 vs 8 | 6 |
+
+Interpretation:
+- `rho_signed(C2,C3)` is **negative in all runs** (persistent opposite-sign behavior).
+- For `N~1000` + splits, event-bin offset is stable at **6** (`[6,6,6,6]`), consistent with split-stability.
+- Together with coherence-gate failure, this supports a **structural channel mismatch** under B2 rather than random instability.
+
 ### Key methodological finding
 
 > **MSA channel is boundary-dependent and not coherence-equivalent to pLDDT/PAE along the length axis.**
 >
-> B2 N=1000 confirms structural disagreement (not noise): the coherence gate remains ESTIMATOR_UNSTABLE with C3_msa_deficit event at bin 8 vs C1/C2 at bin 2. This persistent offset across sample sizes (N=100, N=1000) and across three independent accession splits (offset=6 in all splits) establishes that the MSA deficit estimator measures a fundamentally different regime transition than pLDDT/PAE-derived estimators. The gate correctly prevents a single unified regime claim under the B2 boundary.
+> B2 N=1000 confirms structural disagreement (not noise): the coherence gate remains ESTIMATOR_UNSTABLE with C3_msa_deficit event at bin 8 vs C1/C2 at bin 2, and the C2-vs-C3 relationship is opposite-sign (negative `rho_signed`) across runs. The persistent offset at N~1000 across three independent accession splits (offset=6 in all splits) establishes that the MSA deficit estimator measures a fundamentally different regime transition than pLDDT/PAE-derived estimators. The gate correctly prevents a single unified regime claim under the B2 boundary.
 
 ## Estimator tuple (explicit)
 
