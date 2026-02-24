@@ -40,6 +40,10 @@ If you want runnable engines, start from `tools/README.md`.
     [../../experiments/ising_multiscale_invariants/results/CPU_AUDIT_SIGNOFF_2026-02-23.md](../../experiments/ising_multiscale_invariants/results/CPU_AUDIT_SIGNOFF_2026-02-23.md)
   - Ising block-consistency table:
     [../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/temperature_compare_blocks_summary.md](../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/temperature_compare_blocks_summary.md)
+  - Ising closure-threshold sensitivity (`tau` sweep):
+    [../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/tau_sensitivity_summary.md](../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/tau_sensitivity_summary.md)
+  - Ising permutation negative control (`1->2->4`, direct vs composed):
+    [../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/permutation_negative_control.md](../../experiments/ising_multiscale_invariants/results/temp_compare_blocks/permutation_negative_control.md)
   - Ising `T=2.10` fixed-point/slope A/B CI audit:
     [path4_invariant_candidates_ising_t210_block_ab.md](path4_invariant_candidates_ising_t210_block_ab.md)
   - Invariant candidates (`x*`, `|slope|`) add-on:

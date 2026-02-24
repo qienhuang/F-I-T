@@ -146,6 +146,10 @@ Some topics are explored in depth across multiple chapters:
 
 These materials are exploratory and philosophical in nature.
 
+### Governance long-form (new)
+
+- [`governance-longform/civilization_as_a_dynamical_system.v2.md`](governance-longform/civilization_as_a_dynamical_system.v2.md) — a minimal three-variable civilizational dynamics model with threshold, hysteresis, and coexistence conditions.
+
 ---
 
 *For formal usage, analysis, or contribution rules, see the repository root.*

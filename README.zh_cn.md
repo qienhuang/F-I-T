@@ -8,18 +8,91 @@
 
 ---
 
+## ✨ 近期更新（截至 2026-02-24）
+
+**首次阅读建议**：先看 [Two-Page Card](docs/core/fit_two_page_card.md)（5 分钟概览）、[MCC](docs/core/MCC.md)（最小形式骨架），再看 [PHASE_II_QUICKSTART.md](PHASE_II_QUICKSTART.md)（CPU 优先可运行路径）。
+
+---
+### 面向新读者
+
+- [**文明作为动力系统（v2）**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — 用参数区间解释阈值、不可逆性与共存，适合大众读者。
+
+### 核心理论
+
+- **v2.4.1 — EST + Tier-1 验证套件**  
+  当前主锚版本：可证伪流程 + 命题状态。  
+  → [docs/v2.4.md](docs/v2.4.md)
+
+- **Renormalization Lens v0.2**  
+  尺度感知可接受性：semigroup closure + saturation gates。  
+  → [docs/core/renormalization_lens.md](docs/core/renormalization_lens.md)
+
+### 基准（可引用）
+
+- **Li² Grokking 相变**  
+  跨模数边界趋势与五点基准汇总。  
+  → [docs/benchmarks/li2_cross_m_summary.md](docs/benchmarks/li2_cross_m_summary.md)
+
+- **Path-4 跨系统尺度一致性**  
+  GoL/Langton/Ising 报告（含 Ising 温度条件审计）。  
+  → [docs/benchmarks/path4_cross_system_report.md](docs/benchmarks/path4_cross_system_report.md)
+
+- **GMB v0.5 修复失败** *（负结果）*  
+  说明为何单调参数调优无法修复低 FPR 告警质量。  
+  → [docs/benchmarks/gmb_repairs_unified_summary.md](docs/benchmarks/gmb_repairs_unified_summary.md)
+
+- **Grokking Transition Audit v0.1**  
+  在固定 gates 下，PT-MSS 区分“同步结构锁定”与“异步重组”。  
+  → [experiments/grokking_transition_audit_v0_1/README.md](experiments/grokking_transition_audit_v0_1/README.md)
+
+### 安全与应用
+
+- **Controlled Nirvana**  
+  面向 post-grokking 安全的结构治理原语。  
+  → [papers/controlled_nirvana.md](papers/controlled_nirvana.md) | [docs/core/controlled_nirvana_card.md](docs/core/controlled_nirvana_card.md)
+
+- **Dr.One 自编辑闭环演示** *（Windows 友好）*  
+  可监测的自修改闭环 + 可复现协议。  
+  → [examples/dr_one_demo](examples/dr_one_demo)
+
+→ Tier-2 真实世界评估（NYC mobility、scRNA fate commitment、AlphaFold DB confidence regimes）：[`experiments/`](experiments/)。  
+→ 外部生产安全层： [**NanoBot FIT-Sec**](https://github.com/qienhuang/nanobot-fitsec)。
+
+---
+
+### 快速索引
+
+- [从这里开始](#start-here-zh)
+- [核心思想](#core-idea-zh)
+- [FIT 的主张与非主张](#fit-claims-zh)
+- [Tier-1 证据](#tier-1-evidence-zh)
+- [Tier-2 证据](#tier-2-evidence-zh)
+- [论文](#papers-zh)
+- [案例研究](#case-studies-zh)
+- [工具包](#toolkits-zh)
+- [AI 安全专题](#ai-safety-track-zh)
+- [规范版本](#spec-versions-zh)
+- [路线图](#roadmap-zh)
+- [仓库地图](#repository-map-zh)
+- [散文与公开写作](#essays-public-writing-zh)
+- [引用](#citation-zh)
+
+---
+
+<a id="start-here-zh"></a>
 ## 从这里开始（选择你的路径）
 
 | 如果你是... | 从这里开始 |
 |-------------|------------|
 | **FIT 新手**（5分钟） | [核心卡片](docs/core/fit_core_card.md) — 一页了解原语 + 直觉 |
-| **评估框架** | [FIT 的主张](#fit-的主张与非主张) → [Tier-1 证据](#tier-1-证据玩具系统) |
+| **评估框架** | [FIT 的主张](#fit-claims-zh) → [Tier-1 证据](#tier-1-evidence-zh) |
 | **从事 AI 安全** | [AI 安全索引](docs/ai_safety/README.md) → [FIT 用于 AI 安全](docs/ai_safety/fit_ai_safety_mapping.md) |
-| **运行实验** | [工具包](#工具包) → [Li² 复现](experiments/li2_scaling_law/README.md) |
+| **运行实验** | [工具包](#toolkits-zh) → [Li² 复现](experiments/li2_scaling_law/README.md) |
 | **阅读完整规范** | [v2.4 规范](docs/v2.4.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
 
 ---
 
+<a id="core-idea-zh"></a>
 ## 核心思想（30秒）
 
 许多系统的失败不是因为缺乏力量或信息，而是因为**高影响的改变在纠正发生之前就已变得不可逆**。
@@ -40,6 +113,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="fit-claims-zh"></a>
 ## FIT 的主张与非主张
 
 | FIT 不主张 | FIT 主张 |
@@ -51,6 +125,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="tier-1-evidence-zh"></a>
 ## Tier-1 证据（玩具系统）
 
 | 系统 | 结果 | 命题 |
@@ -70,6 +145,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="tier-2-evidence-zh"></a>
 ## Tier-2 证据（真实世界系统）
 
 缩写说明（首次出现）：
@@ -93,6 +169,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ![过程图](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
+<a id="papers-zh"></a>
 ***
 ## 📰 论文
 
@@ -115,6 +192,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="case-studies-zh"></a>
 ## 📂 案例研究
 
 自包含的 FIT 分析（即读即用）。每个案例都有明确的边界和可观测信号。
@@ -143,6 +221,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="toolkits-zh"></a>
 ## 工具包
 
 可运行、CPU 优先的构建块。每个都产出可审计的产物。
@@ -170,6 +249,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="ai-safety-track-zh"></a>
 ## AI 安全专题
 
 | 资源 | 描述 |
@@ -193,6 +273,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="spec-versions-zh"></a>
 ## 规范版本
 
 | 版本 | 描述 | 链接 |
@@ -205,6 +286,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="roadmap-zh"></a>
 ## 路线图
 
 | 里程碑 | 目标 |
@@ -220,6 +302,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ---
 
+<a id="repository-map-zh"></a>
 ## 仓库地图
 
 ```
@@ -236,6 +319,7 @@ tools/          可运行工具包
 
 ---
 
+<a id="essays-public-writing-zh"></a>
 ## 📝 [散文与公开写作](essays)
 
 通俗介绍和应用视角。这些使用日常语言；正式框架见[核心卡片](docs/core/fit_core_card.md)或 [v2.4 规范](docs/v2.4.md)。完整索引：[essays/README.md](essays/README.md)。
@@ -252,6 +336,9 @@ tools/          可运行工具包
 ### 人类学习
 - [**人类学习与顿悟（系列）**](essays/human-learning) — 顿悟作为时间相变 `教育者、学习者、研究者`
 - ✨ [**人机耦合理论发现：通过人-LLM协作的迭代理论发现**](essays/human-learning/learning-to-think-with-llm.md) `学习者、研究者`
+
+### 文明与治理
+- [**文明作为动力系统（v2）**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — 阈值、不可逆性与共存的参数区间 `政策研究者、系统研究者`
 
 ### AI 安全与治理
 - [**空性窗口**](essays/ai/emptiness-window.md) — 节奏主导系统的结构性干预 `AI 安全研究者、系统设计者`
@@ -272,6 +359,7 @@ tools/          可运行工具包
 
 ---
 
+<a id="citation-zh"></a>
 ## 引用
 
 **Zenodo（所有版本）**：https://doi.org/10.5281/zenodo.18012401

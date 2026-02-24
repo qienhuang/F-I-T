@@ -7,7 +7,79 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md) | [[中文/Chinese]](README.zh_cn.md) |
 
 ---
+## ✨ Recent Highlights (as of 2026-02-24)
 
+**New here?** Start with the [Two-Page Card](docs/core/fit_two_page_card.md) (5-minute overview), [MCC](docs/core/MCC.md) (minimal formal skeleton), then [PHASE_II_QUICKSTART.md](PHASE_II_QUICKSTART.md) (CPU-first runnable path).
+
+---
+### Public Onramp
+
+- [**Civilization as a Dynamical System (v2)**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — thresholds, irreversibility, and coexistence as a parameter-regime problem for broad readers.
+
+### Core Theory
+
+- **v2.4.1 — EST + Tier-1 validation suite**  
+  Current formal anchor with falsifiability pipeline and proposition status.  
+  → [docs/v2.4.md](docs/v2.4.md)
+
+- **Renormalization Lens v0.2**  
+  Scale-aware admissibility: semigroup closure + saturation gates.  
+  → [docs/core/renormalization_lens.md](docs/core/renormalization_lens.md)
+
+### Benchmarks (paper-ready)
+
+- **Li² Grokking Phase Transition**  
+  Cross-modulus boundary trend with five-point benchmark summary.  
+  → [docs/benchmarks/li2_cross_m_summary.md](docs/benchmarks/li2_cross_m_summary.md)
+
+- **Path-4 Cross-System Scale-Consistency**  
+  GoL/Langton/Ising report with temperature-conditioned Ising audit.  
+  → [docs/benchmarks/path4_cross_system_report.md](docs/benchmarks/path4_cross_system_report.md)
+
+- **GMB v0.5 Repair Failures** *(negative result)*  
+  Shows why monotonic parameter tuning does not fix low-FPR alarm quality.  
+  → [docs/benchmarks/gmb_repairs_unified_summary.md](docs/benchmarks/gmb_repairs_unified_summary.md)
+
+- **Grokking Transition Audit v0.1**  
+  PT-MSS distinguishes synchronous structural locking from asynchronous reorganization under fixed gates.  
+  → [experiments/grokking_transition_audit_v0_1/README.md](experiments/grokking_transition_audit_v0_1/README.md)
+
+### Safety & Applications
+
+- **Controlled Nirvana**  
+  Structural governance primitive for post-grokking safety.  
+  → [papers/controlled_nirvana.md](papers/controlled_nirvana.md) | [docs/core/controlled_nirvana_card.md](docs/core/controlled_nirvana_card.md)
+
+- **Dr.One Self-Edit Loop Demo** *(Windows-ready)*  
+  Monitorable self-modification loop with reproducibility protocol.  
+  → [examples/dr_one_demo](examples/dr_one_demo)
+
+→ Tier-2 real-world evaluations (NYC mobility, scRNA fate commitment, AlphaFold DB confidence regimes): [`experiments/`](experiments/).  
+→ External production safety layer: [**NanoBot FIT-Sec**](https://github.com/qienhuang/nanobot-fitsec).
+
+---
+
+### Quick Section Index
+
+- [Start Here](#start-here)
+- [The Core Idea](#core-idea)
+- [What FIT Claims](#fit-claims)
+- [Tier-1 Evidence](#tier-1-evidence)
+- [Featured Benchmarks](#featured-benchmarks)
+- [Tier-2 Evidence](#tier-2-evidence)
+- [Papers](#papers)
+- [Case Studies](#case-studies)
+- [Toolkits](#toolkits)
+- [AI Safety Track](#ai-safety-track)
+- [Spec Versions](#spec-versions)
+- [Roadmap](#roadmap)
+- [Repository Map](#repository-map)
+- [Essays & Public Writing](#essays-public-writing)
+- [Citation](#citation)
+
+---
+
+<a id="start-here"></a>
 ## Start Here (choose your path)
 
 | If you are... | Start with |
@@ -20,6 +92,7 @@
 
 ---
 
+<a id="core-idea"></a>
 ## The Core Idea (30 seconds)
 
 Many systems fail not from lack of power or information, but because **high-impact changes become irreversible faster than correction can occur**.
@@ -40,6 +113,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ---
 
+<a id="fit-claims"></a>
 ## What FIT Claims (and Does Not Claim)
 
 | FIT does NOT claim | FIT DOES claim |
@@ -51,6 +125,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ---
 
+<a id="tier-1-evidence"></a>
 ## Tier-1 Evidence (toy systems)
 
 | System | Result | Proposition |
@@ -72,6 +147,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ---
 
+<a id="featured-benchmarks"></a>
 ## 🎯 Featured Benchmarks (paper-ready)
 
 ### Li² Grokking Phase Transition — Four-point r_crit(M) benchmark
@@ -100,6 +176,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ---
 
+<a id="tier-2-evidence"></a>
 ## Tier-2 Evidence (real-world systems)
 
 Abbreviations (first use):
@@ -123,6 +200,7 @@ Abbreviations (first use):
 
 ![process figure](experiments/real_world/nyc_tlc_tier2p1/results_runs/nyc_yellow_2019_2023_v1.6_precovid_postcovid/tradeoff_onepage.png)
 
+<a id="papers"></a>
 ***
 ## 📰 Papers
 - ### Core Framework:
@@ -144,6 +222,7 @@ Abbreviations (first use):
 
 ---
 
+<a id="case-studies"></a>
 ## 📂 Case Studies
 
 Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries and observable signals.
@@ -172,6 +251,7 @@ Self-contained FIT analyses (read-and-apply). Each case has explicit boundaries 
 
 ---
 
+<a id="toolkits"></a>
 ## Toolkits
 
 Runnable, CPU-first building blocks. Each produces auditable artifacts.
@@ -199,6 +279,7 @@ Runnable, CPU-first building blocks. Each produces auditable artifacts.
 
 ---
 
+<a id="ai-safety-track"></a>
 ## AI Safety Track
 
 | Resource | Description |
@@ -226,6 +307,7 @@ Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "
 
 ---
 
+<a id="spec-versions"></a>
 ## Spec Versions
 
 | Version | Description | Link |
@@ -238,6 +320,7 @@ Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "
 
 ---
 
+<a id="roadmap"></a>
 ## Roadmap
 
 | Milestone | Goal |
@@ -253,6 +336,7 @@ Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "
 
 ---
 
+<a id="repository-map"></a>
 ## Repository Map
 
 ```
@@ -269,6 +353,7 @@ tools/          Runnable toolkits
 
 ---
 
+<a id="essays-public-writing"></a>
 ## 📝 [Essays & Public Writing](essays)
 
 Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
@@ -285,6 +370,10 @@ Accessible introductions and applied perspectives. These use everyday language; 
 ### Human Learning
 - [**Human Learning & Insight (series)**](essays/human-learning) — Insight as temporal phase transition `Educators, learners, researchers`
 - ✨ [**Human–LLM Coupled Theory Discovery**](essays/human-learning/learning-to-think-with-llm.md)  — On Iterative Theory Discovery Through Human–LLM Collaboration `learners, researchers` 
+
+### Civilization & Governance
+- [**Civilization as a Dynamical System (v2)**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — Thresholds, irreversibility, and coexistence as a parameter-regime problem `policy thinkers, systems researchers`
+
 ### AI Safety & Governance
 - [**The Emptiness Window**](essays/ai/emptiness-window.md) — Structural intervention for tempo-dominated systems `AI safety researchers, system designers`
 
@@ -309,6 +398,7 @@ Accessible introductions and applied perspectives. These use everyday language; 
 
 ---
 
+<a id="citation"></a>
 ## Citation
 
 **Zenodo (all versions)**: https://doi.org/10.5281/zenodo.18012401
