@@ -2,8 +2,6 @@
 
 ## Thresholds, Irreversibility, and the Mathematics of Coexistence
 
----
-
 ## Abstract
 
 We construct a minimal three-variable ordinary differential equation system describing the co-evolution of extraction strategies, resource stocks, and governance bandwidth in a civilization. The model admits two structurally distinct thresholds: a transcritical bifurcation at which cooperation loses local stability to extraction, and a saddle-node bifurcation with hysteresis at which resource depletion becomes dynamically irreversible. We prove, via Lyapunov–LaSalle analysis, that a cooperation equilibrium is asymptotically stable whenever a barrier function $\Psi = P\gamma - dR$ remains positive on a forward-invariant operating domain, and we derive a closed-form upper bound on the maximum population scale $N_{\max}^\star$ that the domain can sustain. We extend the model to non-autonomous parameter drift (technology-induced shifts in extraction gain) and to two-civilization competitive coupling, showing that unilateral capability increases can destabilize both parties through a parameter-space prisoner's dilemma. The mathematics suggests that civilizational coexistence is not a moral aspiration but a parameter regime—one whose maintenance requires structural investment and whose loss triggers qualitatively irreversible dynamics.
@@ -207,7 +205,7 @@ $$
 and the operating domain
 
 $$
-\Omega_{\varepsilon, R_{\min}} = \left\{(x, R, \gamma) \in \Omega :\ R \geq R_{\min},\ \Psi(R, \gamma) \geq \varepsilon\right\}
+\Omega_{\varepsilon, R_{\min}} = \{(x, R, \gamma) \in \Omega : R \geq R_{\min},\ \Psi(R, \gamma) \geq \varepsilon\}
 $$
 
 for parameters $\varepsilon > 0$ and $R_{\min} > 0$. Within this domain, extraction is uniformly unprofitable: $dR - P\gamma \leq -\varepsilon$, so $\dot{x} \leq -\varepsilon x(1-x) \leq 0$.
@@ -623,4 +621,3 @@ Tainter, J. A. (1988). *The Collapse of Complex Societies*. Cambridge University
 Scheffer, M. et al. (2009). Early-warning signals for critical transitions. *Nature*, 461, 53–59.
 
 Hofbauer, J. & Sigmund, K. (1998). *Evolutionary Games and Population Dynamics*. Cambridge University Press.
-
