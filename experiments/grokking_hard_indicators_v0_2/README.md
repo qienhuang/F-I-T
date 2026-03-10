@@ -32,6 +32,27 @@ See:
 - `RESULTS_v0.2_v0.2.1.md`
 - `results/v0.3_A1_component_diagnosis.md`
 - `results/v0.3_A2_fpr_tradeoff.md`
+- `results/structural_v0_6/structural_candidates_summary.md`
+
+## Structural follow-up (v0.6 screening)
+
+A structural candidate screen on held-out seeds `140–179` compares three
+alternative spectral anchors against the fixed control family:
+
+- `control`: `unembed.weight`
+- `A`: `embed.weight`
+- `B`: `encoder.layers.0.self_attn.in_proj_weight`
+- `C`: `encoder.layers.1.self_attn.in_proj_weight`
+
+Current summary:
+
+- **A** is the strongest low-FPR candidate (`lead rate 0.75`, median lead
+  `15250`, median AUC `0.5874`).
+- **C** is also positive but weaker than A on low-FPR coverage (`lead rate 0.60`).
+- **B** underperforms the control on the hard-indicator objective.
+
+See `results/structural_v0_6/structural_candidates_summary.md` for the
+sign-level comparison.
 
 ## Reproduce
 

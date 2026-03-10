@@ -72,6 +72,76 @@ Important interpretation boundary:
 This audit script is CPU-light. It can run while a GPU training job is active,
 as long as it reads completed logs and does not launch another heavy trainer.
 
+## Main-run audit artifacts
+
+For the current real run (`outputs/main/`):
+
+- `summary.json`: aggregate verdict and replay gate status
+- `diagnostics.csv`: per-seed locked thresholds/densities/event counts
+- `report.md`: bounded interpretation
+- `asynchronous_profile.csv` + `asynchronous_profile.md`: quantitative
+  summary of synchronous vs asynchronous patterns by label
+
+Regenerate asynchronous profile from diagnostics:
+
+```powershell
+cd experiments/grokking_transition_audit_v0_1
+python scripts/summarize_asynchronous_profile.py `
+  --diagnostics outputs/main/diagnostics.csv `
+  --summary outputs/main/summary.json `
+  --out-csv outputs/main/asynchronous_profile.csv `
+  --out-md outputs/main/asynchronous_profile.md
+```
+
+## CPU audit: window-radius sensitivity
+
+To test robustness of PT-MSS simultaneity assumptions, run a fixed-dataset sweep
+over multiple `window_radius_steps` values:
+
+```powershell
+cd experiments/grokking_transition_audit_v0_1
+python scripts/run_window_radius_sensitivity.py `
+  --base-prereg EST_PREREG.v0_1.yaml `
+  --radii 10 20 40 80
+```
+
+Outputs:
+
+- `outputs/window_radius_sensitivity/window_radius_sensitivity.csv`
+- `outputs/window_radius_sensitivity/window_radius_sensitivity.md`
+
+Current readout (`10/20/40/80`): label counts and divergence rate are identical
+across radii (`REGISTERED=2`, `NO_TRANSITION=35`, `UNSTABLE=3`,
+`divergence_rate=0.95`), supporting robust synchronous/asynchronous separation
+under this gate family.
+
+## CPU audit: signal-quantile sensitivity
+
+To test threshold-lock dependence, run a shared quantile sweep for F/I/C:
+
+```powershell
+cd experiments/grokking_transition_audit_v0_1
+python scripts/run_signal_quantile_sensitivity.py `
+  --base-prereg EST_PREREG.v0_1.yaml `
+  --quantiles 0.98 0.99 0.995
+```
+
+Outputs:
+
+- `outputs/quantile_sensitivity/quantile_sensitivity.csv`
+- `outputs/quantile_sensitivity/quantile_sensitivity.md`
+
+Current readout:
+
+- `q=0.98`: all seeds `INCONCLUSIVE` (`n_valid=0`) due to density-gate overflow
+  (scope-limited setting).
+- `q=0.99`: baseline main-run pattern (`2/35/3`, divergence `0.95`).
+- `q=0.995`: verdict remains supported; composition shifts to (`2/38/0`) with
+  unchanged divergence (`0.95`).
+
+Interpretation: key divergence claim is stable for valid quantiles (`0.99`,
+`0.995`), while lower quantile (`0.98`) violates prereg density admissibility.
+
 ## Phase-II (attractor stability)
 
 Phase-I established incremental distinguishability. Phase-II asks whether

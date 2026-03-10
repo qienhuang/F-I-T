@@ -1,0 +1,127 @@
+{
+  "phase2_id": "GROKKING_TRANSITION_AUDIT_PHASE_II_V1_0",
+  "version": "1.0",
+  "n_seeds": 40,
+  "n_grokked_seeds": 40,
+  "n_pregrok_seeds": 40,
+  "n_total_rows": 1920,
+  "primary_matrix": "embed.weight",
+  "grokked_step": 300000,
+  "pregrok_step": 5000,
+  "recover_steps": 2000,
+  "data_sources": {
+    "log_seeds": [
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160
+    ],
+    "csv_seeds": [
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179
+    ]
+  },
+  "metrics": {
+    "t50": {
+      "grokked_median": 0.0,
+      "pregrok_median": 0.0,
+      "grokked_ci95": [
+        0.0,
+        0.0
+      ],
+      "pregrok_ci95": [
+        0.0,
+        0.0
+      ],
+      "ratio_pregrok_over_grokked": NaN,
+      "direction_ok": false,
+      "effect_ok": false,
+      "separating": false
+    },
+    "t90": {
+      "grokked_median": 0.0,
+      "pregrok_median": 2000.0,
+      "grokked_ci95": [
+        0.0,
+        0.0
+      ],
+      "pregrok_ci95": [
+        2000.0,
+        2000.0
+      ],
+      "ratio_pregrok_over_grokked": NaN,
+      "direction_ok": true,
+      "effect_ok": false,
+      "separating": false
+    },
+    "auc": {
+      "grokked_mean": 0.9158407812499998,
+      "pregrok_mean": 0.5141946875000001,
+      "grokked_ci95": [
+        0.91032359765625,
+        0.9213185625000001
+      ],
+      "pregrok_ci95": [
+        0.5096902265625,
+        0.51965812109375
+      ],
+      "diff_grokked_minus_pregrok": 0.4016460937499997,
+      "direction_ok": true,
+      "effect_ok": true,
+      "separating": true
+    },
+    "unrecovered_2000": {
+      "grokked_pct": 11.25,
+      "pregrok_pct": 100.0,
+      "grokked_ci95": [
+        2.5,
+        22.5
+      ],
+      "pregrok_ci95": [
+        100.0,
+        100.0
+      ],
+      "diff_pregrok_minus_grokked_pp": 88.75,
+      "direction_ok": true,
+      "effect_ok": true,
+      "separating": true
+    }
+  },
+  "n_separating_metrics": 2,
+  "n_required": 2,
+  "verdict": "ATTRACTOR_SUPPORTED"
+}

@@ -15,6 +15,8 @@
 ### Public Onramp
 
 - [**Civilization as a Dynamical System (v2)**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — thresholds, irreversibility, and coexistence as a parameter-regime problem for broad readers.
+- [**AGI Without and With FIT**](essays/agi/00_agi_without_and_with_fit.md) — why AGI can progress without FIT, but why progress may remain non-diagnosable.
+- [**AGI Engineering Path**](essays/agi/01_agi_engineering_path.md) — loop metrics, constraint engineering, and auditable progress for closed-loop AGI.
 
 ### Core Theory
 
@@ -25,6 +27,10 @@
 - **Renormalization Lens v0.2**  
   Scale-aware admissibility: semigroup closure + saturation gates.  
   → [docs/core/renormalization_lens.md](docs/core/renormalization_lens.md)
+
+- **FIT–FEP Bridge Notes** *(bounded bridge layer)*  
+  Core-adjacent notes on FEP as a within-regime engine, boundary redraw as an operator proposal, and boundary dynamics as longform synthesis.  
+  → [docs/bridges/README.md](docs/bridges/README.md)
 
 ### Benchmarks (paper-ready)
 
@@ -43,6 +49,10 @@
 - **Grokking Transition Audit v0.1**  
   PT-MSS distinguishes synchronous structural locking from asynchronous reorganization under fixed gates.  
   → [experiments/grokking_transition_audit_v0_1/README.md](experiments/grokking_transition_audit_v0_1/README.md)
+
+- **Civilization Dynamics v0.1 (numeric scaffold)**  
+  Minimal ODE reproducibility pack: phase portrait, bifurcation scan, and collapse-time distribution.  
+  → [experiments/civilization_dynamics_v0_1/README.md](experiments/civilization_dynamics_v0_1/README.md)
 
 ### Safety & Applications
 

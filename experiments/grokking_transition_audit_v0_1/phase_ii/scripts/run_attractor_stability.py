@@ -90,7 +90,8 @@ def _apply_noise_(model: torch.nn.Module, epsilon: float, seed: int) -> None:
     g.manual_seed(seed)
     with torch.no_grad():
         for p in model.parameters():
-            noise = torch.randn(p.shape, generator=g, dtype=p.dtype, device=p.device)
+            # Generate on CPU (reproducible seed), then move to param device
+            noise = torch.randn(p.shape, generator=g, dtype=p.dtype).to(p.device)
             p.add_(noise * float(epsilon))
 
 

@@ -28,9 +28,43 @@ As of 2026-01-21, **v0.2/v0.2.1 are complete as a reproducible, held-out evaluat
 - `RESULTS_v0.2_v0.2.1.md`
 - `results/v0.3_A1_component_diagnosis.md`
 - `results/v0.3_A2_fpr_tradeoff.md`
+- `results/structural_v0_6/structural_candidates_summary.md`
+
+## Structural candidate screen (v0.6, held-out seeds 140–179)
+
+Structural follow-up runs are now complete on the shared held-out block:
+
+- `control`: `unembed.weight`
+- `A`: `embed.weight`
+- `B`: `encoder.layers.0.self_attn.in_proj_weight`
+- `C`: `encoder.layers.1.self_attn.in_proj_weight`
+
+Readout from `results/structural_v0_6/structural_candidates_summary.md`:
+
+- **Candidate A** is the strongest screen result:
+  - preferred sign `+1`
+  - median AUC `0.5874` vs control `0.4546`
+  - lead@FPR coverage `30/40 = 0.75` vs control `17/40 = 0.425`
+  - median lead `15250` steps vs control `11500`
+- **Candidate C** is also positive but weaker than A on low-FPR usefulness:
+  - preferred sign `+1`
+  - median AUC `0.5969`
+  - lead@FPR coverage `24/40 = 0.60`
+  - median lead `14750` steps
+- **Candidate B** does not improve the hard-indicator objective:
+  - preferred sign `-1`
+  - median AUC `0.3871`
+  - lead@FPR coverage `12/40 = 0.30`
+
+Current decision point:
+
+- treat **A** as the primary structural candidate for the next locked run,
+- keep **C** as a secondary comparison,
+- drop **B** unless a different objective favors ranking over low-FPR alarm coverage.
 
 ## What to do next (v0.3 direction)
 
 - Keep the “ranking vs alarm” objective distinction explicit, and decide which one is primary.
+- Lock the next run around **Candidate A** (and optionally **C**) on fresh held-out seeds.
 - Improve the estimator tuple (still preregistered): add 1–3 cheap-to-log indicators and re-evaluate on fresh held-out seeds.
 - Keep Phase discipline strict: no threshold or model changes on eval seeds.

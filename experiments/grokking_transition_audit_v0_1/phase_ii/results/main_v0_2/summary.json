@@ -1,0 +1,31 @@
+{
+  "phase2_id": "GROKKING_TRANSITION_AUDIT_PHASE_II_V0_2",
+  "n_selected_seeds": 13,
+  "n_missing_runs": 0,
+  "missing_seeds": [],
+  "n_evaluated_seeds": 13,
+  "n_registered": 2,
+  "n_no_transition_control": 8,
+  "eps_ref": 0.001,
+  "criterion_1": {
+    "name": "registered_drop_vs_control_q25",
+    "registered_median_drop": 0.0007500000000000284,
+    "control_q25_drop": 0.0,
+    "pass": false
+  },
+  "criterion_2": {
+    "name": "registered_recovery_vs_control_median",
+    "registered_max_t_recover": 100.0,
+    "control_median_t_recover": 100.0,
+    "pass": false
+  },
+  "criterion_3": {
+    "name": "registered_plateau_var_vs_control_median",
+    "registered_median_var": 2.3247438458770828e-06,
+    "control_median_var": 1.3127044844005913e-05,
+    "pass": true
+  },
+  "pass_count": 1,
+  "k_required": 2,
+  "verdict": "INCONCLUSIVE"
+}

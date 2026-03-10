@@ -1,0 +1,107 @@
+id: GROKKING_TRANSITION_AUDIT_PHASE_II_V1_0
+version: "1.0"
+status: draft_locked_for_eval
+date: "2026-02-24"
+
+protocol_note: |
+  Conclusive-first protocol (GPT-guided redesign). Avoids ceiling by:
+  (1) Using absolute accuracy thresholds (t50=time-to-50%-acc, t90=time-to-90%-acc)
+  rather than relative-to-baseline recovery fractions.
+  (2) Using relative perturbation scales (% of ||W||_F) instead of absolute epsilon.
+  (3) Within-seed matched design: same 10 seeds, grokked (step_300000, acc~99%) vs
+      pre-grok (step_5000, acc~pre-generalization). The groups differ ONLY in training stage.
+  Expected direction: grokked models recover to 90% test accuracy within 2000 steps;
+  pre-grok models cannot (they would need ~100k steps to re-grok from scratch).
+  Stop rule: if pilot fails conclusive rule, mark Phase-II negative under v1.0 and
+  do not expand to full 40-seed run.
+
+goal:
+  claim: >
+    Grokked representations form a deeper, wider attractor basin than memorized
+    (pre-grokking) representations, as measured by faster recovery from weight
+    perturbation in terms of test accuracy.
+  boundary: "modular_addition p=97, TinyTransformer 2-layer d=128, 300k training steps"
+
+groups:
+  design: "within_seed_matched"
+  grokked:
+    checkpoint_step: 300000
+    seeds: [141, 142, 143, 144, 147, 154, 158, 159, 163, 168]
+    n: 10
+    expected_baseline_acc_min: 0.90
+  pregrok:
+    checkpoint_step: 5000
+    seeds: [141, 142, 143, 144, 147, 154, 158, 159, 163, 168]
+    n: 10
+    expected_baseline_acc_max: 0.50
+
+upstream_grokking:
+  grokking_root: "../../../../../grokking"
+  runs_root: "../../../../../grokking/runs_v0_6_structural_phase2"
+  phase: "eval"
+  boundary:
+    modulus_p: 97
+    train_size: 4000
+    test_size: 2000
+    corruption_rate: 0.10
+    corruption_seed: 123
+    batch_size: 512
+    lr: 1.0e-3
+    weight_decay: 1.0e-2
+    layers: 2
+    width: 128
+    heads: 4
+    dropout: 0.0
+
+perturbations:
+  matrices:
+    - name: "embed.weight"
+      primary: true
+    - name: "encoder.layers.0.self_attn.in_proj_weight"
+      primary: false
+      run_if_budget_allows: true
+  types:
+    - gaussian_random
+    - structured_rank1
+  scales_rel: [0.005, 0.01, 0.02, 0.05]
+  n_perturbation_seeds: 3
+
+recovery:
+  steps: 2000
+  eval_every_steps: 100
+
+metrics:
+  t50_threshold: 0.50    # absolute test accuracy threshold for t50
+  t90_threshold: 0.90    # absolute test accuracy threshold for t90
+  auc_cap: 2000         # steps in denominator for AUC normalization
+  unrecovered_threshold: 0.90  # acc below this at step 2000 = "unrecovered"
+  bootstrap_n: 2000
+  bootstrap_ci: 0.95
+
+decision_rule:
+  n_metrics_required: 2
+  direction: "grokked_better_recovery"
+  # "better" means grokked has lower t50/t90, higher AUC, lower unrecovered@2000
+  minimum_effects:
+    # At least ONE of these must hold for a metric to count as "separating":
+    t90_ratio_min: 1.5           # pregrok_median_t90 / grokked_median_t90 >= 1.5
+    unrecovered_diff_pp_min: 20  # pregrok_unrecovered_pct - grokked_unrecovered_pct >= 20
+    auc_diff_min: 0.10           # grokked_mean_auc - pregrok_mean_auc >= 0.10
+  pilot_stop_rule: >
+    If pilot (n=10+10) fails the conclusive rule (< 2 metrics pass minimum effect),
+    stop expansion and mark Phase-II as "negative_under_v1_0_protocol".
+  expansion_rule: >
+    If pilot passes, expand to all available seeds (up to 40) and re-run for
+    final verdict with full bootstrap CIs.
+
+verdicts:
+  pass: "ATTRACTOR_SUPPORTED"
+  fail: "ATTRACTOR_NOT_SUPPORTED"
+  inconclusive: "INCONCLUSIVE"
+
+outputs:
+  out_dir: "./results/main_v1_0"
+  files:
+    - "summary.json"
+    - "per_seed_metrics.csv"
+    - "report.md"

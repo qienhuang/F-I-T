@@ -16,6 +16,8 @@
 ### 面向新读者
 
 - [**文明作为动力系统（v2）**](essays/governance-longform/civilization_as_a_dynamical_system.v2.md) — 用参数区间解释阈值、不可逆性与共存，适合大众读者。
+- [**AGI Without and With FIT**](essays/agi/00_agi_without_and_with_fit.md) — 为什么 AGI 即使没有 FIT 也会推进，但进展可能不可诊断、不可复用。
+- [**AGI Engineering Path**](essays/agi/01_agi_engineering_path.md) — 闭环 AGI 的工程化路径：loop metrics、constraint engineering 与可审计进展。
 
 ### 核心理论
 
@@ -26,6 +28,10 @@
 - **Renormalization Lens v0.2**  
   尺度感知可接受性：semigroup closure + saturation gates。  
   → [docs/core/renormalization_lens.md](docs/core/renormalization_lens.md)
+
+- **FIT–FEP 桥接笔记** *（有边界的 bridge 层）*  
+  将 FEP 视作 phase 内机制、将 boundary redraw 视作算子提案，并用长文形式解释 boundary dynamics 的桥接线。  
+  → [docs/bridges/README.md](docs/bridges/README.md)
 
 ### 基准（可引用）
 
@@ -44,6 +50,10 @@
 - **Grokking Transition Audit v0.1**  
   在固定 gates 下，PT-MSS 区分“同步结构锁定”与“异步重组”。  
   → [experiments/grokking_transition_audit_v0_1/README.md](experiments/grokking_transition_audit_v0_1/README.md)
+
+- **Civilization Dynamics v0.1（数值脚手架）**  
+  最小 ODE 可复现包：相图、分岔扫描、坍塌时间分布。  
+  → [experiments/civilization_dynamics_v0_1/README.md](experiments/civilization_dynamics_v0_1/README.md)
 
 ### 安全与应用
 

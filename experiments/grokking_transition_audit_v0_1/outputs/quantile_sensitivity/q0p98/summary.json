@@ -1,0 +1,31 @@
+{
+  "run_id": "GROKKING_TRANSITION_AUDIT_V0_1_Q0p98_SENS",
+  "prereg_id": "GROKKING_TRANSITION_AUDIT_V0_1_Q0p98",
+  "generated_at_utc": "2026-02-24T00:47:23.328858+00:00",
+  "n_seeds": 40,
+  "n_valid": 0,
+  "label_counts": {
+    "INCONCLUSIVE": 40
+  },
+  "baseline_transition_rate": 0.0,
+  "fit_transition_rate": 0.0,
+  "divergence_rate": 0.0,
+  "divergence_count": 0,
+  "c1_threshold": 0.15,
+  "c1_min_replay_count": 3,
+  "c1_replay_mode": "count_fallback",
+  "c1_status": "FAIL",
+  "verdict": "SCOPE_LIMITED_GROKKING_TRANSITION_DETECTION",
+  "replay": {
+    "enabled": false,
+    "status": "not_required",
+    "manifest_path": null,
+    "compared_count": 0,
+    "stable_count": 0,
+    "stable_rate": null,
+    "unstable_seeds": [],
+    "pass": true,
+    "mode": "count_fallback"
+  },
+  "registered_seed_cards": []
+}

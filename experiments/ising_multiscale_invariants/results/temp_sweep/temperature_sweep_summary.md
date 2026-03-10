@@ -18,4 +18,5 @@
 
 Notes:
 - Same gate thresholds are used across temperatures (`eps=0.10`, `saturation_ratio_threshold=0.90`, closure `tau=0.05`).
-- This is a pilot for boundary diagnosis, not a final claim.
+- `testable` means triples not excluded by saturation gate (PASS + ESTIMATOR_UNSTABLE).
+- Pilot boundary diagnosis only; use full block-A/B compare for publish claims.

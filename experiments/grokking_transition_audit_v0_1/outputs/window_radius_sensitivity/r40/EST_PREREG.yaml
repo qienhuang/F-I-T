@@ -1,0 +1,69 @@
+id: GROKKING_TRANSITION_AUDIT_V0_1_WR40
+version: '0.1'
+status: draft_locked_for_eval
+boundary:
+  task: modular_arithmetic_grokking
+  model_family: small_transformer
+  notes: Audit layer only; upstream trainer is external.
+inputs:
+  timeseries_glob: data/real/*.csv
+  required_columns:
+  - step
+  - d_force
+  - d_info
+  - d_constraint
+  optional_columns:
+  - acc_test
+  - d_force_alt
+  - d_info_alt
+  - d_constraint_alt
+signals:
+  mode: quantile
+  quantiles:
+    force: 0.99
+    info: 0.99
+    constraint: 0.99
+  fixed_thresholds:
+    force: null
+    info: null
+    constraint: null
+  density_gate:
+    min_rate: 0.001
+    max_rate: 0.02
+ptmss:
+  window_radius_steps: 40
+  choose_transition: earliest
+families:
+- name: primary
+  cols:
+    force: d_force
+    info: d_info
+    constraint: d_constraint
+- name: alt
+  cols:
+    force: d_force_alt
+    info: d_info_alt
+    constraint: d_constraint_alt
+  optional: true
+coherence_gate:
+  alignment_tolerance_steps: 15
+  require_order_consistency: true
+baseline:
+  use_acc_jump: true
+  acc_col: acc_test
+  jump_window: 5
+  jump_min: 0.05
+claim:
+  c1_min_divergence_rate: 0.15
+  c1_min_replay_count: 3
+replay:
+  enabled: false
+  manifest: null
+  seeds: []
+outputs:
+  out_dir: D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r40
+  per_seed_json_dir: D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r40/per_seed
+  summary_json: D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r40/summary.json
+  diagnostics_csv: D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r40/diagnostics.csv
+  report_md: D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r40/report.md
+  audit_cards_dir: outputs/main/audit_cards

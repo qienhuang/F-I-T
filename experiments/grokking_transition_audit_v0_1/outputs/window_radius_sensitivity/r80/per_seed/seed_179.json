@@ -1,0 +1,148 @@
+{
+  "run_id": "GROKKING_TRANSITION_AUDIT_V0_1_WR80_SENS",
+  "prereg_id": "GROKKING_TRANSITION_AUDIT_V0_1_WR80",
+  "seed": "seed_179",
+  "input_file": "data/real/seed_179.csv",
+  "signal_lock": {
+    "mode": "quantile",
+    "quantiles": {
+      "force": 0.99,
+      "info": 0.99,
+      "constraint": 0.99
+    },
+    "fixed_thresholds": {
+      "force": null,
+      "info": null,
+      "constraint": null
+    },
+    "density_gate": {
+      "min_rate": 0.001,
+      "max_rate": 0.02
+    }
+  },
+  "thresholds": {
+    "primary": {
+      "force": 1.973372643289622,
+      "info": 0.004382351225057257,
+      "constraint": 0.06189604312887803
+    },
+    "alt": {
+      "force": 0.4314823116234038,
+      "info": 0.010312592176099589,
+      "constraint": 0.013549910438039436
+    }
+  },
+  "event_density": {
+    "primary": {
+      "force": 0.011647254575707155,
+      "info": 0.011647254575707155,
+      "constraint": 0.011647254575707155
+    },
+    "alt": {
+      "force": 0.011647254575707155,
+      "info": 0.011647254575707155,
+      "constraint": 0.011647254575707155
+    }
+  },
+  "event_counts": {
+    "primary": {
+      "force": 7,
+      "info": 7,
+      "constraint": 7
+    },
+    "alt": {
+      "force": 7,
+      "info": 7,
+      "constraint": 7
+    }
+  },
+  "ptmss": {
+    "primary_t": null,
+    "family_t": {
+      "primary": null,
+      "alt": null
+    },
+    "family_order": {
+      "primary": null,
+      "alt": null
+    },
+    "family_candidate_count": {
+      "primary": 0,
+      "alt": 0
+    },
+    "primary_candidate_steps": [],
+    "window_radius_steps": 80
+  },
+  "events": {
+    "primary": {
+      "force": [
+        98000,
+        98500,
+        175500,
+        186000,
+        186500,
+        288500,
+        289000
+      ],
+      "info": [
+        500,
+        2000,
+        6000,
+        9500,
+        14000,
+        18000,
+        23000
+      ],
+      "constraint": [
+        500,
+        63000,
+        106500,
+        108500,
+        240000,
+        240500,
+        263500
+      ]
+    },
+    "alt": {
+      "force": [
+        1000,
+        3000,
+        98000,
+        100500,
+        186000,
+        288500,
+        291000
+      ],
+      "info": [
+        500,
+        2000,
+        6000,
+        9500,
+        14000,
+        18000,
+        23000
+      ],
+      "constraint": [
+        500,
+        1000,
+        2000,
+        2500,
+        15500,
+        33000,
+        240500
+      ]
+    }
+  },
+  "gate": {
+    "pass": false,
+    "alignment_fail_families": [],
+    "order_fail_families": []
+  },
+  "baseline": {
+    "transition_t": 2500,
+    "has_transition": true,
+    "diverges_from_fit": true
+  },
+  "label": "NO_TRANSITION",
+  "notes": []
+}

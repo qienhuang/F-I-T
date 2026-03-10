@@ -8,6 +8,20 @@ We construct a minimal three-variable ordinary differential equation system desc
 
 ---
 
+## Executive Summary (Reader Quick Notes)
+
+- The model has two thresholds with different meanings:
+  - $N_{\text{flip}}$: cooperation loses local stability (transcritical).
+  - $R=A$: recovery becomes structurally hard (saddle-node/hysteresis).
+- A civilization can remain stable only while $\mu = dR - P\gamma \le 0$ and $R$ stays safely above $A$.
+- Capability growth is not automatically beneficial: when governance adaptation lags, higher capability can accelerate collapse.
+- The key engineering quantity is a scale bound:
+  - $N_{\max}^\star \approx \frac{(Pa-cd-dh)K(1-h/r)}{Pb}$.
+- A minimal reproducibility pack with phase portrait, bifurcation scan, and collapse-time scan is provided at:
+  - `experiments/civilization_dynamics_v0_1/`.
+
+---
+
 ## I. Structural Causality, Not Moral Causality
 
 Civilizations rarely collapse in a single dramatic act. They drift, they tilt, they slide past a threshold that in retrospect looks obvious. Historians often narrate decline in moral vocabulary—corruption, decadence, greed—but moral language obscures structural causality. If we strip away intention and psychology and attend only to incentive gradients, a simpler and more unsettling mechanism appears: when extraction becomes more profitable at the margin than cooperation, extraction spreads. No villain is required, no conspiracy is needed—only differential payoff.
@@ -71,6 +85,24 @@ The parameters $a$, $b$, $c > 0$ encode governance productivity, complexity fric
 The replicator equation presupposes a well-mixed, infinitely large population with continuous-time imitation dynamics. These conditions are not strictly met in finite-population settings such as the cultural evolution experiments of Willis et al. (2026), where 512 agents interact over 200 discrete generations. The linear form of the governance equation is a simplifying choice; Ostrom's (1990) empirical work on common-pool resource institutions suggests that governance capacity depends nonlinearly on group size, resource characteristics, and institutional history. The Allee effect has strong empirical grounding in ecology—fisheries collapse, population viability thresholds—but its application to abstract resources such as institutional trust or financial stability should be understood as structural analogy rather than empirical derivation.
 
 These caveats do not invalidate the model's qualitative insights, but they bound how literally its quantitative predictions should be taken. The model is a phase-portrait generator, not a forecasting tool.
+
+### II.5 Coarse Calibration Sketch (Illustrative, Not Historical Fit)
+
+The purpose of calibration here is operational: map observed quantities to threshold direction, not to produce high-confidence historical backtests.
+
+1. Estimate governance margin trend from observables:
+   - pick proxies for extraction rent ($d$), enforceability ($P$), resource stock ($R$), and governance bandwidth ($\gamma$),
+   - monitor $\mu_t = d_tR_t - P_t\gamma_t$ and its drift $\dot{\mu}_t$.
+2. Estimate threshold location:
+   - from institutional proxies of $a,b,c$, compute
+     - $N_{\text{flip}} = \frac{K(Pa-cd)}{Pb}$,
+     - $N_{\max}^\star \approx \frac{(Pa-cd-dh)K(1-h/r)}{Pb}$.
+3. Validate directionality rather than level:
+   - does increasing scale $N$ reduce stability margin?
+   - does capability drift push $\mu$ upward faster than governance adaptation can offset?
+
+In this repository, a toy numerical scaffold for this workflow is available in:
+`experiments/civilization_dynamics_v0_1/` (phase portrait, bifurcation scan, collapse-time distribution).
 
 ---
 

@@ -1,0 +1,187 @@
+{
+  "run_id": "GROKKING_TRANSITION_AUDIT_V0_1_Q0p98_SENS",
+  "prereg_id": "GROKKING_TRANSITION_AUDIT_V0_1_Q0p98",
+  "seed": "seed_156",
+  "input_file": "data/real/seed_156.csv",
+  "signal_lock": {
+    "mode": "quantile",
+    "quantiles": {
+      "force": 0.98,
+      "info": 0.98,
+      "constraint": 0.98
+    },
+    "fixed_thresholds": {
+      "force": null,
+      "info": null,
+      "constraint": null
+    },
+    "density_gate": {
+      "min_rate": 0.001,
+      "max_rate": 0.02
+    }
+  },
+  "thresholds": {
+    "primary": {
+      "force": 2.1751743837376125,
+      "info": 0.0038366891754214594,
+      "constraint": 0.05926085982265758
+    },
+    "alt": {
+      "force": 0.4301542000845075,
+      "info": 0.009105284994767704,
+      "constraint": 0.011350499211770892
+    }
+  },
+  "event_density": {
+    "primary": {
+      "force": 0.021630615640599003,
+      "info": 0.021630615640599003,
+      "constraint": 0.021630615640599003
+    },
+    "alt": {
+      "force": 0.021630615640599003,
+      "info": 0.021630615640599003,
+      "constraint": 0.021630615640599003
+    }
+  },
+  "event_counts": {
+    "primary": {
+      "force": 13,
+      "info": 13,
+      "constraint": 13
+    },
+    "alt": {
+      "force": 13,
+      "info": 13,
+      "constraint": 13
+    }
+  },
+  "ptmss": {
+    "primary_t": null,
+    "family_t": {
+      "primary": null,
+      "alt": null
+    },
+    "family_order": {
+      "primary": null,
+      "alt": null
+    },
+    "family_candidate_count": {
+      "primary": 0,
+      "alt": 0
+    },
+    "primary_candidate_steps": [],
+    "window_radius_steps": 20
+  },
+  "events": {
+    "primary": {
+      "force": [
+        17500,
+        18000,
+        32000,
+        32500,
+        37000,
+        37500,
+        51000,
+        81000,
+        81500,
+        216000,
+        216500,
+        227000,
+        227500
+      ],
+      "info": [
+        500,
+        2000,
+        5500,
+        9000,
+        13500,
+        18000,
+        22500,
+        27000,
+        32500,
+        42000,
+        46500,
+        56500,
+        62000
+      ],
+      "constraint": [
+        500,
+        14500,
+        15000,
+        31500,
+        37500,
+        48500,
+        75500,
+        152000,
+        158000,
+        197500,
+        237500,
+        251000,
+        299000
+      ]
+    },
+    "alt": {
+      "force": [
+        17500,
+        20000,
+        32000,
+        34500,
+        37000,
+        39500,
+        51000,
+        81000,
+        83500,
+        216000,
+        218500,
+        227000,
+        229500
+      ],
+      "info": [
+        500,
+        2000,
+        5500,
+        9000,
+        13500,
+        18000,
+        22500,
+        27000,
+        32500,
+        42000,
+        46500,
+        56500,
+        62000
+      ],
+      "constraint": [
+        500,
+        1000,
+        1500,
+        2500,
+        19000,
+        51500,
+        66000,
+        77500,
+        105000,
+        144000,
+        160500,
+        185000,
+        261500
+      ]
+    }
+  },
+  "gate": {
+    "pass": false,
+    "alignment_fail_families": [],
+    "order_fail_families": []
+  },
+  "baseline": {
+    "transition_t": 2500,
+    "has_transition": true,
+    "diverges_from_fit": true
+  },
+  "label": "INCONCLUSIVE",
+  "notes": [
+    "density_gate_fail:primary",
+    "density_gate_fail:alt"
+  ]
+}

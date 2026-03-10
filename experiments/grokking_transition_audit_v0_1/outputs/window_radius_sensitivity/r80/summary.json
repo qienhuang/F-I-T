@@ -1,0 +1,36 @@
+{
+  "run_id": "GROKKING_TRANSITION_AUDIT_V0_1_WR80_SENS",
+  "prereg_id": "GROKKING_TRANSITION_AUDIT_V0_1_WR80",
+  "generated_at_utc": "2026-02-24T00:45:15.262902+00:00",
+  "n_seeds": 40,
+  "n_valid": 40,
+  "label_counts": {
+    "NO_TRANSITION": 35,
+    "ESTIMATOR_UNSTABLE": 3,
+    "REGISTERED_TRANSITION": 2
+  },
+  "baseline_transition_rate": 1.0,
+  "fit_transition_rate": 0.05,
+  "divergence_rate": 0.95,
+  "divergence_count": 38,
+  "c1_threshold": 0.15,
+  "c1_min_replay_count": 3,
+  "c1_replay_mode": "count_fallback",
+  "c1_status": "PASS",
+  "verdict": "SUPPORTED_FOR_INCREMENTAL_DISTINGUISHABILITY",
+  "replay": {
+    "enabled": false,
+    "status": "not_required",
+    "manifest_path": null,
+    "compared_count": 0,
+    "stable_count": 0,
+    "stable_rate": null,
+    "unstable_seeds": [],
+    "pass": true,
+    "mode": "count_fallback"
+  },
+  "registered_seed_cards": [
+    "D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r80/audit_cards/seed_159.md",
+    "D:/FIT Lab/github/F-I-T/experiments/grokking_transition_audit_v0_1/outputs/window_radius_sensitivity/r80/audit_cards/seed_168.md"
+  ]
+}

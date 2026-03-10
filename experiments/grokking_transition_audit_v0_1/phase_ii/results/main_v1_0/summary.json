@@ -1,0 +1,80 @@
+{
+  "phase2_id": "GROKKING_TRANSITION_AUDIT_PHASE_II_V1_0",
+  "version": "1.0",
+  "n_seeds": 10,
+  "n_grokked": 10,
+  "n_pregrok": 10,
+  "grokked_step": 300000,
+  "pregrok_step": 5000,
+  "recover_steps": 2000,
+  "primary_matrix": "embed.weight",
+  "metrics": {
+    "t50": {
+      "grokked_median": 0.0,
+      "pregrok_median": 0.0,
+      "grokked_ci95": [
+        0.0,
+        0.0
+      ],
+      "pregrok_ci95": [
+        0.0,
+        100.0
+      ],
+      "ratio_pregrok_over_grokked": 1.0,
+      "direction_ok": false,
+      "effect_ok": false,
+      "separating": false
+    },
+    "t90": {
+      "grokked_median": 0.0,
+      "pregrok_median": 2000.0,
+      "grokked_ci95": [
+        0.0,
+        150.0
+      ],
+      "pregrok_ci95": [
+        2000.0,
+        2000.0
+      ],
+      "ratio_pregrok_over_grokked": 2000000000000.9998,
+      "direction_ok": true,
+      "effect_ok": true,
+      "separating": true
+    },
+    "auc": {
+      "grokked_mean": 0.91805,
+      "pregrok_mean": 0.5084,
+      "grokked_ci95": [
+        0.9092,
+        0.9262500000000001
+      ],
+      "pregrok_ci95": [
+        0.50359875,
+        0.514
+      ],
+      "diff_grokked_minus_pregrok": 0.40965000000000007,
+      "direction_ok": true,
+      "effect_ok": true,
+      "separating": true
+    },
+    "unrecovered_2000": {
+      "grokked_pct": 10.0,
+      "pregrok_pct": 100.0,
+      "grokked_ci95": [
+        0.0,
+        30.0
+      ],
+      "pregrok_ci95": [
+        100.0,
+        100.0
+      ],
+      "diff_pregrok_minus_grokked_pp": 90.0,
+      "direction_ok": true,
+      "effect_ok": true,
+      "separating": true
+    }
+  },
+  "n_separating": 3,
+  "n_required": 2,
+  "verdict": "ATTRACTOR_SUPPORTED"
+}
