@@ -195,5 +195,5 @@ Li² 实验证明 grokking 时间按以下规律缩放：
 
 - Power et al. (2022). "Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets"
 - Tian et al. (2025). "Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking" ([repo](https://github.com/yuandong-tian/understanding))
-- FIT v2.4 规范：[`docs/v2.4.md`](../v2.4.md)
+- FIT 当前整合规范：[`docs/spec_current.md`](../spec_current.md)
 - 受控涅槃论文：[`papers/controlled_nirvana.md`](../../papers/controlled_nirvana.md)

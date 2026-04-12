@@ -1,8 +1,7 @@
 data/smoke/*.csv
 outputs/main/
 outputs/smoke/
-!outputs/schema.json
-!outputs/summary_template.md
-
 results/
 phase_ii/results/*.log
+!outputs/schema.json
+!outputs/summary_template.md

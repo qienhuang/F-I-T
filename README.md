@@ -1,15 +1,52 @@
-﻿![Logo](imgs/banner_v2.png)
+![Logo](imgs/banner_v2.png)
 
 # F-I-T (Force–Information–Time) Dynamics Framework
 
 ### A minimal, falsifiable lens for analyzing evolution across physical, biological, cognitive, social, and AI systems.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md) | [[中文/Chinese]](README.zh_cn.md) |
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read reader spec](https://img.shields.io/badge/Read-reader_spec-blue)](docs/spec_reader.md) | [![Read current spec](https://img.shields.io/badge/Read-current_spec-red)](docs/spec_current.md) | [[中文/Chinese]](README.zh_cn.md) |
 
 ---
-## ✨ Recent Highlights (as of 2026-02-24)
 
-**New here?** Start with the [Two-Page Card](docs/core/fit_two_page_card.md) (5-minute overview), [MCC](docs/core/MCC.md) (minimal formal skeleton), then [PHASE_II_QUICKSTART.md](PHASE_II_QUICKSTART.md) (CPU-first runnable path).
+## Books (Free Download)
+
+<table>
+<tr>
+<td width="225">
+<a href="books/textbook/fit_textbook_v4.pdf">
+<img src="books/textbook/fit_textbook_v5_small.png" width="180" alt="FIT Textbook Cover"/>
+</a>
+</td>
+<td width="225">
+<a href="books/compainion_vol1/fit_companion_vol_v4.pdf">
+<img src="books/compainion_vol1/fit_companion_vol1_v5_small.png" width="180" alt="Companion Volume 1 Cover"/>
+</a>
+</td>
+</tr>
+<tr>
+<td>
+
+**Force-Information-Time: A Structural Framework**  
+[PDF](books/textbook/fit_textbook_v4.pdf) | [EPUB](books/textbook/fit_textbook_v4.epub)
+
+</td>
+<td>
+
+**Essays on Structural Evolution - Vol. 1**  
+[PDF](books/compainion_vol1/fit_companion_vol_v4.pdf) | [EPUB](books/compainion_vol1/fit_companion_vol_v4.epub)
+
+</td>
+</tr>
+</table>
+
+> Books are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) -- free to read, download, and share with attribution. Commercial use is not permitted.  
+> Note: the repository's documentation remains under CC BY 4.0 unless a file or subdirectory states otherwise. The `books/compainion_vol1/` path uses a legacy folder name   preserved for link stability.  
+> See [`books/README.md`](books/README.md) for directory-level notes on naming, file types, and license scope.  
+
+---
+## ✨ Recent Highlights (as of 2026-04-11)
+
+**New here?** Start with the [Two-Page Card](docs/core/fit_two_page_card.md) (5-minute overview), then [spec_reader.md](docs/spec_reader.md) (short serious entry), then [MCC](docs/core/MCC.md) (minimal formal skeleton).
 
 ---
 ### Public Onramp
@@ -20,9 +57,13 @@
 
 ### Core Theory
 
-- **v2.4.1 — EST + Tier-1 validation suite**  
+- **v2.4.1 line — current integrated specification**  
   Current formal anchor with falsifiability pipeline and proposition status.  
-  → [docs/v2.4.md](docs/v2.4.md)
+  → [docs/spec_current.md](docs/spec_current.md)
+
+- **Reader Spec — short entry to the current line**  
+  Shorter reading surface for onboarding, review, and bounded citation context before the full specification.  
+  → [docs/spec_reader.md](docs/spec_reader.md)
 
 - **Renormalization Lens v0.2**  
   Scale-aware admissibility: semigroup closure + saturation gates.  
@@ -98,7 +139,8 @@
 | **Evaluating the framework** | [What FIT claims](#what-fit-claims-and-does-not-claim) → [Tier-1 evidence](#tier-1-evidence-toy-systems) |
 | **Working on AI safety** | [AI Safety Index](docs/ai_safety/README.md) → [FIT for AI Safety](docs/ai_safety/fit_ai_safety_mapping.md) |
 | **Running experiments** | [Toolkits](#toolkits) → [Li² replication](experiments/li2_scaling_law/README.md) |
-| **Reading the full spec** | [v2.4 spec (English)](docs/v2.4.md)  / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
+| **Reading the short spec** | [reader spec (English)](docs/spec_reader.md) |
+| **Reading the full spec** | [current integrated spec (English)](docs/spec_current.md) / [v2.4 中文(Chinese)](docs/zh_cn/v2.4.zh_cn.md) |
 
 ---
 
@@ -146,7 +188,7 @@ FIT treats **tempo** (the relationship between action timescales and correction 
 
 ![Conway's Game of Life: Tier-1 validation snapshot](experiments/figures/conway_status_overview.png)
 
-*Figure: Conway's Game of Life Tier-1 validation (details in [v2.4 spec](docs/v2.4.md)).*
+*Figure: Conway's Game of Life Tier-1 validation (details in the [current integrated spec](docs/spec_current.md)).*
 
 ### Core-adjacent lens update (v0.2)
 
@@ -322,7 +364,7 @@ Quick start (Windows): `.\results\run_matrix_v0_2_and_summarize.ps1 -PythonExe "
 
 | Version | Description | Link |
 |---------|-------------|------|
-| **v2.4.1** (current) | EST + Tier-1 validation | [docs/v2.4.md](docs/v2.4.md) |
+| **v2.4.1 line** (current) | Integrated full spec + EST + Tier-1 validation | [docs/spec_current.md](docs/spec_current.md) |
 | v2.3 | Tier-1 validation | [docs/v2.3.md](docs/v2.3.md) |
 | v2.1 | Legacy review edition | [docs/v2.1.md](docs/v2.1.md) |
 
@@ -366,7 +408,7 @@ tools/          Runnable toolkits
 <a id="essays-public-writing"></a>
 ## 📝 [Essays & Public Writing](essays)
 
-Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or [v2.4 spec](docs/v2.4.md). Full index: [essays/README.md](essays/README.md).
+Accessible introductions and applied perspectives. These use everyday language; for the formal framework, see [Core Card](docs/core/fit_core_card.md) or the [current integrated spec](docs/spec_current.md). Full index: [essays/README.md](essays/README.md).
 
 ### Methodology & Philosophy
 - [**A Simple Framework to Understand How Everything Evolves**](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) — General introduction to FIT `General readers`
@@ -422,7 +464,7 @@ See [CITATION.cff](CITATION.cff) for copy/paste formats.
 
 **Author**: Qien Huang (Independent Researcher)  
 **Email**: qienhuang@hotmail.com  
-**License**: CC BY 4.0  
+**License**: CC BY 4.0 for repository docs by default; downloadable book artifacts may carry file- or subdirectory-specific terms (currently CC BY-NC 4.0 for the books listed above).  
 **Repository**: https://github.com/qienhuang/F-I-T  
 **ORCID**: https://orcid.org/0009-0003-7731-4294  
 

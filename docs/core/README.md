@@ -3,9 +3,16 @@
 Status: **source-of-truth** for the *core artifacts* (compressed entry points) introduced around the v2.4.1 line.
 
 These documents:
-- Do **not** add new primitives or new propositions beyond [`docs/v2.4.md`](../v2.4.md).
+- Do **not** add new primitives or new propositions beyond the stabilized v2.4 / v2.4.1 line.
 - Provide a minimal, teachable, handoff-ready interface to the framework.
 - Aim to reduce misreadings while keeping EST discipline intact.
+
+**Current integrated full specification**
+- [`../spec_current.md`](../spec_current.md)
+
+**Historical traceability**
+- [`../v2.4.md`](../v2.4.md)
+- [`../v2.4.1.md`](../v2.4.1.md)
 
 ## Index
 
@@ -13,6 +20,7 @@ Notation: phases are written as `Phi1/Phi2/Phi3` in filenames/code.
 
 ### Start Here
 - [`fit_core_card.md`](./fit_core_card.md) - one-page operational entry
+- [`../spec_current.md`](../spec_current.md) - current integrated full specification
 - [`fit_two_page_card.md`](./fit_two_page_card.md) - two-page entry (core + post-Phi3 bifurcation)
 - [`MCC.md`](./MCC.md) - Minimal Coherent Core (6 core assertions)
 

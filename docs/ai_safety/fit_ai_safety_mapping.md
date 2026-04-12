@@ -69,7 +69,7 @@ Four IO classes:
 - If estimators disagree -> label as `ESTIMATOR_UNSTABLE` (measurement problem, not model problem)
 - If estimators agree but results vary by scope -> label as `SCOPE_LIMITED`
 
-For FIT's task-typed coherence gates and admissibility constraints, see the EST section in the spec: [docs/v2.4.md](../v2.4.md).
+For FIT's task-typed coherence gates and admissibility constraints, see the EST section in the current integrated spec: [docs/spec_current.md](../spec_current.md).
 
 **Observable proxy**: **Gate Bypass Rate (GBR)**: how often IO-class changes skip required gates.
 
@@ -161,7 +161,7 @@ To be explicit:
 | Map IO-SR to metrics | [io_sr_mapping.md](io_sr_mapping.md) |
 | Run a two-week pilot | [proposals/tempo-io-pilot.md](../../proposals/tempo-io-pilot.md) |
 | Generate an auditable report (LLM-assisted) | [proposals/tempo-io-pilot-pack/llm_reporting_prompt.md](../../proposals/tempo-io-pilot-pack/llm_reporting_prompt.md) |
-| See the full FIT spec | [docs/v2.4.md](../v2.4.md) |
+| See the full FIT spec | [docs/spec_current.md](../spec_current.md) |
 | Try a runnable demo | [examples/self_referential_io_demo.ipynb](../../examples/self_referential_io_demo.ipynb) |
 
 ---

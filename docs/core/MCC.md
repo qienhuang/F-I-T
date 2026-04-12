@@ -41,10 +41,14 @@ Once a system enters a coordinated late phase (Φ₃-style), large-scale structu
 ## Reconstruction notes (how MCC expands)
 
 Given MCC, the rest of FIT can be reconstructed as:
-- **Primitives + notation** (see [`docs/v2.4.md`](../v2.4.md))
-- **EST discipline**: admissibility, equivalence/coherence gates, robustness reporting (see [`docs/v2.4.md`](../v2.4.md) and [`docs/est/diagnostics.md`](../est/diagnostics.md))
+- **Primitives + notation** (see [`docs/spec_current.md`](../spec_current.md))
+- **EST discipline**: admissibility, equivalence/coherence gates, robustness reporting (see [`docs/spec_current.md`](../spec_current.md) and [`docs/est/diagnostics.md`](../est/diagnostics.md))
 - **Proposition registry**: P1-P18 as expansions under explicit scope + estimators
 - **Domain case studies**: auditable evidence layers (e.g., `experiments/`)
+
+Historical note:
+- the original v2.4 formulation remains preserved in [`docs/v2.4.md`](../v2.4.md)
+- the explicit refinement rationale remains in [`docs/v2.4.1.md`](../v2.4.1.md)
 
 See also:
 - [`MCC_graph.md`](./MCC_graph.md) (dependency graph)

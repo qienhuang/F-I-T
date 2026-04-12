@@ -1,16 +1,55 @@
-﻿![Logo](imgs/banner_v2.png)
+![Logo](imgs/banner_v2.png)
 
 # F-I-T（力–信息–时间）动力学框架
 
 ### 一个用于分析物理、生物、认知、社会和AI系统演化的最小化、可证伪框架。
 
-[[English]](README.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read v2.4](https://img.shields.io/badge/Read-v2.4-red)](docs/v2.4.md)
+[[English]](README.md) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18012401.svg)](https://doi.org/10.5281/zenodo.18012401) | [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) | [![Read reader spec](https://img.shields.io/badge/Read-reader_spec-blue)](docs/zh_cn/spec_reader.zh_cn.md) | [![Read current spec](https://img.shields.io/badge/Read-current_spec-red)](docs/spec_current.md)
 
 ---
 
-## ✨ 近期更新（截至 2026-02-24）
+## 书籍（免费下载）
 
-**首次阅读建议**：先看 [Two-Page Card](docs/core/fit_two_page_card.md)（5 分钟概览）、[MCC](docs/core/MCC.md)（最小形式骨架），再看 [PHASE_II_QUICKSTART.md](PHASE_II_QUICKSTART.md)（CPU 优先可运行路径）。
+<table>
+<tr>
+<td width="280">
+<a href="books/textbook/fit_textbook_v4.pdf">
+<img src="books/textbook/fit_textbook_v5_small.png" width="180" alt="FIT Textbook Cover"/>
+</a>
+</td>
+<td width="280">
+<a href="books/compainion_vol1/fit_companion_vol_v4.pdf">
+<img src="books/compainion_vol1/fit_companion_vol1_v5_small.png" width="180" alt="Companion Volume 1 Cover"/>
+</a>
+</td>
+</tr>
+<tr>
+<td>
+
+**Force-Information-Time: A Structural Framework**  
+[PDF](books/textbook/fit_textbook_v4.pdf) | [EPUB](books/textbook/fit_textbook_v4.epub)
+
+</td>
+<td>
+
+**Essays on Structural Evolution - Vol. 1**  
+[PDF](books/compainion_vol1/fit_companion_vol_v4.pdf) | [EPUB](books/compainion_vol1/fit_companion_vol_v4.epub)
+
+</td>
+</tr>
+</table>
+
+> 上述书籍目前采用 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) 许可，可免费下载、阅读与署名分享，但不允许商业使用。
+>
+> 说明：仓库中的一般文档默认仍采用 CC BY 4.0，除非文件或子目录另有说明。`books/compainion_vol1/` 是为兼容既有链接而保留的旧目录名。
+>
+> 目录级说明（命名、文件类型、许可范围）见：[`books/README.md`](books/README.md)。
+
+---
+
+## ✨ 近期更新（截至 2026-04-11）
+
+**首次阅读建议**：先看 [Two-Page Card](docs/core/fit_two_page_card.md)（5 分钟概览），再看 [spec_reader.zh_cn.md](docs/zh_cn/spec_reader.zh_cn.md)（较短但正式的入口），再看 [MCC](docs/core/MCC.md)（最小形式骨架）。
 
 ---
 ### 面向新读者
@@ -21,9 +60,13 @@
 
 ### 核心理论
 
-- **v2.4.1 — EST + Tier-1 验证套件**  
+- **v2.4.1 line — 当前整合规范**  
   当前主锚版本：可证伪流程 + 命题状态。  
-  → [docs/v2.4.md](docs/v2.4.md)
+  → [docs/spec_current.md](docs/spec_current.md)
+
+- **Reader Spec — 当前线的短入口**  
+  用于 onboarding、review 与进入 full spec 之前的简短正式读面。  
+  → [docs/zh_cn/spec_reader.zh_cn.md](docs/zh_cn/spec_reader.zh_cn.md)
 
 - **Renormalization Lens v0.2**  
   尺度感知可接受性：semigroup closure + saturation gates。  
@@ -98,7 +141,8 @@
 | **评估框架** | [FIT 的主张](#fit-claims-zh) → [Tier-1 证据](#tier-1-evidence-zh) |
 | **从事 AI 安全** | [AI 安全索引](docs/ai_safety/README.md) → [FIT 用于 AI 安全](docs/ai_safety/fit_ai_safety_mapping.md) |
 | **运行实验** | [工具包](#toolkits-zh) → [Li² 复现](experiments/li2_scaling_law/README.md) |
-| **阅读完整规范** | [v2.4 规范](docs/v2.4.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
+| **阅读短规范** | [reader spec（中文）](docs/zh_cn/spec_reader.zh_cn.md) |
+| **阅读完整规范** | [当前整合规范](docs/spec_current.md) (EN) / [v2.4 中文](docs/zh_cn/v2.4.zh_cn.md) |
 
 ---
 
@@ -146,7 +190,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 ![Conway's Game of Life: Tier-1 验证快照](experiments/figures/conway_status_overview.png)
 
-*图：Conway 生命游戏 Tier-1 验证（详见 [v2.4 规范](docs/v2.4.md)）。*
+*图：Conway 生命游戏 Tier-1 验证（详见 [当前整合规范](docs/spec_current.md)）。*
 
 ### Core-adjacent 透镜更新（v0.2）
 
@@ -288,7 +332,7 @@ FIT 将 **tempo**（行动时间尺度与纠正时间尺度之间的关系）视
 
 | 版本 | 描述 | 链接 |
 |------|------|------|
-| **v2.4.1**（当前） | EST + Tier-1 验证 | [docs/v2.4.md](docs/v2.4.md) |
+| **v2.4.1 line**（当前） | 整合完整规范 + EST + Tier-1 验证 | [docs/spec_current.md](docs/spec_current.md) |
 | v2.3 | Tier-1 验证 | [docs/v2.3.md](docs/v2.3.md) |
 | v2.1 | 遗留审阅版 | [docs/v2.1.md](docs/v2.1.md) |
 
@@ -332,7 +376,7 @@ tools/          可运行工具包
 <a id="essays-public-writing-zh"></a>
 ## 📝 [散文与公开写作](essays)
 
-通俗介绍和应用视角。这些使用日常语言；正式框架见[核心卡片](docs/core/fit_core_card.md)或 [v2.4 规范](docs/v2.4.md)。完整索引：[essays/README.md](essays/README.md)。
+通俗介绍和应用视角。这些使用日常语言；正式框架见[核心卡片](docs/core/fit_core_card.md)或 [当前整合规范](docs/spec_current.md)。完整索引：[essays/README.md](essays/README.md)。
 
 ### 方法论与哲学
 - [**理解万物演化的简单框架**](essays/A%20Simple%20Framework%20to%20Understand%20How%20Everything%20Evolves.md) — FIT 通用介绍 `普通读者`
@@ -383,7 +427,7 @@ tools/          可运行工具包
 
 **作者**：Qien Huang（独立研究者）
 **邮箱**：qienhuang@hotmail.com
-**许可证**：CC BY 4.0
+**许可证**：仓库文档默认采用 CC BY 4.0；可下载书籍制品可能采用文件级或子目录级的单独许可（当前上方书籍为 CC BY-NC 4.0）
 **仓库**：https://github.com/qienhuang/F-I-T
 **ORCID**：https://orcid.org/0009-0003-7731-4294
 

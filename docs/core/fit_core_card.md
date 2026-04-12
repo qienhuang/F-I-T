@@ -1,6 +1,6 @@
 # FIT Core Card (v2.4.1+)
 
-Status: **core artifact** (one-page operational entry). For the full specification and EST details, see [`docs/v2.4.md`](../v2.4.md) and the update note [`docs/v2.4.1.md`](../v2.4.1.md).
+Status: **core artifact** (one-page operational entry). For the current integrated specification and EST details, see [`docs/spec_current.md`](../spec_current.md). For the explicit update rationale, see [`docs/v2.4.1.md`](../v2.4.1.md). For historical traceability, see [`docs/v2.4.md`](../v2.4.md).
 
 Navigation: [`core index`](./README.md) | [`MCC`](./MCC.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`How to falsify FIT`](./how_to_falsify_fit.md) | [`Reconstruction guide`](./reconstruction_guide.md)
 

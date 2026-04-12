@@ -2,7 +2,7 @@
 
 Status: **core artifact**. A guide for new readers to regenerate the full framework from the minimal core.
 
-Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`v2.4 spec`](../v2.4.md)
+Navigation: [`core index`](./README.md) | [`Core Card`](./fit_core_card.md) | [`MCC`](./MCC.md) | [`MCC graph`](./MCC_graph.md) | [`Phase Algebra`](./phase_algebra.md) | [`Φ₃ stability`](./phi3_stability.md) | [`current spec`](../spec_current.md) | [`v2.4 snapshot`](../v2.4.md)
 
 Notation: phases are written as `Φ₁/Φ₂/Φ₃` (ASCII: `Phi1/Phi2/Phi3` in filenames/code).
 
@@ -65,16 +65,20 @@ See [`phi3_stability.md`](./phi3_stability.md) for an operational stability fami
 
 ## Step 5: Expand to the proposition registry
 
-The MCC skeleton expands into the proposition set in [`docs/v2.4.md`](../v2.4.md).
+The MCC skeleton expands into the proposition set in [`docs/spec_current.md`](../spec_current.md).
+
+Historical note:
+- the original v2.4 formulation remains preserved in [`docs/v2.4.md`](../v2.4.md)
+- the explicit refinement rationale remains in [`docs/v2.4.1.md`](../v2.4.1.md)
 
 Important:
-- proposition numbering and categorization are defined in [`docs/v2.4.md`](../v2.4.md),
+- proposition numbering and categorization are defined in the current integrated specification,
 - this guide does not attempt a 1:1 mapping of "MCC -> P#",
 - propositions are estimator-scoped expansions, not new axioms.
 
 Practical connection procedure:
 1. use MCC to decide what kind of claim you are making (F / I / C / Phase / irreversibility),
-2. pick the relevant proposition family in [`docs/v2.4.md`](../v2.4.md),
+2. pick the relevant proposition family in [`docs/spec_current.md`](../spec_current.md),
 3. state estimator scope (EST) and admissibility/robustness checks.
 
 ## Step 6: Apply EST discipline

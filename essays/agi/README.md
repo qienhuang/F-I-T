@@ -25,4 +25,6 @@ For binding definitions and formal usage, refer to:
 - [`CHARTER.md`](../../CHARTER.md)
 - [`MANIFEST.md`](../../MANIFEST.md)
 - [`overview/`](../../overview)
-- [`docs/v2.4.md`](../../docs/v2.4.md)
+- [`docs/spec_current.md`](../../docs/spec_current.md)
+- [`docs/v2.4.1.md`](../../docs/v2.4.1.md) for explicit revision rationale
+- [`docs/v2.4.md`](../../docs/v2.4.md) for the historical snapshot

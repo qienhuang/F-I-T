@@ -34,7 +34,7 @@ This folder contains **agent architecture specifications** that apply FIT/EST di
 
 ## Related entry points
 
-- FIT/EST core: [docs/v2.4.md](../v2.4.md)
+- FIT/EST core: [docs/spec_current.md](../spec_current.md)
 - Monitorability gate: [docs/benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md](../benchmarks/gmb_v0_4/monitorability_boundary_toy_theorem.md)
 - Dr.One demo: [examples/dr_one_demo/README.md](../../examples/dr_one_demo/README.md)
 - AI Safety Index: [docs/ai_safety/README.md](../ai_safety/README.md)

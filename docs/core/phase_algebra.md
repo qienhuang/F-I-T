@@ -80,5 +80,6 @@ Decision rule (minimum form):
 - P13 (predictability of transitions) becomes measurable: "early vs synchronous detection" is evaluated relative to PT-MSS + EST estimator scope.
 
 See also:
-- [`docs/v2.4.md`](../v2.4.md) for the proposition registry (including phase-transition propositions).
+- [`docs/spec_current.md`](../spec_current.md) for the current integrated proposition registry (including phase-transition propositions).
+- [`docs/v2.4.md`](../v2.4.md) for the historical v2.4 snapshot.
 - [`docs/est/diagnostics.md`](../est/diagnostics.md) for estimator/EST diagnostics and scope reporting.

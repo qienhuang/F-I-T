@@ -195,5 +195,5 @@ This is consistent with FIT's view that phase transitions require **threshold ac
 
 - Power et al. (2022). "Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets"
 - Tian et al. (2025). "Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking" ([repo](https://github.com/yuandong-tian/understanding))
-- FIT v2.4 spec: [`docs/v2.4.md`](../v2.4.md)
+- FIT current integrated spec: [`docs/spec_current.md`](../spec_current.md)
 - Controlled Nirvana paper: [`papers/controlled_nirvana.md`](../../papers/controlled_nirvana.md)

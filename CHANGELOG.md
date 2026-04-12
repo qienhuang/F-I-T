@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [Unreleased]
+
+### Added
+- **Current integrated specification reading surface**: `docs/spec_current.md` is now the primary full-reading surface for the FIT 2.x line, integrating the v2.4 and v2.4.1 reading path without replacing historical traceability.
+- **Reader-spec layer**: added `docs/spec_reader.md` and `docs/zh_cn/spec_reader.zh_cn.md` as shorter formal entry points for the current FIT 2.x line, sitting between the cards and the full integrated specification.
+- **Books landing section**: repository landing pages now include direct free-download entry points for the textbook and companion volume artifacts under `books/`.
+
+### Changed
+- **Landing page navigation**: `README.md` and `README.zh_cn.md` now route readers more clearly toward the reader spec, the current integrated specification, and public-facing book downloads.
+
+### Fixed
+- **Spec publication cleanup**: removed exported citation placeholder artifacts from `docs/spec_current.md` so the current spec reads as a clean public document rather than a generated draft surface.
+
+## [v2.4.1] - 2025-12-31
+
+### Added
+- **AI safety package (self-referential IO)**: operational standard + mapping and a runnable toy demo (notebook + script) for self-eval/tool-loop lock-in.
+- **Pilot + outreach artifacts**: two-week tempo/IO pilot proposal and a short outreach email template.
+- **Preprint packages**: submission-ready bundles for ChinaXiv/OSF-style workflows and an international preprint checklist/metadata/cover letter set.
+- **Medium/Zhihu drafts**: practitioner-facing posts bridging FIT concepts to deployment controls.
+
+### Fixed
+- KaTeX/GitHub math rendering issues in `docs/v2.4.md` (notably metric-equivalence notation such as `t_1^{*}`).
+
 ## [v2.4] - 2025-12-28
 
 **Estimator Selection Theory Edition**
@@ -105,6 +129,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## Links
 
 - **Repository**: https://github.com/qienhuang/F-I-T
-- **Current spec**: `docs/v2.4.md` (English), `docs/zh_cn/v2.4.zh_cn.md` (Chinese)
+- **Current spec**: `docs/spec_current.md` (English), `docs/zh_cn/v2.4.zh_cn.md` (Chinese)
 - **Contact**: qienhuang@hotmail.com
 - **License**: CC-BY-4.0
